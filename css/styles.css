@@ -1,0 +1,556 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color variables */
+    --color-background-dark: #1a1a1a;
+    --color-background-light: #ffffff;
+    --color-text-dark: #ffffff;
+    --color-text-light: #333333;
+    --color-accent: #d4af37;
+    --color-card-bg-dark: rgba(255, 255, 255, 0.1);
+    --color-card-bg-light: rgba(50, 74, 60, 0.1);
+
+    /* Common variables */
+    --font-playfair: 'Playfair Display', serif;
+    --font-montserrat: 'Montserrat', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-montserrat);
+    line-height: 1.6;
+    background-color: var(--color-background-light);
+    color: var(--color-text-light);
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-background-dark);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    color: var(--color-text-dark);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-right: 2rem;
+}
+
+.brand-title {
+    height: 72px;
+    width: auto;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--color-text-dark);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+.nav-links a:hover {
+    color: var(--color-accent);
+}
+
+/* Section Colors */
+.histoire, .services, .contact {
+    background-color: var(--color-background-dark);
+    color: var(--color-text-dark);
+}
+
+.fromages, .about, .evenements {
+    background-color: var(--color-background-light);
+    color: var(--color-text-light);
+}
+
+/* Cards and Elements */
+.product-card, .service-card, .evenement-card, .valeur {
+    background-color: var(--color-card-bg-dark);
+}
+
+.fromages .product-card,
+.about .service-card,
+.evenements .evenement-card {
+    background-color: var(--color-card-bg-light);
+}
+
+.product-card h3, .service-card h3, .evenement-card h3 {
+    color: var(--color-text-dark);
+}
+
+.fromages .product-card h3,
+.about .service-card h3,
+.evenements .evenement-card h3 {
+    color: var(--color-text-light);
+}
+
+.product-card p, .service-card p, .evenement-card p {
+    color: var(--color-text-dark);
+}
+
+.fromages .product-card p,
+.about .service-card p,
+.evenements .evenement-card p {
+    color: var(--color-text-light);
+}
+
+/* Form Elements */
+.form-group input,
+.form-group textarea {
+    background-color: var(--color-card-bg-dark);
+    color: var(--color-text-dark);
+    border: 1px solid var(--color-card-bg-dark);
+}
+
+.contact .form-group input,
+.contact .form-group textarea {
+    background-color: var(--color-card-bg-light);
+    color: var(--color-text-light);
+    border: 1px solid var(--color-card-bg-light);
+}
+
+/* Social Links */
+.social-link {
+    color: var(--color-text-dark);
+}
+
+.about .social-link {
+    color: var(--color-text-light);
+}
+
+.social-link:hover {
+    color: var(--color-accent);
+}
+
+/* Mobile Menu */
+@media (max-width: 768px) {
+    .nav-links {
+        background-color: var(--color-background-dark);
+    }
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background-image: url('../images/hero-cheese.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.hero h1 {
+    font-family: var(--font-playfair);
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--color-gold-dark);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: var(--color-brown-dark);
+}
+
+/* Products Section */
+.products {
+    padding: 5rem 0;
+    background-color: var(--color-background-dark);
+    color: var(--color-cream-dark);
+}
+
+.products h2 {
+    font-family: var(--font-playfair);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.product-card {
+    background-color: var(--color-card-bg-dark);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-card h3 {
+    font-family: var(--font-playfair);
+    padding: 1rem;
+    color: var(--color-text-dark);
+}
+
+.product-card p {
+    padding: 0 1rem;
+    color: var(--color-text-dark);
+}
+
+.product-card .price {
+    display: block;
+    padding: 1rem;
+    color: var(--color-gold-dark);
+    font-weight: 500;
+}
+
+/* About Section */
+.about {
+    padding: 5rem 0;
+    background-color: var(--color-background-dark);
+    color: var(--color-cream-dark);
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.about-text h2 {
+    font-family: var(--font-playfair);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.stat {
+    text-align: center;
+}
+
+.number {
+    display: block;
+    font-family: var(--font-playfair);
+    font-size: 2.5rem;
+    color: var(--color-gold-dark);
+}
+
+/* Contact Section */
+.contact {
+    padding: 5rem 0;
+    background-color: var(--color-background-dark);
+    color: var(--color-cream-dark);
+}
+
+.contact h2 {
+    font-family: var(--font-playfair);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+}
+
+.contact-info h3 {
+    font-family: var(--font-playfair);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact-info p {
+    margin-bottom: 1rem;
+}
+
+.hours {
+    margin-top: 2rem;
+}
+
+.hours h4 {
+    font-family: var(--font-playfair);
+    margin-bottom: 1rem;
+}
+
+.contact-form {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-gold-dark);
+}
+
+.submit-button {
+    padding: 1rem 2rem;
+    background-color: var(--color-gold-dark);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: var(--color-brown-dark);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Histoire Section */
+.histoire {
+    padding: 5rem 0;
+    background-color: var(--color-background-dark);
+    color: var(--color-cream-dark);
+}
+
+.histoire-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.histoire-image img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.histoire-text h2 {
+    font-family: var(--font-playfair);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.valeurs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.valeur {
+    padding: 1.5rem;
+    background-color: var(--color-card-bg-dark);
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Services Section */
+.services {
+    padding: 5rem 0;
+    background-color: var(--color-background-dark);
+    color: var(--color-cream-dark);
+}
+
+.services-content {
+    margin-top: 3rem;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background: var(--color-card-bg-dark);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.service-card h3 {
+    padding: 1.5rem 1.5rem 0.5rem;
+    color: var(--color-text-dark);
+    font-family: var(--font-playfair);
+}
+
+/* Evenements Section */
+.evenements {
+    padding: 5rem 0;
+    background-color: var(--color-background-dark);
+    color: var(--color-cream-dark);
+}
+
+.evenements h2 {
+    font-family: var(--font-playfair);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.evenements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.evenement-card {
+    padding: 2rem;
+    background-color: var(--color-card-bg-dark);
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.evenement-card:hover {
+    transform: translateY(-5px);
+}
+
+.evenement-card h3 {
+    font-family: var(--font-playfair);
+    color: var(--color-text-dark);
+    margin-bottom: 1rem;
+}
+
+.evenement-card p {
+    margin-bottom: 1.5rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .histoire-content {
+        grid-template-columns: 1fr;
+    }
+
+    .valeurs-grid,
+    .evenements-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-text-dark);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-link i {
+    font-size: 1.5rem;
+} 
