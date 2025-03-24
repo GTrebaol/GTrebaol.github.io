@@ -6,6 +6,32 @@ function toggleMobileMenu() {
     const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
     mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
     navLinks.classList.toggle('active');
+    
+    // Trap focus within mobile menu when open
+    if (!isExpanded) {
+        const focusableElements = navLinks.querySelectorAll('a, button');
+        const firstFocusable = focusableElements[0];
+        const lastFocusable = focusableElements[focusableElements.length - 1];
+        
+        navLinks.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                if (e.shiftKey) {
+                    if (document.activeElement === firstFocusable) {
+                        e.preventDefault();
+                        lastFocusable.focus();
+                    }
+                } else {
+                    if (document.activeElement === lastFocusable) {
+                        e.preventDefault();
+                        firstFocusable.focus();
+                    }
+                }
+            }
+            if (e.key === 'Escape') {
+                toggleMobileMenu();
+            }
+        });
+    }
 }
 
 mobileMenuBtn.addEventListener('click', toggleMobileMenu);
@@ -46,6 +72,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                     top: targetPosition,
                     behavior: 'smooth'
                 });
+                
+                // Focus the target element after scrolling
+                setTimeout(() => {
+                    targetElement.setAttribute('tabindex', '-1');
+                    targetElement.focus();
+                    targetElement.removeAttribute('tabindex');
+                }, 1000);
             }
         }
     });
@@ -106,8 +139,9 @@ if (contactForm) {
         errorElement.setAttribute('role', 'alert');
         field.parentNode.appendChild(errorElement);
         
-        // Validate on blur
+        // Validate on blur and input
         field.addEventListener('blur', () => validateField(field));
+        field.addEventListener('input', () => validateField(field));
     });
     
     function validateField(field) {
@@ -144,6 +178,11 @@ if (contactForm) {
         });
         
         if (!isValid) {
+            // Focus first invalid field
+            const firstInvalidField = formFields.find(field => field.getAttribute('aria-invalid') === 'true');
+            if (firstInvalidField) {
+                firstInvalidField.focus();
+            }
             return;
         }
         
@@ -158,16 +197,44 @@ if (contactForm) {
             submitButton.disabled = true;
             submitButton.textContent = 'Envoi en cours...';
             
+            // Verify reCAPTCHA
+            const recaptchaResponse = grecaptcha.getResponse();
+            if (!recaptchaResponse) {
+                throw new Error('Veuillez valider le reCAPTCHA');
+            }
+            
             // Here you would typically send the data to a server
             await new Promise(resolve => setTimeout(resolve, 1000)); // Simulated API call
             
             // Show success message
-            alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');
+            const successMessage = document.createElement('div');
+            successMessage.className = 'success-message';
+            successMessage.setAttribute('role', 'alert');
+            successMessage.textContent = 'Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.';
+            contactForm.insertBefore(successMessage, contactForm.firstChild);
+            
+            // Reset form
             contactForm.reset();
+            grecaptcha.reset();
+            
+            // Remove success message after 5 seconds
+            setTimeout(() => {
+                successMessage.remove();
+            }, 5000);
         } catch (error) {
-            alert('Une erreur est survenue. Veuillez réessayer plus tard.');
+            const errorMessage = document.createElement('div');
+            errorMessage.className = 'error-message';
+            errorMessage.setAttribute('role', 'alert');
+            errorMessage.textContent = error.message || 'Une erreur est survenue. Veuillez réessayer plus tard.';
+            contactForm.insertBefore(errorMessage, contactForm.firstChild);
+            
+            // Remove error message after 5 seconds
+            setTimeout(() => {
+                errorMessage.remove();
+            }, 5000);
         } finally {
             // Reset button state
+            const submitButton = contactForm.querySelector('button[type="submit"]');
             submitButton.disabled = false;
             submitButton.textContent = originalText;
         }
@@ -190,4 +257,14 @@ const imageObserver = new IntersectionObserver((entries, observer) => {
     threshold: 0.1
 });
 
-lazyImages.forEach(img => imageObserver.observe(img)); 
+lazyImages.forEach(img => imageObserver.observe(img));
+
+// Handle reduced motion preference
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+prefersReducedMotion.addEventListener('change', (e) => {
+    if (e.matches) {
+        document.documentElement.style.scrollBehavior = 'auto';
+    } else {
+        document.documentElement.style.scrollBehavior = 'smooth';
+    }
+}); 
