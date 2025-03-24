@@ -2,33 +2,26 @@
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const navLinks = document.querySelector('.nav-links');
 
-mobileMenuBtn.addEventListener('click', () => {
+function toggleMobileMenu() {
+    const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+    mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
     navLinks.classList.toggle('active');
-    // Animate hamburger menu
-    const spans = mobileMenuBtn.querySelectorAll('span');
-    spans[0].style.transform = navLinks.classList.contains('active') 
-        ? 'rotate(45deg) translate(5px, 5px)' 
-        : 'none';
-    spans[1].style.opacity = navLinks.classList.contains('active') ? '0' : '1';
-    spans[2].style.transform = navLinks.classList.contains('active') 
-        ? 'rotate(-45deg) translate(7px, -6px)' 
-        : 'none';
-});
+}
+
+mobileMenuBtn.addEventListener('click', toggleMobileMenu);
 
 // Close mobile menu when clicking outside
 document.addEventListener('click', (e) => {
     if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
         navLinks.classList.remove('active');
-        const spans = mobileMenuBtn.querySelectorAll('span');
-        spans[0].style.transform = 'none';
-        spans[1].style.opacity = '1';
-        spans[2].style.transform = 'none';
     }
 });
 
 // Close mobile menu when clicking a link
 navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
         navLinks.classList.remove('active');
     });
 });
@@ -96,28 +89,105 @@ document.querySelectorAll('section').forEach(section => {
     observer.observe(section);
 });
 
-// Form submission handling
+// Form validation and submission handling
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    const formFields = contactForm.querySelectorAll('input, textarea');
+    
+    // Add validation attributes
+    formFields.forEach(field => {
+        field.setAttribute('aria-invalid', 'false');
+        field.setAttribute('aria-describedby', `${field.id}-error`);
+        
+        // Create error message element
+        const errorElement = document.createElement('div');
+        errorElement.id = `${field.id}-error`;
+        errorElement.className = 'error-message';
+        errorElement.setAttribute('role', 'alert');
+        field.parentNode.appendChild(errorElement);
+        
+        // Validate on blur
+        field.addEventListener('blur', () => validateField(field));
+    });
+    
+    function validateField(field) {
+        const errorElement = document.getElementById(`${field.id}-error`);
+        let isValid = true;
+        let errorMessage = '';
+        
+        if (field.required && !field.value.trim()) {
+            isValid = false;
+            errorMessage = 'Ce champ est requis';
+        } else if (field.type === 'email' && !isValidEmail(field.value)) {
+            isValid = false;
+            errorMessage = 'Veuillez entrer une adresse email valide';
+        }
+        
+        field.setAttribute('aria-invalid', !isValid);
+        errorElement.textContent = errorMessage;
+        return isValid;
+    }
+    
+    function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+    
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        
+        // Validate all fields
+        let isValid = true;
+        formFields.forEach(field => {
+            if (!validateField(field)) {
+                isValid = false;
+            }
+        });
+        
+        if (!isValid) {
+            return;
+        }
         
         // Get form data
         const formData = new FormData(contactForm);
         const data = Object.fromEntries(formData);
         
-        // Here you would typically send the data to a server
-        console.log('Form submitted:', data);
-        
-        // Show success message
-        alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');
-        contactForm.reset();
+        try {
+            // Show loading state
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.disabled = true;
+            submitButton.textContent = 'Envoi en cours...';
+            
+            // Here you would typically send the data to a server
+            await new Promise(resolve => setTimeout(resolve, 1000)); // Simulated API call
+            
+            // Show success message
+            alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');
+            contactForm.reset();
+        } catch (error) {
+            alert('Une erreur est survenue. Veuillez réessayer plus tard.');
+        } finally {
+            // Reset button state
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
+        }
     });
 }
 
-// Add loading state to images
-document.querySelectorAll('img').forEach(img => {
-    img.addEventListener('load', () => {
-        img.classList.add('loaded');
+// Lazy loading for images
+const lazyImages = document.querySelectorAll('img[data-src]');
+const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+            observer.unobserve(img);
+        }
     });
-}); 
+}, {
+    rootMargin: '50px 0px',
+    threshold: 0.1
+});
+
+lazyImages.forEach(img => imageObserver.observe(img)); 
