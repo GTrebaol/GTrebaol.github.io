@@ -8,27 +8,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-brand">
-                <img src="images/horizontal-baseline-noir.jpg" alt="Fromagerie" class="brand-title">
+                <img src="images/horizontal-baseline-noir.jpg" alt="Fromagerie Bohars" class="brand-title">
             </div>
-            <button class="mobile-menu-btn" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-links">
                 <li><a href="#home">Accueil</a></li>
-                <li><a href="#histoire">Notre histoire</a></li>
-                <li><a href="#fromages">Nos fromages</a></li>
-                <li><a href="#services">Nos services</a></li>
-                <li><a href="#evenements">Nos événements et réservation en ligne</a></li>
+                <li><a href="#histoire">Histoire</a></li>
+                <li><a href="#fromages">Nos Fromages</a></li>
+                <li><a href="#services">Nos Services</a></li>
+                <li><a href="#evenements">Événements</a></li>
                 <li><a href="#about">À propos</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -43,27 +42,28 @@
     </section>
 
     <!-- Histoire Section -->
-    <section id="histoire" class="histoire">
+    <section class="histoire" id="histoire">
         <div class="container">
             <div class="histoire-content">
                 <div class="histoire-image">
-                    <img src="images/history.png" alt="Notre fromagerie">
+                    <img src="images/history.png" alt="Notre Histoire">
                 </div>
                 <div class="histoire-text">
-                    <h2>Notre Histoire / Nos Valeurs</h2>
-                    <p>Fondée en 2010, notre fromagerie artisanale s'engage à vous offrir les meilleurs fromages, soigneusement sélectionnés auprès de producteurs locaux et internationaux.</p>
+                    <h2>Notre Histoire</h2>
+                    <p>Depuis 2010, nous sommes passionnés par l'art du fromage. Notre histoire commence avec une vision simple : offrir les meilleurs fromages de France, sélectionnés avec soin auprès des meilleurs producteurs.</p>
+                    <p>Au fil des années, nous avons développé une expertise unique dans la sélection et l'affinage des fromages, tout en maintenant des relations privilégiées avec nos producteurs partenaires.</p>
                     <div class="valeurs-grid">
                         <div class="valeur">
                             <h3>Qualité</h3>
-                            <p>Sélection rigoureuse des meilleurs produits</p>
+                            <p>Sélection rigoureuse des meilleurs fromages</p>
                         </div>
                         <div class="valeur">
                             <h3>Tradition</h3>
-                            <p>Respect des savoir-faire ancestraux</p>
+                            <p>Respect des méthodes traditionnelles</p>
                         </div>
                         <div class="valeur">
                             <h3>Innovation</h3>
-                            <p>Découverte de nouvelles saveurs</p>
+                            <p>Création de plateaux personnalisés</p>
                         </div>
                     </div>
                 </div>
@@ -71,28 +71,28 @@
         </div>
     </section>
 
-    <!-- Fromages Section -->
+    <!-- Products Section -->
     <section id="fromages" class="products">
         <div class="container">
             <h2>Nos Fromages</h2>
             <div class="products-grid">
                 <div class="product-card">
-                    <img src="images/comte.jpg" alt="Comté">
-                    <h3>Comté Affiné</h3>
-                    <p>Un fromage riche et fruité, affiné pendant 24 mois</p>
-                    <span class="price">45€/kg</span>
-                </div>
-                <div class="product-card">
-                    <img src="images/brie.jpg" alt="Brie">
+                    <img src="images/fromage1.jpg" alt="Fromage 1">
                     <h3>Brie de Meaux</h3>
-                    <p>Un brie crémeux et onctueux</p>
-                    <span class="price">35€/kg</span>
+                    <p>Un fromage à pâte molle à croûte fleurie, crémeux et délicat.</p>
+                    <span class="price">12,90 €</span>
                 </div>
                 <div class="product-card">
-                    <img src="images/pecorino.jpg" alt="Pecorino">
-                    <h3>Pecorino Romano</h3>
-                    <p>Un fromage de brebis italien corsé</p>
-                    <span class="price">40€/kg</span>
+                    <img src="images/fromage2.jpg" alt="Fromage 2">
+                    <h3>Comté 18 mois</h3>
+                    <p>Un fromage à pâte pressée cuite, aux arômes de noisette et de caramel.</p>
+                    <span class="price">24,90 €</span>
+                </div>
+                <div class="product-card">
+                    <img src="images/fromage3.jpg" alt="Fromage 3">
+                    <h3>Roquefort</h3>
+                    <p>Un fromage à pâte persillée, affiné dans les caves naturelles.</p>
+                    <span class="price">19,90 €</span>
                 </div>
             </div>
         </div>
@@ -102,23 +102,21 @@
     <section id="services" class="services">
         <div class="container">
             <h2>Nos Services</h2>
-            <div class="services-content">
-                <div class="services-grid">
-                    <div class="service-card">
-                        <img src="images/plateau.png" alt="Plateaux de fromages">
-                        <h3>Plateaux de Fromages</h3>
-                        <p>Compositions personnalisées pour vos événements</p>
-                    </div>
-                    <div class="service-card">
-                        <img src="images/buffet1.jpg" alt="Buffet">
-                        <h3>Buffets</h3>
-                        <p>Solutions complètes pour vos réceptions</p>
-                    </div>
-                    <div class="service-card">
-                        <img src="images/cheese-shop.jpg" alt="Epicerie fine">
-                        <h3>Epicerie Fine</h3>
-                        <p>Une sélection de produits d'épicerie fine et de vins choisis pour accompagner vos fromages</p>
-                    </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="images/plateau.png" alt="Plateaux de fromages">
+                    <h3>Plateaux de Fromages</h3>
+                    <p>Compositions personnalisées pour vos événements</p>
+                </div>
+                <div class="service-card">
+                    <img src="images/buffet1.jpg" alt="Buffet">
+                    <h3>Buffets</h3>
+                    <p>Solutions complètes pour vos réceptions</p>
+                </div>
+                <div class="service-card">
+                    <img src="images/cheese-shop.jpg" alt="Epicerie fine">
+                    <h3>Epicerie Fine</h3>
+                    <p>Une sélection de produits d'épicerie fine et de vins choisis pour accompagner vos fromages</p>
                 </div>
             </div>
         </div>
@@ -128,18 +126,16 @@
     <section id="evenements" class="evenements">
         <div class="container">
             <h2>Nos Événements</h2>
-            <div class="evenements-content">
-                <div class="evenements-grid">
-                    <div class="evenement-card">
-                        <h3>Dégustations</h3>
-                        <p>Participez à nos dégustations mensuelles</p>
-                        <a href="#" class="cta-button">Réserver</a>
-                    </div>
-                    <div class="evenement-card">
-                        <h3>Ateliers</h3>
-                        <p>Apprenez à composer vos plateaux</p>
-                        <a href="#" class="cta-button">Réserver</a>
-                    </div>
+            <div class="evenements-grid">
+                <div class="evenement-card">
+                    <h3>Dégustations</h3>
+                    <p>Participez à nos dégustations mensuelles</p>
+                    <a href="#" class="cta-button">Réserver</a>
+                </div>
+                <div class="evenement-card">
+                    <h3>Ateliers</h3>
+                    <p>Apprenez à composer vos plateaux</p>
+                    <a href="#" class="cta-button">Réserver</a>
                 </div>
             </div>
         </div>
@@ -148,7 +144,7 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2>À Propos</h2>
+            <h2>À propos</h2>
             <div class="about-content">
                 <div class="about-text">
                     <p>Notre fromagerie artisanale est votre spécialiste des fromages et de l'épicerie fine à Bohars. Nous vous accueillons dans notre boutique pour vous faire découvrir nos sélections et vous conseiller dans vos choix.</p>
@@ -184,29 +180,34 @@
             <div class="contact-content">
                 <div class="contact-info">
                     <h3>Informations</h3>
-                    <p>📍 1 rue de la République, 29820 Bohars</p>
-                    <p>📞 06 63 39 85 69</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 23 Rue Prosper Salaün, 29820 Bohars</p>
+                    <p><i class="fas fa-phone"></i> 02 98 37 37 37</p>
+                    <p><i class="fas fa-envelope"></i> contact@fromagerie-bohars.fr</p>
+                    
                     <div class="hours">
                         <h4>Horaires d'ouverture</h4>
-                        <p>Lundi : Fermé</p>
-                        <p>Mardi - Vendredi : 9h-12h / 14h-19h</p>
-                        <p>Samedi : 9h-12h / 14h-18h</p>
-                        <p>Dimanche : Fermé</p>
+                        <p>Lundi - Samedi : 9h00 - 19h00</p>
+                        <p>Dimanche : 9h00 - 13h00</p>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i> Facebook</a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i> Instagram</a>
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form id="contactForm">
+                    <form class="contact-form">
                         <div class="form-group">
                             <label for="name">Nom</label>
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="name" placeholder="Votre nom" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" placeholder="Votre email" required>
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <textarea id="message" name="message" rows="5" placeholder="Votre message" required></textarea>
                         </div>
                         <button type="submit" class="submit-button">Envoyer</button>
                     </form>
@@ -215,6 +216,7 @@
         </div>
     </section>
 
+    <!-- Custom JavaScript -->
     <script src="js/main.js"></script>
 </body>
 </html> 

@@ -26,22 +26,34 @@ document.addEventListener('click', (e) => {
     }
 });
 
+// Close mobile menu when clicking a link
+navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+    });
+});
+
 // Smooth scroll for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+        const target = this.getAttribute('href');
+        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+        
+        if (target === '#home') {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
-            // Close mobile menu after clicking
-            navLinks.classList.remove('active');
-            const spans = mobileMenuBtn.querySelectorAll('span');
-            spans[0].style.transform = 'none';
-            spans[1].style.opacity = '1';
-            spans[2].style.transform = 'none';
+        } else {
+            const targetElement = document.querySelector(target);
+            if (targetElement) {
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
         }
     });
 });

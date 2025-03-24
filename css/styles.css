@@ -7,17 +7,22 @@
 
 :root {
     /* Color variables */
-    --color-background-dark: #1a1a1a;
-    --color-background-light: #ffffff;
-    --color-text-dark: #ffffff;
-    --color-text-light: #333333;
+    --color-background: #ffffff;
+    --color-background-alt: #324a3c;
+    --color-text: #333333;
+    --color-text-alt: #ffffff;
     --color-accent: #d4af37;
-    --color-card-bg-dark: rgba(255, 255, 255, 0.1);
-    --color-card-bg-light: rgba(50, 74, 60, 0.1);
+    --color-card-bg: rgba(50, 74, 60, 0.1);
+    --color-card-bg-alt: rgba(255, 255, 255, 0.1);
 
     /* Common variables */
     --font-playfair: 'Playfair Display', serif;
     --font-montserrat: 'Montserrat', sans-serif;
+    
+    /* Layout variables */
+    --container-width: 1200px;
+    --section-padding: 5rem 2rem;
+    --navbar-height: 80px;
 }
 
 html {
@@ -27,8 +32,8 @@ html {
 body {
     font-family: var(--font-montserrat);
     line-height: 1.6;
-    background-color: var(--color-background-light);
-    color: var(--color-text-light);
+    background-color: var(--color-background);
+    color: var(--color-text);
 }
 
 /* Navigation */
@@ -37,17 +42,22 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: var(--color-background-dark);
-    backdrop-filter: blur(5px);
+    height: var(--navbar-height);
+    background-color: var(--color-background);
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    color: var(--color-text-dark);
+    color: var(--color-text);
+}
+
+.navbar.scrolled {
+    background-color: var(--color-background);
 }
 
 .nav-container {
-    max-width: 1200px;
+    max-width: var(--container-width);
+    height: 100%;
     margin: 0 auto;
-    padding: 0.5rem;
+    padding: 0 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -61,94 +71,81 @@ body {
 }
 
 .brand-title {
-    height: 72px;
+    height: 60px;
     width: auto;
     object-fit: contain;
 }
 
 .nav-links {
     display: flex;
-    gap: 2.5rem;
     list-style: none;
+    gap: 2rem;
 }
 
 .nav-links a {
-    color: var(--color-text-dark);
+    color: var(--color-text);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
-    font-size: 1rem;
-    white-space: nowrap;
 }
 
 .nav-links a:hover {
     color: var(--color-accent);
 }
 
-/* Section Colors */
-.histoire, .services, .contact {
-    background-color: var(--color-background-dark);
-    color: var(--color-text-dark);
-}
-
-.fromages, .about, .evenements {
-    background-color: var(--color-background-light);
-    color: var(--color-text-light);
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--color-text);
+    cursor: pointer;
 }
 
 /* Cards and Elements */
 .product-card, .service-card, .evenement-card, .valeur {
-    background-color: var(--color-card-bg-dark);
-}
-
-.fromages .product-card,
-.about .service-card,
-.evenements .evenement-card {
-    background-color: var(--color-card-bg-light);
+    background-color: var(--color-card-bg);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .product-card h3, .service-card h3, .evenement-card h3 {
-    color: var(--color-text-dark);
-}
-
-.fromages .product-card h3,
-.about .service-card h3,
-.evenements .evenement-card h3 {
-    color: var(--color-text-light);
+    color: var(--color-text);
+    font-family: var(--font-playfair);
 }
 
 .product-card p, .service-card p, .evenement-card p {
-    color: var(--color-text-dark);
-}
-
-.fromages .product-card p,
-.about .service-card p,
-.evenements .evenement-card p {
-    color: var(--color-text-light);
+    color: var(--color-text);
 }
 
 /* Form Elements */
 .form-group input,
 .form-group textarea {
-    background-color: var(--color-card-bg-dark);
-    color: var(--color-text-dark);
-    border: 1px solid var(--color-card-bg-dark);
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    color: var(--color-text);
+    font-family: var(--font-montserrat);
 }
 
-.contact .form-group input,
-.contact .form-group textarea {
-    background-color: var(--color-card-bg-light);
-    color: var(--color-text-light);
-    border: 1px solid var(--color-card-bg-light);
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #999;
 }
 
 /* Social Links */
 .social-link {
-    color: var(--color-text-dark);
-}
-
-.about .social-link {
-    color: var(--color-text-light);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .social-link:hover {
@@ -158,16 +155,72 @@ body {
 /* Mobile Menu */
 @media (max-width: 768px) {
     .nav-links {
-        background-color: var(--color-background-dark);
+        display: none;
+        position: fixed;
+        top: var(--navbar-height);
+        left: 0;
+        width: 100%;
+        background-color: var(--color-background);
+        padding: 2rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+
+    .about-content,
+    .histoire-content {
+        grid-template-columns: 1fr;
+    }
+
+    .products-grid,
+    .services-grid,
+    .evenements-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .section-padding {
+        padding: 3rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
     }
 }
 
 /* Hero Section */
 .hero {
-    height: 100vh;
+    height: calc(100vh - 30px);
+    background-color: transparent;
     background-image: url('../images/hero-cheese.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: center -120px;
     background-attachment: fixed;
     display: flex;
     align-items: center;
@@ -175,6 +228,8 @@ body {
     text-align: center;
     color: white;
     position: relative;
+    margin-top: var(--navbar-height);
+    scroll-margin-top: var(--navbar-height);
 }
 
 .hero::before {
@@ -192,6 +247,7 @@ body {
     z-index: 1;
     max-width: 800px;
     padding: 2rem;
+    color: var(--color-text-alt);
 }
 
 .hero h1 {
@@ -208,22 +264,23 @@ body {
 .cta-button {
     display: inline-block;
     padding: 1rem 2rem;
-    background-color: var(--color-gold-dark);
+    background-color: var(--color-accent);
     color: white;
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    font-weight: 500;
 }
 
 .cta-button:hover {
-    background-color: var(--color-brown-dark);
+    background-color: var(--color-background-alt);
 }
 
 /* Products Section */
 .products {
-    padding: 5rem 0;
-    background-color: var(--color-background-dark);
-    color: var(--color-cream-dark);
+    padding: var(--section-padding);
+    background-color: var(--color-background);
+    color: var(--color-text);
 }
 
 .products h2 {
@@ -240,7 +297,7 @@ body {
 }
 
 .product-card {
-    background-color: var(--color-card-bg-dark);
+    background-color: var(--color-card-bg);
     border-radius: 10px;
     overflow: hidden;
     transition: transform 0.3s ease;
@@ -256,17 +313,6 @@ body {
     object-fit: cover;
 }
 
-.product-card h3 {
-    font-family: var(--font-playfair);
-    padding: 1rem;
-    color: var(--color-text-dark);
-}
-
-.product-card p {
-    padding: 0 1rem;
-    color: var(--color-text-dark);
-}
-
 .product-card .price {
     display: block;
     padding: 1rem;
@@ -276,9 +322,9 @@ body {
 
 /* About Section */
 .about {
-    padding: 5rem 0;
-    background-color: var(--color-background-dark);
-    color: var(--color-cream-dark);
+    padding: var(--section-padding);
+    background-color: var(--color-background-alt);
+    color: var(--color-text-alt);
 }
 
 .about-content {
@@ -319,9 +365,9 @@ body {
 
 /* Contact Section */
 .contact {
-    padding: 5rem 0;
-    background-color: var(--color-background-dark);
-    color: var(--color-cream-dark);
+    padding: var(--section-padding);
+    background-color: var(--color-background);
+    color: var(--color-text);
 }
 
 .contact h2 {
@@ -364,26 +410,23 @@ body {
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--color-gold-dark);
+    color: var(--color-text);
 }
 
 .submit-button {
     padding: 1rem 2rem;
-    background-color: var(--color-gold-dark);
+    background-color: var(--color-accent);
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-family: var(--font-montserrat);
+    font-weight: 500;
 }
 
 .submit-button:hover {
-    background-color: var(--color-brown-dark);
+    background-color: var(--color-background-alt);
 }
 
 /* Animations */
@@ -404,9 +447,9 @@ body {
 
 /* Histoire Section */
 .histoire {
-    padding: 5rem 0;
-    background-color: var(--color-background-dark);
-    color: var(--color-cream-dark);
+    padding: var(--section-padding);
+    background-color: var(--color-background-alt);
+    color: var(--color-text-alt);
 }
 
 .histoire-content {
@@ -436,34 +479,39 @@ body {
 
 .valeur {
     padding: 1.5rem;
-    background-color: var(--color-card-bg-dark);
+    background-color: var(--color-card-bg);
     border-radius: 10px;
     text-align: center;
 }
 
 /* Services Section */
 .services {
-    padding: 5rem 0;
-    background-color: var(--color-background-dark);
-    color: var(--color-cream-dark);
+    padding: var(--section-padding);
+    background-color: var(--color-background-alt);
+    color: var(--color-text-alt);
 }
 
-.services-content {
-    margin-top: 3rem;
+.services h2 {
+    font-family: var(--font-playfair);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--color-text-alt);
 }
 
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    margin-top: 2rem;
 }
 
 .service-card {
-    background: var(--color-card-bg-dark);
+    background: var(--color-card-bg);
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .service-card:hover {
@@ -478,15 +526,21 @@ body {
 
 .service-card h3 {
     padding: 1.5rem 1.5rem 0.5rem;
-    color: var(--color-text-dark);
+    color: var(--color-text);
     font-family: var(--font-playfair);
+}
+
+.service-card p {
+    padding: 0 1.5rem 1.5rem;
+    color: var(--color-text);
+    opacity: 0.9;
 }
 
 /* Evenements Section */
 .evenements {
-    padding: 5rem 0;
-    background-color: var(--color-background-dark);
-    color: var(--color-cream-dark);
+    padding: var(--section-padding);
+    background-color: var(--color-background);
+    color: var(--color-text);
 }
 
 .evenements h2 {
@@ -504,7 +558,7 @@ body {
 
 .evenement-card {
     padding: 2rem;
-    background-color: var(--color-card-bg-dark);
+    background-color: var(--color-card-bg);
     border-radius: 10px;
     text-align: center;
     transition: transform 0.3s ease;
@@ -516,7 +570,7 @@ body {
 
 .evenement-card h3 {
     font-family: var(--font-playfair);
-    color: var(--color-text-dark);
+    color: var(--color-text);
     margin-bottom: 1rem;
 }
 
@@ -546,11 +600,141 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--color-text-dark);
+    color: var(--color-text-alt);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .social-link i {
     font-size: 1.5rem;
+}
+
+/* Remove the dark section form styles since contact is on white background */
+.contact .form-group input,
+.contact .form-group textarea {
+    background-color: white;
+    color: var(--color-text);
+    border: 1px solid #ddd;
+}
+
+.contact .form-group input:focus,
+.contact .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+.contact .form-group input::placeholder,
+.contact .form-group textarea::placeholder {
+    color: #999;
+}
+
+/* Update social links for dark sections */
+.contact .social-link {
+    color: var(--color-text-alt);
+}
+
+/* Container */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Section Alternating Colors */
+.hero {
+    background-color: transparent;
+}
+
+.histoire {
+    background-color: var(--color-background-alt);
+    color: var(--color-text-alt);
+    padding: var(--section-padding);
+}
+
+.products {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    padding: var(--section-padding);
+}
+
+.services {
+    background-color: var(--color-background-alt);
+    color: var(--color-text-alt);
+    padding: var(--section-padding);
+}
+
+.evenements {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    padding: var(--section-padding);
+}
+
+.about {
+    background-color: var(--color-background-alt);
+    color: var(--color-text-alt);
+    padding: var(--section-padding);
+}
+
+.contact {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    padding: var(--section-padding);
+}
+
+/* Common section title styles */
+.histoire h2,
+.products h2,
+.services h2,
+.evenements h2,
+.about h2,
+.contact h2 {
+    font-family: var(--font-playfair);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* Update cards for proper contrast */
+.products .product-card {
+    background-color: var(--color-card-bg);
+}
+
+.products .product-card h3,
+.products .product-card p {
+    color: var(--color-text);
+}
+
+.services .service-card {
+    background-color: var(--color-card-bg-alt);
+}
+
+.services .service-card h3,
+.services .service-card p {
+    color: var(--color-text-alt);
+}
+
+.evenements .evenement-card {
+    background-color: var(--color-card-bg);
+}
+
+.evenements .evenement-card h3,
+.evenements .evenement-card p {
+    color: var(--color-text);
+}
+
+.about .about-text h2,
+.about .about-text p,
+.about .stat .number,
+.about .stat p {
+    color: var(--color-text-alt);
+}
+
+/* Remove duplicate section declarations */
+.histoire,
+.products,
+.services,
+.evenements,
+.about,
+.contact {
+    padding: var(--section-padding);
 } 
