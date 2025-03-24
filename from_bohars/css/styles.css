@@ -425,7 +425,8 @@ textarea:focus {
     background-color: var(--color-background-alt);
     color: var(--color-text-alt);
     padding: 2rem 0;
-    margin-top: 4rem;
+    margin-top: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-content {
@@ -619,22 +620,15 @@ textarea:focus {
 
 /* Contact Section */
 .contact {
-    padding: var(--section-padding);
+    padding: 4rem 0;
     background-color: var(--color-background);
-    color: var(--color-text);
-}
-
-.contact h2 {
-    font-family: var(--font-playfair);
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 3rem;
 }
 
 .contact-content {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 4rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
 }
 
 .contact-info h3 {

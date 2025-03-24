@@ -4,13 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Cléopattes - Services de garde d'animaux à domicile à Brest. Promenade de chiens, garde de chats et autres animaux. Approche écologique et locale.">
+    <meta name="keywords" content="garde d'animaux, promenade de chiens, garde de chats, Brest, service à domicile, cani-footing, petsitting, dog walking, cat sitting">
+    <meta name="author" content="Cléopattes">
+    <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#c49565">
+    <meta property="og:title" content="Cléopattes - Services de Garde d'Animaux à Brest">
+    <meta property="og:description" content="Services de garde d'animaux à domicile à Brest. Promenade de chiens, garde de chats et autres animaux. Approche écologique et locale.">
+    <meta property="og:image" content="images/logopack-cleopattes.png">
+    <meta property="og:url" content="https://cleopattes.fr">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cléopattes - Services de Garde d'Animaux à Brest">
+    <meta name="twitter:description" content="Services de garde d'animaux à domicile à Brest. Promenade de chiens, garde de chats et autres animaux. Approche écologique et locale.">
+    <meta name="twitter:image" content="images/logopack-cleopattes.png">
+    <link rel="canonical" href="https://cleopattes.fr">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io;">
     <link rel="icon" type="image/png" href="images/favicon.png">
-    <title>Cléopattes - Services de Garde d'Animaux</title>
+    <title>Cléopattes - Services de Garde d'Animaux à Brest</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Satisfy&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -33,10 +47,15 @@
 
     <main id="main-content">
         <section class="hero">
-            <h1>Bienvenue chez Cléopattes</h1>
-            <p>Services de garde d'animaux à domicile à Brest et ses alentours</p>
-            <p class="hero-subtitle">Une approche écologique et locale pour le bien-être de vos animaux</p>
-            <a href="#contact" class="cta-button">Contactez-nous</a>
+            <div class="hero-content">
+                <img src="images/logopack-cleopattes.png" alt="Cléopattes" class="hero-logo" width="400" height="133">
+                <div class="hero-text">
+                    <h1>Services de Garde d'Animaux à Domicile</h1>
+                    <p>Services de garde d'animaux à domicile à Brest et ses alentours</p>
+                    <p class="hero-subtitle">Une approche écologique et locale pour le bien-être de vos animaux</p>
+                    <a href="#contact" class="cta-button">Contactez-nous</a>
+                </div>
+            </div>
         </section>
 
         <section class="about">
@@ -107,20 +126,41 @@
             <div class="contact-container">
                 <div class="contact-info">
                     <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <p>06 29 24 51 41</p>
+                        <i class="fas fa-map-marker-alt" style="color: var(--color-accent);"></i>
+                        <p>Brest et ses alentours</p>
                     </div>
                     <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
+                        <i class="fas fa-phone" style="color: var(--color-accent);"></i>
+                        <p>06 12 34 56 78</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope" style="color: var(--color-accent);"></i>
                         <p>cleopattes@protonmail.me</p>
                     </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock" style="color: var(--color-accent);"></i>
+                        <p>Disponible 7j/7 de 7h à 20h</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-paw" style="color: var(--color-accent);"></i>
+                        <p>Service personnalisé selon vos besoins</p>
+                    </div>
                     <div class="social-links">
-                        <a href="https://www.instagram.com/cleopattes.officiel/" target="_blank">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://m.facebook.com/people/Cl%C3%A9opattes-Officiel/61551865856165/" target="_blank">
-                            <i class="fab fa-facebook"></i>
-                        </a>
+                        <h3>Suivez-nous</h3>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/cleopattes" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="https://www.instagram.com/cleopattes" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/company/cleopattes" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://www.google.com/maps/place/Brest" target="_blank" rel="noopener noreferrer" aria-label="Google Maps">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="contact-form">
@@ -169,9 +209,82 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 Cléopattes - Tous droits réservés</p>
+        <p>&copy; 2025 Cléopattes - Tous droits réservés</p>
     </footer>
 
     <script src="js/script.js"></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Cléopattes",
+        "image": "images/logopack-cleopattes.png",
+        "description": "Services de garde d'animaux à domicile à Brest. Promenade de chiens, garde de chats et autres animaux. Approche écologique et locale.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Brest",
+            "addressCountry": "FR"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "48.3904",
+            "longitude": "-4.4861"
+        },
+        "url": "https://cleopattes.fr",
+        "telephone": "06 12 34 56 78",
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                    "Sunday"
+                ],
+                "opens": "07:00",
+                "closes": "20:00"
+            }
+        ],
+        "priceRange": "€€",
+        "areaServed": "Brest et ses alentours",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Services de garde d'animaux",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Promenade de chiens"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Cani-footing"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Visites de chats"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Visites des NAC"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
 </body>
 </html> 
