@@ -1,3 +1,172 @@
+/* Définition des couleurs */
+:root {
+    --primary-color: #324a3c; /* Couleur principale */
+    --white-color: #ffffff;    /* Couleur blanche */
+    --accent-color: #ffcb80;   /* Couleur d'accent */
+}
+
+/* Reset de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    width: 100%;
+    background-color: var(--white-color); /* Fond blanc par défaut */
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: var(--white-color);
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+}
+
+.nav-brand img {
+    height: 40px;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    padding-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color); /* Couleur de fond du hero */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--white-color);
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+/* Sections avec alternance de couleurs */
+section {
+    position: relative;
+    width: 100%;
+    padding: 60px 0;
+}
+
+.histoire {
+    background-color: var(--white-color); /* Blanc */
+}
+
+.products {
+    background-color: var(--primary-color); /* Couleur primaire */
+}
+
+.services {
+    background-color: var(--white-color); /* Blanc */
+}
+
+.evenements {
+    background-color: var(--primary-color); /* Couleur primaire */
+}
+
+.about {
+    background-color: var(--white-color); /* Blanc */
+}
+
+.contact {
+    background-color: var(--primary-color); /* Couleur primaire */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Mobile styles */
+@media screen and (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: var(--white-color);
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+}
+
+/* Desktop styles */
+@media screen and (min-width: 769px) {
+    .mobile-menu-btn {
+        display: none;
+    }
+
+    .nav-links {
+        display: flex;
+    }
+}
+
 /* Reset and base styles */
 *, *::before, *::after {
     box-sizing: border-box;
@@ -29,7 +198,6 @@
     --touch-target-size: 44px;
 
     /* New variables for the new code block */
-    --primary-color: #4a90e2;
     --secondary-color: #2c3e50;
     --text-color: #333;
     --background-color: #fff;
@@ -47,13 +215,17 @@ html {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 body {
     font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--background-color);
+    background-color: var(--color-background-alt); /* Dark green - ajustez cette couleur selon votre vert exact */
+    overflow-x: hidden;
+    width: 100%;
 }
 
 /* Skip link */
@@ -147,35 +319,85 @@ textarea:focus {
 /* Mobile menu */
 .mobile-menu-btn {
     display: none;
-    background: none;
-    border: none;
-    padding: 0.5rem;
-    cursor: pointer;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .mobile-menu-btn {
         display: block;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 1001;
     }
 
     .nav-links {
         display: none;
         position: fixed;
-        top: 0;
+        top: 60px;
         left: 0;
-        right: 0;
-        bottom: 0;
-        background: var(--background-color);
-        padding: 1rem;
-        z-index: 1000;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: white;
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
     }
 
     .nav-links.active {
-        display: block;
+        display: flex;
     }
 
     .nav-links li {
-        margin: 1rem 0;
+        width: 100%;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 10px;
+        color: #333;
+        text-decoration: none;
+        width: 100%;
+    }
+
+    .hero {
+        min-height: calc(100vh - 60px); /* Hauteur moins la navbar */
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Ajustement navbar mobile */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: white;
+        z-index: 1000;
+    }
+
+    .contact-content {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center;
+    }
+
+    .contact-info,
+    .contact-form {
+        width: 100% !important;
+        margin: 20px 0;
     }
 }
 
@@ -207,18 +429,6 @@ textarea:focus {
     }
 }
 
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --text-color: #fff;
-        --background-color: #1a1a1a;
-    }
-
-    body {
-        background-color: var(--background-color);
-        color: var(--text-color);
-    }
-}
 
 /* Navigation */
 .navbar {
@@ -226,59 +436,49 @@ textarea:focus {
     top: 0;
     left: 0;
     width: 100%;
-    height: var(--navbar-height);
-    background-color: var(--color-background);
+    height: 60px;
+    background: white;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    color: var(--color-text);
-}
-
-.navbar.scrolled {
-    background-color: var(--color-background);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .nav-container {
-    max-width: var(--container-width);
-    height: 100%;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 20px;
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .nav-brand {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    margin-right: 2rem;
+    padding: 10px 0;
 }
 
-.brand-title {
-    height: 60px;
+.nav-brand img {
+    height: 40px;
     width: auto;
-    object-fit: contain;
 }
 
+/* Navigation links */
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 2rem;
-}
-
-.nav-links a {
-    color: var(--color-text);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
-    padding: 0.5rem;
-    min-height: var(--touch-target-size);
-    display: flex;
+    margin: 0;
+    padding: 0;
     align-items: center;
 }
 
-.nav-links a:hover {
-    color: var(--color-accent);
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px 0;
 }
 
 /* Cards and Elements */
@@ -378,13 +578,22 @@ textarea:focus {
     }
 
     .hero {
-        height: 100vh;
-        background-attachment: scroll;
-        background-position: center center;
+        min-height: 80vh;
     }
 
-    .hero h1 {
-        font-size: 2.5rem;
+    .hero-content {
+        min-height: 80vh;
+        padding: 60px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
     }
 
     .container {
@@ -418,6 +627,26 @@ textarea:focus {
     section {
         margin-bottom: 3rem;
     }
+
+    /* Assurer que toutes les images sont responsives */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Ajuster les sections pour le mobile */
+    section {
+        padding: 40px 20px;
+    }
+
+    /* Ajuster les grilles pour le mobile */
+    .products-grid,
+    .services-grid,
+    .evenements-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
 }
 
 /* Footer */
@@ -470,23 +699,27 @@ textarea:focus {
 
 /* Hero Section */
 .hero {
-    height: calc(100vh - 30px);
-    background-color: transparent;
-    background-image: url('../images/front.png');
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-background-alt); /* Même couleur que le body */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    position: relative;
-    margin-top: var(--navbar-height);
-    scroll-margin-top: var(--navbar-height);
+    overflow: hidden;
 }
 
+.hero-home {
+    background-image: url('../images/webp/front.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Overlay sombre */
 .hero::before {
     content: '';
     position: absolute;
@@ -494,26 +727,28 @@ textarea:focus {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
 
 .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    text-align: center;
+    padding: 0 20px;
     max-width: 800px;
-    padding: 2rem;
-    color: var(--color-text-alt);
+    margin: 0 auto;
 }
 
-.hero h1 {
-    font-family: var(--font-playfair);
+.hero-content h1 {
     font-size: 3.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 20px;
+    color: white;
 }
 
-.hero p {
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: white;
 }
 
 .cta-button {
@@ -842,7 +1077,7 @@ textarea:focus {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--color-text-alt);
+    color: var(--color-background-alt);
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -870,16 +1105,12 @@ textarea:focus {
     color: #999;
 }
 
-/* Update social links for dark sections */
-.contact .social-link {
-    color: var(--color-text-alt);
-}
-
 /* Container */
 .container {
-    max-width: var(--container-width);
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 20px;
 }
 
 /* Section Alternating Colors */
@@ -979,4 +1210,125 @@ textarea:focus {
 .about,
 .contact {
     padding: var(--section-padding);
+}
+
+/* Assurer que le contenu principal ne soit pas caché derrière la navbar fixe */
+main {
+    padding-top: 60px; /* Ajuster selon la hauteur de votre navbar */
+    overflow-x: hidden;
+}
+
+/* Styles du menu burger */
+.mobile-menu-btn {
+    display: none; /* Caché par défaut, visible sur mobile */
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* Correction des sections pour éviter les lignes noires */
+section {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 40px 0;
+    background-color: #006400; /* Même couleur que le body */
+}
+
+
+/* Fix pour la transition entre les sections */
+section + section {
+    margin-top: 0;
+}
+
+/* Styles mobile */
+@media screen and (max-width: 768px) {
+    /* Affichage du bouton burger */
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    /* Style du menu mobile */
+    .nav-links {
+        display: none; /* Caché par défaut */
+        position: fixed;
+        top: 60px; /* Hauteur de la navbar */
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: white;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Menu actif */
+    .nav-links.active {
+        display: flex;
+    }
+
+    /* Style des liens dans le menu */
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 10px;
+        color: #333;
+        text-decoration: none;
+        width: 100%;
+    }
+
+    /* Ajustements pour éviter les espaces entre sections */
+    section {
+        margin: 0;
+        padding: 40px 20px;
+    }
+
+    /* Assurer que le contenu commence après la navbar */
+    main {
+        padding-top: 60px;
+    }
+
+    /* Correction spécifique pour la section hero */
+    .hero {
+        margin-top: 0;
+    }
+}
+
+/* Correction des espaces entre sections */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Assurer que les images couvrent bien leur conteneur */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Évite les espaces sous les images */
+}
+
+/* Desktop specific styles */
+@media screen and (min-width: 769px) {
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-links {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .nav-links li:last-child {
+        margin-right: 0;
+    }
 } 

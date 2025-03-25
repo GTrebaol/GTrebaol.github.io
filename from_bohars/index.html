@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="theme-color" content="#ffffff">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -20,21 +20,21 @@
     <meta property="og:url" content="https://fromagerie-bohars.fr/">
     <meta property="og:title" content="Fromagerie Artisanale - Bohars">
     <meta property="og:description" content="Découvrez notre sélection de fromages artisanaux, plateaux personnalisés et services d'événements.">
-    <meta property="og:image" content="images/front.png">
+    <meta property="og:image" content="images/webp/front.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://fromagerie-bohars.fr/">
     <meta property="twitter:title" content="Fromagerie Artisanale - Bohars">
     <meta property="twitter:description" content="Découvrez notre sélection de fromages artisanaux, plateaux personnalisés et services d'événements.">
-    <meta property="twitter:image" content="images/front.png">
+    <meta property="twitter:image" content="images/webp/front.png">
 
     <title>Fromagerie Artisanale - Bohars</title>
     
     <!-- Preload critical resources -->
+    <link rel="preload" href="./images/webp/front.webp" as="image" type="image/webp">
     <link rel="preload" href="css/styles.css" as="style">
     <link rel="preload" href="js/main.js" as="script">
-    <link rel="preload" href="images/webp/front.webp" as="image" type="image/webp">
     <link rel="preload" href="images/webp/history.webp" as="image" type="image/webp">
     
     <link rel="stylesheet" href="css/styles.css">
@@ -42,6 +42,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <!-- Ajout du script de vérification -->
+    <script src="js/verify.js" defer></script>
 </head>
 <body>
     <!-- Skip to main content -->
@@ -53,9 +56,8 @@
             <div class="nav-brand">
                 <img src="images/webp/horizontal-baseline-noir.webp" alt="Logo From Bohars" class="logo" width="200" height="60" loading="eager">
             </div>
-            <button class="mobile-menu-btn" aria-expanded="false" aria-controls="nav-links" aria-label="Menu" aria-haspopup="true">
-                <i class="fas fa-bars" aria-hidden="true"></i>
-                <span class="sr-only">Menu</span>
+            <button class="mobile-menu-btn" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+                <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-links" id="nav-links" role="menu" aria-label="Menu principal">
                 <li role="none"><a href="#home" role="menuitem" aria-current="page">Accueil</a></li>
@@ -71,7 +73,7 @@
 
     <main id="main-content" role="main">
         <!-- Hero Section -->
-        <section id="home" class="hero" style="background-image: url('images/webp/front.webp');" role="banner" aria-label="En-tête">
+        <section id="home" class="hero hero-home" role="banner" aria-label="En-tête">
             <div class="hero-content">
                 <h1>Fromagerie Artisanale</h1>
                 <p>Découvrez notre sélection de fromages artisanaux</p>
@@ -280,7 +282,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
-                    <p>&copy; 2024 Fromagerie Bohars. Tous droits réservés.</p>
+                    <p>&copy; 2025 From Bohars. Tous droits réservés.</p>
                 </div>
                 <nav class="footer-nav" aria-label="Navigation du pied de page">
                     <ul>

@@ -32,6 +32,11 @@ function toggleMobileMenu() {
             }
         });
     }
+
+    // Change l'icône du menu
+    const menuIcon = mobileMenuBtn.querySelector('i');
+    menuIcon.classList.toggle('fa-bars');
+    menuIcon.classList.toggle('fa-times');
 }
 
 mobileMenuBtn.addEventListener('click', toggleMobileMenu);
@@ -266,5 +271,63 @@ prefersReducedMotion.addEventListener('change', (e) => {
         document.documentElement.style.scrollBehavior = 'auto';
     } else {
         document.documentElement.style.scrollBehavior = 'smooth';
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener('click', function() {
+            const isExpanded = navLinks.classList.contains('active');
+            this.setAttribute('aria-expanded', isExpanded);
+            
+            // Toggle icon
+            const icon = this.querySelector('i');
+            if (icon) {
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            }
+        });
+
+        // Fermer le menu en cliquant sur un lien
+        navLinks.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                }
+            }
+        });
+    }
+});
+
+// Ajouter cette fonction pour gérer le redimensionnement
+window.addEventListener('resize', function() {
+    const navLinks = document.querySelector('.nav-links');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    
+    if (window.innerWidth > 768) {
+        navLinks.classList.remove('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        const menuIcon = mobileMenuBtn.querySelector('i');
+        menuIcon.classList.add('fa-bars');
+        menuIcon.classList.remove('fa-times');
+    }
+});
+
+// Assurer que les images de fond sont bien chargées
+document.addEventListener('DOMContentLoaded', function() {
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        const img = new Image();
+        img.src = hero.style.backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
+        img.onload = function() {
+            hero.style.opacity = '1';
+        };
     }
 }); 
