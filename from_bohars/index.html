@@ -10,7 +10,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Fromagerie Bohars">
-    <meta name="description" content="Fromagerie artisanale à Bohars - Découvrez notre sélection de fromages artisanaux, plateaux personnalisés et services d'événements.">
+    <meta name="description" content="Fromagerie - Cave - Epicerie fine à Bohars - Découvrez notre sélection de fromages artisanaux, plateaux personnalisés et services d'événements.">
     <meta name="keywords" content="fromagerie, fromages artisanaux, Bohars, plateau de fromages, dégustation">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://fromagerie-bohars.fr/">
@@ -18,18 +18,18 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fromagerie-bohars.fr/">
-    <meta property="og:title" content="Fromagerie Artisanale - Bohars">
+    <meta property="og:title" content="Fromagerie - Cave - Epicerie fine - Bohars">
     <meta property="og:description" content="Découvrez notre sélection de fromages artisanaux, plateaux personnalisés et services d'événements.">
     <meta property="og:image" content="images/webp/front.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://fromagerie-bohars.fr/">
-    <meta property="twitter:title" content="Fromagerie Artisanale - Bohars">
+    <meta property="twitter:title" content="Fromagerie - Cave - Epicerie fine - Bohars">
     <meta property="twitter:description" content="Découvrez notre sélection de fromages artisanaux, plateaux personnalisés et services d'événements.">
     <meta property="twitter:image" content="images/webp/front.png">
 
-    <title>Fromagerie Artisanale - Bohars</title>
+    <title>Fromagerie - Cave - Epicerie fine - Bohars</title>
     
     <!-- Preload critical resources -->
     <link rel="preload" href="./images/webp/front.webp" as="image" type="image/webp">
@@ -62,7 +62,6 @@
             <ul class="nav-links" id="nav-links" role="menu" aria-label="Menu principal">
                 <li role="none"><a href="#home" role="menuitem" aria-current="page">Accueil</a></li>
                 <li role="none"><a href="#histoire" role="menuitem">Histoire</a></li>
-                <li role="none"><a href="#fromages" role="menuitem">Nos Fromages</a></li>
                 <li role="none"><a href="#services" role="menuitem">Nos Services</a></li>
                 <li role="none"><a href="#evenements" role="menuitem">Événements</a></li>
                 <li role="none"><a href="#about" role="menuitem">À propos</a></li>
@@ -75,14 +74,14 @@
         <!-- Hero Section -->
         <section id="home" class="hero hero-home" role="banner" aria-label="En-tête">
             <div class="hero-content">
-                <h1>Fromagerie Artisanale</h1>
+                <h1>Fromagerie - Cave - Epicerie fine</h1>
                 <p>Découvrez notre sélection de fromages artisanaux</p>
-                <a href="#fromages" class="cta-button" aria-label="Découvrir notre collection de fromages">Découvrir notre collection</a>
+                <a href="#services" class="cta-button" aria-label="Découvrir nos services">Découvrir nos services</a>
             </div>
         </section>
 
         <!-- Histoire Section -->
-        <section class="histoire" id="histoire" itemscope itemtype="http://schema.org/AboutPage">
+        <section class="histoire section-light" id="histoire" itemscope itemtype="http://schema.org/AboutPage">
             <div class="container">
                 <div class="histoire-content">
                     <div class="histoire-image">
@@ -90,8 +89,11 @@
                     </div>
                     <div class="histoire-text">
                         <h2>Notre Histoire</h2>
-                        <p itemprop="description">Depuis 2010, nous sommes passionnés par l'art du fromage. Notre histoire commence avec une vision simple : offrir les meilleurs fromages de France, sélectionnés avec soin auprès des meilleurs producteurs.</p>
-                        <p>Au fil des années, nous avons développé une expertise unique dans la sélection et l'affinage des fromages, tout en maintenant des relations privilégiées avec nos producteurs partenaires.</p>
+                        <p itemprop="description"> Nous, c'est Elen et Yann Le Gall, deux Boharsiens avec le coeur bien ancré dans le Finistère ! Après des années dans l'agroalimentaire, on a décidé de sauter le pas et de vivre notre rêve : se former à l'art de la crèmerie - fromagerie et de la dégustation des vins et ouvrir notre propre fromagerie-crèmerie, cave et épicerie fine au coeur de Bohars.</p>
+                        <p itemprop="description">Pourquoi From Bohars ? Parce que pour nous, la qualité passe avant tout par des fromages au lait cru, affiné avec amour, des vins choisis avec soin, des bières locales qui font pétiller et des produits d'épicerie fine qui racontent une histoire... Et tout ça dans un cadre chaleur, éco-responsable et 100% authentique !</p> 
+                        <p itemprop="description">Alors, si vous aimez les bons produits et les rencontres avec des productions qui ont du goût pour vous faire découvrir leur métier, on vous attend chez From Bohars.</p>
+                    </div>
+                    <div class="valeurs-section">
                         <div class="valeurs-grid">
                             <div class="valeur" itemprop="knowsAbout" itemscope itemtype="http://schema.org/Thing">
                                 <h3>Qualité</h3>
@@ -111,54 +113,45 @@
             </div>
         </section>
 
-        <!-- Products Section -->
-        <section id="fromages" class="products" itemscope itemtype="http://schema.org/Product">
-            <div class="container">
-                <h2>Nos Fromages</h2>
-                <div class="products-grid">
-                    <div class="product-card" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <h3 itemprop="name">Brie de Meaux</h3>
-                        <p itemprop="description">Un fromage à pâte molle à croûte fleurie, crémeux et délicat.</p>
-                        <p class="price" itemprop="price" content="12.50">12,50 €</p>
-                    </div>
-                    <div class="product-card" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <h3 itemprop="name">Comté 18 mois</h3>
-                        <p itemprop="description">Un fromage à pâte pressée cuite, aux arômes de noisette et de caramel.</p>
-                        <p class="price" itemprop="price" content="15.00">15,00 €</p>
-                    </div>
-                    <div class="product-card" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <h3 itemprop="name">Roquefort</h3>
-                        <p itemprop="description">Un fromage à pâte persillée, affiné dans les caves naturelles.</p>
-                        <p class="price" itemprop="price" content="18.00">18,00 €</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Services Section -->
-        <section id="services" class="services" itemscope itemtype="http://schema.org/Service">
+        <section id="services" class="services section-dark" itemscope itemtype="http://schema.org/Service">
             <div class="container">
                 <h2>Nos Services</h2>
                 <div class="services-grid">
                     <div class="service-card" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <img src="images/webp/plateau.webp" alt="Plateau de fromages" class="product-image">
-                        <h3>Plateaux de Fromages</h3>
-                        <p itemprop="description">Compositions personnalisées pour vos événements</p>
+                        <img src="images/webp/plateau.webp" alt="Plateau de fromages" loading="lazy">
+                        <div class="service-card-content">
+                            <h3>Plateaux de fromages</h3>
+                            <p>Composition personnalisée selon vos envies</p>
+                        </div>
                     </div>
                     <div class="service-card" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <h3>Buffets</h3>
-                        <p itemprop="description">Solutions complètes pour vos réceptions</p>
+                        <img src="images/webp/plateau.webp" alt="Plateau de fromages" loading="lazy">
+                        <div class="service-card-content">
+                            <h3>Buffets</h3>
+                            <p itemprop="description">Pièces montées (mariage, anniversaire, évènement à prévoir ou à organiser)</p>
+                        </div>
                     </div>
                     <div class="service-card" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <h3>Epicerie Fine</h3>
-                        <p itemprop="description">Une sélection de produits d'épicerie fine et de vins choisis pour accompagner vos fromages</p>
+                        <img src="images/webp/plateau.webp" alt="Plateau de fromages" loading="lazy">
+                        <div class="service-card-content">
+                            <h3>Epicerie Fine</h3>
+                            <p itemprop="description">Une sélection de produits d'épicerie fine et de vins choisis pour accompagner vos fromages</p>
+                        </div>
+                    </div>
+                    <div class="service-card" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                        <img src="images/webp/plateau.webp" alt="Plateau de fromages" loading="lazy">
+                        <div class="service-card-content">
+                            <h3>Cave</h3>
+                            <p itemprop="description">Une sélection de vins, bières, liqueurs et digestifs</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Evenements Section -->
-        <section id="evenements" class="evenements" itemscope itemtype="http://schema.org/Event">
+        <section id="evenements" class="evenements section-light" itemscope itemtype="http://schema.org/Event">
             <div class="container">
                 <h2>Nos Événements</h2>
                 <div class="evenements-grid">
@@ -177,31 +170,29 @@
         </section>
 
         <!-- About Section -->
-        <section id="about" class="about" itemscope itemtype="http://schema.org/AboutPage">
+        <section id="about" class="about section-dark" itemscope itemtype="http://schema.org/AboutPage">
             <div class="container">
                 <h2>À propos</h2>
                 <div class="about-content">
                     <div class="about-text">
-                        <p itemprop="description">Notre fromagerie artisanale est votre spécialiste des fromages et de l'épicerie fine à Bohars. Nous vous accueillons dans notre boutique pour vous faire découvrir nos sélections et vous conseiller dans vos choix.</p>
+                        <p itemprop="description">Notre fromagerie est votre spécialiste des fromages et de l'épicerie fine à Bohars. Nous vous accueillons dans notre boutique pour vous faire découvrir nos sélections et vous conseiller dans vos choix.</p>
                         <div class="stats">
-                            <div class="stat">
-                                <span class="number">20+</span>
-                                <p>Années d'expérience</p>
-                            </div>
                             <div class="stat">
                                 <span class="number">100+</span>
                                 <p>Variétés de fromages</p>
                             </div>
-                        </div>
-                        <div class="social-links">
-                            <a href="https://www.instagram.com/from_bohars" target="_blank" class="social-link" aria-label="Suivez-nous sur Instagram">
-                                <i class="fab fa-instagram" aria-hidden="true"></i>
-                                Suivez-nous sur Instagram
-                            </a>
-                            <a href="https://www.facebook.com/p/From-Bohars-61559845997301/" target="_blank" class="social-link" aria-label="Suivez-nous sur Facebook">
-                                <i class="fab fa-facebook" aria-hidden="true"></i>
-                                Suivez-nous sur Facebook
-                            </a>
+                            <div class="stat">
+                                <span class="number">100+</span>
+                                <p>Références d'épicerie fine</p>
+                            </div>
+                            <div class="stat">
+                                <span class="number">50+</span>
+                                <p>Références de vins</p>
+                            </div>
+                            <div class="stat">
+                                <span class="number">40+</span>
+                                <p>Références de bières, cidres et autres alcools</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -209,42 +200,19 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="contact" itemscope itemtype="http://schema.org/ContactPage">
+        <section id="contact" class="contact section-light" itemscope itemtype="http://schema.org/ContactPage">
             <div class="container">
                 <h2>Contactez-nous</h2>
                 <div class="contact-content">
                     <div class="contact-info">
                         <h3>Informations</h3>
-                        <p itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                            <span itemprop="streetAddress">23 Rue Prosper Salaün</span>,
-                            <span itemprop="postalCode">29820</span>
-                            <span itemprop="addressLocality">Bohars</span>
-                        </p>
-                        <p itemprop="telephone">
-                            <i class="fas fa-phone" aria-hidden="true"></i>
-                            <a href="tel:0298373737">02 98 37 37 37</a>
-                        </p>
-                        <p itemprop="email">
-                            <i class="fas fa-envelope" aria-hidden="true"></i>
-                            <a href="mailto:contact@fromagerie-bohars.fr">contact@fromagerie-bohars.fr</a>
-                        </p>
-                        
-                        <div class="hours" itemprop="openingHoursSpecification" itemscope itemtype="http://schema.org/OpeningHoursSpecification">
-                            <h4>Horaires d'ouverture</h4>
-                            <p>Lundi - Samedi : <time itemprop="opens" content="09:00">9h00</time> - <time itemprop="closes" content="19:00">19h00</time></p>
-                            <p>Dimanche : <time itemprop="opens" content="09:00">9h00</time> - <time itemprop="closes" content="13:00">13h00</time></p>
-                        </div>
-
-                        <div class="social-links">
-                            <a href="#" class="social-link" aria-label="Suivez-nous sur Facebook">
-                                <i class="fab fa-facebook" aria-hidden="true"></i>
-                                Facebook
-                            </a>
-                            <a href="#" class="social-link" aria-label="Suivez-nous sur Instagram">
-                                <i class="fab fa-instagram" aria-hidden="true"></i>
-                                Instagram
-                            </a>
+                        <p><i class="fas fa-map-marker-alt"></i> 23 Rue Prosper Salaün, 29820 Bohars</p>
+                        <p><i class="fas fa-phone"></i> 06 63 39 85 69</p>
+                        <p><i class="fas fa-envelope"></i> from.bohars@gmail.com</p>
+                        <div class="hours">
+                            <h3>Horaires d'ouverture</h3>
+                            <p>Ouvert du mardi au samedi de 9h-13h et de 15h à 19h</p>
+                            <p> (fermé le mercredi après-midi)</p>
                         </div>
                     </div>
                     <div class="contact-form">
