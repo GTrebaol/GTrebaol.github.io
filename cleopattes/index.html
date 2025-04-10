@@ -8,18 +8,35 @@
     <meta name="author" content="Cléopattes">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#c49565">
+    <meta name="geo.region" content="FR-E">
+    <meta name="geo.placename" content="Brest">
+    <meta name="geo.position" content="48.3904;-4.4861">
+    <meta name="ICBM" content="48.3904, -4.4861">
+    <meta name="revisit-after" content="7 days">
+    <meta name="rating" content="general">
+    <meta name="copyright" content="Cléopattes">
     <meta property="og:title" content="Cléopattes - Services de Garde d'Animaux à Brest">
     <meta property="og:description" content="Services de garde d'animaux à domicile à Brest. Promenade de chiens, garde de chats et autres animaux. Approche écologique et locale.">
     <meta property="og:image" content="images/logopack-cleopattes.png">
     <meta property="og:url" content="https://cleopattes.fr">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Cléopattes">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Cléopattes - Services de Garde d'Animaux à Brest">
     <meta name="twitter:description" content="Services de garde d'animaux à domicile à Brest. Promenade de chiens, garde de chats et autres animaux. Approche écologique et locale.">
     <meta name="twitter:image" content="images/logopack-cleopattes.png">
     <link rel="canonical" href="https://cleopattes.fr">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io; frame-src 'self' https://www.google.com;">
-    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#ffffff">
+    
     <title>Cléopattes - Services de Garde d'Animaux à Brest</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -117,6 +134,20 @@
                     <i class="fas fa-paw"></i>
                     <h3>Visites des NAC</h3>
                     <p>Garde de tous types d'animaux (oiseaux, rongeurs, reptiles...)</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="reviews" class="reviews">
+            <h2>Avis Clients</h2>
+            <div class="reviews-container">
+                <div class="google-reviews">
+                    <!-- Google Reviews Widget sera intégré ici -->
+                    <div id="google-reviews-widget"></div>
+                </div>
+                <div class="reviews-cta">
+                    <p>Vous avez utilisé nos services ? Partagez votre expérience !</p>
+                    <a href="https://g.page/r/cleopattes/review" target="_blank" rel="noopener noreferrer" class="cta-button">Laisser un avis</a>
                 </div>
             </div>
         </section>
@@ -232,6 +263,9 @@
             
         }
     </script>
+    <!-- Google Reviews Widget -->
+    <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+    <div class="elfsight-app-YOUR_APP_ID"></div>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",

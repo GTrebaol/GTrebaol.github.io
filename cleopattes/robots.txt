@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Sitemap: https://cleopattes.fr/sitemap.xml
+
+# Empêcher l'indexation des ressources non essentielles
+Disallow: /css/
+Disallow: /js/
+Disallow: /images/ 

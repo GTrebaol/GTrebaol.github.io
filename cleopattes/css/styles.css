@@ -833,4 +833,79 @@ h1, h2, h3 {
         transform: scale(0.8);
         transform-origin: left center;
     }
+}
+
+/* Reviews Section */
+.reviews {
+    padding: 4rem 2rem;
+    background-color: #f8f9fa;
+}
+
+.reviews h2 {
+    text-align: center;
+    color: var(--color-primary);
+    margin-bottom: 3rem;
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.reviews-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.google-reviews {
+    background-color: var(--color-background);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-height: 400px;
+}
+
+.reviews-cta {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--color-background);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.reviews-cta p {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    color: var(--color-text);
+}
+
+.reviews-cta .cta-button {
+    display: inline-block;
+    background-color: var(--color-accent);
+    color: var(--color-background);
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.reviews-cta .cta-button:hover {
+    background-color: #b38454;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .reviews {
+        padding: 3rem 1rem;
+    }
+    
+    .reviews h2 {
+        font-size: 2rem;
+    }
+    
+    .google-reviews {
+        min-height: 300px;
+    }
 } 

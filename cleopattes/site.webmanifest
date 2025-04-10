@@ -1,0 +1,45 @@
+{
+    "name": "Cléopattes - Services de Garde d'Animaux à Brest",
+    "short_name": "Cléopattes",
+    "description": "Services de garde d'animaux à domicile à Brest. Promenade de chiens, garde de chats et autres animaux. Approche écologique et locale.",
+    "start_url": "/",
+    "icons": [
+        {
+            "src": "images/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "images/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "theme_color": "#c49565",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "orientation": "portrait",
+    "categories": ["lifestyle", "business", "utilities"],
+    "lang": "fr",
+    "dir": "ltr",
+    "prefer_related_applications": false,
+    "scope": "/",
+    "screenshots": [
+        {
+            "src": "images/screenshot-mobile.png",
+            "sizes": "390x844",
+            "type": "image/png",
+            "platform": "narrow",
+            "label": "Page d'accueil de Cléopattes sur mobile"
+        },
+        {
+            "src": "images/screenshot-tablet.png",
+            "sizes": "768x1024",
+            "type": "image/png",
+            "platform": "wide",
+            "label": "Page d'accueil de Cléopattes sur tablette"
+        }
+    ]
+} 
