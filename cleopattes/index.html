@@ -38,8 +38,8 @@
             </div>
             <div class="nav-links">
                 <a href="#about">À propos</a>
-                <a href="#services">Services</a>
                 <a href="#eco-friendly">Engagement</a>
+                <a href="#services">Services</a>
                 <a href="#contact">Contact</a>
             </div>
         </nav>
@@ -71,7 +71,7 @@
             </div>
         </section>
 
-        <section class="eco-friendly">
+        <section id="eco-friendly" class="eco-friendly">
             <div class="eco-content">
                 <h2>Notre Engagement Écologique</h2>
                 <div class="eco-grid">
@@ -220,10 +220,16 @@
     </footer>
 
     <script src="js/script.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lc5HhIrAAAAABOH9dPVy0EMAIkTBc7PcXfrgFLD"></script>
     <script>
         function onSubmit(token) {
-            document.getElementById("contact-form").submit();
+            grecaptcha.ready(function() {
+            grecaptcha.execute('6Lc5HhIrAAAAABOH9dPVy0EMAIkTBc7PcXfrgFLD', {action: 'submit'})
+                .then(function(token) {
+                    document.getElementById("contact-form").submit();
+                });
+            });
+            
         }
     </script>
     <script type="application/ld+json">
