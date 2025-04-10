@@ -27,7 +27,7 @@
     <meta name="twitter:description" content="Services de garde d'animaux à domicile à Brest. Promenade de chiens, garde de chats et autres animaux. Approche écologique et locale.">
     <meta name="twitter:image" content="images/logopack-cleopattes.png">
     <link rel="canonical" href="https://cleopattes.fr">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io; frame-src 'self' https://www.google.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io https://www.google.com; frame-src 'self' https://www.google.com;">
     
     <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
@@ -44,6 +44,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/script.js"></script>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Aller au contenu principal</a>
@@ -254,16 +256,16 @@
                     <div class="social-links">
                         <h3>Suivez-nous</h3>
                         <div class="social-icons">
-                            <a href="https://www.facebook.com/cleopattes" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <a href="https://www.facebook.com/profile.php?id=61551865856165" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                                 <i class="fab fa-facebook"></i>
                             </a>
-                            <a href="https://www.instagram.com/cleopattes" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <a href="https://www.instagram.com/cleopattes.officiel" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a href="https://www.linkedin.com/company/cleopattes" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <a href="https://www.linkedin.com/in/bouyguescleo/?originalSubdomain=fr" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                                 <i class="fab fa-linkedin"></i>
                             </a>
-                            <a href="https://www.google.com/maps/place/Brest" target="_blank" rel="noopener noreferrer" aria-label="Google Maps">
+                            <a href="https://maps.app.goo.gl/PkhoVK3aD19yLPmB8" target="_blank" rel="noopener noreferrer" aria-label="Google Maps">
                                 <i class="fas fa-map-marked-alt"></i>
                             </a>
                         </div>
@@ -306,10 +308,7 @@
                                 J'accepte le traitement de mes données personnelles pour le traitement de ma demande
                             </label>
                         </div>
-                        <button type="submit" class="submit-button g-recaptcha" 
-                                data-sitekey="6Lc5HhIrAAAAABOH9dPVy0EMAIkTBc7PcXfrgFLD"
-                                data-callback="onSubmit"
-                                data-action="submit">Envoyer</button>
+                        <button type="button" class="submit-button" id="submit-button">Envoyer</button>
                     </form>
                     <div id="thank-you-message" class="thank-you-message" style="display: none;">
                         <i class="fas fa-check-circle"></i>
@@ -325,19 +324,7 @@
         <p>&copy; 2025 Cléopattes - Tous droits réservés</p>
     </footer>
 
-    <script src="js/script.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js?render=6Lc5HhIrAAAAABOH9dPVy0EMAIkTBc7PcXfrgFLD"></script>
-    <script>
-        function onSubmit(token) {
-            grecaptcha.ready(function() {
-            grecaptcha.execute('6Lc5HhIrAAAAABOH9dPVy0EMAIkTBc7PcXfrgFLD', {action: 'submit'})
-                .then(function(token) {
-                    document.getElementById("contact-form").submit();
-                });
-            });
-            
-        }
-    </script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfelRIrAAAAAICy_1LKDvZwW_c2_Z_QYFKJALR3"></script>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
