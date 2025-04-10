@@ -34,41 +34,62 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Form submission handling
-const form = document.querySelector('form');
-const submitButton = form.querySelector('.submit-button');
-
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    // Disable button and show loading state
-    submitButton.disabled = true;
-    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
-    
-    try {
-        const response = await fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form),
-            headers: {
-                'Accept': 'application/json'
-            }
+// Gestion du formulaire après soumission
+document.addEventListener('DOMContentLoaded', function() {
+    // Ajouter un gestionnaire pour le message de remerciement après la soumission du formulaire
+    const form = document.getElementById('contact-form');
+    if (form) {
+        form.addEventListener('submit', function() {
+            // Le formulaire sera soumis par reCAPTCHA, mais nous pouvons préparer l'affichage du message de remerciement
+            setTimeout(function() {
+                form.style.display = 'none';
+                document.getElementById('thank-you-message').style.display = 'block';
+            }, 1000);
         });
-        
-        if (response.ok) {
-            submitButton.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
-            form.reset();
-            setTimeout(() => {
-                submitButton.innerHTML = 'Envoyer';
-            }, 3000);
-        } else {
-            throw new Error('Erreur lors de l\'envoi');
+    }
+});
+
+// Fonction de callback pour reCAPTCHA
+function onSubmit(token) {
+    const form = document.getElementById('contact-form');
+    const formData = new FormData(form);
+    
+    // Ajouter le token reCAPTCHA au formulaire
+    formData.append('g-recaptcha-response', token);
+    
+    // Envoyer le formulaire via Formspree
+    fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
         }
-    } catch (error) {
-        submitButton.innerHTML = '<i class="fas fa-exclamation-circle"></i> Erreur';
-        setTimeout(() => {
-            submitButton.innerHTML = 'Envoyer';
-        }, 3000);
-    } finally {
-        submitButton.disabled = false;
+    })
+    .then(response => {
+        if (response.ok) {
+            // Cacher le formulaire et afficher le message de remerciement
+            form.style.display = 'none';
+            document.getElementById('thank-you-message').style.display = 'block';
+        } else {
+            throw new Error('Erreur lors de l\'envoi du message');
+        }
+    })
+    .catch(error => {
+        alert('Une erreur est survenue. Veuillez réessayer.');
+        console.error('Erreur:', error);
+        // Réinitialiser le reCAPTCHA en cas d'erreur
+        grecaptcha.reset();
+    });
+}
+
+// Gestion du menu mobile
+document.addEventListener('DOMContentLoaded', function() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (navToggle && navLinks) {
+        navToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
     }
 }); 

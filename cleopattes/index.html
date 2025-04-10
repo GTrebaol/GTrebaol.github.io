@@ -18,7 +18,7 @@
     <meta name="twitter:description" content="Services de garde d'animaux à domicile à Brest. Promenade de chiens, garde de chats et autres animaux. Approche écologique et locale.">
     <meta name="twitter:image" content="images/logopack-cleopattes.png">
     <link rel="canonical" href="https://cleopattes.fr">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io; frame-src 'self' https://www.google.com;">
     <link rel="icon" type="image/png" href="images/favicon.png">
     <title>Cléopattes - Services de Garde d'Animaux à Brest</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -139,7 +139,7 @@
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-clock" style="color: var(--color-accent);"></i>
-                        <p>Disponible 7j/7 de 7h à 20h</p>
+                        <p>Disponible 5j/7 de 7h à 20h</p>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-paw" style="color: var(--color-accent);"></i>
@@ -164,13 +164,12 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form action="https://formspree.io/f/cleopattes@protonmail.me" method="POST" autocomplete="off">
-                        <input type="hidden" name="_subject" value="Nouveau message de Cléopattes">
-                        <input type="hidden" name="_next" value="https://cleopattes.fr/merci.html">
+                    <form id="contact-form" action="https://formspree.io/f/xnnplban" method="POST" autocomplete="off">
+                        <input type="hidden" name="_subject" value="Nouveau message venant de cleopattes.fr">
                         <input type="hidden" name="_template" value="table">
                         <div class="form-group">
                             <label for="name">Nom</label>
-                            <input type="text" id="name" name="name" required minlength="2" maxlength="50" pattern="[A-Za-zÀ-ÿ\s-]+" title="Veuillez entrer un nom valide (lettres, espaces et tirets uniquement)">
+                            <input type="text" id="name" name="name" required minlength="2" maxlength="50" pattern="[A-Za-zÀ-ÿ\s\-]+" title="Veuillez entrer un nom valide (lettres, espaces et tirets uniquement)">
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
@@ -201,8 +200,16 @@
                                 J'accepte le traitement de mes données personnelles pour le traitement de ma demande
                             </label>
                         </div>
-                        <button type="submit" class="submit-button">Envoyer</button>
+                        <button type="submit" class="submit-button g-recaptcha" 
+                                data-sitekey="6Lc5HhIrAAAAABOH9dPVy0EMAIkTBc7PcXfrgFLD"
+                                data-callback="onSubmit"
+                                data-action="submit">Envoyer</button>
                     </form>
+                    <div id="thank-you-message" class="thank-you-message" style="display: none;">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Merci pour votre message !</h3>
+                        <p>Nous vous répondrons dans les plus brefs délais.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -213,6 +220,12 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+        function onSubmit(token) {
+            document.getElementById("contact-form").submit();
+        }
+    </script>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -240,9 +253,7 @@
                     "Tuesday",
                     "Wednesday",
                     "Thursday",
-                    "Friday",
-                    "Saturday",
-                    "Sunday"
+                    "Friday"
                 ],
                 "opens": "07:00",
                 "closes": "20:00"
