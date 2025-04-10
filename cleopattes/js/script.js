@@ -1,26 +1,98 @@
 // Gestion du menu mobile
 document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    console.log("Initializing mobile menu");
+    
+    // Sélectionner les éléments du menu
+    const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
     
-    if (mobileMenuButton && navLinks) {
-        mobileMenuButton.addEventListener('click', function() {
+    console.log("Nav toggle element:", navToggle);
+    console.log("Nav links element:", navLinks);
+    
+    if (navToggle && navLinks) {
+        // Ajouter un gestionnaire de clic au bouton du menu
+        navToggle.addEventListener('click', function(e) {
+            console.log("Nav toggle clicked");
+            e.preventDefault(); // Empêcher tout comportement par défaut
+            e.stopPropagation(); // Empêcher la propagation de l'événement
+            
+            // Basculer la classe active sur les liens de navigation
             navLinks.classList.toggle('active');
-            mobileMenuButton.classList.toggle('active');
+            
+            // Changer l'icône du menu
+            const icon = navToggle.querySelector('i');
+            if (icon) {
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+            
+            return false;
         });
+        
+        // Fermer le menu mobile lors du clic sur un lien
+        const links = document.querySelectorAll('.nav-links a');
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                console.log("Nav link clicked, closing menu");
+                e.preventDefault(); // Empêcher le comportement par défaut
+                
+                // Fermer le menu
+                navLinks.classList.remove('active');
+                
+                // Remettre l'icône du menu en état initial
+                const icon = navToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+                
+                // Récupérer l'ID de la cible
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                // Faire défiler jusqu'à la cible
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Utiliser setTimeout pour s'assurer que le menu est fermé avant de faire défiler
+                    setTimeout(function() {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }, 300);
+                }
+                
+                return false;
+            });
+        });
+        
+        // Fermer le menu lors d'un clic en dehors du menu
+        document.addEventListener('click', function(e) {
+            if (navLinks.classList.contains('active') && 
+                !navLinks.contains(e.target) && 
+                !navToggle.contains(e.target)) {
+                console.log("Click outside menu, closing it");
+                navLinks.classList.remove('active');
+                
+                // Remettre l'icône du menu en état initial
+                const icon = navToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        });
+    } else {
+        console.error("Menu elements not found");
     }
     
-    // Fermer le menu mobile lors du clic sur un lien
-    const links = document.querySelectorAll('.nav-links a');
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            mobileMenuButton.classList.remove('active');
-        });
-    });
-    
-    // Défilement fluide pour les liens d'ancrage
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    // Défilement fluide pour les liens d'ancrage (autres que ceux du menu)
+    document.querySelectorAll('a[href^="#"]:not(.nav-links a)').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
@@ -53,23 +125,21 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Gestion du formulaire de contact avec reCAPTCHA v3 et AJAX
+// Gestion du formulaire de contact avec reCAPTCHA v2 et AJAX
 document.addEventListener('DOMContentLoaded', function() {
     console.log("DOMContentLoaded event fired");
     
-    // Vérifier si le formulaire existe
+    // Vérifier que jQuery est chargé
+    if (typeof jQuery === 'undefined') {
+        console.error('jQuery n\'est pas chargé');
+        return;
+    }
+
     const form = document.getElementById('contact-form');
-    console.log("Form element:", form);
-    
-    // Vérifier si le bouton existe
-    const submitButton = document.getElementById('submit-button');
-    console.log("Submit button element:", submitButton);
-    
-    // Vérifier si le message de remerciement existe
+    const submitButton = document.querySelector('button[type="button"]');
     const thankYouMessage = document.getElementById('thank-you-message');
-    console.log("Thank you message element:", thankYouMessage);
-    
-    if (form && submitButton) {
+
+    if (form && submitButton && thankYouMessage) {
         console.log("Form and submit button found, setting up handlers");
         
         // Empêcher la soumission classique du formulaire
@@ -80,95 +150,58 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Ajouter un gestionnaire de clic au bouton d'envoi
-        submitButton.addEventListener('click', function(event) {
-            console.log("Submit button clicked");
-            event.preventDefault(); // Empêcher la soumission classique
+        submitButton.addEventListener('click', function(e) {
+            e.preventDefault();
             
-            // Valider le formulaire avant de l'envoyer
+            // Validation du formulaire
             if (!form.checkValidity()) {
-                console.log("Form validation failed");
-                // Déclencher l'événement de validation pour afficher les messages d'erreur
                 form.reportValidity();
-                return false;
+                return;
             }
-            
-            // Désactiver le bouton pendant l'envoi pour éviter les soumissions multiples
+
+            // Vérifier si le reCAPTCHA est rempli
+            const recaptchaResponse = grecaptcha.getResponse();
+            if (!recaptchaResponse) {
+                alert('Veuillez compléter la vérification de sécurité');
+                return;
+            }
+
+            // Désactiver le bouton pendant l'envoi
             submitButton.disabled = true;
-            submitButton.textContent = "Envoi en cours...";
-            
+            submitButton.textContent = 'Envoi en cours...';
+
             // Récupérer les données du formulaire
             const formData = new FormData(form);
             const formDataObj = {};
             formData.forEach((value, key) => {
                 formDataObj[key] = value;
             });
-            
-            // Vérifier si grecaptcha est disponible
-            if (typeof grecaptcha !== 'undefined') {
-                console.log("grecaptcha is available, executing");
-                
-                // Exécuter reCAPTCHA v3
-                grecaptcha.ready(function() {
-                    console.log("grecaptcha is ready");
-                    grecaptcha.execute('6LfelRIrAAAAAICy_1LKDvZwW_c2_Z_QYFKJALR3', {action: 'submit'})
-                        .then(function(token) {
-                            console.log("reCAPTCHA token received, submitting form");
-                            
-                            // Ajouter le token reCAPTCHA aux données du formulaire
-                            formDataObj['g-recaptcha-response'] = token;
-                            
-                            // Ajouter un champ spécial que Formspree utilise pour savoir qu'on veut une réponse AJAX
-                            formDataObj['_format'] = 'json';
-                            
-                            console.log("Sending form data to Formspree via AJAX");
-                            console.log("Form data:", formDataObj);
-                            
-                            // Envoyer les données via jQuery AJAX
-                            $.ajax({
-                                url: form.action,
-                                method: "POST",
-                                dataType: "json",
-                                data: formDataObj,
-                                success: function() {
-                                    console.log("Form submitted successfully");
-                                    form.style.display = 'none';
-                                    thankYouMessage.style.display = 'block';
-                                },
-                                error: function(err) {
-                                    console.error("Formspree error:", err);
-                                    
-                                    // Afficher un message d'erreur plus spécifique si c'est un problème de reCAPTCHA
-                                    if (err.responseText && err.responseText.includes("reCAPTCHA failed")) {
-                                        alert("La vérification de sécurité a échoué. Veuillez réessayer ou nous contacter directement par téléphone.");
-                                    } else {
-                                        alert("Une erreur s'est produite lors de l'envoi du message. Veuillez réessayer ou nous contacter directement par téléphone.");
-                                    }
-                                    
-                                    // Réactiver le bouton en cas d'erreur
-                                    submitButton.disabled = false;
-                                    submitButton.textContent = "Envoyer";
-                                }
-                            });
-                        })
-                        .catch(function(error) {
-                            console.error("reCAPTCHA error:", error);
-                            alert("Une erreur s'est produite avec la vérification de sécurité. Veuillez réessayer.");
-                            
-                            // Réactiver le bouton en cas d'erreur
-                            submitButton.disabled = false;
-                            submitButton.textContent = "Envoyer";
-                        });
-                });
-            } else {
-                console.error("grecaptcha is not available");
-                alert("La vérification de sécurité n'est pas disponible. Veuillez réessayer plus tard.");
-                
-                // Réactiver le bouton en cas d'erreur
-                submitButton.disabled = false;
-                submitButton.textContent = "Envoyer";
-            }
-            
-            return false; // Empêcher la soumission classique
+
+            // Ajouter le token reCAPTCHA
+            formDataObj['g-recaptcha-response'] = recaptchaResponse;
+
+            // Envoyer les données via AJAX
+            $.ajax({
+                url: form.action,
+                method: "POST",
+                dataType: "json",
+                data: formDataObj,
+                success: function(response) {
+                    form.style.display = 'none';
+                    thankYouMessage.style.display = 'block';
+                },
+                error: function(xhr, status, error) {
+                    console.error('Erreur:', error);
+                    if (xhr.responseJSON && xhr.responseJSON.error === 'reCAPTCHA failed') {
+                        alert('Erreur de vérification reCAPTCHA. Veuillez réessayer.');
+                        grecaptcha.reset();
+                    } else {
+                        alert('Une erreur est survenue lors de l\'envoi du formulaire. Veuillez réessayer.');
+                    }
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Envoyer';
+                }
+            });
         });
     } else {
         console.error("Form or submit button not found");
