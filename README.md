@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio de Sites Web
 
-## Getting Started
+Ce repository contient une collection de sites web développés pour différents clients et projets.
 
-First, run the development server:
+## Projets
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Fromagerie Artisanale
+- Site web pour une fromagerie artisanale
+- Présentation des produits, services et événements
+- Design responsive et moderne
+- [Voir le projet](./from_bohars)
+
+### Cléopattes (En développement)
+- Site web pour un nouveau projet
+- Plus de détails à venir
+- [Voir le projet](./cleopattes)
+
+## Structure des Projets
+
+Chaque projet suit une structure similaire :
+```
+project-name/
+├── css/
+│   └── styles.css
+├── js/
+│   └── main.js
+├── images/
+│   └── [images du site]
+├── index.html
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Utilisées
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- HTML5
+- CSS3
+  - Variables CSS
+  - Media Queries
+  - Flexbox/Grid
+- JavaScript
+  - Vanilla JS
+  - Intersection Observer
+  - Form Validation
+- Bibliothèques
+  - Font Awesome
+  - Google Fonts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Fonctionnalités Communes
 
-## Learn More
+- Design responsive
+- Navigation fluide
+- Optimisation des performances
+- Accessibilité (ARIA, contraste, navigation au clavier)
+- SEO optimisé
+- Formulaire de contact
+- Intégration des réseaux sociaux
 
-To learn more about Next.js, take a look at the following resources:
+## Développement
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Pour chaque projet :
+1. Les styles sont dans `css/styles.css`
+2. Le JavaScript est dans `js/main.js`
+3. Les images sont stockées dans `images/`
+4. Configuration SEO dans le `index.html`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Bonnes Pratiques
 
-## Deploy on Vercel
+- Code commenté et documenté
+- Images optimisées
+- Validation des formulaires
+- Tests cross-browser
+- Performance mobile
+- Accessibilité WCAG
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contact
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Pour toute question concernant ces projets :
+- Email : [trebaol.gwenael@gmail.com]
+- GitHub : [https://github.com/GTrebaol]
