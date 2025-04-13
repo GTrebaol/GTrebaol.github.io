@@ -45,6 +45,8 @@
     
     <!-- Ajout du script de vérification -->
     <script src="js/verify.js" defer></script>
+    <!-- Ajout du script reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <!-- Skip to main content -->
@@ -60,11 +62,10 @@
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-links" id="nav-links" role="menu" aria-label="Menu principal">
-                <li role="none"><a href="#home" role="menuitem" aria-current="page">Accueil</a></li>
                 <li role="none"><a href="#histoire" role="menuitem">Histoire</a></li>
-                <li role="none"><a href="#services" role="menuitem">Nos Services</a></li>
-                <li role="none"><a href="#evenements" role="menuitem">Événements</a></li>
+                <li role="none"><a href="#services" role="menuitem">Services</a></li>
                 <li role="none"><a href="#about" role="menuitem">À propos</a></li>
+                <li role="none"><a href="#evenements" role="menuitem">Événements</a></li>
                 <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
             </ul>
         </div>
@@ -81,7 +82,7 @@
         </section>
 
         <!-- Histoire Section -->
-        <section class="histoire section-light" id="histoire" itemscope itemtype="http://schema.org/AboutPage">
+        <section class="histoire section-dark" id="histoire" itemscope itemtype="http://schema.org/AboutPage">
             <div class="container">
                 <div class="histoire-content">
                     <div class="histoire-image">
@@ -114,7 +115,7 @@
         </section>
 
         <!-- Services Section -->
-        <section id="services" class="services section-dark" itemscope itemtype="http://schema.org/Service">
+        <section id="services" class="services section-light" itemscope itemtype="http://schema.org/Service">
             <div class="container">
                 <h2>Nos Services</h2>
                 <div class="services-grid">
@@ -150,26 +151,6 @@
             </div>
         </section>
 
-        <!-- Evenements Section -->
-        <section id="evenements" class="evenements section-light" itemscope itemtype="http://schema.org/Event">
-            <div class="container">
-                <h2>Nos Événements</h2>
-                <div class="evenements-grid">
-                    <div class="evenement-card" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <h3>Dégustations</h3>
-                        <p itemprop="description">Participez à nos dégustations mensuelles</p>
-                        <a href="#" class="cta-button" aria-label="Réserver une dégustation">Réserver</a>
-                    </div>
-                    <div class="evenement-card" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <h3>Ateliers</h3>
-                        <p itemprop="description">Apprenez à composer vos plateaux</p>
-                        <a href="#" class="cta-button" aria-label="Réserver un atelier">Réserver</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
         <section id="about" class="about section-dark" itemscope itemtype="http://schema.org/AboutPage">
             <div class="container">
                 <h2>À propos</h2>
@@ -216,58 +197,72 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact section-light" itemscope itemtype="http://schema.org/ContactPage">
+        <!-- Evenements Section -->
+        <section id="evenements" class="section-light">
             <div class="container">
-                <h2>Contactez-nous</h2>
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <h3>Informations</h3>
-                        <p><i class="fas fa-map-marker-alt"></i> 23 Rue Prosper Salaün, 29820 Bohars</p>
-                        <p><i class="fas fa-phone"></i> 06 63 39 85 69</p>
-                        <p><i class="fas fa-envelope"></i> from.bohars@gmail.com</p>
-                        <div class="hours">
-                            <h3>Horaires d'ouverture</h3>
-                            <p>Ouvert du mardi au samedi de 9h-13h et de 15h à 19h</p>
-                            <p> (fermé le mercredi après-midi)</p>
-                        </div>
-                    </div>
-                    <div class="contact-form">
-                        <form class="contact-form" action="/submit-form" method="POST" novalidate aria-labelledby="contact-title">
-                            <h3 id="contact-title" class="sr-only">Formulaire de contact</h3>
-                            <div class="form-group">
-                                <label for="name">Nom</label>
-                                <input type="text" id="name" name="name" placeholder="Votre nom" required 
-                                       aria-required="true" aria-invalid="false" aria-describedby="name-error">
-                                <div id="name-error" class="error-message" role="alert"></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" placeholder="Votre email" required 
-                                       aria-required="true" aria-invalid="false" aria-describedby="email-error">
-                                <div id="email-error" class="error-message" role="alert"></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" rows="5" placeholder="Votre message" required 
-                                          aria-required="true" aria-invalid="false" aria-describedby="message-error"></textarea>
-                                <div id="message-error" class="error-message" role="alert"></div>
-                            </div>
-                            <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY" aria-label="Vérification reCAPTCHA"></div>
-                            <button type="submit" class="submit-button" aria-label="Envoyer le formulaire">Envoyer</button>
-                        </form>
-                    </div>
+                <h2>Nos Événements</h2>
+                <div class="evenements-grid" id="evenementsList">
+                    <!-- Les événements seront chargés dynamiquement ici -->
                 </div>
             </div>
         </section>
+
+        <!-- About Section -->
+        
     </main>
 
     <!-- Footer -->
-    <footer class="footer" role="contentinfo">
+    <footer class="footer section-dark" role="contentinfo">
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-content" id="contact">
                 <div class="footer-info">
-                    <p>&copy; 2025 From Bohars. Tous droits réservés.</p>
+                    <div class="footer-section">
+                        <h3>Horaires d'ouverture</h3>
+                        <p>Lundi - Vendredi: 9h00 - 19h00</p>
+                        <p>Samedi: 9h00 - 18h00</p>
+                        <p>Dimanche: Fermé</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Contact</h3>
+                        <p>23 Rue Prosper Salaün, 29820 Bohars</p>
+                        <p>Téléphone: 02 98 00 00 00</p>
+                        <p>Email: contact@fromagerie-bohars.fr</p>
+                        <button class="footer-contact-button" id="showContactForm">Nous contacter</button>
+                    </div>
+                    <div class="footer-social">
+                        <h3>Suivez-nous</h3>
+                        <div class="social-links">
+                            <a href="https://www.instagram.com/from_bohars/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.facebook.com/p/From-Bohars-61559845997301/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-form-container" id="contactFormContainer" style="display: none;">
+                    <form id="contactForm" class="footer-contact-form" action="#" method="POST">
+                        <div class="form-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="name" name="name" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" name="email" placeholder="Votre email" required>
+                        </div>
+                        <div class="form-group">
+                            <i class="fas fa-phone"></i>
+                            <input type="tel" id="phone" name="phone" placeholder="Votre téléphone">
+                        </div>
+                        <div class="form-group">
+                            <i class="fas fa-comment"></i>
+                            <textarea id="message" name="message" placeholder="Votre message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">
+                            <i class="fas fa-paper-plane"></i> Envoyer
+                        </button>
+                    </form>
                 </div>
                 <nav class="footer-nav" aria-label="Navigation du pied de page">
                     <ul>
@@ -276,12 +271,17 @@
                         <li><a href="#cgv">CGV</a></li>
                     </ul>
                 </nav>
+                <div class="footer-copyright">
+                    <p>&copy; 2025 From Bohars. Tous droits réservés.</p>
+                </div>
             </div>
         </div>
     </footer>
 
     <!-- Custom JavaScript -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ical.js/1.4.0/ical.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/events.js"></script>
 </body>
 </html> 

@@ -128,9 +128,9 @@ document.querySelectorAll('section').forEach(section => {
 });
 
 // Form validation and submission handling
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    const formFields = contactForm.querySelectorAll('input, textarea');
+const mainContactForm = document.querySelector('.contact-form');
+if (mainContactForm) {
+    const formFields = mainContactForm.querySelectorAll('input, textarea');
     
     // Add validation attributes
     formFields.forEach(field => {
@@ -171,7 +171,7 @@ if (contactForm) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
     
-    contactForm.addEventListener('submit', async (e) => {
+    mainContactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
         // Validate all fields
@@ -192,12 +192,12 @@ if (contactForm) {
         }
         
         // Get form data
-        const formData = new FormData(contactForm);
+        const formData = new FormData(mainContactForm);
         const data = Object.fromEntries(formData);
         
         try {
             // Show loading state
-            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const submitButton = mainContactForm.querySelector('button[type="submit"]');
             const originalText = submitButton.textContent;
             submitButton.disabled = true;
             submitButton.textContent = 'Envoi en cours...';
@@ -216,10 +216,10 @@ if (contactForm) {
             successMessage.className = 'success-message';
             successMessage.setAttribute('role', 'alert');
             successMessage.textContent = 'Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.';
-            contactForm.insertBefore(successMessage, contactForm.firstChild);
+            mainContactForm.insertBefore(successMessage, mainContactForm.firstChild);
             
             // Reset form
-            contactForm.reset();
+            mainContactForm.reset();
             grecaptcha.reset();
             
             // Remove success message after 5 seconds
@@ -231,7 +231,7 @@ if (contactForm) {
             errorMessage.className = 'error-message';
             errorMessage.setAttribute('role', 'alert');
             errorMessage.textContent = error.message || 'Une erreur est survenue. Veuillez réessayer plus tard.';
-            contactForm.insertBefore(errorMessage, contactForm.firstChild);
+            mainContactForm.insertBefore(errorMessage, mainContactForm.firstChild);
             
             // Remove error message after 5 seconds
             setTimeout(() => {
@@ -239,7 +239,7 @@ if (contactForm) {
             }, 5000);
         } finally {
             // Reset button state
-            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const submitButton = mainContactForm.querySelector('button[type="submit"]');
             submitButton.disabled = false;
             submitButton.textContent = originalText;
         }
@@ -329,5 +329,123 @@ document.addEventListener('DOMContentLoaded', function() {
         img.onload = function() {
             hero.style.opacity = '1';
         };
+    }
+});
+
+// Gestion du formulaire de contact
+document.addEventListener('DOMContentLoaded', function() {
+    const pageContactForm = document.getElementById('contact-form');
+    const submitButton = document.getElementById('submit-button');
+    const thankYouMessage = document.getElementById('thank-you-message');
+
+    if (submitButton) {
+        submitButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Vérification du reCAPTCHA
+            const recaptchaResponse = grecaptcha.getResponse();
+            if (!recaptchaResponse) {
+                alert('Veuillez compléter la vérification reCAPTCHA');
+                return;
+            }
+
+            // Vérification de la case de confidentialité
+            const privacyCheckbox = document.querySelector('input[name="privacy"]');
+            if (!privacyCheckbox.checked) {
+                alert('Veuillez accepter le traitement de vos données personnelles');
+                return;
+            }
+
+            // Soumission du formulaire
+            pageContactForm.submit();
+            
+            // Masquer le formulaire et afficher le message de remerciement
+            pageContactForm.style.display = 'none';
+            thankYouMessage.style.display = 'block';
+        });
+    }
+});
+
+// Contact Form Toggle
+const showContactFormBtn = document.getElementById('showContactForm');
+const contactFormContainer = document.getElementById('contactFormContainer');
+
+if (showContactFormBtn && contactFormContainer) {
+    showContactFormBtn.addEventListener('click', () => {
+        const isVisible = contactFormContainer.style.display === 'block';
+        contactFormContainer.style.display = isVisible ? 'none' : 'block';
+        showContactFormBtn.textContent = isVisible ? 'Nous contacter' : 'Fermer';
+        
+        if (!isVisible) {
+            const navbar = document.querySelector('.navbar');
+            const navbarHeight = navbar ? navbar.offsetHeight : 0;
+            const formPosition = contactFormContainer.offsetTop - navbarHeight;
+            contactFormContainer.scrollIntoView({ behavior: 'smooth' });
+            window.scrollTo({
+                top: formPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+}
+
+// Contact Form Submission
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Ici, vous pouvez ajouter la logique d'envoi du formulaire
+        alert('Message envoyé avec succès !');
+        contactForm.reset();
+        contactFormContainer.style.display = 'none';
+        showContactFormBtn.textContent = 'Nous contacter';
+    });
+}
+
+// Fonction pour ajuster le scroll en fonction de la hauteur de la navbar
+function adjustScroll() {
+    const navbar = document.querySelector('.navbar');
+    const navbarHeight = navbar ? navbar.offsetHeight : 0;
+    
+    // Ajuster le scroll pour les ancres
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                const targetPosition = targetElement.offsetTop - navbarHeight;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// Fonction pour ajuster le scroll vers le formulaire
+function scrollToForm() {
+    const navbar = document.querySelector('.navbar');
+    const navbarHeight = navbar ? navbar.offsetHeight : 0;
+    const form = document.querySelector('.contact-form');
+    if (form) {
+        const formPosition = form.offsetTop - navbarHeight;
+        window.scrollTo({
+            top: formPosition,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// Appeler les fonctions au chargement de la page
+document.addEventListener('DOMContentLoaded', function() {
+    adjustScroll();
+    
+    // Vérifier si on doit pré-remplir le formulaire
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('subject')) {
+        prefillContactForm();
+        scrollToForm();
     }
 }); 
