@@ -120,124 +120,10 @@ document.querySelectorAll('section').forEach(section => {
     observer.observe(section);
 });
 
-// Form validation and submission handling
-const mainContactForm = document.querySelector('.contact-form');
-if (mainContactForm) {
-    const formFields = mainContactForm.querySelectorAll('input, textarea');
-    
-    // Add validation attributes
-    formFields.forEach(field => {
-        field.setAttribute('aria-invalid', 'false');
-        field.setAttribute('aria-describedby', `${field.id}-error`);
-        
-        // Create error message element
-        const errorElement = document.createElement('div');
-        errorElement.id = `${field.id}-error`;
-        errorElement.className = 'error-message';
-        errorElement.setAttribute('role', 'alert');
-        field.parentNode.appendChild(errorElement);
-        
-        // Validate on blur and input
-        field.addEventListener('blur', () => validateField(field));
-        field.addEventListener('input', () => validateField(field));
-    });
-    
-    function validateField(field) {
-        const errorElement = document.getElementById(`${field.id}-error`);
-        let isValid = true;
-        let errorMessage = '';
-        
-        if (field.required && !field.value.trim()) {
-            isValid = false;
-            errorMessage = 'Ce champ est requis';
-        } else if (field.type === 'email' && !isValidEmail(field.value)) {
-            isValid = false;
-            errorMessage = 'Veuillez entrer une adresse email valide';
-        }
-        
-        field.setAttribute('aria-invalid', !isValid);
-        errorElement.textContent = errorMessage;
-        return isValid;
-    }
-    
-    function isValidEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-    
-    mainContactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        // Validate all fields
-        let isValid = true;
-        formFields.forEach(field => {
-            if (!validateField(field)) {
-                isValid = false;
-            }
-        });
-        
-        if (!isValid) {
-            // Focus first invalid field
-            const firstInvalidField = formFields.find(field => field.getAttribute('aria-invalid') === 'true');
-            if (firstInvalidField) {
-                firstInvalidField.focus();
-            }
-            return;
-        }
-        
-        // Get form data
-        const formData = new FormData(mainContactForm);
-        const data = Object.fromEntries(formData);
-        
-        try {
-            // Show loading state
-            const submitButton = mainContactForm.querySelector('button[type="submit"]');
-            const originalText = submitButton.textContent;
-            submitButton.disabled = true;
-            submitButton.textContent = 'Envoi en cours...';
-            
-            // Verify reCAPTCHA
-            const recaptchaResponse = grecaptcha.getResponse();
-            if (!recaptchaResponse) {
-                throw new Error('Veuillez valider le reCAPTCHA');
-            }
-            
-            // Here you would typically send the data to a server
-            await new Promise(resolve => setTimeout(resolve, 1000)); // Simulated API call
-            
-            // Show success message
-            const successMessage = document.createElement('div');
-            successMessage.className = 'success-message';
-            successMessage.setAttribute('role', 'alert');
-            successMessage.textContent = 'Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.';
-            mainContactForm.insertBefore(successMessage, mainContactForm.firstChild);
-            
-            // Reset form
-            mainContactForm.reset();
-            grecaptcha.reset();
-            
-            // Remove success message after 5 seconds
-            setTimeout(() => {
-                successMessage.remove();
-            }, 5000);
-        } catch (error) {
-            const errorMessage = document.createElement('div');
-            errorMessage.className = 'error-message';
-            errorMessage.setAttribute('role', 'alert');
-            errorMessage.textContent = error.message || 'Une erreur est survenue. Veuillez réessayer plus tard.';
-            mainContactForm.insertBefore(errorMessage, mainContactForm.firstChild);
-            
-            // Remove error message after 5 seconds
-            setTimeout(() => {
-                errorMessage.remove();
-            }, 5000);
-        } finally {
-            // Reset button state
-            const submitButton = mainContactForm.querySelector('button[type="submit"]');
-            submitButton.disabled = false;
-            submitButton.textContent = originalText;
-        }
-    });
-}
+
+
+
+
 
 // Lazy loading for images
 const lazyImages = document.querySelectorAll('img[data-src]');
@@ -325,40 +211,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Gestion du formulaire de contact
-document.addEventListener('DOMContentLoaded', function() {
-    const pageContactForm = document.getElementById('contact-form');
-    const submitButton = document.getElementById('submit-button');
-    const thankYouMessage = document.getElementById('thank-you-message');
-
-    if (submitButton) {
-        submitButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Vérification du reCAPTCHA
-            const recaptchaResponse = grecaptcha.getResponse();
-            if (!recaptchaResponse) {
-                alert('Veuillez compléter la vérification reCAPTCHA');
-                return;
-            }
-
-            // Vérification de la case de confidentialité
-            const privacyCheckbox = document.querySelector('input[name="privacy"]');
-            if (!privacyCheckbox.checked) {
-                alert('Veuillez accepter le traitement de vos données personnelles');
-                return;
-            }
-
-            // Soumission du formulaire
-            pageContactForm.submit();
-            
-            // Masquer le formulaire et afficher le message de remerciement
-            pageContactForm.style.display = 'none';
-            thankYouMessage.style.display = 'block';
-        });
-    }
-});
-
 // Contact Form Toggle
 const showContactFormBtn = document.getElementById('showContactForm');
 const contactFormContainer = document.getElementById('contactFormContainer');
@@ -379,19 +231,6 @@ if (showContactFormBtn && contactFormContainer) {
                 behavior: 'smooth'
             });
         }
-    });
-}
-
-// Contact Form Submission
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // Ici, vous pouvez ajouter la logique d'envoi du formulaire
-        alert('Message envoyé avec succès !');
-        contactForm.reset();
-        contactFormContainer.style.display = 'none';
-        showContactFormBtn.textContent = 'Nous contacter';
     });
 }
 
@@ -430,6 +269,106 @@ function scrollToForm() {
         });
     }
 }
+
+
+// Fonction pour vérifier si reCAPTCHA est chargé
+function checkRecaptchaLoaded() {
+    console.log("Checking if reCAPTCHA is loaded");
+    if (typeof grecaptcha === 'undefined') {
+        console.error("reCAPTCHA is not loaded yet");
+        setTimeout(checkRecaptchaLoaded, 1000); // Vérifier à nouveau dans 1 seconde
+        return;
+    }
+    
+    console.log("reCAPTCHA is loaded");
+    // Initialiser reCAPTCHA
+    grecaptcha.ready(function() {
+        console.log("reCAPTCHA is ready");
+    });
+}
+
+// Gestion du formulaire de contact avec reCAPTCHA v2 et AJAX
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("DOMContentLoaded event fired");
+    
+    // Vérifier que jQuery est chargé
+    if (typeof jQuery === 'undefined') {
+        console.error('jQuery n\'est pas chargé');
+        return;
+    }
+
+    const form = document.getElementById('contact-form');
+    const submitButton = document.querySelector('button[type="button"]');
+    const thankYouMessage = document.getElementById('thank-you-message');
+
+    if (form && submitButton && thankYouMessage) {
+        console.log("Form and submit button found, setting up handlers");
+        
+        // Empêcher la soumission classique du formulaire
+        form.addEventListener('submit', function(event) {
+            console.log("Form submit event intercepted");
+            event.preventDefault(); // Empêcher la soumission classique
+            return false;
+        });
+        
+        // Ajouter un gestionnaire de clic au bouton d'envoi
+        submitButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Validation du formulaire
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            // Vérifier si le reCAPTCHA est rempli
+            const recaptchaResponse = grecaptcha.getResponse();
+            if (!recaptchaResponse) {
+                alert('Veuillez compléter la vérification de sécurité');
+                return;
+            }
+
+            // Désactiver le bouton pendant l'envoi
+            submitButton.disabled = true;
+            submitButton.textContent = 'Envoi en cours...';
+
+            // Récupérer les données du formulaire
+            const formData = new FormData(form);
+            const formDataObj = {};
+            formData.forEach((value, key) => {
+                formDataObj[key] = value;
+            });
+
+            // Ajouter le token reCAPTCHA
+            formDataObj['g-recaptcha-response'] = recaptchaResponse;
+
+            // Envoyer les données via AJAX
+            $.ajax({
+                url: form.action,
+                method: "POST",
+                dataType: "json",
+                data: formDataObj,
+                success: function(response) {
+                    form.style.display = 'none';
+                    thankYouMessage.style.display = 'block';
+                },
+                error: function(xhr, status, error) {
+                    console.error('Erreur:', error);
+                    if (xhr.responseJSON && xhr.responseJSON.error === 'reCAPTCHA failed') {
+                        alert('Erreur de vérification reCAPTCHA. Veuillez réessayer.');
+                        grecaptcha.reset();
+                    } else {
+                        alert('Une erreur est survenue lors de l\'envoi du formulaire. Veuillez réessayer.');
+                    }
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Envoyer';
+                }
+            });
+        });
+    } else {
+        console.error("Form or submit button not found");
+    }
+});
 
 // Appeler les fonctions au chargement de la page
 document.addEventListener('DOMContentLoaded', function() {

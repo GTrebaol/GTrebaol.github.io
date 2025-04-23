@@ -1423,3 +1423,45 @@ p {
 .legal-page a:hover {
     color: var(--accent-color);
 } 
+
+.thank-you-message {
+    text-align: center;
+    padding: var(--spacing-lg);
+    background-color: var(--color-success-bg);
+    border-radius: var(--border-radius);
+    margin-top: var(--spacing-sm);
+}
+
+.thank-you-message i {
+    font-size: 3rem;
+    color: var(--color-success);
+    margin-bottom: var(--spacing-sm);
+}
+
+.thank-you-message h3 {
+    color: var(--color-success-dark);
+    margin-bottom: var(--spacing-xs);
+}
+
+.thank-you-message p {
+    color: var(--color-success-darker);
+}
+
+/* reCAPTCHA Styles */
+.g-recaptcha {
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    justify-content: center;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 0.9rem;
+    color: var(--color-text);
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: auto;
+}
