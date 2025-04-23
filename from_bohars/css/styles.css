@@ -523,7 +523,6 @@ p {
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
-    color: var(--primary-color);
 }
 
 .form-group input,
@@ -630,7 +629,7 @@ p {
 
 /* Style pour le reCAPTCHA */
 .g-recaptcha {
-    margin: 1rem 0;
+    display: none;
 }
 
 /* Footer Styles */
@@ -1449,19 +1448,41 @@ p {
 
 /* reCAPTCHA Styles */
 .g-recaptcha {
-    margin-bottom: var(--spacing-md);
-    display: flex;
-    justify-content: center;
+    transform: scale(0.9);
+    transform-origin: left center;
 }
 
 .checkbox-label {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: var(--spacing-xs);
-    font-size: 0.9rem;
-    color: var(--color-text);
+    gap: 0.75rem;
+    color: var(--white);
+    font-size: 1rem;
+    margin: 1rem 0;
+    cursor: pointer;
+    line-height: 1.5;
 }
 
 .checkbox-label input[type="checkbox"] {
-    width: auto;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: 0;
+    cursor: pointer;
+    accent-color: var(--accent-color);
+    flex-shrink: 0;
+}
+
+.checkbox-label input[type="checkbox"]:checked {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.checkbox-label input[type="checkbox"]:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.checkbox-label span {
+    display: inline-block;
+    vertical-align: middle;
 }

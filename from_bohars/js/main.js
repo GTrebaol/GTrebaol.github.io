@@ -270,23 +270,6 @@ function scrollToForm() {
     }
 }
 
-
-// Fonction pour vérifier si reCAPTCHA est chargé
-function checkRecaptchaLoaded() {
-    console.log("Checking if reCAPTCHA is loaded");
-    if (typeof grecaptcha === 'undefined') {
-        console.error("reCAPTCHA is not loaded yet");
-        setTimeout(checkRecaptchaLoaded, 1000); // Vérifier à nouveau dans 1 seconde
-        return;
-    }
-    
-    console.log("reCAPTCHA is loaded");
-    // Initialiser reCAPTCHA
-    grecaptcha.ready(function() {
-        console.log("reCAPTCHA is ready");
-    });
-}
-
 // Gestion du formulaire de contact avec reCAPTCHA v2 et AJAX
 document.addEventListener('DOMContentLoaded', function() {
     console.log("DOMContentLoaded event fired");
@@ -297,50 +280,50 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
 
-    const form = document.getElementById('contact-form');
-    const submitButton = document.querySelector('button[type="button"]');
+    const form = document.getElementById('contactForm');
+    const submitButton = form.querySelector('button[type="submit"]');
     const thankYouMessage = document.getElementById('thank-you-message');
 
-    if (form && submitButton && thankYouMessage) {
-        console.log("Form and submit button found, setting up handlers");
+    if (!form || !submitButton || !thankYouMessage) {
+        console.error("Form elements not found");
+        return;
+    }
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        return false;
+    });
         
-        // Empêcher la soumission classique du formulaire
-        form.addEventListener('submit', function(event) {
-            console.log("Form submit event intercepted");
-            event.preventDefault(); // Empêcher la soumission classique
-            return false;
-        });
+        // Validation du formulaire
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
+
+    submitButton.addEventListener('click', function(e) {
+        e.preventDefault();
         
-        // Ajouter un gestionnaire de clic au bouton d'envoi
-        submitButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Validation du formulaire
-            if (!form.checkValidity()) {
-                form.reportValidity();
-                return;
-            }
+        // Validation du formulaire
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
 
-            // Vérifier si le reCAPTCHA est rempli
-            const recaptchaResponse = grecaptcha.getResponse();
-            if (!recaptchaResponse) {
-                alert('Veuillez compléter la vérification de sécurité');
-                return;
-            }
-
-            // Désactiver le bouton pendant l'envoi
-            submitButton.disabled = true;
-            submitButton.textContent = 'Envoi en cours...';
-
-            // Récupérer les données du formulaire
-            const formData = new FormData(form);
-            const formDataObj = {};
-            formData.forEach((value, key) => {
-                formDataObj[key] = value;
-            });
+         // Désactiver le bouton pendant l'envoi
+         submitButton.disabled = true;
+         submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+         // Exécuter reCAPTCHA v3
+        grecaptcha.enterprise.ready(async () => {
+            const token = await grecaptcha.enterprise.execute('6LdVtRYrAAAAAADceVDY3KljOCDxYkn06qSS_ULA', {action: 'LOGIN'});
+             // Récupérer les données du formulaire
+             const formData = new FormData(form);
+             const formDataObj = {};
+             formData.forEach((value, key) => {
+                 formDataObj[key] = value;
+             });
 
             // Ajouter le token reCAPTCHA
-            formDataObj['g-recaptcha-response'] = recaptchaResponse;
+            formDataObj['g-recaptcha-response'] = token;
 
             // Envoyer les données via AJAX
             $.ajax({
@@ -349,25 +332,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 dataType: "json",
                 data: formDataObj,
                 success: function(response) {
+                    console.log("Form submission successful:", response);
                     form.style.display = 'none';
                     thankYouMessage.style.display = 'block';
                 },
                 error: function(xhr, status, error) {
-                    console.error('Erreur:', error);
+                    console.error('Response:', xhr.responseText);
                     if (xhr.responseJSON && xhr.responseJSON.error === 'reCAPTCHA failed') {
                         alert('Erreur de vérification reCAPTCHA. Veuillez réessayer.');
-                        grecaptcha.reset();
                     } else {
                         alert('Une erreur est survenue lors de l\'envoi du formulaire. Veuillez réessayer.');
                     }
                     submitButton.disabled = false;
-                    submitButton.textContent = 'Envoyer';
+                    submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer';
                 }
             });
-        });
-    } else {
-        console.error("Form or submit button not found");
-    }
 });
 
 // Appeler les fonctions au chargement de la page

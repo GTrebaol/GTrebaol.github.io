@@ -51,8 +51,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     
     <!-- Scripts -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdVtRYrAAAAAADceVDY3KljOCDxYkn06qSS_ULA"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ical.js/1.4.0/ical.min.js" defer></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/verify.js" defer></script>
     <script src="js/main.js" defer></script>
     <script src="js/events.js" defer></script>
@@ -249,7 +250,7 @@
                     </div>
                 </div>
                 <div class="footer-form-container" id="contactFormContainer" style="display: none;">
-                    <form id="contactForm" class="footer-contact-form" action="#" method="POST">
+                    <form id="contactForm" class="footer-contact-form" action="https://submit-form.com/ZVaBd7rud" method="POST">
                         <div class="form-group">
                             <i class="fas fa-user"></i>
                             <input type="text" id="name" name="name" placeholder="Votre nom" required>
@@ -266,15 +267,12 @@
                             <i class="fas fa-comment"></i>
                             <textarea id="message" name="message" placeholder="Votre message" required></textarea>
                         </div>
+                        <div class="g-recaptcha" data-sitekey="6LdVtRYrAAAAAADceVDY3KljOCDxYkn06qSS_ULA" data-size="invisible"></div>
                         <div class="form-group">
                             <label class="checkbox-label">
                                 <input type="checkbox" name="privacy" required>
                                 J'accepte le traitement de mes données personnelles pour le traitement de ma demande
                             </label>
-                        </div>
-                        <div class="form-group">
-                            <label for="recaptcha">Vérification de sécurité</label>
-                            <div id="recaptcha" class="g-recaptcha" data-sitekey="6LdVtRYrAAAAAADceVDY3KljOCDxYkn06qSS_ULA" aria-label="Vérification reCAPTCHA"></div>
                         </div>
                         <button type="submit" class="submit-button">
                             <i class="fas fa-paper-plane"></i> Envoyer
