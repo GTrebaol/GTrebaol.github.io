@@ -660,7 +660,8 @@ p {
 
 .footer-social .social-links {
     display: flex;
-    gap: 1rem;
+    justify-content: flex-start;
+    gap: 1.5rem;
     margin-top: 1rem;
 }
 
@@ -668,10 +669,17 @@ p {
     color: white;
     font-size: 1.5rem;
     transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
 }
 
 .footer-social .social-links a:hover {
     color: #d4af37;
+    transform: translateY(-2px);
 }
 
 .footer-nav {
@@ -712,6 +720,10 @@ p {
         flex-direction: column;
         align-items: center;
         gap: 1rem;
+    }
+
+    .footer-social .social-links {
+        justify-content: center;
     }
 }
 
@@ -1400,4 +1412,14 @@ p {
     .legal-links a {
         margin: 0;
     }
+}
+
+.legal-page a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.legal-page a:hover {
+    color: var(--accent-color);
 } 
