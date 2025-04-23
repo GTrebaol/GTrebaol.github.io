@@ -1,14 +1,13 @@
 # Vérifier si ImageMagick est installé
-$magickPath = "C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe"
-if (-not (Test-Path $magickPath)) {
-    Write-Host "ImageMagick n'est pas trouvé à l'emplacement attendu: $magickPath"
+if (-not (Get-Command magick -ErrorAction SilentlyContinue)) {
+    Write-Host "ImageMagick n'est pas installé. Veuillez l'installer depuis https://imagemagick.org/script/download.php"
     exit 1
 }
 
-# Créer un dossier pour les images WebP si nécessaire
-$webpFolder = "images/webp"
-if (-not (Test-Path $webpFolder)) {
-    New-Item -ItemType Directory -Path $webpFolder
+# Créer le dossier webp s'il n'existe pas
+$webpDir = "images/webp"
+if (-not (Test-Path $webpDir)) {
+    New-Item -ItemType Directory -Path $webpDir
 }
 
 # Fonction pour convertir une image en WebP
@@ -16,60 +15,68 @@ function Convert-ToWebP {
     param (
         [string]$inputPath,
         [string]$outputPath,
-        [int]$quality = 80
+        [string]$folderName
     )
     
-    Write-Host "Conversion de $inputPath en WebP..."
-    & $magickPath convert $inputPath -quality $quality -resize "1920x1080>" $outputPath
+    $inputFile = Get-Item $inputPath
+    $outputFile = Join-Path $outputPath "$folderName-$($inputFile.BaseName).webp"
+    
+    Write-Host "Conversion de $($inputFile.Name) en WebP..."
+    magick convert $inputPath -quality 80 $outputFile
 }
 
-# Liste des images à convertir
-$images = @(
-    @{
-        input = "images/front.png"
-        output = "images/webp/front.webp"
-    },
-    @{
-        input = "images/history.png"
-        output = "images/webp/history.webp"
-    },
-    @{
-        input = "images/plateau.png"
-        output = "images/webp/plateau.webp"
-    },
-    @{
-        input = "images/horizontal-baseline-noir.jpg"
-        output = "images/webp/horizontal-baseline-noir.webp"
-    },
-    @{
-        input = "images/horizontal-fromagerie-fond.jpg"
-        output = "images/webp/horizontal-fromagerie-fond.webp"
-    },
-    @{
-        input = "images/logo-original.jpg"
-        output = "images/webp/logo-original.webp"
-    },
-    @{
-        input = "images/original-fond.jpg"
-        output = "images/webp/original-fond.webp"
-    },
-    @{
-        input = "images/symbole-fond.jpg"
-        output = "images/webp/symbole-fond.webp"
-    },
-    @{
-        input = "images/symbole-original.jpg"
-        output = "images/webp/symbole-original.webp"
+# Fonction pour renommer les images dans un dossier
+function Rename-ImagesInFolder {
+    param (
+        [string]$folderPath
+    )
+    
+    $folderName = (Get-Item $folderPath).Name
+    $images = Get-ChildItem -Path $folderPath -File | Where-Object { $_.Extension -match '\.(webp)$' }
+    $counter = 1
+    
+    foreach ($image in $images) {
+        $newName = "$folderName-$counter.webp"
+        $newPath = Join-Path $folderPath $newName
+        Write-Host "Renommage de $($image.Name) en $newName"
+        Rename-Item -Path $image.FullName -NewName $newName -Force
+        $counter++
     }
-)
+}
 
-# Convertir chaque image
-foreach ($image in $images) {
-    if (Test-Path $image.input) {
-        Convert-ToWebP -inputPath $image.input -outputPath $image.output
+# Traiter les images dans le dossier principal
+Get-ChildItem -Path "images" -File | Where-Object { $_.Extension -match '\.(jpg|jpeg|png)$' } | ForEach-Object {
+    Convert-ToWebP $_.FullName $webpDir "main"
+}
+
+# Liste des sous-dossiers à traiter
+$subFolders = @("buffet", "cave", "plateau", "epicerie")
+
+# Traiter chaque sous-dossier
+foreach ($subFolder in $subFolders) {
+    $sourceDir = Join-Path "images/webp" $subFolder
+    $targetDir = Join-Path $webpDir $subFolder
+    
+    # Vérifier si le dossier source existe
+    if (Test-Path $sourceDir) {
+        Write-Host "Traitement du dossier $subFolder..."
+        
+        # Créer le dossier webp s'il n'existe pas
+        if (-not (Test-Path $targetDir)) {
+            New-Item -ItemType Directory -Path $targetDir
+        }
+        
+        # Convertir les images du sous-dossier
+        Get-ChildItem -Path $sourceDir -File | Where-Object { $_.Extension -match '\.(jpg|jpeg|png)$' } | ForEach-Object {
+            Convert-ToWebP $_.FullName $targetDir $subFolder
+        }
+        
+        # Renommer les images converties
+        Write-Host "Renommage des images dans le dossier $subFolder..."
+        Rename-ImagesInFolder $targetDir
     } else {
-        Write-Host "Image non trouvée: $($image.input)"
+        Write-Host "Le dossier $sourceDir n'existe pas"
     }
 }
 
-Write-Host "Conversion terminée !" 
+Write-Host "Conversion et renommage terminés !" 

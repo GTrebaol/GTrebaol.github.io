@@ -43,10 +43,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     
-    <!-- Ajout du script de vérification -->
-    <script src="js/verify.js" defer></script>
-    <!-- Ajout du script reCAPTCHA -->
+    <!-- Scripts -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ical.js/1.4.0/ical.min.js"></script>
+    <script src="js/verify.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/events.js" defer></script>
 </head>
 <body>
     <!-- Skip to main content -->
@@ -119,32 +121,32 @@
             <div class="container">
                 <h2>Nos Services</h2>
                 <div class="services-grid">
-                    <div class="service-card" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <img src="images/webp/plateau.webp" alt="Plateau de fromages" loading="lazy">
+                    <div class="service-card plateau" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                        <img src="images/webp/plateau/plateau-1.webp" alt="Plateau de fromages" class="product-image">
                         <div class="service-card-content">
-                            <h3>Plateaux de fromages</h3>
-                            <p>Composition personnalisée selon vos envies</p>
+                            <h3>Plateaux de Fromages</h3>
+                            <p itemprop="description">Apéritif, dinatoire, raclette avec option charcuterie</p>
                         </div>
                     </div>
-                    <div class="service-card" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <img src="images/webp/plateau.webp" alt="Plateau de fromages" loading="lazy">
+                    <div class="service-card buffet" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                        <img src="images/webp/buffet/buffet-1.webp" alt="Buffet de fromages" class="product-image">
                         <div class="service-card-content">
-                            <h3>Buffets</h3>
-                            <p itemprop="description">Pièces montées (mariage, anniversaire, évènement à prévoir ou à organiser)</p>
+                            <h3>Buffets de Fromages</h3>
+                            <p itemprop="description">Service traiteur pour vos événements</p>
                         </div>
                     </div>
-                    <div class="service-card" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <img src="images/webp/plateau.webp" alt="Plateau de fromages" loading="lazy">
+                    <div class="service-card epicerie" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                        <img src="images/webp/epicerie/epicerie-1.webp" alt="Épicerie fine" class="product-image">
                         <div class="service-card-content">
-                            <h3>Epicerie Fine</h3>
-                            <p itemprop="description">Une sélection de produits d'épicerie fine et de vins choisis pour accompagner vos fromages</p>
+                            <h3>Épicerie Fine</h3>
+                            <p itemprop="description">Sélection de produits d'épicerie fine</p>
                         </div>
                     </div>
-                    <div class="service-card" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <img src="images/webp/plateau.webp" alt="Plateau de fromages" loading="lazy">
+                    <div class="service-card cave" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                        <img src="images/webp/cave/cave-1.webp" alt="Cave à vins" class="product-image">
                         <div class="service-card-content">
-                            <h3>Cave</h3>
-                            <p itemprop="description">Une sélection de vins, bières, liqueurs et digestifs</p>
+                            <h3>Cave à Vins</h3>
+                            <p itemprop="description">Sélection de vins, bières et cidres</p>
                         </div>
                     </div>
                 </div>
@@ -278,10 +280,17 @@
         </div>
     </footer>
 
-    <!-- Custom JavaScript -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ical.js/1.4.0/ical.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/events.js"></script>
+    <!-- Carrousel Modal -->
+    <div id="carouselModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="carousel-container">
+                <button class="carousel-button prev" aria-label="Image précédente">&lt;</button>
+                <div class="carousel-images"></div>
+                <button class="carousel-button next" aria-label="Image suivante">&gt;</button>
+            </div>
+            <div class="carousel-caption"></div>
+        </div>
+    </div>
 </body>
 </html> 

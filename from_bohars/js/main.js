@@ -77,13 +77,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                     top: targetPosition,
                     behavior: 'smooth'
                 });
-                
-                // Focus the target element after scrolling
-                setTimeout(() => {
-                    targetElement.setAttribute('tabindex', '-1');
-                    targetElement.focus();
-                    targetElement.removeAttribute('tabindex');
-                }, 1000);
             }
         }
     });
@@ -448,4 +441,171 @@ document.addEventListener('DOMContentLoaded', function() {
         prefillContactForm();
         scrollToForm();
     }
-}); 
+});
+
+// Carrousel functionality
+const modal = document.getElementById('carouselModal');
+const modalContent = modal.querySelector('.modal-content');
+const carouselImages = modal.querySelector('.carousel-images');
+const carouselCaption = modal.querySelector('.carousel-caption');
+const closeModal = modal.querySelector('.close-modal');
+const prevButton = modal.querySelector('.carousel-button.prev');
+const nextButton = modal.querySelector('.carousel-button.next');
+
+let currentImageIndex = 0;
+let images = [];
+
+// Configuration des images par dossier
+const imageConfig = {
+    'plateau': {
+        count: 14, // Nombre total d'images dans le dossier
+        prefix: 'plateau-'
+    },
+    'buffet': {
+        count: 3,
+        prefix: 'buffet-'
+    },
+    'epicerie': {
+        count: 3,
+        prefix: 'epicerie-'
+    },
+    'cave': {
+        count: 5,
+        prefix: 'cave-'
+    }
+};
+
+// Function to get a random image from a folder
+function getRandomImage(folderName) {
+    const config = imageConfig[folderName];
+    if (!config) return null;
+    
+    const randomIndex = Math.floor(Math.random() * config.count) + 1;
+    return `images/webp/${folderName}/${config.prefix}${randomIndex}.webp`;
+}
+
+// Function to load all images from a folder
+function loadImages(folderName) {
+    const config = imageConfig[folderName];
+    if (!config) return [];
+    
+    const images = [];
+    for (let i = 1; i <= config.count; i++) {
+        images.push(`images/webp/${folderName}/${config.prefix}${i}.webp`);
+    }
+    return images;
+}
+
+// Update service card images with random images
+document.querySelectorAll('.service-card').forEach(card => {
+    const folderName = card.classList[1];
+    if (folderName) {
+        const randomImage = getRandomImage(folderName);
+        if (randomImage) {
+            const img = card.querySelector('img');
+            img.src = randomImage;
+        }
+    }
+});
+
+// Function to show the carousel
+function showCarousel(folderName) {
+    images = loadImages(folderName);
+    if (images.length === 0) return;
+
+    currentImageIndex = 0;
+    carouselImages.innerHTML = '';
+    
+    images.forEach((src, index) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = `Image ${index + 1}`;
+        if (index === 0) img.classList.add('active');
+        carouselImages.appendChild(img);
+    });
+
+    updateCaption();
+    modal.style.display = 'block';
+    // Add show class after a small delay to trigger the animation
+    setTimeout(() => {
+        modal.classList.add('show');
+    }, 10);
+    document.body.style.overflow = 'hidden';
+}
+
+// Function to update the caption
+function updateCaption() {
+    carouselCaption.textContent = `${currentImageIndex + 1}/${images.length}`;
+}
+
+// Function to show next image
+function showNextImage() {
+    const currentImage = carouselImages.querySelector('.active');
+    currentImage.classList.remove('active');
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    carouselImages.children[currentImageIndex].classList.add('active');
+    updateCaption();
+}
+
+// Function to show previous image
+function showPrevImage() {
+    const currentImage = carouselImages.querySelector('.active');
+    currentImage.classList.remove('active');
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+    carouselImages.children[currentImageIndex].classList.add('active');
+    updateCaption();
+}
+
+// Event listeners for carousel
+closeModal.addEventListener('click', () => {
+    modal.classList.remove('show');
+    setTimeout(() => {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    }, 300);
+});
+
+prevButton.addEventListener('click', showPrevImage);
+nextButton.addEventListener('click', showNextImage);
+
+// Close modal when clicking outside
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (modal.style.display === 'block') {
+        if (e.key === 'ArrowLeft') showPrevImage();
+        if (e.key === 'ArrowRight') showNextImage();
+        if (e.key === 'Escape') {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    }
+});
+
+// Add click event to service cards
+document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('click', () => {
+        const folderName = card.classList[1]; // Assuming the folder name is the second class
+        if (folderName) {
+            showCarousel(folderName);
+        }
+    });
+});
+
+// Scroll to top when clicking on brand logo
+const navBrand = document.querySelector('.nav-brand');
+if (navBrand) {
+    navBrand.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+} 
