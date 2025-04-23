@@ -1,10 +1,10 @@
-# Fromagerie Bohars - Site Web
+# From Bohars - Site Web
 
-Site web officiel de la Fromagerie Bohars, une fromagerie-crèmerie, cave et épicerie fine située à Bohars, dans le Finistère.
+Site web officiel de From Bohars, une fromagerie-crèmerie, cave et épicerie fine située à Bohars, dans le Finistère.
 
 ## Description
 
-Ce site web présente la Fromagerie Bohars, une entreprise familiale spécialisée dans la vente de fromages artisanaux, de vins, de bières et de produits d'épicerie fine. Le site met en avant les services proposés, l'histoire de l'entreprise, les événements organisés et les informations de contact.
+Ce site web présente From Bohars, une entreprise familiale spécialisée dans la vente de fromages artisanaux, de vins, de bières et de produits d'épicerie fine. Le site met en avant les services proposés, l'histoire de l'entreprise, les événements organisés et les informations de contact.
 
 ## Fonctionnalités
 

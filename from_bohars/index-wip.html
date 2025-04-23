@@ -9,43 +9,41 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="format-detection" content="telephone=no">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Fromagerie Bohars">
-    <meta name="description" content="Fromagerie - Cave - Epicerie fine à Bohars - Découvrez notre sélection de fromages artisanaux, plateaux personnalisés et services d'événements.">
+    <meta name="application-name" content="From Bohars">
+    <meta name="description" content="From Bohars - Votre spécialiste des fromages et de l'épicerie fine à Bohars">
     <meta name="keywords" content="fromagerie, fromages artisanaux, Bohars, plateau de fromages, dégustation">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://fromagerie-bohars.fr/">
+    <link rel="canonical" href="https://frombohars.fr">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://fromagerie-bohars.fr/">
+    <meta property="og:url" content="https://frombohars.fr/">
     <meta property="og:title" content="Fromagerie - Cave - Epicerie fine - Bohars">
     <meta property="og:description" content="Découvrez notre sélection de fromages artisanaux, plateaux personnalisés et services d'événements.">
     <meta property="og:image" content="images/webp/front.png">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://fromagerie-bohars.fr/">
-    <meta property="twitter:title" content="Fromagerie - Cave - Epicerie fine - Bohars">
-    <meta property="twitter:description" content="Découvrez notre sélection de fromages artisanaux, plateaux personnalisés et services d'événements.">
-    <meta property="twitter:image" content="images/webp/front.png">
 
     <title>Fromagerie - Cave - Epicerie fine - Bohars</title>
     
-    <!-- Preload critical resources -->
-    <link rel="preload" href="./images/webp/front.webp" as="image" type="image/webp">
+    <!-- Preload critical assets -->
+    <link rel="preload" href="images/webp/front.webp" as="image" type="image/webp">
+    <link rel="preload" href="images/webp/logo-original.webp" as="image" type="image/webp">
     <link rel="preload" href="css/styles.css" as="style">
     <link rel="preload" href="js/main.js" as="script">
     <link rel="preload" href="images/webp/history.webp" as="image" type="image/webp">
     
-    <link rel="stylesheet" href="css/styles.css">
+    <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     
     <!-- Scripts -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ical.js/1.4.0/ical.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ical.js/1.4.0/ical.min.js" defer></script>
     <script src="js/verify.js" defer></script>
     <script src="js/main.js" defer></script>
     <script src="js/events.js" defer></script>
@@ -122,28 +120,28 @@
                 <h2>Nos Services</h2>
                 <div class="services-grid">
                     <div class="service-card plateau" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <img src="images/webp/plateau/plateau-1.webp" alt="Plateau de fromages" class="product-image">
+                        <img src="images/webp/plateau.webp" alt="Plateau de fromages" class="product-image" width="300" height="200" loading="lazy" style="aspect-ratio: 3/2;">
                         <div class="service-card-content">
                             <h3>Plateaux de Fromages</h3>
                             <p itemprop="description">Apéritif, dinatoire, raclette avec option charcuterie</p>
                         </div>
                     </div>
                     <div class="service-card buffet" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <img src="images/webp/buffet/buffet-1.webp" alt="Buffet de fromages" class="product-image">
+                        <img src="images/webp/buffet.webp" alt="Buffet de fromages" class="product-image" width="300" height="200" loading="lazy" style="aspect-ratio: 3/2;">
                         <div class="service-card-content">
                             <h3>Buffets de Fromages</h3>
                             <p itemprop="description">Service traiteur pour vos événements</p>
                         </div>
                     </div>
                     <div class="service-card epicerie" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <img src="images/webp/epicerie/epicerie-1.webp" alt="Épicerie fine" class="product-image">
+                        <img src="images/webp/epicerie.webp" alt="Épicerie fine" class="product-image" width="300" height="200" loading="lazy" style="aspect-ratio: 3/2;">
                         <div class="service-card-content">
                             <h3>Épicerie Fine</h3>
                             <p itemprop="description">Sélection de produits d'épicerie fine</p>
                         </div>
                     </div>
                     <div class="service-card cave" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <img src="images/webp/cave/cave-1.webp" alt="Cave à vins" class="product-image">
+                        <img src="images/webp/cave.webp" alt="Cave à vins" class="product-image" width="300" height="200" loading="lazy" style="aspect-ratio: 3/2;">
                         <div class="service-card-content">
                             <h3>Cave à Vins</h3>
                             <p itemprop="description">Sélection de vins, bières et cidres</p>
@@ -219,17 +217,15 @@
             <div class="footer-content" id="contact">
                 <div class="footer-info">
                     <div class="footer-section">
-                        <h3>Horaires d'ouverture</h3>
-                        <p>Lundi - Vendredi: 9h00 - 19h00</p>
-                        <p>Samedi: 9h00 - 18h00</p>
-                        <p>Dimanche: Fermé</p>
+                        <h3>Horaires</h3>
+                        <p><b>Lundi</b> et <b>Dimanche</b> : Fermé</p>
+                        <p><b>Mardi</b> au <b>Samedi</b> : 9h - 13h, 15h - 19h</p>
+                        <p><b>Mercredi</b> après-midi : Fermé</p>
                     </div>
                     <div class="footer-section">
                         <h3>Contact</h3>
-                        <p>23 Rue Prosper Salaün, 29820 Bohars</p>
-                        <p>Téléphone: 02 98 00 00 00</p>
-                        <p>Email: contact@fromagerie-bohars.fr</p>
-                        <button class="footer-contact-button" id="showContactForm">Nous contacter</button>
+                        <p><a href="tel:+33663398569" class="footer-link"><i class="fas fa-phone"></i> 06 63 39 85 69</a></p>
+                        <p><a href="mailto:from.bohars@gmail.com" class="footer-link"><i class="fas fa-envelope"></i> from.bohars@gmail.com</a></p>
                     </div>
                     <div class="footer-social">
                         <h3>Suivez-nous</h3>
@@ -268,9 +264,10 @@
                 </div>
                 <nav class="footer-nav" aria-label="Navigation du pied de page">
                     <ul>
-                        <li><a href="#mentions-legales">Mentions légales</a></li>
-                        <li><a href="#confidentialite">Confidentialité</a></li>
-                        <li><a href="#cgv">CGV</a></li>
+                        <li><a href="mentions-legales.html">Mentions légales</a></li>
+                        <li><a href="politique-confidentialite.html">Confidentialité</a></li>
+                        <li><a href="cgv.html">CGV</a></li>
+                        <li><a href="cgu.html">CGU</a></li>
                     </ul>
                 </nav>
                 <div class="footer-copyright">

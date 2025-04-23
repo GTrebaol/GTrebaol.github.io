@@ -10,7 +10,7 @@ if (-not (Test-Path $webpDir)) {
     New-Item -ItemType Directory -Path $webpDir
 }
 
-# Fonction pour convertir une image en WebP
+# Fonction pour convertir une image en WebP avec optimisation
 function Convert-ToWebP {
     param (
         [string]$inputPath,
@@ -22,7 +22,21 @@ function Convert-ToWebP {
     $outputFile = Join-Path $outputPath "$folderName-$($inputFile.BaseName).webp"
     
     Write-Host "Conversion de $($inputFile.Name) en WebP..."
-    magick convert $inputPath -quality 80 $outputFile
+    
+    # Optimisation des paramètres pour WebP
+    $quality = 80
+    $method = 6  # Niveau de compression (0-6)
+    $sharpness = 0  # Niveau de netteté
+    
+    # Conversion avec optimisation
+    magick convert $inputPath `
+        -strip `  # Supprime les métadonnées
+        -resize "1920x1080>" `  # Redimensionne si plus grand que 1920x1080
+        -quality $quality `
+        -define webp:method=$method `
+        -define webp:sharpness=$sharpness `
+        -define webp:lossless=false `
+        $outputFile
 }
 
 # Fonction pour renommer les images dans un dossier
@@ -54,14 +68,14 @@ $subFolders = @("buffet", "cave", "plateau", "epicerie")
 
 # Traiter chaque sous-dossier
 foreach ($subFolder in $subFolders) {
-    $sourceDir = Join-Path "images/webp" $subFolder
+    $sourceDir = Join-Path "images" $subFolder
     $targetDir = Join-Path $webpDir $subFolder
     
     # Vérifier si le dossier source existe
     if (Test-Path $sourceDir) {
         Write-Host "Traitement du dossier $subFolder..."
         
-        # Créer le dossier webp s'il n'existe pas
+        # Créer le sous-dossier webp s'il n'existe pas
         if (-not (Test-Path $targetDir)) {
             New-Item -ItemType Directory -Path $targetDir
         }
@@ -79,4 +93,4 @@ foreach ($subFolder in $subFolders) {
     }
 }
 
-Write-Host "Conversion et renommage terminés !" 
+Write-Host "Conversion et optimisation terminées !" 

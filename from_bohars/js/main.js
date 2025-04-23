@@ -458,7 +458,7 @@ let images = [];
 // Configuration des images par dossier
 const imageConfig = {
     'plateau': {
-        count: 14, // Nombre total d'images dans le dossier
+        count: 13, // Nombre total d'images dans le dossier
         prefix: 'plateau-'
     },
     'buffet': {
