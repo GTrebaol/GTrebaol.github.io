@@ -1,5 +1,5 @@
 // URL du calendrier public avec proxy CORS
-const CALENDAR_URL = 'https://corsproxy.io/?url=' + encodeURIComponent('https://calendar.google.com/calendar/ical/1ea22aa0f502c8b413ec4d998886ddabaccd5f163951d6ae17e85765b4af7165%40group.calendar.google.com/public/basic.ics');
+const CALENDAR_URL = 'https://corsproxy.io/?url=' + encodeURIComponent('https://calendar.google.com/calendar/ical/ab162583017a7f2d09eb9e93111b20cb6e946547f94687be7e66993ce2605548%40group.calendar.google.com/public/basic.ics');
 
 // Fonction pour formater la date
 function formatDate(dateString) {
