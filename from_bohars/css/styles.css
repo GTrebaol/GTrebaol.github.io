@@ -516,6 +516,13 @@ p {
     margin-bottom: 2rem;
 }
 
+.checkbox-group input[type="checkbox"] {
+    width: 20px;
+    float: left;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
 .form-group {
     margin-bottom: 1.5rem;
 }
@@ -627,10 +634,7 @@ p {
     display: block;
 }
 
-/* Style pour le reCAPTCHA */
-.g-recaptcha {
-    display: none;
-}
+
 
 /* Footer Styles */
 .footer {
@@ -1413,6 +1417,10 @@ p {
     }
 }
 
+#contactFormContainer {
+    display: none;
+}
+
 .legal-page a {
     color: var(--white);
     text-decoration: none;
@@ -1444,12 +1452,6 @@ p {
 
 .thank-you-message p {
     color: var(--color-success-darker);
-}
-
-/* reCAPTCHA Styles */
-.g-recaptcha {
-    transform: scale(0.9);
-    transform-origin: left center;
 }
 
 .checkbox-label {

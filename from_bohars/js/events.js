@@ -113,23 +113,12 @@ function displayEvents(events) {
 
 // Fonction pour pré-remplir le formulaire de contact
 function prefillContactForm(eventTitle, eventDate) {
-    const contactForm = document.getElementById('contactForm');
+    const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         const messageField = contactForm.querySelector('textarea[name="message"]');
         if (messageField) {
             messageField.value = `Bonjour, je souhaite participer à "${eventTitle}" du ${eventDate}.`;
-            // Afficher le formulaire si nécessaire
-            const contactFormContainer = document.getElementById('contactFormContainer');
-            if (contactFormContainer) {
-                contactFormContainer.style.display = 'block';
-                const navbar = document.querySelector('.navbar');
-                const navbarHeight = navbar ? navbar.offsetHeight : 0;
-                const formPosition = contactFormContainer.offsetTop - navbarHeight;
-                window.scrollTo({
-                    top: formPosition,
-                    behavior: 'smooth'
-                });
-            }
+            handleFormDisplay();
         }
     }
 }

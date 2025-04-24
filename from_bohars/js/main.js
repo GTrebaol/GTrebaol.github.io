@@ -121,10 +121,6 @@ document.querySelectorAll('section').forEach(section => {
 });
 
 
-
-
-
-
 // Lazy loading for images
 const lazyImages = document.querySelectorAll('img[data-src]');
 const imageObserver = new IntersectionObserver((entries, observer) => {
@@ -216,22 +212,7 @@ const showContactFormBtn = document.getElementById('showContactForm');
 const contactFormContainer = document.getElementById('contactFormContainer');
 
 if (showContactFormBtn && contactFormContainer) {
-    showContactFormBtn.addEventListener('click', () => {
-        const isVisible = contactFormContainer.style.display === 'block';
-        contactFormContainer.style.display = isVisible ? 'none' : 'block';
-        showContactFormBtn.textContent = isVisible ? 'Nous contacter' : 'Fermer';
-        
-        if (!isVisible) {
-            const navbar = document.querySelector('.navbar');
-            const navbarHeight = navbar ? navbar.offsetHeight : 0;
-            const formPosition = contactFormContainer.offsetTop - navbarHeight;
-            contactFormContainer.scrollIntoView({ behavior: 'smooth' });
-            window.scrollTo({
-                top: formPosition,
-                behavior: 'smooth'
-            });
-        }
-    });
+    showContactFormBtn.addEventListener('click', () => handleFormDisplay());
 }
 
 // Fonction pour ajuster le scroll en fonction de la hauteur de la navbar
@@ -270,84 +251,87 @@ function scrollToForm() {
     }
 }
 
-// Gestion du formulaire de contact avec reCAPTCHA v2 et AJAX
-document.addEventListener('DOMContentLoaded', function() {
-    console.log("DOMContentLoaded event fired");
+function handleFormDisplay() {
+    const isVisible = contactFormContainer.style.display === 'block';
+    contactFormContainer.style.display = isVisible ? 'none' : 'block';
+    showContactFormBtn.textContent = isVisible ? 'Nous contacter' : 'Fermer';
     
-    // Vérifier que jQuery est chargé
-    if (typeof jQuery === 'undefined') {
-        console.error('jQuery n\'est pas chargé');
-        return;
+    if (!isVisible) {
+        const navbar = document.querySelector('.navbar');
+        const navbarHeight = navbar ? navbar.offsetHeight : 0;
+        const formPosition = contactFormContainer.offsetTop - navbarHeight;
+        contactFormContainer.scrollIntoView({ behavior: 'smooth' });
+        window.scrollTo({
+            top: formPosition,
+            behavior: 'smooth'
+        });
+        initContactForm();
     }
+};
 
-    const form = document.getElementById('contactForm');
-    const submitButton = form.querySelector('button[type="submit"]');
+// Gestion du formulaire de contact
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contact-form');
+    const submitButton = document.getElementById('submit-button');
     const thankYouMessage = document.getElementById('thank-you-message');
 
-    if (!form || !submitButton || !thankYouMessage) {
-        console.error("Form elements not found");
-        return;
+    if (contactForm && submitButton) {
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Validation du formulaire
+            if (!contactForm.checkValidity()) {
+                contactForm.reportValidity();
+                return;
+            }
+
+            // Désactiver le bouton pendant l'envoi
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+
+            // Exécuter reCAPTCHA
+            grecaptcha.execute();
+        });
     }
-
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-        return false;
-    });
-        
-        // Validation du formulaire
-    if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-    }
-
-    submitButton.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Validation du formulaire
-        if (!form.checkValidity()) {
-            form.reportValidity();
-            return;
-        }
-
-         // Désactiver le bouton pendant l'envoi
-         submitButton.disabled = true;
-         submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
-         // Exécuter reCAPTCHA v3
-        grecaptcha.enterprise.ready(async () => {
-            const token = await grecaptcha.enterprise.execute('6LdVtRYrAAAAAADceVDY3KljOCDxYkn06qSS_ULA', {action: 'LOGIN'});
-             // Récupérer les données du formulaire
-             const formData = new FormData(form);
-             const formDataObj = {};
-             formData.forEach((value, key) => {
-                 formDataObj[key] = value;
-             });
-
-            // Ajouter le token reCAPTCHA
-            formDataObj['g-recaptcha-response'] = token;
-
-            // Envoyer les données via AJAX
-            $.ajax({
-                url: form.action,
-                method: "POST",
-                dataType: "json",
-                data: formDataObj,
-                success: function(response) {
-                    console.log("Form submission successful:", response);
-                    form.style.display = 'none';
-                    thankYouMessage.style.display = 'block';
-                },
-                error: function(xhr, status, error) {
-                    console.error('Response:', xhr.responseText);
-                    if (xhr.responseJSON && xhr.responseJSON.error === 'reCAPTCHA failed') {
-                        alert('Erreur de vérification reCAPTCHA. Veuillez réessayer.');
-                    } else {
-                        alert('Une erreur est survenue lors de l\'envoi du formulaire. Veuillez réessayer.');
-                    }
-                    submitButton.disabled = false;
-                    submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer';
-                }
-            });
 });
+
+// Callback pour reCAPTCHA
+function onRecaptchaSuccess(token) {
+    const contactForm = document.getElementById('contact-form');
+    const submitButton = document.getElementById('submit-button');
+    const thankYouMessage = document.getElementById('thank-you-message');
+
+    // Récupérer les données du formulaire
+    const formData = new FormData(contactForm);
+    formData.append('g-recaptcha-response', token);
+
+    // Envoyer les données via AJAX
+    $.ajax({
+        url: contactForm.action,
+        method: "POST",
+        dataType: "json",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(response) {
+            contactForm.style.display = 'none';
+            thankYouMessage.style.display = 'block';
+            contactForm.reset();
+            grecaptcha.reset();
+        },
+        error: function(xhr, status, error) {
+            console.error('Erreur:', error);
+            if (xhr.responseJSON && xhr.responseJSON.error === 'reCAPTCHA failed') {
+                alert('Erreur de vérification reCAPTCHA. Veuillez réessayer.');
+                grecaptcha.reset();
+            } else {
+                alert('Une erreur est survenue lors de l\'envoi du formulaire. Veuillez réessayer.');
+            }
+            submitButton.disabled = false;
+            submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer';
+        }
+    });
+}
 
 // Appeler les fonctions au chargement de la page
 document.addEventListener('DOMContentLoaded', function() {
