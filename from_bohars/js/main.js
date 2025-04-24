@@ -270,7 +270,7 @@ function handleFormDisplay() {
 };
 
 // Gestion du formulaire de contact
-document.addEventListener('DOMContentLoaded', function() {
+function initContactForm(){
     const contactForm = document.getElementById('contact-form');
     const submitButton = document.getElementById('submit-button');
     const thankYouMessage = document.getElementById('thank-you-message');
@@ -289,54 +289,63 @@ document.addEventListener('DOMContentLoaded', function() {
             submitButton.disabled = true;
             submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
 
-            // Exécuter reCAPTCHA
-            grecaptcha.execute();
+            // Exécuter reCAPTCHA v3
+            grecaptcha.enterprise.ready(async () => {
+                try {
+                    const token = await grecaptcha.enterprise.execute('6LcqoiMrAAAAAE1dpWIEDheFNVGkugVc4cc6a0Up', {action: 'contact'});
+                    
+                    // Récupérer les données du formulaire et les convertir en JSON
+                    const formData = {
+                        subject: contactForm.querySelector('input[name="subject"]').value,
+                        name: contactForm.querySelector('input[name="name"]').value,
+                        email: contactForm.querySelector('input[name="email"]').value,
+                        phone: contactForm.querySelector('input[name="phone"]').value,
+                        message: contactForm.querySelector('textarea[name="message"]').value,
+                        privacy: contactForm.querySelector('input[name="privacy"]').checked,
+                        'g-recaptcha-response': token
+                    };
+
+                    // Envoyer les données via AJAX
+                    $.ajax({
+                        url: "https://form-to-mail-api.onrender.com:3000/contact",
+                        method: "POST",
+                        dataType: "json",
+                        contentType: "application/json",
+                        data: JSON.stringify(formData),
+                        success: function(response) {
+                            contactForm.style.display = 'none';
+                            thankYouMessage.style.display = 'block';
+                            contactForm.reset();
+                            grecaptcha.enterprise.reset();
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Erreur:', error);
+                            if (xhr.responseJSON && xhr.responseJSON.error === 'reCAPTCHA failed') {
+                                console.error('Erreur de vérification reCAPTCHA. Veuillez réessayer.');
+                                grecaptcha.enterprise.reset();
+                            } else {
+                                console.error('Une erreur est survenue lors de l\'envoi du formulaire. Veuillez réessayer.');
+                            }
+                            submitButton.disabled = false;
+                            submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer';
+                        }
+                    });
+                } catch (error) {
+                    console.error('Erreur reCAPTCHA:', error);
+                    console.error('Une erreur est survenue lors de la vérification. Veuillez réessayer.');
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer';
+                }
+            });
         });
     }
-});
-
-// Callback pour reCAPTCHA
-function onRecaptchaSuccess(token) {
-    const contactForm = document.getElementById('contact-form');
-    const submitButton = document.getElementById('submit-button');
-    const thankYouMessage = document.getElementById('thank-you-message');
-
-    // Récupérer les données du formulaire
-    const formData = new FormData(contactForm);
-    formData.append('g-recaptcha-response', token);
-
-    // Envoyer les données via AJAX
-    $.ajax({
-        url: contactForm.action,
-        method: "POST",
-        dataType: "json",
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function(response) {
-            contactForm.style.display = 'none';
-            thankYouMessage.style.display = 'block';
-            contactForm.reset();
-            grecaptcha.reset();
-        },
-        error: function(xhr, status, error) {
-            console.error('Erreur:', error);
-            if (xhr.responseJSON && xhr.responseJSON.error === 'reCAPTCHA failed') {
-                alert('Erreur de vérification reCAPTCHA. Veuillez réessayer.');
-                grecaptcha.reset();
-            } else {
-                alert('Une erreur est survenue lors de l\'envoi du formulaire. Veuillez réessayer.');
-            }
-            submitButton.disabled = false;
-            submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer';
-        }
-    });
 }
 
 // Appeler les fonctions au chargement de la page
 document.addEventListener('DOMContentLoaded', function() {
     adjustScroll();
-    
+    initContactForm();
+
     // Vérifier si on doit pré-remplir le formulaire
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has('subject')) {
