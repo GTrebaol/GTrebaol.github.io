@@ -1,3 +1,14 @@
+// Configuration
+const CONFIG = {
+    recaptcha: {
+        siteKey: '6LcqoiMrAAAAAE1dpWIEDheFNVGkugVc4cc6a0Up',
+        action: 'contact'
+    },
+    form: {
+        url: 'https://form-to-mail-api.onrender.com/contact'
+    }
+};
+
 // Mobile menu functionality
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const navLinks = document.querySelector('.nav-links');
@@ -149,10 +160,11 @@ prefersReducedMotion.addEventListener('change', (e) => {
     }
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+// Gestion du menu mobile
+function initMobileMenu() {
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
-    
+
     if (mobileMenuBtn && navLinks) {
         mobileMenuBtn.addEventListener('click', function() {
             const isExpanded = navLinks.classList.contains('active');
@@ -179,44 +191,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-});
-
-// Ajouter cette fonction pour gérer le redimensionnement
-window.addEventListener('resize', function() {
-    const navLinks = document.querySelector('.nav-links');
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    
-    if (window.innerWidth > 768) {
-        navLinks.classList.remove('active');
-        mobileMenuBtn.setAttribute('aria-expanded', 'false');
-        const menuIcon = mobileMenuBtn.querySelector('i');
-        menuIcon.classList.add('fa-bars');
-        menuIcon.classList.remove('fa-times');
-    }
-});
-
-// Assurer que les images de fond sont bien chargées
-document.addEventListener('DOMContentLoaded', function() {
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        const img = new Image();
-        img.src = hero.style.backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
-        img.onload = function() {
-            hero.style.opacity = '1';
-        };
-    }
-});
-
-// Contact Form Toggle
-const showContactFormBtn = document.getElementById('showContactForm');
-const contactFormContainer = document.getElementById('contactFormContainer');
-
-if (showContactFormBtn && contactFormContainer) {
-    showContactFormBtn.addEventListener('click', () => handleFormDisplay());
 }
 
-// Fonction pour ajuster le scroll en fonction de la hauteur de la navbar
-function adjustScroll() {
+// Gestion du scroll
+function initScroll() {
     const navbar = document.querySelector('.navbar');
     const navbarHeight = navbar ? navbar.offsetHeight : 0;
     
@@ -237,24 +215,11 @@ function adjustScroll() {
     });
 }
 
-// Fonction pour ajuster le scroll vers le formulaire
-function scrollToForm() {
-    const navbar = document.querySelector('.navbar');
-    const navbarHeight = navbar ? navbar.offsetHeight : 0;
-    const form = document.querySelector('.contact-form');
-    if (form) {
-        const formPosition = form.offsetTop - navbarHeight;
-        window.scrollTo({
-            top: formPosition,
-            behavior: 'smooth'
-        });
-    }
-}
-
-function handleFormDisplay() {
+// Gestion de l'affichage du formulaire
+function toggleFormVisibility(contactFormContainer, showContactFormBtn, keepVisible = false) {
     const isVisible = contactFormContainer.style.display === 'block';
-    contactFormContainer.style.display = isVisible ? 'none' : 'block';
-    showContactFormBtn.textContent = isVisible ? 'Nous contacter' : 'Fermer';
+    contactFormContainer.style.display = isVisible && !keepVisible? 'none' : 'block';
+    showContactFormBtn.textContent = isVisible && !keepVisible? 'Nous contacter' : 'Fermer';
     
     if (!isVisible) {
         const navbar = document.querySelector('.navbar');
@@ -265,86 +230,220 @@ function handleFormDisplay() {
             top: formPosition,
             behavior: 'smooth'
         });
-        initContactForm();
-    }
-};
-
-// Gestion du formulaire de contact
-function initContactForm(){
-    const contactForm = document.getElementById('contact-form');
-    const submitButton = document.getElementById('submit-button');
-    const thankYouMessage = document.getElementById('thank-you-message');
-
-    if (contactForm && submitButton) {
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            // Validation du formulaire
-            if (!contactForm.checkValidity()) {
-                contactForm.reportValidity();
-                return;
-            }
-
-            // Désactiver le bouton pendant l'envoi
-            submitButton.disabled = true;
-            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
-
-            // Exécuter reCAPTCHA v3
-            grecaptcha.enterprise.ready(async () => {
-                try {
-                    const token = await grecaptcha.enterprise.execute('6LcqoiMrAAAAAE1dpWIEDheFNVGkugVc4cc6a0Up', {action: 'contact'});
-                    
-                    // Récupérer les données du formulaire et les convertir en JSON
-                    const formData = {
-                        subject: contactForm.querySelector('input[name="subject"]').value,
-                        name: contactForm.querySelector('input[name="name"]').value,
-                        email: contactForm.querySelector('input[name="email"]').value,
-                        phone: contactForm.querySelector('input[name="phone"]').value,
-                        message: contactForm.querySelector('textarea[name="message"]').value,
-                        privacy: contactForm.querySelector('input[name="privacy"]').checked,
-                        'g-recaptcha-response': token
-                    };
-
-                    // Envoyer les données via AJAX
-                    $.ajax({
-                        url: "https://form-to-mail-api.onrender.com:3000/contact",
-                        method: "POST",
-                        dataType: "json",
-                        contentType: "application/json",
-                        data: JSON.stringify(formData),
-                        success: function(response) {
-                            contactForm.style.display = 'none';
-                            thankYouMessage.style.display = 'block';
-                            contactForm.reset();
-                            grecaptcha.enterprise.reset();
-                        },
-                        error: function(xhr, status, error) {
-                            console.error('Erreur:', error);
-                            if (xhr.responseJSON && xhr.responseJSON.error === 'reCAPTCHA failed') {
-                                console.error('Erreur de vérification reCAPTCHA. Veuillez réessayer.');
-                                grecaptcha.enterprise.reset();
-                            } else {
-                                console.error('Une erreur est survenue lors de l\'envoi du formulaire. Veuillez réessayer.');
-                            }
-                            submitButton.disabled = false;
-                            submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer';
-                        }
-                    });
-                } catch (error) {
-                    console.error('Erreur reCAPTCHA:', error);
-                    console.error('Une erreur est survenue lors de la vérification. Veuillez réessayer.');
-                    submitButton.disabled = false;
-                    submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer';
-                }
-            });
-        });
     }
 }
 
-// Appeler les fonctions au chargement de la page
+// Gestion de la soumission du formulaire
+async function handleFormSubmit(event, contactForm, submitButton, thankYouMessage, contactFormContainer, showContactFormBtn) {
+    event.preventDefault();
+    
+    if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        return;
+    }
+
+    submitButton.disabled = true;
+    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+
+    try {
+        const token = await grecaptcha.enterprise.execute(CONFIG.recaptcha.siteKey, {action: CONFIG.recaptcha.action});
+        
+        const formData = {
+            subject: contactForm.querySelector('input[name="subject"]').value,
+            name: contactForm.querySelector('input[name="name"]').value,
+            email: contactForm.querySelector('input[name="email"]').value,
+            phone: contactForm.querySelector('input[name="phone"]').value,
+            message: contactForm.querySelector('textarea[name="message"]').value,
+            privacy: contactForm.querySelector('input[name="privacy"]').checked,
+            'g-recaptcha-response': token
+        };
+
+        const response = await $.ajax({
+            url: CONFIG.form.url,
+            method: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(formData)
+        });
+
+        contactForm.style.display = 'none';
+        thankYouMessage.style.display = 'block';
+    } catch (error) {
+        console.error('Erreur:', error);
+        if (error.responseJSON && error.responseJSON.error === 'reCAPTCHA failed') {
+            alert('Erreur de vérification reCAPTCHA. Veuillez réessayer.');
+            grecaptcha.enterprise.reset();
+        } else {
+            alert('Une erreur est survenue lors de l\'envoi du formulaire. Veuillez réessayer.');
+        }
+    } finally {
+        submitButton.disabled = false;
+        submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer';
+    }
+}
+
+// Gestion du formulaire de contact
+function initContactForm() {
+    const contactForm = document.getElementById('contact-form');
+    const submitButton = document.getElementById('submit-button');
+    const thankYouMessage = document.getElementById('thank-you-message');
+    const showContactFormBtn = document.getElementById('showContactForm');
+    const contactFormContainer = document.getElementById('contactFormContainer');
+
+    if (!contactForm || !submitButton || !showContactFormBtn || !contactFormContainer) {
+        console.error('Éléments du formulaire non trouvés');
+        return;
+    }
+
+    // Événements
+    showContactFormBtn.addEventListener('click', () => toggleFormVisibility(contactFormContainer, showContactFormBtn));
+    submitButton.addEventListener('click', (event) => handleFormSubmit(
+        event, 
+        contactForm, 
+        submitButton, 
+        thankYouMessage, 
+        contactFormContainer, 
+        showContactFormBtn
+    ));
+}
+
+// Gestion du carrousel
+function initCarousel() {
+    const modal = document.getElementById('carouselModal');
+    const modalContent = modal.querySelector('.modal-content');
+    const carouselImages = modal.querySelector('.carousel-images');
+    const carouselCaption = modal.querySelector('.carousel-caption');
+    const closeModal = modal.querySelector('.close-modal');
+    const prevButton = modal.querySelector('.carousel-button.prev');
+    const nextButton = modal.querySelector('.carousel-button.next');
+
+    let currentImageIndex = 0;
+    let images = [];
+
+    // Configuration des images par dossier
+    const imageConfig = {
+        'plateau': { count: 13, prefix: 'plateau-' },
+        'buffet': { count: 3, prefix: 'buffet-' },
+        'epicerie': { count: 3, prefix: 'epicerie-' },
+        'cave': { count: 5, prefix: 'cave-' }
+    };
+
+    // Fonctions utilitaires
+    function getRandomImage(folderName) {
+        const config = imageConfig[folderName];
+        if (!config) return null;
+        const randomIndex = Math.floor(Math.random() * config.count) + 1;
+        return `images/webp/${folderName}/${config.prefix}${randomIndex}.webp`;
+    }
+
+    function loadImages(folderName) {
+        const config = imageConfig[folderName];
+        if (!config) return [];
+        return Array.from({length: config.count}, (_, i) => 
+            `images/webp/${folderName}/${config.prefix}${i + 1}.webp`
+        );
+    }
+
+    function showCarousel(folderName) {
+        images = loadImages(folderName);
+        if (images.length === 0) return;
+
+        currentImageIndex = 0;
+        carouselImages.innerHTML = '';
+        
+        images.forEach((src, index) => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = `Image ${index + 1}`;
+            if (index === 0) img.classList.add('active');
+            carouselImages.appendChild(img);
+        });
+
+        updateCaption();
+        modal.style.display = 'block';
+        setTimeout(() => modal.classList.add('show'), 10);
+        document.body.style.overflow = 'hidden';
+    }
+
+    function updateCaption() {
+        carouselCaption.textContent = `${currentImageIndex + 1}/${images.length}`;
+    }
+
+    function showNextImage() {
+        const currentImage = carouselImages.querySelector('.active');
+        currentImage.classList.remove('active');
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        carouselImages.children[currentImageIndex].classList.add('active');
+        updateCaption();
+    }
+
+    function showPrevImage() {
+        const currentImage = carouselImages.querySelector('.active');
+        currentImage.classList.remove('active');
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        carouselImages.children[currentImageIndex].classList.add('active');
+        updateCaption();
+    }
+
+    // Événements
+    closeModal.addEventListener('click', () => {
+        modal.classList.remove('show');
+        setTimeout(() => {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }, 300);
+    });
+
+    prevButton.addEventListener('click', showPrevImage);
+    nextButton.addEventListener('click', showNextImage);
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (modal.style.display === 'block') {
+            if (e.key === 'ArrowLeft') showPrevImage();
+            if (e.key === 'ArrowRight') showNextImage();
+            if (e.key === 'Escape') {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        }
+    });
+
+    // Initialisation des images aléatoires
+    document.querySelectorAll('.service-card').forEach(card => {
+        const folderName = card.classList[1];
+        if (folderName) {
+            const randomImage = getRandomImage(folderName);
+            if (randomImage) {
+                const img = card.querySelector('img');
+                img.src = randomImage;
+            }
+        }
+    });
+
+    // Ajout des événements de clic sur les cartes
+    document.querySelectorAll('.service-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const folderName = card.classList[1];
+            if (folderName) {
+                showCarousel(folderName);
+            }
+        });
+    });
+}
+
+// Initialisation au chargement de la page
 document.addEventListener('DOMContentLoaded', function() {
-    adjustScroll();
+    initMobileMenu();
+    initScroll();
     initContactForm();
+    initCarousel();
 
     // Vérifier si on doit pré-remplir le formulaire
     const urlParams = new URLSearchParams(window.location.search);

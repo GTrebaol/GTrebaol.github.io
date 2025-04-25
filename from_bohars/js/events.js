@@ -118,7 +118,10 @@ function prefillContactForm(eventTitle, eventDate) {
         const messageField = contactForm.querySelector('textarea[name="message"]');
         if (messageField) {
             messageField.value = `Bonjour, je souhaite participer à "${eventTitle}" du ${eventDate}.`;
-            handleFormDisplay();
+            
+            const showContactFormBtn = document.getElementById('showContactForm');
+            const contactFormContainer = document.getElementById('contactFormContainer');
+            toggleFormVisibility(contactFormContainer, showContactFormBtn, true);
         }
     }
 }
