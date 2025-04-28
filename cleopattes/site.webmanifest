@@ -1,7 +1,7 @@
 {
-    "name": "Cléopattes - Services de Garde d'Animaux à Brest",
+    "name": "Cléopattes - Services aux animaux à Brest",
     "short_name": "Cléopattes",
-    "description": "Services de garde d'animaux à domicile à Brest. Promenade de chiens, garde de chats et autres animaux. Approche écologique et locale.",
+    "description": "Services aux animaux à Brest. Promenade de chiens, visites de chats et autres animaux. Approche écologique et locale.",
     "start_url": "/",
     "icons": [
         {
