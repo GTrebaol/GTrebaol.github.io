@@ -5,7 +5,7 @@ const CONFIG = {
         action: 'contact'
     },
     form: {
-        url: 'https://form-to-mail-api.onrender.com/contact'
+        url: 'https://p01--formtomail--9x6pdlz5xy7c.code.run/contact'
     }
 };
 
