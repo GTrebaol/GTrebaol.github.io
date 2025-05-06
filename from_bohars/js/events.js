@@ -14,6 +14,25 @@ function formatDate(dateString) {
     return new Date(dateString).toLocaleDateString('fr-FR', options);
 }
 
+// Fonction pour extraire le prix d'une description
+function extractPrice(description) {
+    if (!description) return null;
+    
+    // Recherche de motifs comme "X€", "XX €", "0 €", etc.
+    const priceMatch = description.match(/(\d+)\s*€/);
+    if (priceMatch) {
+        return parseInt(priceMatch[1]);
+    }
+    return null;
+}
+
+// Fonction pour nettoyer la description en enlevant le prix
+function cleanDescription(description) {
+    if (!description) return '';
+    // Enlever le prix de la description
+    return description.replace(/(\d+)\s*€/g, '').trim();
+}
+
 // Fonction pour récupérer les événements
 async function fetchEvents() {
     try {
@@ -74,8 +93,6 @@ function displayEvents(events) {
         return;
     }
 
-    const fromagerieAddress = '23 Rue Prosper Salaün, 29820 Bohars';
-
     events.forEach(event => {
         const eventCard = document.createElement('div');
         eventCard.className = 'evenement-card';
@@ -87,11 +104,19 @@ function displayEvents(events) {
             ? `<p class="event-location">${event.location}</p>`
             : '';
 
+        // Extraire le prix de la description
+        const price = extractPrice(event.description);
+        const priceInfo = price !== null ? `<p class="event-price">${price}€ / personne</p>` : '';
+        
+        // Nettoyer la description en enlevant le prix
+        const cleanDesc = cleanDescription(event.description);
+
         eventCard.innerHTML = `
             <h3>${event.summary}</h3>
             <p>${formatDate(event.start.dateTime)}</p>
             ${locationInfo}
-            <p>${event.description || ''}</p>
+            <p>${cleanDesc}</p>
+            ${priceInfo}
             <button class="cta-button reserve-button" 
                     data-event-title="${event.summary}"
                     data-event-date="${formatDate(event.start.dateTime)}">
@@ -126,8 +151,46 @@ function prefillContactForm(eventTitle, eventDate) {
     }
 }
 
-// Charger les événements au chargement de la page
-document.addEventListener('DOMContentLoaded', async () => {
-    const events = await fetchEvents();
-    displayEvents(events);
-}); 
+// Fonction pour vérifier si un élément existe dans le DOM
+function elementExists(selector) {
+    return document.querySelector(selector) !== null;
+}
+
+// Fonction pour initialiser les événements
+async function initEvents() {
+    // Vérifier que l'élément existe
+    if (!elementExists('#evenementsList')) {
+        console.error('Élément evenementsList non trouvé');
+        return;
+    }
+
+    try {
+        console.log('Début du chargement des événements');
+        const events = await fetchEvents();
+        
+        // Attendre 500ms après le chargement des événements
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        // Vérifier à nouveau que l'élément existe avant d'afficher
+        if (!elementExists('#evenementsList')) {
+            console.error('Élément evenementsList non trouvé avant affichage');
+            return;
+        }
+        
+        displayEvents(events);
+        console.log('Événements affichés avec succès');
+    } catch (error) {
+        console.error('Erreur lors du chargement des événements:', error);
+    }
+}
+
+// Attendre que la page soit complètement chargée
+if (document.readyState === 'loading') {
+    window.addEventListener('load', () => {
+        // Attendre 500ms après le chargement complet
+        setTimeout(initEvents, 500);
+    });
+} else {
+    // Si le document est déjà chargé, attendre quand même 500ms
+    setTimeout(initEvents, 500);
+}
