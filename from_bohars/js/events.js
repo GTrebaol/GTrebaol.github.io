@@ -104,19 +104,12 @@ function displayEvents(events) {
             ? `<p class="event-location">${event.location}</p>`
             : '';
 
-        // Extraire le prix de la description
-        const price = extractPrice(event.description);
-        const priceInfo = price !== null ? `<p class="event-price">${price}€ / personne</p>` : '';
-        
-        // Nettoyer la description en enlevant le prix
-        const cleanDesc = cleanDescription(event.description);
 
         eventCard.innerHTML = `
             <h3>${event.summary}</h3>
             <p>${formatDate(event.start.dateTime)}</p>
             ${locationInfo}
-            <p>${cleanDesc}</p>
-            ${priceInfo}
+            <p>${event.description}</p>
             <button class="cta-button reserve-button" 
                     data-event-title="${event.summary}"
                     data-event-date="${formatDate(event.start.dateTime)}">
