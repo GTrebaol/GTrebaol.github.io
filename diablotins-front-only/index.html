@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique de Chaussures pour Enfants</title>
+    <link rel="stylesheet" href="src/styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <img src="assets/images/logo.jpg" alt="Logo" height="50">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="#categories">Catégories</a></li>
+                <li><a href="#contact-invite">Contact</a></li>
+            </ul>
+            <button class="menu-button" aria-label="Ouvrir le menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Parallax Section -->
+    <section class="section-parallax hero-section" id="hero">
+        <div class="parallax-bg hero"></div>
+        <div class="parallax-overlay"></div>
+        <div class="parallax-container">
+            <div class="parallax-card hero-parallax-card">
+                <h1>Bienvenue chez <span class="brand">les Diablotins</span></h1>
+                <p class="hero-desc">Au cœur du quartier, Carole vous accueille avec le sourire et vous conseille pour chausser les petits pieds avec soin et passion. Découvrez une sélection de chaussures de qualité, adaptées à chaque étape de la croissance de votre enfant.</p>
+                <div class="hero-signature">Carole, votre spécialiste chaussures enfants</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catégories Section -->
+    <section class="section" id="categories">
+        <div class="container">
+            <h2 class="text-center">Nos Catégories</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <img src="assets/icons/baby.png" alt="Bébé">
+                    <h3>Bébé</h3>
+                    <p>De 0 à 24 mois</p>
+                    <a href="bebe.html" class="btn btn-primary">Voir les chaussures</a>
+                </div>
+                <div class="category-card">
+                    <img src="assets/icons/daughter.png" alt="Enfant">
+                    <h3>Enfant</h3>
+                    <p>De 2 à 6 ans</p>
+                    <a href="enfant.html" class="btn btn-primary">Voir les chaussures</a>
+                </div>
+                <div class="category-card">
+                    <img src="assets/icons/boy.png" alt="Junior">
+                    <h3>Junior</h3>
+                    <p>De 7 à 14 ans</p>
+                    <a href="junior.html" class="btn btn-primary">Voir les chaussures</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Parallax Contact Invite -->
+    <section class="section-parallax contact-invite-section" id="contact-invite">
+        <div class="parallax-bg contact"></div>
+        <div class="parallax-overlay"></div>
+        <div class="parallax-container">
+            <div class="parallax-card contact-parallax-card">
+                <div class="contact-parallax-texts">
+                    <h2>N'attendez pas pour venir essayer nos chaussures en magasin !</h2>
+                    <p>L'équipe de notre boutique vous apporte une aide et des conseils pour choisir la paire adaptée à la morphologie de votre enfant.</p>
+                </div>
+                <a href="#contact-invite" class="parallax-invite-btn"><span class="btn-icon-letter"></span> Contactez-nous !</a>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Pourquoi venir chausser votre enfant dans notre boutique ? -->
+    <section class="section" id="why-choose">
+        <div class="container">
+            <h2 class="text-center">Pourquoi venir chausser votre enfant dans notre boutique&nbsp;?</h2>
+            <div class="why-choose-subtitle text-center">
+                <strong>Le choix des chaussures est une étape très importante pour le développement et la croissance de l'enfant.<br>La chaussure doit respecter la morphologie des pieds des enfants.</strong>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <img src="assets/icons/clothes-shop.png" alt="Accueil" class="why-choose-icon">
+                    <h3>L'accueil</h3>
+                    <p>Notre équipe vous réserve un accueil chaleureux et convivial.</p>
+                </div>
+                <div class="category-card">
+                    <img src="assets/icons/shoes.png" alt="Marques" class="why-choose-icon">
+                    <h3>Les marques</h3>
+                    <p>Nous veillons à travailler avec des marques adaptées aux pieds des enfants, qui proposent de belles matières et écoresponsables.</p>
+                </div>
+                <div class="category-card">
+                    <img src="assets/icons/help.png" alt="Conseil" class="why-choose-icon">
+                    <h3>Le conseil</h3>
+                    <p>Profitez des meilleurs conseils pour bien chausser votre enfant.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-bg"></div>
+        <div class="footer-overlay"></div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: contact@boutique.fr</p>
+                    <p>Tél: 01 23 45 67 89</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Horaires</h3>
+                    <p>Lundi - Samedi: 9h - 19h</p>
+                    <p>Dimanche: Fermé</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Suivez-nous</h3>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook" class="footer-social-icon">
+                            <img src="assets/icons/facebook.png" alt="Facebook" />
+                        </a>
+                        <a href="#" aria-label="Instagram" class="footer-social-icon">
+                            <img src="assets/icons/instagram.png" alt="Instagram" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="src/js/navigation.js"></script>
+    <script src="src/js/parallax.js"></script>
+</body>
+</html> 

@@ -1,6 +1,66 @@
-# Cléopattes - Site Web
+# Cleopattes - Site Vitrine de Chaussures pour Enfants
 
-Site web pour Cléopattes, service de garde et promenade d'animaux à domicile.
+## Architecture du Projet
+
+Le projet est divisé en deux parties principales :
+
+### Frontend (React.js)
+- Interface utilisateur moderne et réactive
+- Gestion d'état avec Redux
+- Design responsive avec Material-UI
+- Routes avec React Router
+
+### Backend (Node.js + Express)
+- API RESTful
+- Base de données MongoDB
+- Gestion des images avec Cloudinary
+- Authentification JWT
+
+## Structure des Dossiers
+
+```
+cleopattes/
+├── frontend/           # Application React
+│   ├── public/        # Fichiers statiques
+│   ├── src/           # Code source React
+│   │   ├── components/ # Composants React
+│   │   ├── pages/     # Pages de l'application
+│   │   ├── store/     # État global Redux
+│   │   └── utils/     # Utilitaires
+│   └── package.json   # Dépendances frontend
+│
+└── backend/           # API Node.js
+    ├── src/          # Code source Node.js
+    │   ├── controllers/ # Contrôleurs
+    │   ├── models/    # Modèles MongoDB
+    │   ├── routes/    # Routes API
+    │   └── utils/     # Utilitaires
+    └── package.json  # Dépendances backend
+```
+
+## Installation
+
+### Frontend
+```bash
+cd frontend
+npm install
+npm start
+```
+
+### Backend
+```bash
+cd backend
+npm install
+npm start
+```
+
+## Fonctionnalités
+
+- Affichage des collections de chaussures
+- Filtrage par taille, couleur, style
+- Galerie d'images
+- Formulaire de contact
+- Administration des produits
 
 ## Description
 

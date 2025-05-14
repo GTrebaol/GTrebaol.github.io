@@ -1,0 +1,898 @@
+@import 'variables.css';
+
+/* Reset et styles de base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background-color: var(--background-light);
+}
+
+/* Styles de navigation */
+.navbar {
+  background-color: var(--background-light);
+  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-md);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  transition: transform var(--transition-normal);
+}
+
+.navbar.scroll-down {
+  transform: translateY(-100%);
+}
+
+.navbar.scroll-up {
+  transform: translateY(0);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: var(--spacing-md);
+}
+
+.nav-links a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+}
+
+/* Style pour le bouton menu mobile */
+.menu-button {
+  display: none; /* Affiché par media query */
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.5rem; /* Ajuste la taille de base si besoin */
+  cursor: pointer;
+  padding: 0.5rem; /* Pour une zone de clic plus grande */
+  z-index: 1100; /* Au-dessus de la navbar mais sous le menu ouvert si besoin */
+  position: relative; /* Pour le positionnement des barres */
+  width: 40px; /* Largeur fixe pour le bouton */
+  height: 30px; /* Hauteur fixe pour le bouton */
+}
+
+.menu-button span {
+  display: block;
+  width: 100%;
+  height: 3px; /* Épaisseur des barres */
+  background-color: var(--text-primary);
+  border-radius: 3px;
+  position: absolute;
+  left: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu-button span:nth-child(1) {
+  top: 0;
+}
+
+.menu-button span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.menu-button span:nth-child(3) {
+  bottom: 0;
+}
+
+/* Style du bouton menu quand il est actif (menu ouvert) -> transforme en croix */
+.menu-button.active span:nth-child(1) {
+  transform: translateY(13.5px) rotate(45deg); /* Ajuste la translation pour centrer la croix */
+}
+
+.menu-button.active span:nth-child(2) {
+  opacity: 0; /* Barre du milieu disparaît */
+}
+
+.menu-button.active span:nth-child(3) {
+  transform: translateY(-13.5px) rotate(-45deg); /* Ajuste la translation */
+}
+
+/* Styles pour la liste de liens quand elle est active (mobile) */
+.nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute; /* Positionné par rapport à la navbar ou au body */
+    top: 100%; /* Juste en dessous de la navbar */
+    left: 0;
+    right: 0;
+    background: var(--background-light);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow-md);
+    z-index: 1050; /* Au-dessus de la navbar mais en dessous du bouton si le bouton doit rester visible */
+    border-top: 1px solid var(--background-off-white);
+}
+
+/* Styles des sections */
+.section {
+  padding: var(--spacing-xl) 0;
+  background: var(--background-light);
+}
+
+/* Styles unifiés pour les sections Parallax */
+.section-parallax {
+  position: relative;
+  overflow: hidden; /* Pour contenir les éléments positionnés absolument */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light); /* Couleur de texte par défaut pour les sections parallax */
+  margin-top: 0; /* La première section parallax aura une marge spécifique */
+}
+
+.section-parallax.hero-section { /* Modificateur pour la première section parallax */
+  min-height: 70vh; /* Hauteur spécifique pour le hero */
+  margin-top: var(--header-height);
+}
+
+.section-parallax.contact-invite-section { /* Modificateur pour la section invite contact */
+  min-height: 45vh;
+}
+
+.parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 0;
+  /* Filtre de base, peut être surchargé par des modificateurs */
+  filter: grayscale(0.1) brightness(0.75) contrast(1.05) blur(1px);
+}
+
+.parallax-bg.hero {
+  background-image: url('../../assets/images/shop.png');
+  /* Filtre spécifique si besoin, sinon hérite du filtre de .parallax-bg */
+}
+
+.parallax-bg.contact {
+  background-image: url('../../assets/backgrounds/contact-bg.jpg');
+  /* Filtre spécifique ou différent pour la section contact */
+  filter: grayscale(0.1) brightness(0.8) contrast(1.0) blur(1px);
+}
+
+.parallax-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(30, 30, 40, 0.45); /* Opacité de l'overlay unifiée */
+  z-index: 1;
+}
+
+.parallax-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px; /* Cohérent avec .container */
+  margin: 0 auto;
+  padding: var(--spacing-lg) var(--spacing-md); /* Padding intérieur pour le contenu */
+  display: flex; /* Pour centrer .parallax-card si besoin */
+  align-items: center;
+  justify-content: center;
+}
+
+/* Styles unifiés pour les encarts dans les sections parallax */
+.parallax-card {
+  background: rgba(255, 255, 255, 0.97); /* Légerement transparent */
+  box-shadow: 0 8px 32px rgba(40,40,60,0.2), 0 2px 8px rgba(0,0,0,0.12);
+  border-radius: 0; /* Pas de bords arrondis */
+  max-width: 900px; /* Largeur max unifiée */
+  width: 90%; /* Largeur relative unifiée */
+  padding: 2.5rem;
+  margin: 0 auto; /* Centrage */
+  color: var(--text-primary); /* Texte sombre sur fond clair */
+  text-align: center; /* Centrage du texte par défaut dans les cards */
+}
+
+.hero-parallax-card h1 { /* Spécifique au hero card si besoin de le différencier */
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  margin-bottom: 1.2rem;
+  font-family: 'Poppins', 'Comic Sans MS', cursive, sans-serif;
+}
+
+.hero-parallax-card .brand {
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+.hero-desc {
+  color: var(--text-secondary);
+  font-size: 1.15rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-signature {
+  color: var(--secondary-color);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-top: 1.2rem;
+}
+
+/* Styles pour la section "contactez-nous" dans parallax */
+.contact-parallax-card .contact-parallax-texts h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 0.7rem;
+}
+
+.contact-parallax-card .contact-parallax-texts p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  margin-bottom: 1rem; /* Ajout marge pour espacer du bouton */
+}
+
+.parallax-invite-btn { /* Garde ce nom pour le bouton spécifique */
+  margin-top: 1rem; /* Marge unifiée pour le bouton dans ce contexte */
+  background: var(--primary-color);  
+  color: var(--text-light);
+  border: none;
+  border-radius: 2rem;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s;
+  white-space: nowrap;
+  display: inline-block; /* Pour que margin-top fonctionne bien */
+}
+
+.parallax-invite-btn:hover {
+  background: var(--accent-color);
+  color: var(--text-primary);
+}
+
+/* Grille de catégories (et "Pourquoi nous choisir") */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+.category-card {
+  background: var(--background-off-white);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-normal);
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.category-card img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: var(--spacing-md);
+}
+
+.category-card h3 {
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Styles pour les icônes de la section "Pourquoi nous choisir" */
+/* Assurez-vous que ces icônes ont la classe .why-choose-icon dans le HTML */
+.why-choose-icon {
+  width: 64px; /* Taille unifiée */
+  height: 64px;
+  margin-bottom: var(--spacing-md);
+  display: block; /* Pour centrage avec margin auto si parent est text-align:center */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Styles des boutons */
+.btn {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-color);
+}
+
+.btn-icon-letter {
+  width: 1.4em;
+  height: 1.4em;
+  vertical-align: middle;
+  margin-right: 0.7em;
+  margin-bottom: 0.15em;
+  display: inline-block;
+  background: url('../../assets/icons/letter-closed.png') center/contain no-repeat;
+  transition: background-image 0.2s;
+}
+
+.parallax-invite-btn:hover .btn-icon-letter {
+  background-image: url('../../assets/icons/letter-opened.png');
+}
+
+/* Styles du footer */
+.footer {
+  position: relative;
+  background: none;
+  color: var(--text-light);
+  padding: var(--spacing-xl) 0;
+  overflow: hidden;
+}
+
+.footer-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../../assets/backgrounds/footer-bg.jpg') repeat;
+  background-size: 60%;
+  z-index: 0;
+}
+
+.footer-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 20, 30, 0.82);
+  z-index: 1;
+}
+
+.footer .container,
+.footer-content,
+.footer-section {
+  position: relative;
+  z-index: 2;
+}
+
+.footer-section h3 {
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-md);
+}
+
+.footer-social-icon img {
+  width: 32px;
+  height: 32px;
+  transition: filter 0.2s;
+}
+
+.social-links {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.footer-social-icon:hover img {
+  filter: brightness(0) invert(54%) sepia(1) saturate(5) hue-rotate(320deg);
+}
+
+/* Utilitaires */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-1 { margin-top: var(--spacing-sm); }
+.mt-2 { margin-top: var(--spacing-md); }
+.mt-3 { margin-top: var(--spacing-lg); }
+.mt-4 { margin-top: var(--spacing-xl); }
+
+/* Media Queries */
+@media (max-width: 900px) {
+  /* Ajustement pour le bouton d'invitation parallax sur mobile */
+  .contact-parallax-card.parallax-card { /* Plus spécifique */
+    /* S'assure que le flex-direction column est appliqué ici si besoin */
+  }
+  .parallax-invite-btn {
+    width: auto; /* Laisser le bouton prendre sa taille naturelle ou 100% si voulu */
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    /* ... autres styles pour .nav-links.active ... */
+  }
+
+  .menu-button {
+    display: block; /* Afficher le bouton menu */
+  }
+
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero-parallax-card.parallax-card h1 { /* Cible plus spécifiquement */
+    font-size: 1.8rem; /* Ajustement taille titre hero sur mobile */
+  }
+
+  .parallax-card { /* Ajustement padding pour tous les encarts parallax sur mobile */
+    padding: 1.5rem;
+    width: 95%;
+  }
+  
+  .contact-parallax-card .contact-parallax-texts h2 {
+    font-size: 1.3rem;
+  }
+   .contact-parallax-card .contact-parallax-texts p {
+    font-size: 0.95rem;
+  }
+
+  /* Footer sections en colonne sur mobile */
+  .footer-content {
+    grid-template-columns: 1fr; /* Assure une seule colonne */
+    gap: var(--spacing-md);
+  }
+  .footer-section {
+    text-align: center; /* Centrer le contenu des sections du footer */
+  }
+  .social-links {
+    justify-content: center; /* Centrer les icônes sociales */
+  }
+}
+
+
+/* Section Contact avec Parallax */
+.contact-section-parallax {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.contact-parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/backgrounds/contact-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  transform: translateZ(0);
+  z-index: -1;
+}
+
+.contact-parallax-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.contact-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+  color: var(--text-light);
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-xl);
+}
+
+.contact-info {
+  padding: var(--spacing-lg);
+}
+
+.contact-info h2 {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-light);
+}
+
+.contact-info p {
+  margin-bottom: var(--spacing-md);
+  font-size: 1.1rem;
+}
+
+.contact-form {
+  padding: var(--spacing-lg);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-light);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--border-radius-sm);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+  transition: var(--transition-fast);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.form-group textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+@media (max-width: 768px) {
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-info,
+  .contact-form {
+    padding: var(--spacing-md);
+  }
+}
+
+/* Section Parallax Invite */
+.parallax-invite-section {
+  position: relative;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.parallax-invite-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(40, 40, 60, 0.28);
+  backdrop-filter: blur(4px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.parallax-invite-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/backgrounds/contact-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: 0;
+  filter: brightness(0.97);
+  overflow: hidden;
+}
+
+.parallax-invite-container {
+  position: relative;
+  z-index: 2;
+}
+
+.parallax-invite-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.contact-parallax-texts h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 0.7rem;
+}
+
+.contact-parallax-texts p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+}
+
+.parallax-invite-btn {
+  background: var(--primary-color);  
+  color: var(--text-light);
+  border: none;
+  border-radius: 2rem;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.parallax-invite-btn:hover {
+  background: var(--accent-color);
+  color: var(--text-primary);
+}
+
+@media (max-width: 900px) {
+  .parallax-invite-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.5rem 1rem;
+  }
+  .parallax-invite-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-attachment: fixed;
+  z-index: 0;
+  filter: grayscale(0.2) brightness(0.7) contrast(1.05) blur(1px);
+}
+
+.parallax-bg.hero {
+  background: url('../../assets/images/shop.png') center center / cover no-repeat;
+}
+
+.parallax-bg.contact {
+  background: url('../../assets/backgrounds/contact-bg.jpg') center center / cover no-repeat;
+  background-size: cover;
+}
+
+.parallax-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(30, 30, 40, 0.35);
+  z-index: 1;
+}
+
+.parallax-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+
+.hero-parallax-card,
+.contact-parallax-card,
+.contact-content,
+.parallax-invite-content {
+  background: #fff;
+  box-shadow: 0 8px 32px rgba(40,40,60,0.18), 0 2px 8px rgba(0,0,0,0.10);
+  border-radius: 0;
+  max-width: 900px;
+  width: 90%;
+  padding: 2.5rem 2.5rem 2rem 2.5rem;
+  margin: 0 auto;
+  opacity: 0.97;
+}
+
+.hero-parallax-card h1 {
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  margin-bottom: 1.2rem;
+  font-family: 'Poppins', 'Comic Sans MS', cursive, sans-serif;
+}
+
+.hero-parallax-card .brand {
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+.hero-desc {
+  color: var(--text-secondary);
+  font-size: 1.15rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-signature {
+  color: var(--secondary-color);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-top: 1.2rem;
+}
+
+@media (max-width: 700px) {
+  .hero-parallax-card,
+  .contact-content,
+  .parallax-invite-content {
+    padding: 1.2rem 0.7rem 1.2rem 0.7rem;
+    font-size: 1rem;
+  }
+  .hero-parallax-card h1 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Styles pour les pages de catégories de chaussures */
+.category-page-section {
+  padding: var(--spacing-xl) 0;
+  margin-top: var(--header-height); /* Pour ne pas être caché par la navbar */
+  background-color: var(--background-light); /* Fond cohérent avec les autres sections */
+}
+
+.category-page-title {
+  text-align: center;
+  font-size: 2.5rem; /* Taille de titre un peu plus grande */
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-lg);
+  font-family: 'Poppins', 'Comic Sans MS', cursive, sans-serif; /* Style enfantin */
+}
+
+.shoe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid, cartes un peu plus larges */
+  gap: var(--spacing-lg);
+}
+
+.shoe-card {
+  background: var(--background-off-white);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  display: flex;
+  flex-direction: column; /* Pour bien aligner l'image et les infos */
+}
+
+.shoe-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.shoe-card-image-container {
+  width: 100%;
+  padding-top: 80%; /* Aspect Ratio pour les images (ex: 5:4), ajuste selon tes images */
+  position: relative;
+  background-color: #e9e9e9; /* Fond pour l'image si elle ne charge pas */
+}
+
+.shoe-card img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* S'assure que l'image couvre bien sans se déformer */
+}
+
+.shoe-card-info {
+  padding: var(--spacing-md);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Aligner en haut pour que le bouton (si présent) soit en bas */
+}
+
+.shoe-card-brand {
+  font-size: 0.85rem;
+  color: var(--accent-color); /* Utilise une couleur d'accentuation pour la marque */
+  font-weight: 500;
+  margin-bottom: var(--spacing-xs);
+  text-transform: uppercase;
+}
+
+.shoe-card-name {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+}
+
+.shoe-card-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+  flex-grow: 1; /* Permet à la description de prendre de l'espace */
+  min-height: 40px; /* Conserve une hauteur minimale */
+}
+
+.shoe-card-sizes {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  margin-top: auto; /* Pousse cette info vers le bas si la carte s'étire */
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--background-off-white); /* Ligne de séparation */
+}
+
+.shoe-card-sizes strong {
+  font-weight: 600;
+}
+
+/* Ajustements responsive pour la grille de chaussures */
+@media (max-width: 600px) {
+  .shoe-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+  .category-page-title {
+    font-size: 2rem;
+  }
+  .shoe-card-name {
+    font-size: 1.1rem;
+  }
+} 
