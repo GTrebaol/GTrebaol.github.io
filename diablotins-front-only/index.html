@@ -27,19 +27,37 @@
         </div>
     </nav>
 
-    <!-- Hero Parallax Section -->
-    <section class="section-parallax hero-section" id="hero">
-        <div class="parallax-bg hero"></div>
-        <div class="parallax-overlay"></div>
-        <div class="parallax-container">
-            <div class="parallax-card hero-parallax-card">
-                <h1>Bienvenue chez <span class="brand">les Diablotins</span></h1>
-                <p class="hero-desc">Au cœur du quartier, Carole vous accueille avec le sourire et vous conseille pour chausser les petits pieds avec soin et passion. Découvrez une sélection de chaussures de qualité, adaptées à chaque étape de la croissance de votre enfant.</p>
-                <div class="hero-signature">Carole, votre spécialiste chaussures enfants</div>
+    <section class="hero-section" id="hero">
+      <div class="hero-images-container">
+        <img src="assets/images/shop.png" alt="Devanture du magasin" class="hero-img hero-img-left">
+        <img src="assets/images/vendeuse.jpg" alt="Intérieur du magasin" class="hero-img hero-img-right">
+      </div>
+      <div class="hero-card hero-overlay-card">
+        <h1>Les diablotins</h1>
+        <h2>Magasin de chaussures pour enfants à Brest</h2>
+        <p>Bottines, bottillons, chaussures fourrées, sandales, baskets, chaussons... faites votre choix !</p>
+        <a href="#contact-invite" class="invite-btn">Et si on se rencontrait ?</a>
+      </div>
+    </section>
+    <section class="section" id="marques">
+        <div class="container">
+            <h2 class="text-center">Nos marques partenaires</h2>
+            <div class="brands-grid">
+                <div class="brand-card">
+                    <img src="assets/images/marques/babybotte.png" alt="Logo Babybotte">
+                </div>
+                <div class="brand-card">
+                    <img src="assets/images/marques/bellamy.png" alt="Logo Bellamy">
+                </div>
+                <div class="brand-card">
+                    <img src="assets/images/marques/norvik.png" alt="Logo Norvik">
+                </div>
+                <div class="brand-card">
+                    <img src="assets/images/marques/kickers.svg" alt="Logo Kickers">
+                </div>
             </div>
         </div>
     </section>
-
     <!-- Catégories Section -->
     <section class="section" id="categories">
         <div class="container">
@@ -47,38 +65,40 @@
             <div class="categories-grid">
                 <div class="category-card">
                     <img src="assets/icons/baby.png" alt="Bébé">
-                    <h3>Bébé</h3>
-                    <p>De 0 à 24 mois</p>
-                    <a href="bebe.html" class="btn btn-primary">Voir les chaussures</a>
-                </div>
-                <div class="category-card">
-                    <img src="assets/icons/daughter.png" alt="Enfant">
-                    <h3>Enfant</h3>
-                    <p>De 2 à 6 ans</p>
-                    <a href="enfant.html" class="btn btn-primary">Voir les chaussures</a>
+                    <h3>Premiers pas</h3>
+                    <a href="bebe.html" class="btn btn-primary">Voir</a>
                 </div>
                 <div class="category-card">
                     <img src="assets/icons/boy.png" alt="Junior">
                     <h3>Junior</h3>
-                    <p>De 7 à 14 ans</p>
-                    <a href="junior.html" class="btn btn-primary">Voir les chaussures</a>
+                    <a href="junior.html" class="btn btn-primary">Voir</a>
+                </div>
+                <div class="category-card">
+                    <img src="assets/icons/slippers.png" alt="Enfant">
+                    <h3>Chaussons</h3>
+                    <a href="chaussons.html" class="btn btn-primary">Voir</a>
+                </div>
+                <div class="category-card">
+                    <img src="assets/icons/rain-boots.png" alt="Enfant">
+                    <h3>Bottes</h3>
+                    <a href="bottes.html" class="btn btn-primary">Voir</a>
+                </div>
+                <div class="category-card">
+                    <img src="assets/icons/sneakers.png" alt="Enfant">
+                    <h3>Toiles</h3>
+                    <a href="toiles.html" class="btn btn-primary">Voir</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section Parallax Contact Invite -->
-    <section class="section-parallax contact-invite-section" id="contact-invite">
-        <div class="parallax-bg contact"></div>
-        <div class="parallax-overlay"></div>
-        <div class="parallax-container">
-            <div class="parallax-card contact-parallax-card">
-                <div class="contact-parallax-texts">
-                    <h2>N'attendez pas pour venir essayer nos chaussures en magasin !</h2>
-                    <p>L'équipe de notre boutique vous apporte une aide et des conseils pour choisir la paire adaptée à la morphologie de votre enfant.</p>
-                </div>
-                <a href="#contact-invite" class="parallax-invite-btn"><span class="btn-icon-letter"></span> Contactez-nous !</a>
+    <section class="contact-invite-section" id="contact-invite">
+        <div class="contact-card">
+            <div class="contact-texts">
+                <h2>N'attendez pas pour venir essayer nos chaussures en magasin !</h2>
+                <p>L'équipe de notre boutique vous apporte une aide et des conseils pour choisir la paire adaptée à la morphologie de votre enfant.</p>
             </div>
+            <a href="#contact-invite" class="invite-btn"><span class="btn-icon-letter"></span> Contactez-nous !</a>
         </div>
     </section>
     
@@ -90,18 +110,18 @@
             <div class="why-choose-subtitle text-center">
                 <strong>Le choix des chaussures est une étape très importante pour le développement et la croissance de l'enfant.<br>La chaussure doit respecter la morphologie des pieds des enfants.</strong>
             </div>
-            <div class="categories-grid">
-                <div class="category-card">
+            <div class="why-grid">
+                <div class="why-card">
                     <img src="assets/icons/clothes-shop.png" alt="Accueil" class="why-choose-icon">
                     <h3>L'accueil</h3>
                     <p>Notre équipe vous réserve un accueil chaleureux et convivial.</p>
                 </div>
-                <div class="category-card">
+                <div class="why-card">
                     <img src="assets/icons/shoes.png" alt="Marques" class="why-choose-icon">
                     <h3>Les marques</h3>
                     <p>Nous veillons à travailler avec des marques adaptées aux pieds des enfants, qui proposent de belles matières et écoresponsables.</p>
                 </div>
-                <div class="category-card">
+                <div class="why-card">
                     <img src="assets/icons/help.png" alt="Conseil" class="why-choose-icon">
                     <h3>Le conseil</h3>
                     <p>Profitez des meilleurs conseils pour bien chausser votre enfant.</p>
@@ -142,6 +162,5 @@
     </footer>
 
     <script src="src/js/navigation.js"></script>
-    <script src="src/js/parallax.js"></script>
 </body>
 </html> 
