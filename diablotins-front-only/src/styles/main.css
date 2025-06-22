@@ -1192,11 +1192,33 @@ body::before {
 @media (max-width: 768px) {
   .footer-content {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
   
   .footer-text-sections {
     grid-template-columns: 1fr;
     gap: var(--spacing-md);
+  }
+  
+  .footer-section {
+    text-align: center;
+    max-width: none;
+  }
+  
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .brands-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .shoe-grid {
+    grid-template-columns: 1fr;
   }
   
   .footer-map-container {
