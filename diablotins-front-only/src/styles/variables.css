@@ -1,6 +1,6 @@
 :root {
   /* Couleurs principales */
-  --primary-color: #FFB6C1; /* Rose pastel */
+  --primary-color: #fc8d9c; /* Rose pastel */
   --secondary-color: #98FB98; /* Vert pastel */
   --accent-color: #87CEEB; /* Bleu pastel */
   
@@ -20,6 +20,7 @@
   --spacing-md: 1rem;
   --spacing-lg: 2rem;
   --spacing-xl: 4rem;
+  --spacing-xxxl: 10rem;
   
   /* Bordures */
   --border-radius-sm: 4px;
@@ -37,4 +38,5 @@
   --transition-slow: 0.5s ease;
 
   --header-height: 80px;
+  --half-header-height: 40px;
 } 
