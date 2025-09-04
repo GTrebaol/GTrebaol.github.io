@@ -112,7 +112,10 @@ function initContactForm() {
     });
     
     // Ajouter un gestionnaire de clic au bouton d'envoi
-    submitButton.addEventListener('click', function(e) {
+    
+    
+    
+    async function handleFormSubmit(e) {
         e.preventDefault();
         
         // Validation du formulaire
@@ -126,7 +129,7 @@ function initContactForm() {
         submitButton.textContent = 'Envoi en cours...';
 
         // Exécuter reCAPTCHA v3
-        grecaptcha.enterprise.ready(async () => {
+        try {
             const token = await grecaptcha.enterprise.execute('6LfelRIrAAAAAICy_1LKDvZwW_c2_Z_QYFKJALR3', {action: 'LOGIN'});
             
             // Récupérer les données du formulaire
@@ -162,8 +165,21 @@ function initContactForm() {
                     submitButton.textContent = 'Envoyer';
                 }
             });
-        });
-    });
+        } catch (error) {
+            console.error('Erreur:', error);
+            if (error.responseJSON && error.responseJSON.error === 'reCAPTCHA failed') {
+                alert('Erreur de vérification reCAPTCHA. Veuillez réessayer.');
+                grecaptcha.enterprise.reset();
+            } else {
+                alert('Une erreur est survenue lors de l\'envoi du formulaire. Veuillez réessayer.');
+            }
+        } finally {
+            submitButton.disabled = false;
+            submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer';
+        }
+    };
+    
+    submitButton.addEventListener('click', handleFormSubmit)
 }
 
 // Initialiser tout après le chargement complet de la page
