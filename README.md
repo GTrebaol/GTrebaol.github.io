@@ -4,16 +4,23 @@ Ce repository contient une collection de sites web développés pour différents
 
 ## Projets
 
-### Fromagerie Artisanale
+### Fromagerie Artisanale (From Bohars)
 - Site web pour une fromagerie artisanale
 - Présentation des produits, services et événements
 - Design responsive et moderne
-- [Voir le projet](./from_bohars)
+- [Voir le projet](https://frombohars.fr/)
 
-### Cléopattes (En développement)
-- Site web pour un nouveau projet
+### Cléopattes
+- Site vitrine pour services aux animaux (promenade, visites, cani-footing)
+- Présentation des services, tarifs et galerie photos
+- Design élégant et optimisé pour mobile
+- [Voir le projet](https://cleopattes.fr/)
+
+### Les Diablotins (En développement)
+- Site vitrine pour un magasin de chaussures pour enfants
+- Présentation des collections, marques et promotions
 - Plus de détails à venir
-- [Voir le projet](./cleopattes)
+- [Voir le projet](./les_diablotins)
 
 ## Structure des Projets
 
