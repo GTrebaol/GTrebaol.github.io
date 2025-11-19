@@ -1,0 +1,54 @@
+# Forcer l'encodage UTF-8 dans l'entête HTTP
+AddDefaultCharset UTF-8
+
+# Définir les types MIME corrects
+<IfModule mod_mime.c>
+    AddType text/css .css
+    AddType application/javascript .js
+    AddType image/svg+xml .svg
+    AddType image/webp .webp
+    AddType font/woff .woff
+    AddType font/woff2 .woff2
+    AddType application/font-woff .woff
+    AddType application/font-woff2 .woff2
+</IfModule>
+
+# Headers pour les fichiers HTML uniquement
+<IfModule mod_headers.c>
+    <FilesMatch "\.(html|htm)$">
+        Header set Content-Type "text/html; charset=UTF-8"
+    </FilesMatch>
+</IfModule>
+
+# Activer la réécriture d'URL
+RewriteEngine On
+
+# Forcer HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [L,R=301]
+
+# Forcer le domaine sans www
+RewriteCond %{HTTP_HOST} ^www\.cleopattes\.fr$ [NC]
+RewriteRule ^(.*)$ https://cleopattes.fr/$1 [L,R=301]
+
+# -----------------------
+# Sécurité HTTP Headers
+# -----------------------
+
+# Empêche l’intégration du site dans une iframe (anti-clickjacking)
+Header always set X-Frame-Options "SAMEORIGIN"
+
+# Désactive la détection de type MIME par les navigateurs
+Header always set X-Content-Type-Options "nosniff"
+
+# Active XSS protection (utile sur certains navigateurs)
+Header always set X-XSS-Protection "1; mode=block"
+
+# Cache-Control de base (peut être adapté selon ton site)
+<FilesMatch "\.(ico|jpg|jpeg|png|gif|css|js|webp|woff|woff2|ttf|svg)$">
+    Header set Cache-Control "max-age=31536000, public"
+</FilesMatch>
+
+# HSTS (forcer le HTTPS au niveau du navigateur, ATTENTION : irréversible tant que le max-age n’expire pas)
+# Active uniquement si ton site fonctionne 100% en HTTPS
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"

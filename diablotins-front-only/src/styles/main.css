@@ -1,70 +1,5 @@
 @import 'variables.css';
-
-/* Reset et styles de base */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  line-height: 1.6;
-  color: var(--text-primary);
-  background-image: url('../../assets/backgrounds/181.jpg');
-  background-repeat: repeat;
-  background-attachment: fixed;
-  position: relative;
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.9);
-  z-index: -1;
-  pointer-events: none;
-}
-
-/* Styles de navigation */
-.navbar {
-  background-color: var(--background-light);
-  box-shadow: var(--shadow-sm);
-  padding: var(--spacing-md);
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  transition: transform var(--transition-normal);
-}
-
-.navbar.scroll-down {
-  transform: translateY(-100%);
-}
-
-.navbar.scroll-up {
-  transform: translateY(0);
-}
-
-.navbar-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 var(--spacing-md);
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: var(--spacing-md);
-  margin-right: var(--spacing-xxxl);
-  margin-left: var(--spacing-lg);
-}
+@import 'header.css';
 
 .nav-links a {
   color: var(--text-primary);
@@ -79,23 +14,31 @@ body::before {
 
 /* Style pour le bouton menu mobile */
 .menu-button {
-  display: none; /* Affiché par media query */
+  display: none;
+  /* Affiché par media query */
   background: none;
   border: none;
   color: var(--text-primary);
-  font-size: 1.5rem; /* Ajuste la taille de base si besoin */
+  font-size: 1.5rem;
+  /* Ajuste la taille de base si besoin */
   cursor: pointer;
-  padding: 0.5rem; /* Pour une zone de clic plus grande */
-  z-index: 1100; /* Au-dessus de la navbar mais sous le menu ouvert si besoin */
-  position: relative; /* Pour le positionnement des barres */
-  width: 40px; /* Largeur fixe pour le bouton */
-  height: 30px; /* Hauteur fixe pour le bouton */
+  padding: 0.5rem;
+  /* Pour une zone de clic plus grande */
+  z-index: 1100;
+  /* Au-dessus de la navbar mais sous le menu ouvert si besoin */
+  position: relative;
+  /* Pour le positionnement des barres */
+  width: 40px;
+  /* Largeur fixe pour le bouton */
+  height: 30px;
+  /* Hauteur fixe pour le bouton */
 }
 
 .menu-button span {
   display: block;
   width: 100%;
-  height: 3px; /* Épaisseur des barres */
+  height: 3px;
+  /* Épaisseur des barres */
   background-color: var(--text-primary);
   border-radius: 3px;
   position: absolute;
@@ -118,30 +61,36 @@ body::before {
 
 /* Style du bouton menu quand il est actif (menu ouvert) -> transforme en croix */
 .menu-button.active span:nth-child(1) {
-  transform: translateY(13.5px) rotate(45deg); /* Ajuste la translation pour centrer la croix */
+  transform: translateY(13.5px) rotate(45deg);
+  /* Ajuste la translation pour centrer la croix */
 }
 
 .menu-button.active span:nth-child(2) {
-  opacity: 0; /* Barre du milieu disparaît */
+  opacity: 0;
+  /* Barre du milieu disparaît */
 }
 
 .menu-button.active span:nth-child(3) {
-  transform: translateY(-13.5px) rotate(-45deg); /* Ajuste la translation */
+  transform: translateY(-13.5px) rotate(-45deg);
+  /* Ajuste la translation */
 }
 
 /* Styles pour la liste de liens quand elle est active (mobile) */
 .nav-links.active {
-    display: flex;
-    flex-direction: column;
-    position: absolute; /* Positionné par rapport à la navbar ou au body */
-    top: 100%; /* Juste en dessous de la navbar */
-    left: 0;
-    right: 0;
-    background: var(--background-light);
-    padding: var(--spacing-md);
-    box-shadow: var(--shadow-md);
-    z-index: 1050; /* Au-dessus de la navbar mais en dessous du bouton si le bouton doit rester visible */
-    border-top: 1px solid var(--background-off-white);
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  /* Positionné par rapport à la navbar ou au body */
+  top: 100%;
+  /* Juste en dessous de la navbar */
+  left: 0;
+  right: 0;
+  background: var(--background-light);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-md);
+  z-index: 1050;
+  /* Au-dessus de la navbar mais en dessous du bouton si le bouton doit rester visible */
+  border-top: 1px solid var(--background-off-white);
 }
 
 /* Styles des sections */
@@ -246,10 +195,13 @@ body::before {
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1);
     box-shadow: var(--shadow-sm);
   }
+
   50% {
     transform: scale(1.05);
     box-shadow: var(--shadow-md);
@@ -262,17 +214,17 @@ body::before {
     max-width: 250px;
     gap: var(--spacing-sm);
   }
-  
+
   .divider-icon {
     width: 50px;
     height: 50px;
   }
-  
+
   .divider-footprint {
     width: 25px;
     height: 25px;
   }
-  
+
   .section-subtitle {
     font-size: 1rem;
     padding: 0 var(--spacing-md);
@@ -298,7 +250,7 @@ body::before {
   gap: 0;
   overflow: hidden;
   border-radius: 0 0 0.5rem 0.5rem;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
 }
 
 .hero-img {
@@ -314,7 +266,7 @@ body::before {
   bottom: 0;
   transform: translate(-50%, 50%);
   background: #fff;
-  box-shadow: 0 8px 32px rgba(40,40,60,0.18), 0 2px 8px rgba(0,0,0,0.10);
+  box-shadow: 0 8px 32px rgba(40, 40, 60, 0.18), 0 2px 8px rgba(0, 0, 0, 0.10);
   border-radius: 0.25rem;
   max-width: 900px;
   width: 90%;
@@ -329,6 +281,7 @@ body::before {
   margin-bottom: 0.7rem;
   font-family: 'Poppins', 'Comic Sans MS', cursive, sans-serif;
 }
+
 .hero-card.hero-overlay-card h2 {
   font-size: 2rem;
   color: var(--primary-color);
@@ -336,6 +289,7 @@ body::before {
   font-family: 'Poppins', 'Comic Sans MS', cursive, sans-serif;
   font-weight: 500;
 }
+
 .hero-card.hero-overlay-card p {
   color: var(--text-secondary);
   font-size: 1.15rem;
@@ -353,7 +307,8 @@ body::before {
   align-items: center;
   justify-content: center;
   padding: var(--spacing-xl) 0;
-  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.3); /* Ombre intérieure */
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.3);
+  /* Ombre intérieure */
 }
 
 .contact-invite-section::before {
@@ -363,11 +318,10 @@ body::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to bottom, 
-    rgba(0, 0, 0, 0.2) 0%,
-    rgba(0, 0, 0, 0.1) 50%,
-    rgba(0, 0, 0, 0.2) 100%
-  );
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.1) 50%,
+      rgba(0, 0, 0, 0.2) 100%);
   z-index: 1;
 }
 
@@ -376,8 +330,8 @@ body::before {
   z-index: 2;
   background: #fff;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2),
-              0 10px 20px rgba(0, 0, 0, 0.1),
-              0 0 0 1px rgba(0, 0, 0, 0.05);
+    0 10px 20px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
   max-width: 900px;
   width: 90%;
   padding: 2.5rem;
@@ -388,7 +342,8 @@ body::before {
 }
 
 
-.hero-card h1 { /* Spécifique au hero card si besoin de le différencier */
+.hero-card h1 {
+  /* Spécifique au hero card si besoin de le différencier */
   font-size: 2.2rem;
   color: var(--primary-color);
   margin-bottom: 1.2rem;
@@ -416,7 +371,7 @@ body::before {
 /* Styles pour la section "contactez-nous" dans parallax */
 .contact-card {
   background: #fff;
-  box-shadow: 0 8px 32px rgba(40,40,60,0.18), 0 2px 8px rgba(0,0,0,0.10);
+  box-shadow: 0 8px 32px rgba(40, 40, 60, 0.18), 0 2px 8px rgba(0, 0, 0, 0.10);
   max-width: 900px;
   width: 90%;
   padding: 2.5rem;
@@ -438,7 +393,7 @@ body::before {
 }
 
 .invite-btn {
-  background: var(--primary-color);  
+  background: var(--primary-color);
   color: var(--text-light);
   border: none;
   border-radius: 2rem;
@@ -446,7 +401,7 @@ body::before {
   font-size: 1.1rem;
   font-weight: 500;
   text-decoration: none;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: background 0.2s;
   white-space: nowrap;
   display: inline-block;
@@ -463,15 +418,15 @@ body::before {
     padding: 1.5rem;
     width: 95%;
   }
-  
+
   .contact-texts h2 {
     font-size: 1.3rem;
   }
-  
+
   .contact-texts p {
     font-size: 0.95rem;
   }
-  
+
   .invite-btn {
     width: 100%;
     text-align: center;
@@ -481,7 +436,7 @@ body::before {
 /* Grille de catégories (et "Pourquoi nous choisir") */
 .categories-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--spacing-lg);
   margin-top: var(--spacing-lg);
 }
@@ -493,7 +448,8 @@ body::before {
   margin-top: var(--spacing-lg);
 }
 
-.category-card, .why-card {
+.category-card,
+.why-card {
   background: var(--background-light);
   border-radius: var(--border-radius-md);
   padding: var(--spacing-lg);
@@ -521,10 +477,12 @@ body::before {
 /* Styles pour les icônes de la section "Pourquoi nous choisir" */
 /* Assurez-vous que ces icônes ont la classe .why-choose-icon dans le HTML */
 .why-choose-icon {
-  width: 64px; /* Taille unifiée */
+  width: 64px;
+  /* Taille unifiée */
   height: 64px;
   margin-bottom: var(--spacing-md);
-  display: block; /* Pour centrage avec margin auto si parent est text-align:center */
+  display: block;
+  /* Pour centrage avec margin auto si parent est text-align:center */
   margin-left: auto;
   margin-right: auto;
 }
@@ -613,6 +571,7 @@ body::before {
   transition: filter 0.2s;
 }
 
+
 .social-links {
   display: flex;
   gap: var(--spacing-md);
@@ -633,16 +592,29 @@ body::before {
   text-align: center;
 }
 
-.mt-1 { margin-top: var(--spacing-sm); }
-.mt-2 { margin-top: var(--spacing-md); }
-.mt-3 { margin-top: var(--spacing-lg); }
-.mt-4 { margin-top: var(--spacing-xl); }
+.mt-1 {
+  margin-top: var(--spacing-sm);
+}
+
+.mt-2 {
+  margin-top: var(--spacing-md);
+}
+
+.mt-3 {
+  margin-top: var(--spacing-lg);
+}
+
+.mt-4 {
+  margin-top: var(--spacing-xl);
+}
 
 /* Media Queries */
 @media (max-width: 900px) {
+
   /* Ajustement pour le bouton d'invitation parallax sur mobile */
   .invite-btn {
-    width: auto; /* Laisser le bouton prendre sa taille naturelle ou 100% si voulu */
+    width: auto;
+    /* Laisser le bouton prendre sa taille naturelle ou 100% si voulu */
     padding: 0.8rem 1.5rem;
     font-size: 1rem;
   }
@@ -654,7 +626,7 @@ body::before {
     margin-left: 0;
     margin-right: 0;
   }
-  
+
   .nav-links.active {
     display: flex;
     flex-direction: column;
@@ -670,29 +642,36 @@ body::before {
   }
 
   .menu-button {
-    display: block; /* Afficher le bouton menu */
+    display: block;
+    /* Afficher le bouton menu */
   }
 
   .categories-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .contact-card .contact-texts h2 {
     font-size: 1.3rem;
   }
-   .contact-card .contact-texts p {
+
+  .contact-card .contact-texts p {
     font-size: 0.95rem;
   }
 
   /* Footer sections en colonne sur mobile */
   .footer-content {
-    grid-template-columns: 1fr; /* Assure une seule colonne */
+    grid-template-columns: 1fr;
+    /* Assure une seule colonne */
   }
+
   .footer-section {
-    text-align: center; /* Centrer le contenu des sections du footer */
+    text-align: center;
+    /* Centrer le contenu des sections du footer */
   }
+
   .social-links {
-    justify-content: center; /* Centrer les icônes sociales */
+    justify-content: center;
+    /* Centrer les icônes sociales */
   }
 }
 
@@ -807,7 +786,7 @@ body::before {
   .contact-content {
     grid-template-columns: 1fr;
   }
-  
+
   .contact-info,
   .contact-form {
     padding: var(--spacing-md);
@@ -880,7 +859,7 @@ body::before {
 }
 
 .invite-btn {
-  background: var(--primary-color);  
+  background: var(--primary-color);
   color: var(--text-light);
   border: none;
   border-radius: 2rem;
@@ -888,7 +867,7 @@ body::before {
   font-size: 1.1rem;
   font-weight: 500;
   text-decoration: none;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: background 0.2s;
   white-space: nowrap;
 }
@@ -905,6 +884,7 @@ body::before {
     gap: 1.5rem;
     padding: 1.5rem 1rem;
   }
+
   .invite-btn {
     width: 100%;
     text-align: center;
@@ -917,7 +897,7 @@ body::before {
 .contact-content,
 .invite-content {
   background: #fff;
-  box-shadow: 0 8px 32px rgba(40,40,60,0.18), 0 2px 8px rgba(0,0,0,0.10);
+  box-shadow: 0 8px 32px rgba(40, 40, 60, 0.18), 0 2px 8px rgba(0, 0, 0, 0.10);
   border-radius: 0;
   max-width: 900px;
   width: 90%;
@@ -952,12 +932,14 @@ body::before {
 }
 
 @media (max-width: 700px) {
+
   .hero-card,
   .contact-content,
   .invite-content {
     padding: 1.2rem 0.7rem 1.2rem 0.7rem;
     font-size: 1rem;
   }
+
   .hero-card h1 {
     font-size: 1.2rem;
   }
@@ -970,15 +952,18 @@ body::before {
 
 .category-page-title {
   text-align: center;
-  font-size: 2.5rem; /* Taille de titre un peu plus grande */
+  font-size: 2.5rem;
+  /* Taille de titre un peu plus grande */
   color: var(--primary-color);
   margin-bottom: var(--spacing-lg);
-  font-family: 'Poppins', 'Comic Sans MS', cursive, sans-serif; /* Style enfantin */
+  font-family: 'Poppins', 'Comic Sans MS', cursive, sans-serif;
+  /* Style enfantin */
 }
 
 .shoe-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid, cartes un peu plus larges */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  /* Responsive grid, cartes un peu plus larges */
   gap: var(--spacing-lg);
 }
 
@@ -990,7 +975,8 @@ body::before {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
   display: flex;
-  flex-direction: column; /* Pour bien aligner l'image et les infos */
+  flex-direction: column;
+  /* Pour bien aligner l'image et les infos */
 }
 
 .shoe-card:hover {
@@ -1000,9 +986,16 @@ body::before {
 
 .shoe-card-image-container {
   width: 100%;
-  padding-top: 80%; /* Aspect Ratio pour les images (ex: 5:4), ajuste selon tes images */
+  padding-top: 100%;
+  /* Aspect Ratio pour les images (ex: 5:4), ajuste selon tes images */
+  aspect-ratio: 358 / 540;
   position: relative;
-  background-color: #e9e9e9; /* Fond pour l'image si elle ne charge pas */
+  background-color: #e9e9e9;
+  /* Fond pour l'image si elle ne charge pas */
+}
+
+#display {
+  padding-top: var(--spacing-md) 0;
 }
 
 .shoe-card img {
@@ -1011,7 +1004,8 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* S'assure que l'image couvre bien sans se déformer */
+  object-fit: cover;
+  /* S'assure que l'image couvre bien sans se déformer */
 }
 
 .shoe-card-info {
@@ -1019,12 +1013,14 @@ body::before {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Aligner en haut pour que le bouton (si présent) soit en bas */
+  justify-content: flex-start;
+  /* Aligner en haut pour que le bouton (si présent) soit en bas */
 }
 
 .shoe-card-brand {
   font-size: 0.85rem;
-  color: var(--accent-color); /* Utilise une couleur d'accentuation pour la marque */
+  color: var(--accent-color);
+  /* Utilise une couleur d'accentuation pour la marque */
   font-weight: 500;
   margin-bottom: var(--spacing-xs);
   text-transform: uppercase;
@@ -1041,16 +1037,20 @@ body::before {
   font-size: 0.9rem;
   color: var(--text-secondary);
   margin-bottom: var(--spacing-md);
-  flex-grow: 1; /* Permet à la description de prendre de l'espace */
-  min-height: 40px; /* Conserve une hauteur minimale */
+  flex-grow: 1;
+  /* Permet à la description de prendre de l'espace */
+  min-height: 40px;
+  /* Conserve une hauteur minimale */
 }
 
 .shoe-card-sizes {
   font-size: 0.85rem;
   color: var(--text-primary);
-  margin-top: auto; /* Pousse cette info vers le bas si la carte s'étire */
+  margin-top: auto;
+  /* Pousse cette info vers le bas si la carte s'étire */
   padding-top: var(--spacing-sm);
-  border-top: 1px solid var(--background-off-white); /* Ligne de séparation */
+  border-top: 1px solid var(--background-off-white);
+  /* Ligne de séparation */
 }
 
 .shoe-card-sizes strong {
@@ -1062,9 +1062,11 @@ body::before {
   .shoe-grid {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
+
   .category-page-title {
     font-size: 2rem;
   }
+
   .shoe-card-name {
     font-size: 1.1rem;
   }
@@ -1072,59 +1074,62 @@ body::before {
 
 /* Grille de marques */
 .brands-grid {
-    background-color: var(--background-off-white);
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--spacing-lg);
-    margin-top: var(--spacing-lg);
-    align-items: center;
-    padding: var(--spacing-lg);
+  background-color: var(--background-off-white);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+  align-items: center;
+  padding: var(--spacing-lg);
 }
 
 .brand-card {
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--spacing-md);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
 }
 
 .brand-card img {
-    max-width: 80%;
-    max-height: 80%;
-    object-fit: contain;
-    transition: filter 0.3s ease;
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+  transition: filter 0.3s ease;
 }
 
 .brand-card:hover img {
-    filter: grayscale(0%);
+  filter: grayscale(0%);
 }
 
 @media (max-width: 768px) {
-    .brands-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--spacing-md);
-        padding: var(--spacing-md);
-    }
-    
-    .brand-card {
-        padding: var(--spacing-sm);
-    }
+  .brands-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+  }
+
+  .brand-card {
+    padding: var(--spacing-sm);
+  }
 }
 
 @media (max-width: 600px) {
   .hero-section {
     padding-bottom: 1.5rem;
   }
+
   .hero-images-container {
     flex-direction: column;
     height: auto;
     max-width: 100vw;
   }
+
   .hero-img {
     width: 100%;
     height: 140px;
   }
+
   .hero-card.hero-overlay-card {
     position: static;
     transform: none;
@@ -1133,7 +1138,7 @@ body::before {
   }
 }
 
-.hero-section + .section {
+.hero-section+.section {
   margin-top: 0;
 }
 
@@ -1192,35 +1197,35 @@ body::before {
 @media (max-width: 768px) {
   .footer-content {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1rem;
   }
-  
+
   .footer-text-sections {
     grid-template-columns: 1fr;
     gap: var(--spacing-md);
   }
-  
+
   .footer-section {
     text-align: center;
     max-width: none;
   }
-  
+
   .categories-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .why-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .brands-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .shoe-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .footer-map-container {
     height: 250px;
   }
@@ -1266,4 +1271,424 @@ body::before {
   opacity: 0.8;
   flex-shrink: 0;
   margin-right: 10px;
-} 
+}
+
+/* Styles interactifs pour les category-cards comme des liens */
+.category-card {
+  cursor: pointer;
+}
+
+.category-card:focus,
+.category-card:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+/* Empêcher la double bordure (active + focus) */
+.category-card.active:focus,
+.category-card.active:focus-visible {
+  outline: none;
+}
+
+/* Mise en avant de la catégorie active */
+.category-card.active {
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 6px 18px rgba(252, 141, 156, 0.25);
+  transform: translateY(-5px) scale(1.01);
+}
+
+/* Revenir à la grille pour les catégories */
+.categories-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: var(--spacing-lg) !important;
+  overflow: visible !important;
+  scroll-snap-type: none !important;
+  padding: 0 !important;
+}
+
+.category-card {
+  scroll-snap-align: none !important;
+  flex: initial !important;
+  width: auto !important;
+}
+
+@media (max-width: 768px) {
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Footer: horaires alignés verticalement (jours à gauche, horaires empilés à droite) */
+.footer-hours-vert {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+}
+
+.footer-hours-vert li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 12px;
+}
+
+.footer-hours-vert .day {
+  color: var(--text-light);
+  opacity: 0.9;
+  white-space: nowrap;
+}
+
+.footer-hours-vert .times {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  justify-self: end;
+  text-align: right;
+}
+
+.footer-hours-vert .times span {
+  color: var(--text-light);
+  font-variant-numeric: tabular-nums;
+}
+
+.footer-hours-vert .times .closed {
+  color: #ffdfe4;
+}
+
+/* Contrainte de taille des cartes chaussures et centrage de la grille */
+.shoe-grid {
+  justify-items: center;
+}
+
+.shoe-card {
+  width: 100%;
+  max-width: 360px;
+}
+
+@media (max-width: 600px) {
+  .shoe-card {
+    max-width: 320px;
+  }
+}
+
+/* Shoe carousel (2 items per page) */
+.shoe-carousel {
+  width: 100%;
+}
+
+.shoe-carousel-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.shoe-carousel-btn {
+  background: var(--background-light);
+  color: var(--text-primary);
+  border: 1px solid var(--background-off-white);
+  border-radius: 999px;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.shoe-carousel-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.shoe-carousel-indicators {
+  display: flex;
+  gap: 6px;
+}
+
+.shoe-carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  grid-template-columns: 1fr;
+}
+
+.shoe-carousel-dot.active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.shoe-grid {
+  grid-template-columns: 1fr;
+}
+
+.footer-map-container {
+  height: 250px;
+}
+
+.footer-section a {
+  color: var(--text-light);
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  display: block;
+  transition: var(--transition);
+}
+
+.footer-section a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.footer-section a[href^="mailto:"],
+.footer-section a[href^="tel:"] {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: inline;
+}
+
+.footer-section a[href^="mailto:"]:hover,
+.footer-section a[href^="tel:"]:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.footer-contact-icon {
+  width: 35px;
+  height: 35px;
+  opacity: 0.8;
+  flex-shrink: 0;
+  margin-right: 10px;
+}
+
+/* Styles interactifs pour les category-cards comme des liens */
+.category-card {
+  cursor: pointer;
+}
+
+.category-card:focus,
+.category-card:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+/* Empêcher la double bordure (active + focus) */
+.category-card.active:focus,
+.category-card.active:focus-visible {
+  outline: none;
+}
+
+/* Mise en avant de la catégorie active */
+.category-card.active {
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 6px 18px rgba(252, 141, 156, 0.25);
+  transform: translateY(-5px) scale(1.01);
+}
+
+/* Revenir à la grille pour les catégories */
+.categories-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: var(--spacing-lg) !important;
+  overflow: visible !important;
+  scroll-snap-type: none !important;
+  padding: 0 !important;
+}
+
+.category-card {
+  scroll-snap-align: none !important;
+  flex: initial !important;
+  width: auto !important;
+}
+
+@media (max-width: 768px) {
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Footer: horaires alignés verticalement (jours à gauche, horaires empilés à droite) */
+.footer-hours-vert {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+}
+
+.footer-hours-vert li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 12px;
+}
+
+.footer-hours-vert .day {
+  color: var(--text-light);
+  opacity: 0.9;
+  white-space: nowrap;
+}
+
+.footer-hours-vert .times {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  justify-self: end;
+  text-align: right;
+}
+
+.footer-hours-vert .times span {
+  color: var(--text-light);
+  font-variant-numeric: tabular-nums;
+}
+
+.footer-hours-vert .times .closed {
+  color: #ffdfe4;
+}
+
+/* Contrainte de taille des cartes chaussures et centrage de la grille */
+.shoe-grid {
+  justify-items: center;
+}
+
+.shoe-card {
+  width: 100%;
+  max-width: 360px;
+}
+
+@media (max-width: 600px) {
+  .shoe-card {
+    max-width: 320px;
+  }
+}
+
+/* Shoe carousel (2 items per page) */
+.shoe-carousel {
+  width: 100%;
+}
+
+.shoe-carousel-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.shoe-carousel-btn {
+  background: var(--background-light);
+  color: var(--text-primary);
+  border: 1px solid var(--background-off-white);
+  border-radius: 999px;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.shoe-carousel-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.shoe-carousel-indicators {
+  display: flex;
+  gap: 6px;
+  padding-top: var(--spacing-sm);
+}
+
+.shoe-carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--background-off-white);
+  background: rgba(0, 0, 0, 0.15);
+  padding: 0;
+}
+
+/* Carousel Animation Styles */
+.shoe-carousel-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.shoe-carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.shoe-carousel-page {
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+  justify-items: center;
+  padding: 4px;
+}
+
+@media (max-width: 600px) {
+  .shoe-carousel-page {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Improve carousel arrows visibility and placement */
+.shoe-carousel {
+  position: relative;
+}
+
+.shoe-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  /* Larger carousel arrows */
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  border-radius: 999px;
+}
+
+.shoe-carousel-btn:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+}
+
+.shoe-carousel-btn.prev {
+  left: 16px;
+}
+
+.shoe-carousel-btn.next {
+  right: 16px;
+}
+
+/* Keep indicators centered above viewport */
+.shoe-carousel-header {
+  position: static;
+  margin-bottom: var(--spacing-sm);
+}
+
+.shoe-carousel-indicators {
+  justify-content: center;
+}

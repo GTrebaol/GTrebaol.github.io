@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boutique de Chaussures pour Enfants</title>
+    <meta name="description"
+        content="Les Diablotins - Magasin de chaussures pour enfants à Brest. Large choix de bottines, baskets et sandales pour premiers pas, juniors et ados. Conseils personnalisés.">
+    <meta property="og:title" content="Les Diablotins - Chaussures Enfants à Brest">
+    <meta property="og:description"
+        content="Magasin de chaussures pour enfants à Brest. Découvrez notre sélection de marques et profitez de nos conseils d'experts pour chausser vos enfants.">
+    <meta property="og:image" content="https://gtrebaol.github.io/diablotins-front-only/assets/images/logo.jpg">
+    <meta property="og:url" content="https://gtrebaol.github.io/diablotins-front-only/">
+    <meta property="og:type" content="website">
     <link rel="stylesheet" href="src/styles/main.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar">
@@ -27,87 +38,85 @@
         </div>
     </nav>
 
-    <section class="hero-section" id="hero">
-      <div class="hero-images-container">
-        <img src="assets/images/shop.png" alt="Devanture du magasin" class="hero-img hero-img-left">
-        <img src="assets/images/vendeuse.jpg" alt="Intérieur du magasin" class="hero-img hero-img-right">
-      </div>
-      <div class="hero-card hero-overlay-card">
-        <h1>Les diablotins</h1>
-        <h2>Magasin de chaussures pour enfants à Brest</h2>
-        <p>Bottines, bottillons, sandales, baskets, chaussons... faites votre choix!</p>
-      </div>
-    </section>
-    <!-- Catégories Section -->
-    <section class="section categories-section" id="categories">
-        <div class="container">
-            <h2 class="text-center">Nos Catégories</h2>
-            <div class="categories-grid">
-                <div class="category-card">
-                    <img src="assets/icons/baby.png" alt="Bébé">
-                    <h3>Premiers pas</h3>
-                    <a href="bebe.html" class="btn btn-primary">Voir</a>
+    <main>
+        <section class="hero-section" id="hero">
+            <div class="hero-images-container">
+                <img src="assets/images/shop.png" alt="Devanture du magasin" class="hero-img hero-img-left">
+                <img src="assets/images/vendeuse.jpg" alt="Intérieur du magasin" class="hero-img hero-img-right">
+            </div>
+            <div class="hero-card hero-overlay-card">
+                <h1>Les diablotins</h1>
+                <h2>Magasin de chaussures pour enfants à Brest</h2>
+                <p>Bottines, bottillons, sandales, baskets, chaussons... faites votre choix!</p>
+            </div>
+        </section>
+        <!-- Catégories Section -->
+        <section class="section categories-section" id="categories">
+            <div class="container">
+                <h2 class="text-center">Nos Catégories</h2>
+                <div class="categories-grid">
+                    <div class="category-card premiers-pas" data-category="premiers-pas" role="button" tabindex="0">
+                        <img src="assets/icons/baby.png" alt="Bébé">
+                        <h3>Premiers pas</h3>
+                    </div>
+                    <div class="category-card junior" data-category="junior" role="button" tabindex="0">
+                        <img src="assets/icons/girl.png" alt="Junior">
+                        <h3>Juniors</h3>
+                    </div>
+                    <div class="category-card ado" data-category="ado" role="button" tabindex="0">
+                        <img src="assets/icons/boy.png" alt="Ados">
+                        <h3>Ados</h3>
+                    </div>
                 </div>
-                <div class="category-card">
-                    <img src="assets/icons/boy.png" alt="Junior">
-                    <h3>Junior</h3>
-                    <a href="junior.html" class="btn btn-primary">Voir</a>
-                </div>
-                <div class="category-card">
-                    <img src="assets/icons/slippers.png" alt="Enfant">
-                    <h3>Chaussons</h3>
-                    <a href="chaussons.html" class="btn btn-primary">Voir</a>
-                </div>
-                <div class="category-card">
-                    <img src="assets/icons/rain-boots.png" alt="Enfant">
-                    <h3>Bottes</h3>
-                    <a href="bottes.html" class="btn btn-primary">Voir</a>
-                </div>
-                <div class="category-card">
-                    <img src="assets/icons/sneakers.png" alt="Enfant">
-                    <h3>Toiles</h3>
-                    <a href="toiles.html" class="btn btn-primary">Voir</a>
+        </section>
+        <section class="section categories-section" id="display">
+            <div class="container">
+                <div class="shoe-grid">
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="contact-invite-section" id="contact-invite">
-        <div class="contact-card">
-            <div class="contact-texts">
-                <h2>N'attendez pas pour venir essayer nos chaussures en magasin !</h2>
-                <p>L'équipe de notre boutique vous apporte une aide et des conseils pour choisir la paire adaptée à la morphologie de votre enfant.</p>
-            </div>
-            <a href="#contact-invite" class="invite-btn"><span class="btn-icon-letter"></span> Contactez-nous !</a>
-        </div>
-    </section>
 
-    <!-- Pourquoi venir chausser votre enfant dans notre boutique ? -->
-    <section class="section" id="why-choose">
-        <div class="container">
-            <h2 class="text-center">Pourquoi venir chausser votre enfant dans notre boutique&nbsp;?</h2>
-            <div class="why-choose-subtitle text-center">
-                <strong>Le choix des chaussures est une étape très importante pour le développement et la croissance de l'enfant.<br>La chaussure doit respecter la morphologie des pieds des enfants.</strong>
+        <section class="contact-invite-section" id="contact-invite">
+            <div class="contact-card">
+                <div class="contact-texts">
+                    <h2>N'attendez pas pour venir essayer nos chaussures en magasin !</h2>
+                    <p>L'équipe de notre boutique vous apporte une aide et des conseils pour choisir la paire adaptée à
+                        la morphologie de votre enfant.</p>
+                </div>
+                <a href="#contact-invite" class="invite-btn"><span class="btn-icon-letter"></span> Contactez-nous !</a>
             </div>
-            <div class="why-grid">
-                <div class="why-card">
-                    <img src="assets/icons/clothes-shop.png" alt="Accueil" class="why-choose-icon">
-                    <h3>L'accueil</h3>
-                    <p>Notre équipe vous réserve un accueil chaleureux et convivial.</p>
+        </section>
+
+        <!-- Pourquoi venir chausser votre enfant dans notre boutique ? -->
+        <section class="section" id="why-choose">
+            <div class="container">
+                <h2 class="text-center">Pourquoi venir chausser votre enfant dans notre boutique&nbsp;?</h2>
+                <div class="why-choose-subtitle text-center">
+                    <strong>Le choix des chaussures est une étape très importante pour le développement et la croissance
+                        de l'enfant.<br>La chaussure doit respecter la morphologie des pieds des enfants.</strong>
                 </div>
-                <div class="why-card">
-                    <img src="assets/icons/shoes.png" alt="Marques" class="why-choose-icon">
-                    <h3>Les marques</h3>
-                    <p>Nous veillons à travailler avec des marques adaptées aux pieds des enfants, qui proposent de belles matières et écoresponsables.</p>
-                </div>
-                <div class="why-card">
-                    <img src="assets/icons/help.png" alt="Conseil" class="why-choose-icon">
-                    <h3>Le conseil</h3>
-                    <p>Profitez des meilleurs conseils pour bien chausser votre enfant.</p>
+                <div class="why-grid">
+                    <div class="why-card">
+                        <img src="assets/icons/clothes-shop.png" alt="Accueil" class="why-choose-icon">
+                        <h3>L'accueil</h3>
+                        <p>Notre équipe vous réserve un accueil chaleureux et convivial.</p>
+                    </div>
+                    <div class="why-card">
+                        <img src="assets/icons/shoes.png" alt="Marques" class="why-choose-icon">
+                        <h3>Les marques</h3>
+                        <p>Nous veillons à travailler avec des marques adaptées aux pieds des enfants, qui proposent de
+                            belles matières et écoresponsables.</p>
+                    </div>
+                    <div class="why-card">
+                        <img src="assets/icons/help.png" alt="Conseil" class="why-choose-icon">
+                        <h3>Le conseil</h3>
+                        <p>Profitez des meilleurs conseils pour bien chausser votre enfant.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
@@ -117,14 +126,36 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Horaires</h3>
-                    <p>Lundi - Samedi: 9h - 19h</p>
-                    <p>Dimanche: Fermé</p>
+                    <ul class="footer-hours-vert">
+                        <li><span class="day">Lundi</span>
+                            <div class="times"><span>15:00–19:00</span></div>
+                        </li>
+                        <li><span class="day">Mardi</span>
+                            <div class="times"><span>10:00–12:00</span><span>15:00–19:00</span></div>
+                        </li>
+                        <li><span class="day">Mercredi</span>
+                            <div class="times"><span>10:00–12:30</span><span>14:00–19:00</span></div>
+                        </li>
+                        <li><span class="day">Jeudi</span>
+                            <div class="times"><span>10:00–12:00</span><span>15:00–19:00</span></div>
+                        </li>
+                        <li><span class="day">Vendredi</span>
+                            <div class="times"><span>10:00–12:00</span><span>14:00–19:00</span></div>
+                        </li>
+                        <li><span class="day">Samedi</span>
+                            <div class="times"><span>10:00–19:00</span></div>
+                        </li>
+                        <li><span class="day">Dimanche</span>
+                            <div class="times"><span class="closed">Fermé</span></div>
+                        </li>
+                    </ul>
                 </div>
                 <div class="footer-section">
                     <h3>Contact</h3>
                     <div class="footer-contact-item">
                         <img src="assets/icons/maps.png" alt="Adresse" class="footer-contact-icon">
-                        <a href="https://maps.app.goo.gl/whZKxeypV4fZpiPv8" target="_blank">50 rue D'Aiguillon, Brest 29200</a>
+                        <a href="https://maps.app.goo.gl/whZKxeypV4fZpiPv8" target="_blank">50 rue D'Aiguillon, Brest
+                            29200</a>
                     </div>
                     <div class="footer-contact-item">
                         <img src="assets/icons/email.png" alt="Email" class="footer-contact-icon">
@@ -149,6 +180,8 @@
             </div>
         </div>
     </footer>
+    <script src="assets/images/chaussures/manifest.js"></script>
     <script src="src/js/navigation.js"></script>
 </body>
-</html> 
+
+</html>

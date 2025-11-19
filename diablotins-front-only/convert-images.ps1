@@ -5,7 +5,7 @@ if (-not (Get-Command magick -ErrorAction SilentlyContinue)) {
 }
 
 # Définir les chemins principaux
-$sourceDir = "assets/images/chaussures"
+$sourceDir = "assets/images/chaussures/junior"
 $targetDir = Join-Path $sourceDir "webp" # Sera assets/images/chaussures/webp
 
 Write-Host "Vérification du script :"
