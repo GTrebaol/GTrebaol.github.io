@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.les-diablotins-29.fr/sitemap.xml

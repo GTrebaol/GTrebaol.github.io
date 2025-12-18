@@ -1,0 +1,87 @@
+{
+  "Brest, Finistère, Bretagne, France": {
+    "lat": 48.3905283,
+    "lon": -4.4860088,
+    "display_name": "Brest, Finistère, Bretagne, France métropolitaine, 29200, France"
+  },
+  "Brest, 29200, Finistère, Bretagne, France": {
+    "lat": 48.3905283,
+    "lon": -4.4860088,
+    "display_name": "Brest, Finistère, Bretagne, France métropolitaine, 29200, France"
+  },
+  "Quimper, 29232, Finistère, Bretagne, France": {
+    "lat": 47.9960325,
+    "lon": -4.1024782,
+    "display_name": "Quimper, Finistère, Bretagne, France métropolitaine, 29000, France"
+  },
+  "Restic, Lambézellec, Finistère, Bretagne, France": {
+    "lat": 48.42746,
+    "lon": -4.493468,
+    "display_name": "Restic, Rue du Restic, Le Restic, Brest, Finistère, Bretagne, France métropolitaine, 29200, France"
+  },
+  "Restic, Lambézellec, 29200, Finistère, Bretagne, France": {
+    "lat": 48.42746,
+    "lon": -4.493468,
+    "display_name": "Restic, Rue du Restic, Le Restic, Brest, Finistère, Bretagne, France métropolitaine, 29200, France"
+  },
+  "Guipavas, 29075, Finistère, Bretagne, France": {
+    "lat": 48.4346366,
+    "lon": -4.400979,
+    "display_name": "Guipavas, Brest, Finistère, Bretagne, France métropolitaine, 29490, France"
+  },
+  "Kereller - Guipavas, 29, Finistère, Bretagne, FRANCE": {
+    "lat": 48.4541046,
+    "lon": -4.4078611,
+    "display_name": "Kereller, Guipavas, Brest, Finistère, Bretagne, France métropolitaine, 29490, France"
+  },
+  "Lambézellec (Brest), 29200, Finistère, Bretagne, France": {
+    "lat": 48.4157509,
+    "lon": -4.4924318,
+    "display_name": "Lambézellec, Brest, Finistère, Bretagne, France métropolitaine, 29200, France"
+  },
+  "Poissy, 78498, Yvelines, Ile-de-France, France": {
+    "lat": 48.9274192,
+    "lon": 2.0426301,
+    "display_name": "Poissy, Saint-Germain-en-Laye, Yvelines, Île-de-France, France métropolitaine, 78300, France"
+  },
+  "Landerneau, 29103, Finistère, Bretagne, France": {
+    "lat": 48.4514803,
+    "lon": -4.2557901,
+    "display_name": "Landerneau, Brest, Finistère, Bretagne, France métropolitaine, 29800, France"
+  },
+  "Lambézellec, Brest, Finistère, Bretagne, France": {
+    "lat": 48.4157509,
+    "lon": -4.4924318,
+    "display_name": "Lambézellec, Brest, Finistère, Bretagne, France métropolitaine, 29200, France"
+  },
+  "Bohars, Finistère, Bretagne, France": {
+    "lat": 48.428823,
+    "lon": -4.5155977,
+    "display_name": "Bohars, Brest, Finistère, Bretagne, France métropolitaine, 29820, France"
+  },
+  "Guipavas, 29490, Finistère, Bretagne, FRANCE": {
+    "lat": 48.4346366,
+    "lon": -4.400979,
+    "display_name": "Guipavas, Brest, Finistère, Bretagne, France métropolitaine, 29490, France"
+  },
+  "Guipavas, 29, Finistère, Bretagne, FRANCE": {
+    "lat": 48.4346366,
+    "lon": -4.400979,
+    "display_name": "Guipavas, Brest, Finistère, Bretagne, France métropolitaine, 29490, France"
+  },
+  "Plouaret": {
+    "lat": 48.6118151,
+    "lon": -3.4731376,
+    "display_name": "Plouaret, Lannion, Côtes-d'Armor, Bretagne, France métropolitaine, 22420, France"
+  },
+  "Lambezellec": {
+    "lat": 48.4157509,
+    "lon": -4.4924318,
+    "display_name": "Lambézellec, Brest, Finistère, Bretagne, France métropolitaine, 29200, France"
+  },
+  "Kerlossouarn, Brest, Finistère, France": {
+    "lat": 48.4447843,
+    "lon": -4.496252,
+    "display_name": "Kerlossouarn, Poulfouric, Brest, Finistère, Bretagne, France métropolitaine, 29200, France"
+  }
+}

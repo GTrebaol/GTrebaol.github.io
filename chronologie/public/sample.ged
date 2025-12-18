@@ -1,0 +1,268 @@
+encoding: utf-8
+gwplus
+
+fam Trebaol Jean-Yves +7/5/1987 #mp Lambézellec,_Brest,_Finistère,_Bretagne,_France Le_Guen Jannick #src https://gw.geneanet.org/gwentreb_(01/12/2025) 17/1/1963 #bp Brest,_Finistère,_Bretagne,_France
+src https://gw.geneanet.org/gwentreb_(01/12/2025)
+cbp Brest
+fevt
+#marr 7/5/1987 #p Lambézellec,_Brest,_Finistère,_Bretagne,_France
+end fevt
+beg
+- f Elen #src https://gw.geneanet.org/gwentreb_(01/12/2025) 28/10/1987 ?
+- h Gwenaël #occu Ingénieur_Informatique #src https://gw.geneanet.org/gwentreb_(01/12/2025) 14/10/1989 #bp Brest,_Finistère,_Bretagne,_France
+- f Krystell #src https://gw.geneanet.org/gwentreb_(01/12/2025) 26/4/1996 ?
+end
+
+rel Trebaol Gwenaël
+beg
+- godp moth: Trébaol Isabelle
+end
+
+pevt Trebaol Elen
+#birt 28/10/1987 #p Brest
+end pevt
+
+pevt Trebaol Gwenaël
+#birt 14/10/1989 #p Brest,_Finistère,_Bretagne,_France
+end pevt
+
+pevt Trebaol Krystell
+#birt 26/4/1996 #p Brest
+end pevt
+
+fam Trebaol Yves #occu Cultivateur #src https://gw.geneanet.org/gwentreb_(01/12/2025) 11/9/1939 #bp Restic,_Lambézellec,_29019,_Finistère,_Bretagne,_France +1/6/1962 Bizien Yvette
+src https://gw.geneanet.org/gwentreb_(01/12/2025)
+fevt
+#marr 1/6/1962
+end fevt
+beg
+- h Jean-Yves #src https://gw.geneanet.org/gwentreb_(01/12/2025) 2/3/1963 #bp Brest,_Finistère,_Bretagne,_France
+- f Isabelle Trébaol #src https://gw.geneanet.org/gwentreb_(01/12/2025) 13/4/1966
+- h Joseph Trébaol #src https://gw.geneanet.org/gwentreb_(01/12/2025) 13/8/1967
+- h Michel Trébaol #occu ACT #src https://gw.geneanet.org/gwentreb_(01/12/2025) 16/1/1969
+- h Jacques Trébaol #image http://gw.geneanet.org/public/img/media/deposits/private/45/31/81819560/a08ac8555f86e9a5575ff19861e3d14383bfca29/medium.jpg?t=1764069247 #occu ACT #src https://gw.geneanet.org/gwentreb_(01/12/2025) 20/8/1975 #bp Brest,_Finistère,_Bretagne,_France 15/5/2000 #dp Brest,_Finistère,_Bretagne,_France
+end
+
+pevt Trebaol Jean-Yves
+#birt 2/3/1963 #p Brest,_Finistère,_Bretagne,_France
+end pevt
+
+pevt Trébaol Isabelle
+#birt 13/4/1966
+end pevt
+
+pevt Trébaol Joseph
+#birt 13/8/1967
+end pevt
+
+pevt Trébaol Michel
+#birt 16/1/1969
+end pevt
+
+pevt Trébaol Jacques
+#birt 20/8/1975 #p Brest,_Finistère,_Bretagne,_France
+#deat 15/5/2000 #p Brest,_Finistère,_Bretagne,_France
+end pevt
+
+fam Le_Gall Yann #src https://gw.geneanet.org/gwentreb_(01/12/2025) 8/3/1987 +31/5/2019 #mp Bohars,_Finistère,_Bretagne,_France Trebaol Elen
+src https://gw.geneanet.org/gwentreb_(01/12/2025)
+fevt
+#marr 31/5/2019 #p Bohars,_Finistère,_Bretagne,_France
+end fevt
+beg
+- h Kaëlig #src https://gw.geneanet.org/gwentreb_(01/12/2025) 15/7/2016
+- f Liz #src https://gw.geneanet.org/gwentreb_(01/12/2025) 30/7/2021 #bp Brest ?
+end
+
+pevt Le_Gall Kaëlig
+#birt 15/7/2016
+end pevt
+
+pevt Le_Gall Liz
+#birt 30/7/2021 #p Brest
+end pevt
+
+pevt Le_Gall Yann
+#birt 8/3/1987
+end pevt
+
+fam Le_Guen Jean-René #occu Agriculteur #src https://gw.geneanet.org/gwentreb_(01/12/2025) 2/3/1960 #bp Brest,_Finistère,_Bretagne,_France ? +7/5/1987 #mp Lambézellec,_Brest,_Finistère,_Bretagne,_France Trébaol Isabelle
+src https://gw.geneanet.org/gwentreb_(01/12/2025)
+fevt
+#marr 7/5/1987 #p Lambézellec,_Brest,_Finistère,_Bretagne,_France
+end fevt
+beg
+- f Solenn #src https://gw.geneanet.org/gwentreb_(01/12/2025) 5/4/1988
+- f Gaël #src https://gw.geneanet.org/gwentreb_(01/12/2025) 20/3/1990 #bp Brest,_29019,_Finistère,_Bretagne,_France
+- h Gurvan #src https://gw.geneanet.org/gwentreb_(01/12/2025) 30/4/1998
+- h Loeïz #src https://gw.geneanet.org/gwentreb_(01/12/2025) 13/7/1999 #bp Quimper,_29232,_Finistère,_Bretagne,_France
+end
+
+pevt Le_Guen Solenn
+#birt 5/4/1988
+end pevt
+
+pevt Le_Guen Gaël
+#birt 20/3/1990 #p Brest,_29019,_Finistère,_Bretagne,_France
+end pevt
+
+pevt Le_Guen Gurvan
+#birt 30/4/1998
+end pevt
+
+pevt Le_Guen Loeïz
+#birt 13/7/1999 #p Quimper,_29232,_Finistère,_Bretagne,_France
+end pevt
+
+fam Trébaol Michel + Le_Bras Carole #src https://gw.geneanet.org/gwentreb_(01/12/2025) 26/5/1969
+src https://gw.geneanet.org/gwentreb_(01/12/2025)
+fevt
+#marr
+end fevt
+beg
+- h Alan #src https://gw.geneanet.org/gwentreb_(01/12/2025) 26/4/1997
+- f Morgan #src https://gw.geneanet.org/gwentreb_(01/12/2025) 2001
+end
+
+pevt Trébaol Alan
+#birt 26/4/1997
+end pevt
+
+pevt Trébaol Morgan
+#birt 2001
+end pevt
+
+pevt Le_Bras Carole
+#birt 26/5/1969
+end pevt
+
+fam Bizien Alexis +19/1/1932 #mp Guipavas,_29490,_Finistère,_Bretagne,_FRANCE Toullec Marie-Perrine
+src https://gw.geneanet.org/gwentreb_(01/12/2025)
+fevt
+#marr 19/1/1932 #p Guipavas,_29490,_Finistère,_Bretagne,_FRANCE
+end fevt
+beg
+- f Yvette #occu Cultivatrice #src https://gw.geneanet.org/gwentreb_(01/12/2025) 18/5/1944 #bp Kerloussouarn,_Lambezellec,_Brest,_Finistère,_France
+end
+
+pevt Bizien Yvette
+#birt 18/5/1944 #p Kerloussouarn,_Lambezellec,_Brest,_Finistère,_France
+end pevt
+
+fam Toullec Yves_Marie #src https://gw.geneanet.org/gwentreb_(01/12/2025) 2/7/1872 #bp Guipavas,_29490,_Finistère,_Bretagne,_FRANCE 1952 #dp Guipavas,_29075,_Finistère,_Bretagne,_France +23/10/1898 #mp Guipavas,_29,_Finistère,_Bretagne,_FRANCE Toullec Marie #occu cultivatrice_fermière_propriétaire #src https://gw.geneanet.org/gwentreb_(01/12/2025) 7/7/1869 #bp Kereller_-_Guipavas,_29,_Finistère,_Bretagne,_FRANCE 8/9/1954 #dp Kerigouarc'h_-_Guipavas,_29,_Finistère,_Bretagne,_FRANCE
+src https://gw.geneanet.org/gwentreb_(01/12/2025)
+fevt
+#marr 23/10/1898 #p Guipavas,_29,_Finistère,_Bretagne,_FRANCE
+end fevt
+beg
+- f Marie-Perrine #src https://gw.geneanet.org/gwentreb_(01/12/2025) 6/2/1906 #bp Guipavas,_29075,_Finistère,_Bretagne,_France 4/9/1992
+end
+
+pevt Toullec Marie-Perrine
+#birt 6/2/1906 #p Guipavas,_29075,_Finistère,_Bretagne,_France
+#deat 4/9/1992
+end pevt
+
+fam Bizien Jean_René_(François) #src https://gw.geneanet.org/gwentreb_(01/12/2025) 29/4/1871 #bp Guilers,_29069,_Finistère,_Bretagne,_France 21/12/1952 #dp Brest,_29019,_Finistère,_Bretagne,_France +16/7/1898 #mp Lambezellec LE_POLÈS Marie_Louise #src https://gw.geneanet.org/gwentreb_(01/12/2025) 3/4/1870 #bp Plouaret,_22207,_Côtes-d'Armor,_Bretagne,_France 24/2/1960 #dp Brest,_29019,_Finistère,_Bretagne,_France
+src https://gw.geneanet.org/gwentreb_(01/12/2025)
+fevt
+#marr 16/7/1898 #p Lambezellec
+end fevt
+beg
+- h Alexis #occu Cultivateur #src https://gw.geneanet.org/gwentreb_(01/12/2025) 10/9/1903 #bp Restic,_Lambézellec,_Finistère,_Bretagne,_France 12/7/1976 #dp Restic,_Lambézellec,_29019,_Finistère,_Bretagne,_France
+end
+
+pevt Bizien Alexis
+#birt 10/9/1903 #p Restic,_Lambézellec,_Finistère,_Bretagne,_France
+#deat 12/7/1976 #p Restic,_Lambézellec,_29019,_Finistère,_Bretagne,_France
+end pevt
+
+fam Trébaol Joseph + Mainguy Sylvie #src https://gw.geneanet.org/gwentreb_(01/12/2025)
+src https://gw.geneanet.org/gwentreb_(01/12/2025)
+fevt
+#marr
+end fevt
+beg
+- h Florent Trebaol #src https://gw.geneanet.org/gwentreb_(01/12/2025) 5/8/1988 #bp Brest,_29019,_Finistère,_Bretagne,_France ?
+- f Katell #src https://gw.geneanet.org/gwentreb_(01/12/2025) 27/4/1991 #bp Poissy,_78498,_Yvelines,_Ile-de-France,_France ?
+end
+
+pevt Trebaol Florent
+#birt 5/8/1988 #p Brest,_29019,_Finistère,_Bretagne,_France
+end pevt
+
+pevt Trébaol Katell
+#birt 27/4/1991 #p Poissy,_78498,_Yvelines,_Ile-de-France,_France
+end pevt
+
+fam Petillon Matthieu #src https://gw.geneanet.org/gwentreb_(01/12/2025) + Trébaol Katell
+src https://gw.geneanet.org/gwentreb_(01/12/2025)
+cbp Quimper,_29232,_Finistère,_Bretagne,_France
+fevt
+#marr
+end fevt
+beg
+- h Eliaz #src https://gw.geneanet.org/gwentreb_(01/12/2025) 13/5/2022 ?
+- h Wilan #src https://gw.geneanet.org/gwentreb_(01/12/2025) 12/5/2024 ?
+end
+
+pevt Petillon Eliaz
+#birt 13/5/2022 #p Quimper,_29232,_Finistère,_Bretagne,_France
+end pevt
+
+pevt Petillon Wilan
+#birt 12/5/2024 #p Quimper,_29232,_Finistère,_Bretagne,_France
+end pevt
+
+fam Trebaol Florent + ? Amélia #src https://gw.geneanet.org/gwentreb_(01/12/2025)
+src https://gw.geneanet.org/gwentreb_(01/12/2025)
+fevt
+#marr
+end fevt
+beg
+- h Ewen #src https://gw.geneanet.org/gwentreb_(01/12/2025) 2/9/2010 #bp Quimper,_29232,_Finistère,_Bretagne,_France ?
+- h Elvan #src https://gw.geneanet.org/gwentreb_(01/12/2025) 2/11/2011 #bp Quimper ?
+end
+
+pevt Trebaol Ewen
+#birt 2/9/2010 #p Quimper,_29232,_Finistère,_Bretagne,_France
+end pevt
+
+pevt Trebaol Elvan
+#birt 2/11/2011 #p Quimper
+end pevt
+
+fam Trebaol Gwenaël + Bouygues Cléo #src https://gw.geneanet.org/gwentreb_(01/12/2025) 14/11/1991 #bp Marmande,_47157,_Lot-et-Garonne,_Aquitaine,_France ?
+src https://gw.geneanet.org/gwentreb_(01/12/2025)
+fevt
+#marr
+end fevt
+
+fam Desrues Malo #src https://gw.geneanet.org/gwentreb_(01/12/2025) + Le_Guen Gaël
+src https://gw.geneanet.org/gwentreb_(01/12/2025)
+fevt
+#marr
+end fevt
+beg
+- h Ifig #src https://gw.geneanet.org/gwentreb_(01/12/2025) 3/2/2022 #bp Landerneau,_29103,_Finistère,_Bretagne,_France ?
+- f Rozenn #src https://gw.geneanet.org/gwentreb_(01/12/2025) 1/1/2025 #bp Brest,_29019,_Finistère,_Bretagne,_France ?
+end
+
+pevt Desrues Ifig
+#birt 3/2/2022 #p Landerneau,_29103,_Finistère,_Bretagne,_France
+end pevt
+
+pevt Desrues Rozenn
+#birt 1/1/2025 #p Brest,_29019,_Finistère,_Bretagne,_France
+end pevt
+
+fam Le_Hir Denis #src https://gw.geneanet.org/gwentreb_(01/12/2025) + Le_Guen Solenn
+src https://gw.geneanet.org/gwentreb_(01/12/2025)
+fevt
+#marr
+end fevt
+beg
+- h Riwall #src https://gw.geneanet.org/gwentreb_(01/12/2025)
+- f Mona #src https://gw.geneanet.org/gwentreb_(01/12/2025)
+- f Naïg #src https://gw.geneanet.org/gwentreb_(01/12/2025)
+end

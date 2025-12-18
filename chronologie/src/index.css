@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for the timeline */
+@layer components {
+  .timeline-line {
+    @apply absolute left-16 top-0 bottom-0 w-0.5 bg-gray-300;
+  }
+  
+  .timeline-dot {
+    @apply absolute left-[3.85rem] w-4 h-4 rounded-full border-2 border-white shadow-sm z-10;
+  }
+}

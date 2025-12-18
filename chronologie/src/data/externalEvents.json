@@ -1,0 +1,181 @@
+[
+    {
+        "date": "1940-06-19",
+        "title": "Entrée des troupes allemandes à Brest",
+        "description": "Les troupes allemandes entrent dans Brest, marquant le début de l'occupation de la ville.",
+        "type": "local",
+        "icon": "map-pin"
+    },
+    {
+        "date": "1940-07-08",
+        "title": "Premiers bombardements alliés sur Brest",
+        "description": "Début des bombardements alliés qui détruiront une grande partie de la ville pendant la guerre.",
+        "type": "local",
+        "icon": "alert-triangle"
+    },
+    {
+        "date": "1945-05-08",
+        "title": "Création du grand Brest",
+        "description": "Agrégation des communes voisines : Lambézellec, Saint-Pierre-Quilbignon et Saint-Marc.",
+        "type": "local",
+        "icon": "map-pin"
+    },
+    {
+        "date": "1954-01-16",
+        "title": "René Coty, Président de la République française",
+        "description": "Né en 1882, décédé en 1962. Membre du Centre National des Indépendants et Paysans, il est élu par le Congrès.",
+        "type": "world",
+        "icon": "flag-fr"
+    },
+    {
+        "date": "1974-01-01",
+        "title": "Création de la Communauté Urbaine de Brest",
+        "description": "Regroupement de 8 communes pour former la CUB.",
+        "type": "local",
+        "icon": "users"
+    },
+    {
+        "date": "1945-05-08",
+        "dateFormat": "Y-m-d",
+        "title": "Capitulation allemande",
+        "description": "La Seconde Guerre mondiale aura fait 472 000 morts côté français, et près de 13 millions dans le monde. Trois mois plus tard, deux bombes atomiques sont larguées sur Tokyo et Nagasaki, entraînant la capitulation du Japon. Les Nations-Unies sont créées le 24 octobre.",
+        "country": "UND",
+        "autotranslate": false
+    },
+    {
+        "date": "1957-03-25",
+        "dateFormat": "Y-m-d",
+        "title": "Naissance de la Communauté Économique Européenne",
+        "description": "Elle concerne six pays : Allemagne de l'Ouest, Belgique, France, Italie, Luxembourg et Pays-Bas (ce chiffre ne cessera d'augmenter).",
+        "country": "UND",
+        "autotranslate": false
+    },
+    {
+        "date": "1973-10-17",
+        "dateFormat": "Y-m-d",
+        "title": "Premier choc pétrolier",
+        "description": "Crise mondiale des prix du pétrole qui a pour effet une forte dévalorisation du dollar et déclenche une crise économique généralisée.",
+        "country": "UND",
+        "autotranslate": false
+    },
+    {
+        "date": "1986-04-26",
+        "dateFormat": "Y-m-d",
+        "title": "Catastrophe nucléaire de Tchernobyl",
+        "description": "Accident nucléaire majeur, il contamine une zone de 4 800 km² devenue invivable et nécessite l'évacuation de 200 000 personnes. L'accident a provoqué entre 43 et 4 000 décès et le nuage radioactif aurait couvert une partie de l'Europe.",
+        "country": "UND",
+        "autotranslate": false
+    },
+    {
+        "date": "1989-11-09",
+        "dateFormat": "Y-m-d",
+        "title": "Chute du mur de Berlin",
+        "description": "Cet événement marque symboliquement la fin de la Guerre froide, aboutissant à la réunification de l'Allemagne l'année suivante et enclenchant la transition vers la démocratie dans les anciens pays du bloc de l'Est.",
+        "country": "UND",
+        "autotranslate": false
+    },
+    {
+        "date": "1944-06-03",
+        "dateFormat": "Y-m-d",
+        "title": "Charles de Gaulle, Président du gouvernement provisoire de la République française",
+        "description": "Né en 1890, décédé en 1970. Il est nommé chef de l'Etat puis Président du Gouvernement provisoire lors de sa création.",
+        "country": "FRA",
+        "autotranslate": false
+    },
+    {
+        "date": "1945-04-29",
+        "dateFormat": "Y-m-d",
+        "title": "Premier vote pour les femmes",
+        "description": "Elles votent lors des élections municipales (le droit de vote a été obtenu grâce à une ordonnance signée le 21 avril 1944 par le général De Gaulle).",
+        "country": "FRA",
+        "autotranslate": false
+    },
+    {
+        "date": "1947-01-16",
+        "dateFormat": "Y-m-d",
+        "title": "Vincent Auriol, Président de la République française (Quatrième République)",
+        "description": "Né en 1884, décédé en 1966. Membre du Parti Socialiste (SFIO), il est élu par le Congrès.",
+        "country": "FRA",
+        "autotranslate": false
+    },
+    {
+        "date": "1954-01-16",
+        "dateFormat": "Y-m-d",
+        "title": "René Coty, Président de la République française",
+        "description": "Né en 1882, décédé en 1962. Membre du Centre National des Indépendants et Paysans, il est élu par le Congrès.",
+        "country": "FRA",
+        "autotranslate": false
+    },
+    {
+        "date": "1959-01-08",
+        "dateFormat": "Y-m-d",
+        "title": "Charles de Gaulle, Président de la République française (Cinquième République)",
+        "description": "Né en 1890, décédé en 1970. Soutenu par l'Union pour la Nouvelle République, il est élu par un collège électoral. Soutenu par l'Union des Démocrates pour la Cinquième République, il est réélu au suffrage universel en 1966.",
+        "country": "FRA",
+        "autotranslate": false
+    },
+    {
+        "date": "1962-07-01",
+        "dateFormat": "Y-m-d",
+        "title": "Indépendance de l'Algérie",
+        "description": "De très nombreux Français, les \"Pieds-Noirs\", quittent l'Algérie pour s'installer en métropole.",
+        "country": "FRA",
+        "autotranslate": false
+    },
+    {
+        "date": "1968-05-10",
+        "dateFormat": "Y-m-d",
+        "title": "Nuit des barricades",
+        "description": "Début des événements dits de \"Mai 68\".",
+        "country": "FRA",
+        "autotranslate": false
+    },
+    {
+        "date": "1969-06-15",
+        "dateFormat": "Y-m-d",
+        "title": "Georges Pompidou, Président de la République française",
+        "description": "Né en 1911, décédé pendant son mandat en 1974. Membre de l'Union des Démocrates pour la République (UDR), il est élu au suffrage universel.",
+        "country": "FRA",
+        "autotranslate": false
+    },
+    {
+        "date": "1974-05-19",
+        "dateFormat": "Y-m-d",
+        "title": "Valéry Giscard-d’Estaing, Président de la République française",
+        "description": "Né en 1926, décédé en 2020. Membre du Parti Républicain puis UDF, il est élu au suffrage universel.",
+        "country": "FRA",
+        "autotranslate": false
+    },
+    {
+        "date": "1974-07-05",
+        "dateFormat": "Y-m-d",
+        "title": "Majorité civile à 18 ans",
+        "description": "Elle était auparavant à 21 ans.",
+        "country": "FRA",
+        "autotranslate": false
+    },
+    {
+        "date": "1975-01-17",
+        "dateFormat": "Y-m-d",
+        "title": "Loi Veil",
+        "description": "Elle légalise l'interruption volontaire de grossesse pratiquée avant la fin de la dixième semaine (IVG).",
+        "country": "FRA",
+        "autotranslate": false
+    },
+    {
+        "date": "2001-09-11",
+        "dateFormat": "Y-m-d",
+        "title": "Attentats suicide à New-York sur les tours du World Trade Center",
+        "description": "Perpétrés par des islamistes radicaux dirigés par Oussama Ben Laden, ils causent la mort de 2 977 personnes et déclenchent la guerre en Irak.",
+        "country": "UND",
+        "autotranslate": false
+    },
+    {
+        "date": "2020-01-30",
+        "dateFormat": "Y-m-d",
+        "title": "État d'urgence mondial décrété par l'OMS suite à la pandémie de Covid-19",
+        "description": "Le virus est apparu le 16 novembre 2019 à Wuhan avant de se propager dans le monde. Des confinements stricts sont imposés jusqu'à mi-2021.",
+        "country": "UND",
+        "autotranslate": false
+    }
+]
