@@ -5,21 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Meta de base -->
-    <title>Cléopattes - Services aux animaux à Brest</title>
-    <meta name="description" content="Services aux animaux à Brest. Promenade de chiens, visites de chats et autres animaux. Approche écologique et locale.">
-    <meta name="keywords" content="promenade de chiens, visites de chats, Brest, service à domicile, cani-footing, petsitting, dog walking, cat sitting, dol-walker">
+    <title>Promenade de chiens et visites à domicile à Brest | Cléopattes</title>
+    <meta name="description" content="Promenade de chiens et visites à domicile à Brest. Petsitting de confiance, local et écologique pour vos animaux.">
     <meta name="author" content="Cléopattes">
     <meta name="robots" content="index, follow">
-    <meta name="language" content="fr">
-    <meta name="revisit-after" content="7 days">
-    <meta name="generator" content="Cléopattes">
     <link rel="canonical" href="https://cleopattes.fr" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://cleopattes.fr/">
-    <meta property="og:title" content="Cléopattes - Services aux animaux à Brest">
-    <meta property="og:description" content="Services aux animaux à Brest. Promenade de chiens, visites de chats et autres animaux. Approche écologique et locale.">
+    <meta property="og:title" content="Promenade de chiens et visites à domicile à Brest | Cléopattes">
+    <meta property="og:description" content="Promenade de chiens et visites à domicile à Brest. Petsitting de confiance, local et écologique.">
     <meta property="og:image" content="https://cleopattes.fr/images/cleopattes-logo.png">
     <meta property="og:site_name" content="Cléopattes">
     <meta property="og:locale" content="fr_FR">
@@ -27,8 +23,8 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://cleopattes.fr/">
-    <meta name="twitter:title" content="Cléopattes - Services aux animaux à Brest">
-    <meta name="twitter:description" content="Services aux animaux à Brest. Promenade de chiens, visites de chats et autres animaux. Approche écologique et locale.">
+    <meta name="twitter:title" content="Promenade de chiens et visites à domicile à Brest | Cléopattes">
+    <meta name="twitter:description" content="Promenade de chiens et visites à domicile à Brest. Petsitting de confiance, local et écologique.">
     <meta name="twitter:image" content="https://cleopattes.fr/images/cleopattes-logo.png">
     
     <!-- Sécurité et autres -->
@@ -81,11 +77,11 @@
     <main id="main-content">
         <section class="hero">
             <div class="hero-content">
-                <img src="images/logopack-cleopattes.png" alt="Cléopattes" class="hero-logo" width="400" height="133">
+                <img src="images/logopack-cleopattes.png" alt="Cléopattes – promenade de chiens et petsitting à Brest" class="hero-logo" width="400" height="133">
                 <div class="hero-text">
-                    <h1>Promenade & visites de vos animaux</h1>
+                    <h1>Promenade de chiens et visites à domicile à Brest</h1>
                     <p>Visites à domicile, balades sur-mesure et cani-footing</p>
-                    <p class="hero-subtitle">Parce que chaque compagnon est unique, offrez lui une garde sur-mesure, avec une professionnelle</p>
+                    <p class="hero-subtitle">Parce que chaque compagnon est unique, offrez-lui une garde sur-mesure, avec une professionnelle</p>
                     <a href="#contact" class="cta-button">Contactez-nous</a>
                 </div>
             </div>
@@ -94,7 +90,7 @@
         <section id="about" class="about section-beige">
             <div class="about-content">
                 <div class="about-image">
-                    <img src="images/cleo_lucky.webp" alt="Cléo et Lucky" class="profile-image" loading="lazy" width="600" height="400">
+                    <img src="images/cleo_lucky.webp" alt="Cléo, pet-sitter à Brest, avec Lucky son chien" class="profile-image" loading="lazy" width="600" height="400">
                 </div>
                 <div class="about-text">
                     <h2>À Propos de Cléo</h2>
@@ -343,10 +339,11 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
+        "@id": "https://cleopattes.fr/#localbusiness",
+        "@type": ["LocalBusiness", "PetCare"],
         "name": "Cléopattes",
-        "image": "images/logopack-cleopattes.png",
-        "description": "Services de garde d'animaux à domicile à Brest. Promenade de chiens, visites de chats et autres animaux. Approche écologique et locale.",
+        "image": "https://cleopattes.fr/images/logopack-cleopattes.png",
+        "description": "Promenade de chiens et visites à domicile à Brest. Approche écologique et locale.",
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Brest",
@@ -358,7 +355,11 @@
             "longitude": "-4.4861"
         },
         "url": "https://cleopattes.fr",
-        "telephone": "06 29 24 51 41",
+        "telephone": "+33629245141",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://cleopattes.fr/"
+        },
         "openingHoursSpecification": [
             {
                 "@type": "OpeningHoursSpecification",
@@ -374,7 +375,10 @@
             }
         ],
         "priceRange": "€€",
-        "areaServed": "Brest et ses alentours",
+        "serviceArea": {
+            "@type": "Place",
+            "name": "Brest et ses alentours"
+        },
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
             "name": "Services de garde d'animaux",
@@ -408,8 +412,14 @@
                     }
                 }
             ]
+        },
+        "sameAs": [
+            "https://www.facebook.com/profile.php?id=61551865856165",
+            "https://www.instagram.com/cleopattes.officiel",
+            "https://www.linkedin.com/in/bouyguescleo/",
+            "https://maps.app.goo.gl/PkhoVK3aD19yLPmB8"
+            ]
         }
-    }
     </script>
 </body>
 </html> 

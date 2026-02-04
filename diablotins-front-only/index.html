@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boutique de Chaussures pour Enfants</title>
+    <title>Les Diablotins – Chaussures pour enfants à Brest | Premiers pas, juniors, ados</title>
     <meta name="description"
-        content="Les Diablotins - Magasin de chaussures pour enfants à Brest. Large choix de bottines, baskets et sandales pour premiers pas, juniors et ados. Conseils personnalisés.">
+        content="Les Diablotins, magasin de chaussures pour enfants à Brest : premiers pas, juniors et ados. Conseils personnalisés en boutique.">
     <meta property="og:title" content="Les Diablotins - Chaussures Enfants à Brest">
     <meta property="og:description"
         content="Magasin de chaussures pour enfants à Brest. Découvrez notre sélection de marques et profitez de nos conseils d'experts pour chausser vos enfants.">
@@ -19,14 +19,34 @@
     <link rel="stylesheet" href="src/styles/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+        
+    <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "ShoeStore",
+        "name": "Les Diablotins",
+        "image": "https://www.les-diablotins-29.fr/assets/images/logo.jpg",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "50 rue D'Aiguillon",
+            "addressLocality": "Brest",
+            "postalCode": "29200",
+            "addressCountry": "FR"
+        },
+        "telephone": "+33298462738",
+        "email": "lesdiablotins29@orange.fr",
+        "url": "https://www.les-diablotins-29.fr/"
+        }
+    </script>
 </head>
+    
 
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation">
         <div class="navbar-container">
             <div class="logo">
-                <img src="assets/images/logo.jpg" alt="Logo" height="50">
+                <img src="assets/images/logo.jpg" alt="Logo Les Diablotins magasin de chaussures enfants à Brest" height="50">
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Accueil</a></li>
@@ -44,30 +64,47 @@
     <main>
         <section class="hero-section" id="hero">
             <div class="hero-images-container">
-                <img src="assets/images/shop-2.png" alt="Devanture du magasin" class="hero-img hero-img-left">
-                <img src="assets/images/vendeuse.jpg" alt="Intérieur du magasin" class="hero-img hero-img-right">
+                <img src="assets/images/choix-chaussures.png" alt="Collection chaussures premiers pas pour bébé" class="hero-img hero-img-left">
+                <img src="assets/images/vendeuse.jpg" alt="Conseils personnalisés en magasin de chaussures enfants à Brest" class="hero-img hero-img-right">
             </div>
             <div class="hero-card hero-overlay-card">
-                <h1>Les diablotins</h1>
-                <h2>Magasin de chaussures pour enfants à Brest</h2>
+                <h1 class="hero-title">
+                    Les diablotins<br>
+                    <span class="hero-subtitle">Magasin de chaussures pour enfants à Brest</span>
+                  </h1>
                 <p>Bottines, bottillons, sandales, baskets, chaussons... faites votre choix!</p>
             </div>
         </section>
+        <section class="section seo-text contact-invite-section">
+            <div class="contact-card">
+                <div class="contact-texts">
+                    <p>
+                        <strong>
+                            Les Diablotins est un magasin indépendant de chaussures pour enfants à Brest,
+                            spécialisé dans les premiers pas, les chaussures juniors et ados.
+                            Nous sélectionnons des marques respectueuses de la morphologie du pied de l'enfant
+                            et proposons un accompagnement personnalisé en boutique.
+                        </strong>
+                    </p>
+                </div>
+            </div>
+        </section>
+          
         <!-- Catégories Section -->
         <section class="section categories-section" id="categories">
             <div class="container">
-                <h2 class="text-center">Nos Catégories</h2>
+                <h2 class="text-center">Nos Catégories de chaussures pour enfants</h2>
                 <div class="categories-grid">
                     <div class="category-card premiers-pas" data-category="premiers-pas" role="button" tabindex="0">
-                        <img src="assets/icons/baby.png" alt="Bébé">
+                        <img src="assets/icons/baby.png" alt="Icone pour chaussures Bébé">
                         <h3>Premiers pas</h3>
                     </div>
                     <div class="category-card junior" data-category="junior" role="button" tabindex="0">
-                        <img src="assets/icons/girl.png" alt="Junior">
+                        <img src="assets/icons/girl.png" alt="Icone pour chaussures Junior">
                         <h3>Juniors</h3>
                     </div>
                     <div class="category-card ado" data-category="ado" role="button" tabindex="0">
-                        <img src="assets/icons/boy.png" alt="Ados">
+                        <img src="assets/icons/boy.png" alt="Icone pour chaussures Ados">
                         <h3>Ados</h3>
                     </div>
                 </div>
@@ -101,18 +138,18 @@
                 </div>
                 <div class="why-grid">
                     <div class="why-card">
-                        <img src="assets/icons/clothes-shop.png" alt="Accueil" class="why-choose-icon">
+                        <img src="assets/icons/clothes-shop.png" alt="Icone Accueil qui représente l'accueil au diablotins" class="why-choose-icon">
                         <h3>L'accueil</h3>
                         <p>Notre équipe vous réserve un accueil chaleureux et convivial.</p>
                     </div>
                     <div class="why-card">
-                        <img src="assets/icons/shoes.png" alt="Marques" class="why-choose-icon">
+                        <img src="assets/icons/shoes.png" alt="Icone Marques qui représente les marques de chaussures au diablotins" class="why-choose-icon">
                         <h3>Les marques</h3>
                         <p>Nous veillons à travailler avec des marques adaptées aux pieds des enfants, qui proposent de
                             belles matières et écoresponsables.</p>
                     </div>
                     <div class="why-card">
-                        <img src="assets/icons/help.png" alt="Conseil" class="why-choose-icon">
+                        <img src="assets/icons/help.png" alt="Icone Conseil qui représente le conseil au diablotins" class="why-choose-icon">
                         <h3>Le conseil</h3>
                         <p>Profitez des meilleurs conseils pour bien chausser votre enfant.</p>
                     </div>
@@ -156,16 +193,16 @@
                 <div class="footer-section">
                     <h3>Contact</h3>
                     <div class="footer-contact-item">
-                        <img src="assets/icons/maps.png" alt="Adresse" class="footer-contact-icon">
+                        <img src="assets/icons/maps.png" alt="Icone google maps" class="footer-contact-icon">
                         <a href="https://maps.app.goo.gl/whZKxeypV4fZpiPv8" target="_blank">50 rue D'Aiguillon, Brest
                             29200</a>
                     </div>
                     <div class="footer-contact-item">
-                        <img src="assets/icons/email.png" alt="Email" class="footer-contact-icon">
+                        <img src="assets/icons/email.png" alt="Icone email diablotins" class="footer-contact-icon">
                         <a href="mailto:lesdiablotins29@orange.fr">lesdiablotins29@orange.fr</a>
                     </div>
                     <div class="footer-contact-item">
-                        <img src="assets/icons/phone-call.png" alt="Téléphone" class="footer-contact-icon">
+                        <img src="assets/icons/phone-call.png" alt="Icone téléphone diablotins" class="footer-contact-icon">
                         <a href="tel:0298462738">0298462738</a>
                     </div>
                 </div>
@@ -173,10 +210,10 @@
                     <h3>Suivez-nous</h3>
                     <div class="social-links">
                         <a href="#" aria-label="Facebook" class="footer-social-icon">
-                            <img src="assets/icons/facebook.png" alt="Facebook" />
+                            <img src="assets/icons/facebook.png" alt="Icone Facebook les diablotins" />
                         </a>
                         <a href="#" aria-label="Instagram" class="footer-social-icon">
-                            <img src="assets/icons/instagram.png" alt="Instagram" />
+                            <img src="assets/icons/instagram.png" alt="Icone Instagram les diablotins" />
                         </a>
                     </div>
                 </div>

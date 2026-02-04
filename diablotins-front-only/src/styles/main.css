@@ -98,6 +98,29 @@
   padding: var(--spacing-xl) 0;
 }
 
+/* Bloc texte SEO sous le hero */
+.seo-text {
+  margin-top:50px;
+  background: var(--background-off-white);
+}
+
+.seo-text .container {
+  max-width: 900px;
+}
+
+.seo-text p {
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.seo-text p strong {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
 /* Séparateur simple */
 .simple-divider {
   height: 1px;
@@ -1691,4 +1714,16 @@
 
 .shoe-carousel-indicators {
   justify-content: center;
+}
+
+.hero-card .hero-title {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  font-family: 'Poppins', 'Comic Sans MS', cursive, sans-serif;
+}
+
+.hero-card .hero-subtitle {
+  display: block;
+  font-size: 2rem;            /* taille proche d'un h2 */
+  font-weight: 500;
 }
