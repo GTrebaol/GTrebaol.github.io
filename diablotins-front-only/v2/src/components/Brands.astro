@@ -1,0 +1,71 @@
+---
+const brands = [
+  { name: 'Bellamy',    logo: '/assets/images/marques/bellamy.png' },
+  { name: 'Babybotte',  logo: '/assets/images/marques/babybotte.png' },
+  { name: 'Norvik',     logo: '/assets/images/marques/norvik.png' },
+  { name: 'Kickers',    logo: '/assets/images/marques/kickers.svg' },
+];
+---
+<section class="section brands">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Nos partenaires</span>
+      <h2 class="section-title">Des marques de confiance</h2>
+      <p class="section-subtitle">
+        Nous travaillons avec des marques reconnues pour la qualité et le respect des jeunes pieds.
+      </p>
+    </div>
+
+    <ul class="brands__list" role="list">
+      {brands.map(b => (
+        <li class="brands__item">
+          <img src={b.logo} alt={b.name} />
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+.brands { background: var(--white); }
+
+.brands__list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.brands__item {
+  padding: 1.5rem 2.5rem;
+  background: var(--cream);
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: grayscale(1);
+  opacity: 0.6;
+  transition: var(--transition);
+}
+.brands__item:hover {
+  filter: grayscale(0);
+  opacity: 1;
+  box-shadow: var(--shadow-sm);
+  border-color: var(--terracotta);
+}
+.brands__item img {
+  height: 48px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+}
+
+@media (max-width: 640px) {
+  .brands__list     { gap: 1rem; }
+  .brands__item     { padding: 1.25rem 2rem; }
+  .brands__item img { height: 36px; }
+}
+</style>

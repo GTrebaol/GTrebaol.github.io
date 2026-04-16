@@ -1,0 +1,96 @@
+---
+const features = [
+  {
+    icon: '/assets/icons/customer-support.png',
+    title: 'Accueil personnalisé',
+    text: 'Nos conseillers prennent le temps d\'écouter et de trouver la paire parfaite pour chaque enfant.',
+  },
+  {
+    icon: '/assets/icons/sneakers.png',
+    title: 'Grandes marques',
+    text: 'Bellamy, Babybotte, Norvik, Naturino… Nous sélectionnons les meilleures marques pour la santé des pieds.',
+  },
+  {
+    icon: '/assets/icons/validation.png',
+    title: 'Conseils d\'experts',
+    text: 'Un bon chaussage est capital pour le développement des pieds. Nous vous guidons à chaque étape.',
+  },
+];
+---
+<section class="section why-us" id="pourquoi-nous">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Notre engagement</span>
+      <h2 class="section-title">Pourquoi choisir Les&nbsp;Diablotins&nbsp;?</h2>
+      <p class="section-subtitle">
+        Un magasin de confiance, recommandé par les familles brestoises depuis plus de 15 ans.
+      </p>
+    </div>
+
+    <div class="why-grid">
+      {features.map(f => (
+        <div class="why-card">
+          <div class="why-card__icon">
+            <img src={f.icon} alt="" width="48" height="48" />
+          </div>
+          <h3>{f.title}</h3>
+          <p>{f.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.why-us { background: var(--cream-dark); }
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.why-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+.why-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.why-card__icon {
+  width: 80px;
+  height: 80px;
+  background: rgba(200, 113, 78, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+.why-card__icon img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.why-card h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+}
+.why-card p {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .why-grid { grid-template-columns: 1fr; }
+}
+</style>

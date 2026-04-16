@@ -1,0 +1,226 @@
+---
+const infos = [
+  {
+    icon: '/assets/icons/maps.png',
+    label: 'Adresse',
+    content: '50 rue D\'Aiguillon<br />29200 Brest',
+    isHtml: true,
+  },
+  {
+    icon: '/assets/icons/phone-call.png',
+    label: 'Téléphone',
+    href: 'tel:+33298462738',
+    content: '02 98 46 27 38',
+  },
+  {
+    icon: '/assets/icons/email.png',
+    label: 'Email',
+    href: 'mailto:lesdiablotins29@orange.fr',
+    content: 'lesdiablotins29@orange.fr',
+  },
+  {
+    icon: '/assets/icons/alarm.png',
+    label: 'Horaires',
+    content: `<table class="hours-table">
+      <tr><td>Lundi</td><td>15h00 – 19h00</td></tr>
+      <tr><td>Mardi</td><td>10h00 – 12h00 / 15h00 – 19h00</td></tr>
+      <tr><td>Mercredi</td><td>10h00 – 12h30 / 14h00 – 19h00</td></tr>
+      <tr><td>Jeudi</td><td>10h00 – 12h00 / 15h00 – 19h00</td></tr>
+      <tr><td>Vendredi</td><td>10h00 – 12h00 / 14h00 – 19h00</td></tr>
+      <tr><td>Samedi</td><td>10h00 – 12h30 / 14h00 – 19h00</td></tr>
+      <tr><td>Dimanche</td><td class="closed">Fermé</td></tr>
+    </table>`,
+    isHtml: true,
+  },
+];
+---
+<section class="section contact" id="contact">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Contactez-nous</span>
+      <h2 class="section-title">On vous attend à Brest&nbsp;!</h2>
+      <p class="section-subtitle">
+        Une question sur une pointure ou un modèle&nbsp;? Écrivez-nous ou venez directement en magasin.
+      </p>
+    </div>
+
+    <div class="contact__grid">
+
+      <div class="contact__infos">
+        {infos.map(info => (
+          <div class="contact__info-item">
+            <div class="contact__info-icon">
+              <img src={info.icon} alt="" width="26" height="26" />
+            </div>
+            <div>
+              <strong>{info.label}</strong>
+              {info.href
+                ? <a href={info.href}>{info.content}</a>
+                : <p set:html={info.content} />
+              }
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <form
+        class="contact__form"
+        action="https://formspree.io/f/YOUR_FORM_ID"
+        method="POST"
+      >
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Prénom &amp; Nom</label>
+            <input type="text"  id="name"  name="name"  required placeholder="Marie Dupont" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="marie@exemple.fr" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="phone">Téléphone <span class="optional">(optionnel)</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="06 00 00 00 00" />
+        </div>
+        <div class="form-group">
+          <label for="message">Votre message</label>
+          <textarea id="message" name="message" rows="5" required placeholder="Bonjour, je recherche…"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Envoyer le message</button>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<style>
+.contact { background: var(--cream-dark); }
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.contact__infos {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact__info-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.contact__info-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  background: rgba(200, 113, 78, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact__info-icon img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.contact__info-item strong {
+  display: block;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-soft);
+  margin-bottom: 0.3rem;
+}
+.contact__info-item p,
+.contact__info-item a {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+.contact__info-item a {
+  color: var(--terracotta);
+  font-weight: 600;
+  transition: color var(--transition);
+}
+.contact__info-item a:hover { color: var(--terracotta-hover); }
+
+.hours-table {
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  line-height: 1.8;
+}
+.hours-table td:first-child {
+  padding-right: 1rem;
+  color: var(--text-soft);
+  white-space: nowrap;
+}
+.hours-table .closed { color: var(--text-soft); font-style: italic; }
+
+.contact__form {
+  background: var(--white);
+  padding: 2.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.optional {
+  font-weight: 400;
+  color: var(--text-soft);
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font);
+  font-size: 0.95rem;
+  color: var(--text);
+  background: var(--cream);
+  transition: var(--transition);
+  resize: vertical;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--terracotta);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(200, 113, 78, 0.12);
+}
+
+.contact__form .btn { align-self: flex-start; }
+
+@media (max-width: 900px) {
+  .contact__grid { grid-template-columns: 1fr; }
+  .form-row      { grid-template-columns: 1fr; }
+}
+</style>

@@ -1,0 +1,165 @@
+---
+---
+<section class="hero" id="accueil">
+
+  <div class="hero__content">
+    <p class="hero__eyebrow">Brest — spécialiste depuis 15&nbsp;ans</p>
+    <h1 class="hero__title">
+      Des chaussures qui font<br />
+      <em>grandir les sourires</em>
+    </h1>
+    <p class="hero__lead">
+      Du premier pas à l'adolescence, nous sélectionnons des chaussures de qualité
+      et vous accompagnons avec des conseils personnalisés.
+    </p>
+    <div class="hero__actions">
+      <a href="#nos-chaussures" class="btn btn-primary">Voir nos chaussures</a>
+      <a href="#contact" class="hero__link-ghost">Nous contacter →</a>
+    </div>
+  </div>
+
+  <div class="hero__images">
+    <img
+      class="hero__img-main"
+      src="/assets/images/choix-chaussures.png"
+      alt="Large choix de chaussures pour enfants"
+      fetchpriority="high"
+    />
+    <div class="hero__img-accent-wrap">
+      <img
+        class="hero__img-accent"
+        src="/assets/images/vendeuse.jpg"
+        alt="Accueil personnalisé aux Diablotins, Brest"
+        loading="lazy"
+      />
+    </div>
+  </div>
+
+</section>
+
+<style>
+.hero {
+  height: 100svh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+
+/* ── Left panel ── */
+.hero__content {
+  background: #2A1A0E;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8rem 3.5rem 4rem;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.hero__eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--terracotta-light);
+  border: 1px solid rgba(232, 168, 124, 0.4);
+  padding: 0.4rem 1.1rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 1.75rem;
+  width: fit-content;
+}
+
+.hero__title {
+  font-size: clamp(2.2rem, 3.5vw, 3.6rem);
+  font-weight: 900;
+  line-height: 1.12;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+.hero__title em {
+  font-style: normal;
+  color: var(--terracotta-light);
+}
+
+.hero__lead {
+  font-size: 1rem;
+  opacity: 0.78;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  max-width: 380px;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.hero__link-ghost {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.02em;
+  transition: color var(--transition);
+}
+.hero__link-ghost:hover { color: var(--terracotta-light); }
+
+/* ── Right panel ── */
+.hero__images {
+  position: relative;
+  background: var(--cream-dark);
+  overflow: hidden;
+}
+
+.hero__img-main {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.hero__img-accent-wrap {
+  position: absolute;
+  bottom: 2.5rem;
+  left: -3rem;
+  width: 56%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 4px solid #fff;
+}
+.hero__img-accent {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    height: auto;
+    min-height: unset;
+  }
+
+  .hero__content {
+    padding: 8rem 1.5rem 3rem;
+  }
+  .hero__lead { max-width: 100%; }
+
+  .hero__images {
+    height: 320px;
+  }
+  .hero__img-accent-wrap {
+    left: 1rem;
+    bottom: 1rem;
+    width: 42%;
+    border-width: 3px;
+  }
+}
+</style>

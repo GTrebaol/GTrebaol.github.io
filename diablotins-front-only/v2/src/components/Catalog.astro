@@ -1,0 +1,151 @@
+---
+import { categories, shoes } from '../data/shoes';
+---
+<section class="section catalog" id="nos-chaussures">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Notre collection</span>
+      <h2 class="section-title">Des chaussures pour chaque âge</h2>
+      <p class="section-subtitle">
+        Du 17 au 42, chaque paire est sélectionnée pour son confort, sa qualité et son style.
+      </p>
+    </div>
+
+    <div class="catalog__tabs" role="tablist" aria-label="Catégories de chaussures">
+      {categories.map((cat, i) => (
+        <button
+          class:list={['catalog__tab', { active: i === 0 }]}
+          role="tab"
+          data-category={cat.id}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          tabindex={i === 0 ? 0 : -1}
+        >
+          <img src={`/assets/icons/${cat.icon}`} alt="" width="36" height="36" />
+          <div>
+            <div class="catalog__tab-name">{cat.label}</div>
+            <div class="catalog__tab-age">{cat.ageRange}</div>
+          </div>
+        </button>
+      ))}
+    </div>
+
+    <div class="catalog__grid" id="catalog-grid" aria-live="polite" aria-label="Produits"></div>
+  </div>
+</section>
+
+<style>
+.catalog { background: var(--cream); }
+
+.catalog__tabs {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.catalog__tab {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: var(--radius-pill);
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  cursor: pointer;
+  font-family: var(--font);
+  color: var(--text-soft);
+  transition: var(--transition);
+}
+.catalog__tab:hover {
+  border-color: var(--terracotta);
+  color: var(--terracotta);
+}
+.catalog__tab.active {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+  color: #fff;
+  box-shadow: var(--shadow-md);
+}
+.catalog__tab img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+.catalog__tab-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  text-align: left;
+}
+.catalog__tab-age {
+  font-size: 0.76rem;
+  opacity: 0.8;
+  margin-top: 0.1rem;
+  text-align: left;
+}
+
+.catalog__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+:global(.product-card) {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+:global(.product-card:hover) {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+:global(.product-card img) {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+@media (max-width: 640px) {
+  .catalog__tabs   { flex-direction: column; align-items: center; }
+  .catalog__grid   { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+}
+</style>
+
+<script define:vars={{ shoesData: shoes, categoriesData: categories }}>
+  function renderProducts(category) {
+    const grid = document.getElementById('catalog-grid');
+    const images = shoesData[category] || [];
+    grid.innerHTML = images
+      .map(
+        img => `<article class="product-card">
+          <img src="/assets/images/chaussures/${category}/${img}"
+               alt="Chaussure ${category}" loading="lazy" width="400" height="300" />
+        </article>`
+      )
+      .join('');
+  }
+
+  const tabs = document.querySelectorAll('.catalog__tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+        t.setAttribute('tabindex', '-1');
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      tab.setAttribute('tabindex', '0');
+      renderProducts(tab.dataset.category);
+    });
+    tab.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tab.click(); }
+    });
+  });
+
+  const first = categoriesData[0]?.id;
+  if (first) renderProducts(first);
+</script>

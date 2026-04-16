@@ -1,0 +1,137 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="container footer__inner">
+
+    <div class="footer__brand">
+      <div class="footer__logo-wrap">
+        <img src="/assets/images/logo.jpg" alt="Les Diablotins" height="52" />
+      </div>
+      <p>Votre spécialiste en chaussures enfants à Brest depuis plus de 15 ans.</p>
+      <div class="footer__social">
+        <a href="https://www.facebook.com/lesdiablotins29" aria-label="Facebook" class="footer__social-btn" target="_blank" rel="noopener noreferrer">
+          <img src="/assets/icons/facebook.png" alt="Facebook" width="20" height="20" />
+        </a>
+        <a href="https://www.instagram.com/lesdiablotins29" aria-label="Instagram" class="footer__social-btn" target="_blank" rel="noopener noreferrer">
+          <img src="/assets/icons/instagram.png" alt="Instagram" width="20" height="20" />
+        </a>
+      </div>
+    </div>
+
+    <div class="footer__col">
+      <h3>Navigation</h3>
+      <nav>
+        <a href="#accueil">Accueil</a>
+        <a href="#nos-chaussures">Nos chaussures</a>
+        <a href="#pourquoi-nous">Notre magasin</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+
+    <div class="footer__col">
+      <h3>Infos pratiques</h3>
+      <address>
+        <p>50 rue D'Aiguillon<br />29200 Brest</p>
+        <p><a href="tel:+33298462738">02 98 46 27 38</a></p>
+        <p>Lun : 15h–19h</p>
+        <p>Mar–Ven : 10h–12h / 14h–19h</p>
+        <p>Sam : 10h–12h30 / 14h–19h</p>
+        <p>Dim : fermé</p>
+      </address>
+    </div>
+
+  </div>
+
+  <div class="footer__bottom">
+    <div class="container">
+      <p>© {year} Les Diablotins. Tous droits réservés.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+.footer { background: var(--text); color: rgba(255, 255, 255, 0.75); }
+
+.footer__inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  padding-block: 4rem;
+}
+
+.footer__logo-wrap {
+  display: inline-block;
+  background: var(--cream);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  margin-bottom: 1rem;
+}
+.footer__logo-wrap img {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+.footer__brand p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  max-width: 240px;
+  margin-bottom: 1.5rem;
+}
+
+.footer__social {
+  display: flex;
+  gap: 0.75rem;
+}
+.footer__social-btn {
+  display: block;
+  opacity: 0.7;
+  transition: opacity var(--transition);
+}
+.footer__social-btn:hover { opacity: 1; }
+.footer__social-btn img   { width: 28px; height: auto; display: block; }
+
+.footer__col h3 {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #fff;
+  margin-bottom: 1.25rem;
+}
+
+.footer__col nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.footer__col nav a {
+  font-size: 0.9rem;
+  transition: color var(--transition);
+}
+.footer__col nav a:hover { color: var(--terracotta-light); }
+
+.footer__col address {
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+.footer__col address a {
+  color: var(--terracotta-light);
+  font-weight: 600;
+}
+
+.footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+  font-size: 0.82rem;
+  opacity: 0.45;
+}
+
+@media (max-width: 768px) {
+  .footer__inner { grid-template-columns: 1fr; gap: 2rem; padding-block: 3rem; }
+}
+</style>
