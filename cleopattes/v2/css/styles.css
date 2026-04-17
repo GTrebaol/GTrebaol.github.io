@@ -1042,7 +1042,7 @@ a.contact__item:hover { color: var(--c-primary-deep); }
     .about__exp-badge { right: 0; }
 
     .services__grid { grid-template-columns: 1fr; }
-
+    .nav__logo img { height: 115px; width: auto; margin-top: 2.5rem }
     .steps {
         grid-template-columns: 1fr;
         gap: 2rem;
