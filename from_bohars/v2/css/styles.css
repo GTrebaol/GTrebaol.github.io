@@ -718,7 +718,10 @@ textarea { resize: vertical; min-height: 180px; }
   --gold-dark:   #603638;
 }
 
-/* Bouton palette */
+/* Barre de thèmes */
+.theme-bar { display: flex; align-items: center; gap: 2px; }
+
+/* Bouton palette principal */
 .theme-toggle {
   display: flex; align-items: center; gap: 5px;
   background: none; border: none; cursor: pointer;
@@ -734,9 +737,95 @@ textarea { resize: vertical; min-height: 180px; }
 .tdot-green { background: #547D65; }
 .tdot-rouge { background: #915255; }
 
-/* Active state */
-:root:not(.theme-rouge) .tdot-green { border-color: var(--gold); transform: scale(1.2); }
-:root.theme-rouge       .tdot-rouge { border-color: var(--gold); transform: scale(1.2); }
+/* Active state dots — inactif si thème saisonnier actif */
+:root:not(.theme-rouge):not(.theme-noel):not(.theme-halloween) .tdot-green { border-color: var(--gold); transform: scale(1.2); }
+:root.theme-rouge:not(.theme-noel):not(.theme-halloween)       .tdot-rouge { border-color: var(--gold); transform: scale(1.2); }
+
+/* Boutons saisonniers */
+.theme-seasonal {
+  display: none;
+  align-items: center; justify-content: center;
+  background: none; border: none; cursor: pointer;
+  width: 32px; height: 32px; border-radius: 50%;
+  color: rgba(255,255,255,.45); font-size: .8rem;
+  transition: color var(--t), background var(--t), transform var(--t);
+}
+.theme-seasonal:hover { background: rgba(255,255,255,.1); color: #fff; }
+.theme-seasonal.active { color: var(--gold); transform: scale(1.15); }
+
+/* ===========================================
+   THEME NOËL
+   =========================================== */
+:root.theme-noel {
+  --green:        #7B1818;   /* rouge Noël profond */
+  --green-dark:   #3D0000;   /* bordeaux très foncé */
+  --green-light:  #A82020;   /* rouge moyen */
+  --gold:         #FFD700;   /* or classique */
+  --gold-light:   #FFE855;   /* or lumineux */
+  --gold-dark:    #B8860B;   /* or foncé */
+  --hero-overlay: #1A0000;
+}
+
+/* ===========================================
+   THEME HALLOWEEN
+   =========================================== */
+:root.theme-halloween {
+  --green:        #7A3B00;   /* orange brûlé */
+  --green-dark:   #150A2A;   /* violet très foncé */
+  --green-light:  #C45E00;   /* orange citrouille */
+  --gold:         #FF8C00;   /* orange vif */
+  --gold-light:   #FFA833;   /* orange clair */
+  --gold-dark:    #CC6000;   /* orange foncé */
+  --hero-overlay: #150A2A;
+}
+
+/* ===========================================
+   EFFETS SAISONNIERS & EASTER EGGS
+   =========================================== */
+
+/* Neige */
+#fb-snow {
+  position: fixed; inset: 0; pointer-events: none; z-index: 9997; overflow: hidden;
+}
+.snowflake {
+  position: absolute; top: -20px; color: rgba(255,255,255,.85);
+  animation: snowfall linear infinite; user-select: none;
+}
+@keyframes snowfall {
+  0%   { transform: translateY(-20px) rotate(0deg); }
+  100% { transform: translateY(105vh) rotate(360deg); }
+}
+
+/* Chauves-souris */
+#fb-bats {
+  position: fixed; inset: 0; pointer-events: none; z-index: 9997; overflow: hidden;
+}
+
+/* Pluie de fromages */
+.cheese-drop {
+  position: fixed; top: -40px; pointer-events: none; z-index: 9998;
+  animation: cheese-fall ease-in forwards; user-select: none;
+}
+@keyframes cheese-fall {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+}
+
+/* Toast */
+.fb-toast {
+  position: fixed; bottom: 2rem; left: 50%;
+  transform: translateX(-50%) translateY(16px);
+  background: var(--green-dark); color: var(--cream);
+  padding: .9rem 1.6rem; border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.35);
+  font-family: var(--ff-body); font-size: .9rem; line-height: 1.5;
+  z-index: 99999; opacity: 0; pointer-events: none;
+  transition: opacity .3s ease, transform .3s ease;
+  text-align: center; max-width: min(90vw, 480px);
+  border-top: 3px solid var(--gold);
+}
+.fb-toast--in { opacity: 1; transform: translateX(-50%) translateY(0); }
 
 /* ===========================================
    PRINT

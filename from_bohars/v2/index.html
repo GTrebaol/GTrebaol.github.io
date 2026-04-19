@@ -47,10 +47,11 @@
   <link rel="stylesheet" href="css/styles.css">
 
   <!-- reCAPTCHA -->
+  <script src="js/themes.config.js"></script>
   <script src="https://www.google.com/recaptcha/enterprise.js?render=6LcqoiMrAAAAAE1dpWIEDheFNVGkugVc4cc6a0Up" async defer></script>
 
   <!-- ical.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ical.js/1.4.0/ical.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/ical.js@1.5.0/build/ical.min.js" defer></script>
 
   <!-- LocalBusiness structured data -->
   <script type="application/ld+json">
@@ -130,10 +131,18 @@
       <a href="#home" class="nav-logo" aria-label="Accueil – From Bohars">
         <img src="images/logos/horizontal-transparent.png" alt="From Bohars" width="200" height="55">
       </a>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Changer de palette" title="Changer de palette">
-        <span class="tdot tdot-green"></span>
-        <span class="tdot tdot-rouge"></span>
-      </button>
+      <div class="theme-bar">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Changer de palette" title="Palette principale">
+          <span class="tdot tdot-green"></span>
+          <span class="tdot tdot-rouge"></span>
+        </button>
+        <button class="theme-seasonal" id="btn-noel" aria-label="Thème Noël" title="Thème Noël">
+          <i class="fas fa-snowflake" aria-hidden="true"></i>
+        </button>
+        <button class="theme-seasonal" id="btn-halloween" aria-label="Thème Halloween" title="Thème Halloween">
+          <i class="fas fa-ghost" aria-hidden="true"></i>
+        </button>
+      </div>
       <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -555,5 +564,6 @@
 
   <script src="js/events.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="js/effects.js" defer></script>
 </body>
 </html>

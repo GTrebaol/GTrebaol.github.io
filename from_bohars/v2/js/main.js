@@ -14,16 +14,46 @@ const IMG_CONFIG = {
 
 // ---- Theme switcher ----
 (function () {
-  const btn = document.getElementById('theme-toggle');
-  if (!btn) return;
   const root = document.documentElement;
+  const ALL_THEMES = ['theme-rouge', 'theme-noel', 'theme-halloween'];
 
-  if (localStorage.getItem('theme') === 'rouge') root.classList.add('theme-rouge');
+  function activate(name) {
+    ALL_THEMES.forEach(t => root.classList.remove(t));
+    if (name) root.classList.add(name);
+    localStorage.setItem('fb-theme', name || '');
+    updateUI();
+  }
 
-  btn.addEventListener('click', () => {
-    const isRouge = root.classList.toggle('theme-rouge');
-    localStorage.setItem('theme', isRouge ? 'rouge' : 'vert');
+  function updateUI() {
+    const active = ALL_THEMES.find(t => root.classList.contains(t)) || '';
+    document.querySelectorAll('.theme-seasonal').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.theme === active);
+    });
+  }
+
+  // Restaurer le thème sauvegardé
+  const saved = localStorage.getItem('fb-theme');
+  if (saved && ALL_THEMES.includes(saved)) activate(saved);
+
+  // Dots : bascule vert ↔ rouge (désactive tout thème saisonnier)
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    activate(root.classList.contains('theme-rouge') ? '' : 'theme-rouge');
   });
+
+  // Boutons saisonniers
+  const cfg = window.FROMBOHARS_THEMES || {};
+  ['noel', 'halloween'].forEach(key => {
+    const btn = document.getElementById(`btn-${key}`);
+    if (!btn) return;
+    btn.dataset.theme = `theme-${key}`;
+    if (cfg[key]) btn.style.display = 'flex';
+    btn.addEventListener('click', () => {
+      const cls = `theme-${key}`;
+      activate(root.classList.contains(cls) ? '' : cls);
+    });
+  });
+
+  updateUI();
 })();
 
 // ---- Navbar (always visible) ----
