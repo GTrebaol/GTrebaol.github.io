@@ -49,10 +49,15 @@ RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
     Header set X-Frame-Options "SAMEORIGIN"
     Header set Referrer-Policy "strict-origin-when-cross-origin"
     
-    # Cache-Control headers
-    #<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|webp|js|css|swf|x-html|css|xml|js|woff|woff2|ttf|svg|eot)(\.gz)?$">
-    #    Header set Cache-Control "max-age=31536000, public"
-    #</FilesMatch>
+    # CORS headers pour permettre les requêtes vers corsproxy.io
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Content-Type, Authorization"
+    
+    # Cache-Control pour les fichiers JS et CSS (permet le rechargement forcé avec Ctrl+F5)
+    <FilesMatch "\.(js|css)$">
+        Header set Cache-Control "public, max-age=2592000, must-revalidate"
+    </FilesMatch>
 </IfModule>
 
 # Enable Keep-Alive

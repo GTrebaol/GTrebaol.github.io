@@ -1,5 +1,21 @@
-// URL du calendrier public avec proxy CORS
-const CALENDAR_URL = 'https://corsproxy.io/?url=' + encodeURIComponent('https://calendar.google.com/calendar/ical/ab162583017a7f2d09eb9e93111b20cb6e946547f94687be7e66993ce2605548%40group.calendar.google.com/public/basic.ics');
+// URL du calendrier Google Calendar public
+const GOOGLE_CALENDAR_URL = 'https://calendar.google.com/calendar/ical/ab162583017a7f2d09eb9e93111b20cb6e946547f94687be7e66993ce2605548%40group.calendar.google.com/public/basic.ics';
+
+// Liste de proxies CORS à essayer en cascade (du plus fiable au moins fiable)
+const CORS_PROXIES = [
+    'https://api.codetabs.com/v1/proxy?quest=',  // Fonctionne ✓
+    'https://corsproxy.io/?url=',
+    'https://thingproxy.freeboard.io/fetch/'
+];
+
+// Fonction pour obtenir l'URL avec un proxy
+function getCalendarUrl(proxyIndex = 0) {
+    if (proxyIndex >= CORS_PROXIES.length) {
+        // Dernière tentative : accès direct (peut échouer à cause de CORS)
+        return GOOGLE_CALENDAR_URL;
+    }
+    return CORS_PROXIES[proxyIndex] + encodeURIComponent(GOOGLE_CALENDAR_URL);
+}
 
 // Fonction pour formater la date
 function formatDate(dateString) {
@@ -33,19 +49,47 @@ function cleanDescription(description) {
     return description.replace(/(\d+)\s*€/g, '').trim();
 }
 
-// Fonction pour récupérer les événements
-async function fetchEvents() {
+// Fonction pour récupérer les événements avec fallback sur plusieurs proxies
+async function fetchEvents(proxyIndex = 0) {
+    const url = getCalendarUrl(proxyIndex);
+    
     try {
-        const response = await fetch(CALENDAR_URL);
+        console.log(`Tentative ${proxyIndex + 1}/${CORS_PROXIES.length + 1} avec: ${url.substring(0, 50)}...`);
+        
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Accept': 'text/calendar, text/plain, */*'
+            }
+        });
         
         if (!response.ok) {
+            // Si erreur 403, 429, etc., essayer le proxy suivant
+            if (response.status === 403 || response.status === 429 || response.status >= 500) {
+                console.warn(`Proxy ${proxyIndex + 1} a échoué avec le statut ${response.status}, essai du suivant...`);
+                if (proxyIndex < CORS_PROXIES.length) {
+                    return await fetchEvents(proxyIndex + 1);
+                }
+            }
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         
         const icsData = await response.text();
+        
+        // Vérifier que c'est bien du contenu ICS (commence par BEGIN:VCALENDAR)
+        if (!icsData.includes('BEGIN:VCALENDAR')) {
+            console.warn('La réponse ne semble pas être un fichier ICS valide, essai du proxy suivant...');
+            if (proxyIndex < CORS_PROXIES.length) {
+                return await fetchEvents(proxyIndex + 1);
+            }
+            throw new Error('Réponse invalide: ce n\'est pas un fichier ICS');
+        }
+        
         const jcalData = ICAL.parse(icsData);
         const comp = new ICAL.Component(jcalData);
         const events = comp.getAllSubcomponents('vevent');
+        
+        console.log(`✓ Calendrier récupéré avec succès via le proxy ${proxyIndex + 1}`);
         
         return events.map(event => {
             const icalEvent = new ICAL.Event(event);
@@ -64,10 +108,28 @@ async function fetchEvents() {
             // Trier par date
             return new Date(a.start.dateTime) - new Date(b.start.dateTime);
         }).slice(0, 10); // Limiter à 10 événements
+        
     } catch (error) {
-        console.error('Erreur lors de la récupération des événements:', error);
-        displayError('Impossible de charger les événements. Veuillez réessayer plus tard.');
-        return [];
+        // Si c'est une erreur réseau ou CORS, essayer le proxy suivant
+        if ((error.name === 'TypeError' || error.message.includes('Failed to fetch') || error.message.includes('CORS')) && proxyIndex < CORS_PROXIES.length) {
+            console.warn(`Erreur réseau/CORS avec le proxy ${proxyIndex + 1}, essai du suivant...`);
+            return await fetchEvents(proxyIndex + 1);
+        }
+        
+        // Si tous les proxies ont échoué
+        if (proxyIndex >= CORS_PROXIES.length) {
+            console.error('Tous les proxies ont échoué:', error);
+            console.error('Détails de l\'erreur:', {
+                message: error.message,
+                stack: error.stack,
+                lastUrl: url
+            });
+            displayError('Impossible de charger les événements. Veuillez réessayer plus tard.');
+            return [];
+        }
+        
+        // Réessayer avec le proxy suivant
+        return await fetchEvents(proxyIndex + 1);
     }
 }
 

@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(magick --version)",
+      "Bash(convert --version)",
+      "Bash(gs --version)",
+      "Bash(pip show *)",
+      "Bash(mkdir -p \"c:/Users/Gwen/Documents/DEV/GTrebaol.github.io/from_bohars/v2/images/logos\")",
+      "Bash(magick \"images/webp/horizontal-baseline-noir.webp\" -alpha set -fuzz 6% -transparent white \"v2/images/logos/horizontal-transparent.png\")",
+      "Bash(magick \"images/webp/logo-original.webp\" -alpha set -fuzz 8% -fill none -draw \"color 0,0 floodfill\" \"v2/images/logos/logo-transparent.png\")",
+      "Bash(magick \"images/webp/symbole-original.webp\" -alpha set -fuzz 8% -fill none -draw \"color 0,0 floodfill\" \"v2/images/logos/symbole-transparent.png\")",
+      "Bash(magick \"images/webp/horizontal-baseline-noir.webp\" -alpha set -fuzz 6% -transparent white -negate \"v2/images/logos/horizontal-blanc.png\")",
+      "Bash(node --check js/main.js)",
+      "Bash(node --check js/events.js)",
+      "Bash(python -c ' *)",
+      "Bash(node -e ' *)"
+    ]
+  }
+}

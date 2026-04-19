@@ -12,6 +12,20 @@ const IMG_CONFIG = {
   cave:    { count: 5,  prefix: 'cave-',    label: 'Cave à Vins' }
 };
 
+// ---- Theme switcher ----
+(function () {
+  const btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  const root = document.documentElement;
+
+  if (localStorage.getItem('theme') === 'rouge') root.classList.add('theme-rouge');
+
+  btn.addEventListener('click', () => {
+    const isRouge = root.classList.toggle('theme-rouge');
+    localStorage.setItem('theme', isRouge ? 'rouge' : 'vert');
+  });
+})();
+
 // ---- Navbar (always visible) ----
 (function () {
   // navbar is permanently styled via CSS — no scroll toggle needed
@@ -116,7 +130,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     const cfg = IMG_CONFIG[cat];
     if (!cfg) return [];
     return Array.from({ length: cfg.count }, (_, i) =>
-      ({ src: `../images/webp/${cat}/${cfg.prefix}${i + 1}.webp`, alt: `${cfg.label} ${i + 1}` })
+      ({ src: `images/webp/${cat}/${cfg.prefix}${i + 1}.webp`, alt: `${cfg.label} ${i + 1}` })
     );
   }
 

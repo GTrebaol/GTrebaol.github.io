@@ -7,24 +7,33 @@
   <title>From Bohars – Fromagerie · Cave · Épicerie fine à Bohars</title>
   <meta name="description" content="From Bohars – Fromagerie artisanale à Bohars (29820) : plus de 100 fromages, cave à vins, épicerie fine. Plateaux personnalisés, buffets, dégustations. Ouvert mardi au samedi.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://frombohars.fr">
+  <link rel="canonical" href="https://frombohars.fr/">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://frombohars.fr/">
+  <meta property="og:locale" content="fr_FR">
   <meta property="og:title" content="From Bohars – Fromagerie · Cave · Épicerie fine">
   <meta property="og:description" content="Fromagerie artisanale à Bohars : fromages, cave à vins, épicerie fine, plateaux et buffets sur mesure.">
-  <meta property="og:image" content="../images/webp/front.webp">
+  <meta property="og:image" content="https://frombohars.fr/images/webp/front.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="From Bohars – Fromagerie · Cave · Épicerie fine">
+  <meta name="twitter:description" content="Fromagerie artisanale à Bohars : fromages, cave à vins, épicerie fine, plateaux et buffets sur mesure.">
+  <meta name="twitter:image" content="https://frombohars.fr/images/webp/front.webp">
 
   <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon/favicon-16x16.png">
-  <link rel="icon" type="image/x-icon" href="../images/favicon/favicon.ico">
-  <link rel="manifest" href="../images/favicon/site.webmanifest">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+  <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico">
+  <link rel="manifest" href="images/favicon/site.webmanifest">
 
   <!-- Preload critical assets -->
-  <link rel="preload" href="../images/webp/front.webp" as="image" type="image/webp">
+  <link rel="preload" href="images/webp/front.webp" as="image" type="image/webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -42,6 +51,74 @@
 
   <!-- ical.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ical.js/1.4.0/ical.min.js" defer></script>
+
+  <!-- LocalBusiness structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "From Bohars",
+    "description": "Fromagerie artisanale à Bohars : plus de 100 fromages au lait cru, cave à vins, bières artisanales et épicerie fine. Plateaux et buffets sur mesure.",
+    "url": "https://frombohars.fr",
+    "telephone": "+33663398569",
+    "email": "from.bohars@gmail.com",
+    "image": "https://frombohars.fr/images/webp/front.webp",
+    "logo": "https://frombohars.fr/images/logos/horizontal-transparent.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "23 Rue Prosper Salaün",
+      "addressLocality": "Bohars",
+      "postalCode": "29820",
+      "addressCountry": "FR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 48.4286848,
+      "longitude": -4.5160066
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "13:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday", "Thursday", "Friday"],
+        "opens": "15:00",
+        "closes": "19:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Wednesday",
+        "opens": "09:00",
+        "closes": "13:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "09:00",
+        "closes": "13:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "15:00",
+        "closes": "19:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/from_bohars/",
+      "https://www.facebook.com/p/From-Bohars-61559845997301/"
+    ],
+    "foundingDate": "2024",
+    "founders": [
+      { "@type": "Person", "name": "Elen Le Gall" },
+      { "@type": "Person", "name": "Yann Le Gall" }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -53,6 +130,10 @@
       <a href="#home" class="nav-logo" aria-label="Accueil – From Bohars">
         <img src="images/logos/horizontal-transparent.png" alt="From Bohars" width="200" height="55">
       </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Changer de palette" title="Changer de palette">
+        <span class="tdot tdot-green"></span>
+        <span class="tdot tdot-rouge"></span>
+      </button>
       <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -73,7 +154,7 @@
     <!-- ======== HERO ======== -->
     <section id="home" class="hero" aria-label="Présentation">
       <div class="hero-bg" aria-hidden="true">
-        <img src="../images/webp/front.webp" alt="" fetchpriority="high">
+        <img src="images/webp/front.webp" alt="" fetchpriority="high">
       </div>
       <div class="hero-overlay" aria-hidden="true"></div>
       <div class="hero-content">
@@ -123,7 +204,7 @@
 
           <div class="histoire-visual reveal-left">
             <div class="histoire-img-frame">
-              <img src="../images/webp/history.webp" alt="Elen et Yann Le Gall, fondateurs de From Bohars" loading="lazy">
+              <img src="images/webp/history.webp" alt="Elen et Yann Le Gall, fondateurs de From Bohars" width="600" height="750" loading="lazy">
             </div>
             <div class="histoire-badge">
               <strong>2024</strong>
@@ -133,10 +214,16 @@
 
           <div class="histoire-text reveal-right">
             <span class="tag">Notre histoire</span>
-            <h2>Une passion pour <em>l'artisanat fromagier</em></h2>
-            <p class="lead" itemprop="description">Nous, c'est Elen et Yann Le Gall, deux Boharsiens avec le cœur bien ancré dans le Finistère ! En 2024, on a décidé de sauter le pas et de vivre notre rêve : se former à l'art de la crèmerie-fromagerie et de la dégustation des vins afin d'ouvrir notre propre fromagerie-crèmerie, cave et épicerie fine à Bohars.</p>
-            <p>Comment définir From Bohars ? Une magnifique sélection de fromages majoritairement au lait cru, des vins de vignerons, des bières finistériennes, des cidres, des softs (jus, kombuchas, limonades...) et des produits d'épicerie fine qui racontent une histoire.</p>
-            <p>Si vous aimez les bons produits et les rencontres avec des producteurs qui ont du goût, on vous attend chez From Bohars.</p>
+            <h2>Nous, c'est <em>Elen et Yann Le Gall</em></h2>
+            <p class="lead" itemprop="description">Nous, c'est Elen et Yann Le Gall, deux Boharsiens avec le coeur bien ancré dans le Finistère ! En 2024, on a décidé de sauter le pas et de vivre notre rêve : se former à l'art de la crèmerie - fromagerie et de la dégustation des vins afin d'ouvrir notre propre fromagerie-crèmerie, cave et épicerie fine à Bohars.</p>
+            <p>Comment définir From Bohars ?</p>
+            <ul>
+              <li>Une magnifique sélection de fromages, majoritairement au lait cru bien sûr.</li>
+              <li>Des vins choisis avec soin, des bières locales (des pépites finistériennes) et des cidres qui font pétiller.</li>
+              <li>Les softs ne sont pas en reste, jus, kombuchas, limonades...</li>
+              <li>Des produits d'épicerie fine qui racontent une histoire.</li>
+            </ul>
+            <p>Alors, si vous aimez les bons produits et les rencontres avec des producteurs qui ont du goût pour vous faire découvrir leur métier, on vous attend chez From Bohars.</p>
 
             <div class="valeurs">
               <div class="valeur-item">
@@ -179,7 +266,7 @@
         <div class="services-grid">
           <div class="scard reveal-up" data-cat="plateau" data-delay="0" role="button" tabindex="0" aria-label="Voir la galerie Plateaux de Fromages">
             <div class="scard-img">
-              <img src="../images/webp/plateau/plateau-1.webp" alt="Plateau de fromages artisanaux" loading="lazy" itemprop="image">
+              <img src="images/webp/plateau/plateau-1.webp" alt="Plateau de fromages artisanaux" loading="lazy" itemprop="image">
             </div>
             <div class="scard-body">
               <h3 itemprop="name">Plateaux de Fromages</h3>
@@ -190,7 +277,7 @@
 
           <div class="scard reveal-up" data-cat="buffet" data-delay="1" role="button" tabindex="0" aria-label="Voir la galerie Buffets Fromagers">
             <div class="scard-img">
-              <img src="../images/webp/buffet/buffet-1.webp" alt="Buffet fromager pour événements" loading="lazy" itemprop="image">
+              <img src="images/webp/buffet/buffet-1.webp" alt="Buffet fromager pour événements" loading="lazy" itemprop="image">
             </div>
             <div class="scard-body">
               <h3 itemprop="name">Buffets Fromagers</h3>
@@ -201,7 +288,7 @@
 
           <div class="scard reveal-up" data-cat="epicerie" data-delay="2" role="button" tabindex="0" aria-label="Voir la galerie Épicerie Fine">
             <div class="scard-img">
-              <img src="../images/webp/epicerie/epicerie-1.webp" alt="Épicerie fine" loading="lazy" itemprop="image">
+              <img src="images/webp/epicerie/epicerie-1.webp" alt="Épicerie fine" loading="lazy" itemprop="image">
             </div>
             <div class="scard-body">
               <h3 itemprop="name">Épicerie Fine</h3>
@@ -212,7 +299,7 @@
 
           <div class="scard reveal-up" data-cat="cave" data-delay="3" role="button" tabindex="0" aria-label="Voir la galerie Cave à Vins">
             <div class="scard-img">
-              <img src="../images/webp/cave/cave-1.webp" alt="Cave à vins" loading="lazy" itemprop="image">
+              <img src="images/webp/cave/cave-1.webp" alt="Cave à vins" loading="lazy" itemprop="image">
             </div>
             <div class="scard-body">
               <h3 itemprop="name">Cave à Vins</h3>
@@ -225,7 +312,7 @@
     </section>
 
     <!-- ======== À PROPOS / STATS ======== -->
-    <section id="apropos" class="section bg-white" itemscope itemtype="http://schema.org/AboutPage">
+    <section id="apropos" class="section bg-white">
       <div class="container">
 
         <div class="section-head reveal-up">
@@ -330,8 +417,10 @@
               <h3>Horaires</h3>
               <ul class="horaires-list">
                 <li class="closed"><span>Lundi</span><span>Fermé</span></li>
-                <li><span>Mardi – Vendredi</span><span>9h–13h · 15h–19h</span></li>
-                <li><span>Mercredi matin</span><span>9h–13h uniquement</span></li>
+                <li><span>Mardi</span><span>9h–13h · 15h–19h</span></li>
+                <li><span>Mercredi</span><span>9h–13h</span></li>
+                <li><span>Jeudi</span><span>9h–13h · 15h–19h</span></li>
+                <li><span>Vendredi</span><span>9h–13h · 15h–19h</span></li>
                 <li><span>Samedi</span><span>9h–13h · 15h–19h</span></li>
                 <li class="closed"><span>Dimanche</span><span>Fermé</span></li>
               </ul>
@@ -375,7 +464,7 @@
 
               <div class="field field-check">
                 <input type="checkbox" id="privacy" name="privacy" required>
-                <label for="privacy">J'accepte la <a href="../politique-confidentialite.html" target="_blank">politique de confidentialité</a> *</label>
+                <label for="privacy">J'accepte la <a href="politique-confidentialite.html" target="_blank">politique de confidentialité</a> *</label>
               </div>
 
               <button type="submit" id="submit-btn" class="btn btn-gold btn-full">
@@ -432,7 +521,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 From Bohars. Tous droits réservés.</p>
+        <p>&copy; 2025–2026 From Bohars. Tous droits réservés.</p>
         <nav aria-label="Liens légaux">
           <ul class="legal-links">
             <li><a href="mentions-legales.html">Mentions légales</a></li>
