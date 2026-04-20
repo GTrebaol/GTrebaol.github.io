@@ -1,0 +1,238 @@
+/* ============================================================
+   CLÉOPATTES v2 — Seasonal Themes
+   ============================================================ */
+
+/* ── Particle container ─────────────────────────────────── */
+#theme-particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 200;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    top: -80px;
+    user-select: none;
+    line-height: 1;
+    will-change: transform, opacity;
+    opacity: 0;
+}
+
+/* ── Animations ─────────────────────────────────────────── */
+
+/* Fall (snow, confetti, petals) */
+@keyframes fall {
+    0%   { transform: translateY(-80px) translateX(0) rotate(0deg); opacity: 0; }
+    8%   { opacity: var(--op, .75); }
+    92%  { opacity: var(--op, .75); }
+    100% { transform: translateY(110vh) translateX(var(--drift, 0px)) rotate(var(--rot, 360deg)); opacity: 0; }
+}
+
+/* Float up (hearts) */
+@keyframes floatup {
+    0%   { transform: translateY(0) translateX(0) scale(.6); opacity: 0; }
+    10%  { opacity: var(--op, .8); transform: translateY(-40px) scale(1); }
+    90%  { opacity: var(--op, .6); }
+    100% { transform: translateY(-110vh) translateX(var(--drift, 0px)) scale(.8); opacity: 0; }
+}
+
+/* Bat fly (horizontal across screen) */
+@keyframes batfly {
+    0%   { transform: translateX(-120px) translateY(0) scaleX(1); opacity: 0; }
+    6%   { opacity: .85; }
+    48%  { transform: translateX(48vw) translateY(var(--drift, -40px)) scaleX(-1); }
+    94%  { opacity: .85; }
+    100% { transform: translateX(calc(100vw + 120px)) translateY(0) scaleX(1); opacity: 0; }
+}
+
+/* Confetti burst (New Year — faster, more spin) */
+@keyframes burst {
+    0%   { transform: translateY(var(--start-y, -40px)) translateX(0) rotate(0deg) scale(0); opacity: 0; }
+    8%   { opacity: 1; transform: translateY(calc(var(--start-y, -40px) - 40px)) translateX(var(--drift, 0px)) rotate(180deg) scale(1); }
+    92%  { opacity: var(--op, .75); }
+    100% { transform: translateY(110vh) translateX(calc(var(--drift, 0px) * 2)) rotate(var(--rot, 720deg)) scale(.7); opacity: 0; }
+}
+
+/* Firework spark (14 Juillet) */
+@keyframes spark {
+    0%   { transform: translate(0,0) scale(1); opacity: 1; }
+    100% { transform: translate(var(--tx, 0px), var(--ty, -60px)) scale(0); opacity: 0; }
+}
+
+/* ── 🎄 Noël ─────────────────────────────────────────────── */
+.theme-noel {
+    --c-primary:      #3a7a52;
+    --c-primary-dark: #2d5e3e;
+    --c-primary-deep: #1b3d26;
+    --c-accent:       #d4af37;
+    --c-accent-dark:  #b8960c;
+    --c-bg-dark:      #1b3d26;
+    --c-bg-beige:     #f5ede0;
+}
+.theme-noel .particle {
+    color: rgba(200, 230, 255, .9);
+    animation: fall linear infinite;
+    text-shadow: 0 0 6px rgba(150,200,255,.6);
+}
+
+/* ── 🎆 Nouvel An ────────────────────────────────────────── */
+.theme-nouvel-an {
+    --c-primary:      #c9a826;
+    --c-primary-dark: #a68b18;
+    --c-primary-deep: #705e00;
+    --c-accent:       #b0b8c8;
+    --c-accent-dark:  #8a94a8;
+    --c-bg-dark:      #12122a;
+    --c-bg-beige:     #f8f4e8;
+}
+.theme-nouvel-an .particle { animation: burst linear forwards; }
+
+/* ── ❤️ Saint-Valentin ───────────────────────────────────── */
+.theme-saint-valentin {
+    --c-primary:      #c62828;
+    --c-primary-dark: #b71c1c;
+    --c-primary-deep: #7f0000;
+    --c-accent:       #e91e63;
+    --c-accent-dark:  #c2185b;
+    --c-bg-dark:      #7f0000;
+    --c-bg-beige:     #fff0f3;
+}
+.theme-saint-valentin .particle {
+    bottom: -80px;
+    top: auto;
+    animation: floatup ease-in infinite;
+}
+
+/* ── 🐣 Pâques ───────────────────────────────────────────── */
+.theme-paques {
+    --c-primary:      #6aab8e;
+    --c-primary-dark: #4d8c72;
+    --c-primary-deep: #2e6b50;
+    --c-accent:       #f7c948;
+    --c-accent-dark:  #d4a817;
+    --c-bg-dark:      #2e6b50;
+    --c-bg-beige:     #f4fde8;
+}
+.theme-paques .particle { animation: fall ease-in-out infinite; }
+
+/* ── 🌊 Fête Nationale ──────────────────────────────────── */
+.theme-fete-nationale {
+    --c-primary:      #002395;
+    --c-primary-dark: #001a70;
+    --c-primary-deep: #00114a;
+    --c-accent:       #ed2939;
+    --c-accent-dark:  #c01020;
+    --c-bg-dark:      #00114a;
+    --c-bg-beige:     #f0f4ff;
+}
+.theme-fete-nationale .particle { animation: spark ease-out forwards; }
+
+/* ── 🎀 Octobre Rose ─────────────────────────────────────── */
+.theme-octobre-rose {
+    --c-primary:      #e91e8c;
+    --c-primary-dark: #c2185b;
+    --c-primary-deep: #880e4f;
+    --c-accent:       #f8bbd0;
+    --c-accent-dark:  #e91e8c;
+    --c-bg-dark:      #880e4f;
+    --c-bg-beige:     #fff0f5;
+}
+.theme-octobre-rose .particle { animation: fall linear infinite; }
+
+/* ── 🎃 Halloween ────────────────────────────────────────── */
+.theme-halloween {
+    --c-primary:      #e07020;
+    --c-primary-dark: #bf5a10;
+    --c-primary-deep: #7a3500;
+    --c-accent:       #9b59b6;
+    --c-accent-dark:  #7d3c98;
+    --c-bg-dark:      #12052a;
+    --c-bg-beige:     #fdf3e7;
+}
+.theme-halloween .particle { animation: batfly ease-in-out infinite; }
+
+/* ── Preview panel (dev/admin) ───────────────────────────── */
+#theme-panel {
+    position: fixed;
+    bottom: 5.5rem;
+    right: 1.5rem;
+    z-index: 750;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: .5rem;
+}
+.theme-panel__toggle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(0,0,0,.55);
+    color: #fff;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    backdrop-filter: blur(6px);
+    transition: transform .2s ease, background .2s ease;
+}
+.theme-panel__toggle:hover { transform: scale(1.1); background: rgba(0,0,0,.75); }
+
+.theme-panel__drawer {
+    background: rgba(20,20,20,.9);
+    backdrop-filter: blur(10px);
+    border-radius: 14px;
+    padding: .75rem;
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+    min-width: 190px;
+    box-shadow: 0 8px 32px rgba(0,0,0,.3);
+}
+.theme-panel__title {
+    font-size: .7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: rgba(255,255,255,.45);
+    margin-bottom: .25rem;
+    padding: 0 .25rem;
+}
+.theme-panel__btn {
+    background: rgba(255,255,255,.08);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: .5rem .75rem;
+    font-size: .88rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background .2s ease;
+    font-family: inherit;
+}
+.theme-panel__btn:hover { background: rgba(255,255,255,.2); }
+.theme-panel__btn--reset {
+    margin-top: .25rem;
+    color: rgba(255,255,255,.5);
+    font-size: .82rem;
+}
+.theme-panel__btn--reset:hover { color: #fff; }
+
+/* ── Theme banner ────────────────────────────────────────── */
+.theme-banner {
+    position: fixed;
+    bottom: 5rem;
+    right: 1.5rem;
+    background: rgba(0,0,0,.55);
+    color: #fff;
+    font-size: .8rem;
+    padding: .35rem .75rem;
+    border-radius: 999px;
+    pointer-events: none;
+    z-index: 700;
+    backdrop-filter: blur(6px);
+    opacity: .7;
+}

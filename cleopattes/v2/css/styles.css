@@ -936,6 +936,53 @@ a.contact__item:hover { color: var(--c-primary-deep); }
 }
 .check-label a { color: var(--c-primary-deep); text-decoration: underline; }
 
+/* Parrainage reveal (formulaire) */
+.form-optional {
+    font-size: .8rem;
+    font-weight: 400;
+    color: var(--c-text-light);
+}
+.parrainage-reveal {
+    overflow: hidden;
+    animation: slideDown .35s ease forwards;
+    margin-bottom: 1rem;
+}
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: none; }
+}
+.parrainage-card {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: linear-gradient(135deg, #fffbf0, #fff5e0);
+    border: 1px solid #f0d890;
+    border-radius: var(--r-md);
+    padding: 1rem 1.25rem;
+    margin-bottom: .75rem;
+}
+.parrainage-card__icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
+.parrainage-card strong { display: block; color: var(--c-text); margin-bottom: .25rem; font-size: .95rem; }
+.parrainage-card p { font-size: .88rem; color: var(--c-text-mid); margin: 0; }
+
+/* Parrainage aside (section how it works) */
+.parrainage-aside {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    background: linear-gradient(135deg, #fffbf0, #fff5e0);
+    border: 1px dashed var(--c-accent);
+    border-radius: var(--r-lg);
+    padding: 1.25rem 1.75rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+.parrainage-aside__icon { font-size: 2rem; flex-shrink: 0; }
+.parrainage-aside__body { flex: 1; min-width: 200px; }
+.parrainage-aside__body strong { display: block; color: var(--c-primary-deep); margin-bottom: .25rem; }
+.parrainage-aside__body p { font-size: .9rem; color: var(--c-text-mid); margin: 0; }
+.parrainage-aside__body em { color: var(--c-accent-dark); font-style: normal; font-weight: 600; }
+
 .form-success {
     text-align: center;
     padding: 2rem;

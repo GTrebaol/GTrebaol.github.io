@@ -171,6 +171,18 @@ function initSlider() {
     startAuto();
 }
 
+/* ── Parrainage reveal ───────────────────────────────────── */
+function initParrainage() {
+    const select = document.getElementById('heard-about');
+    const reveal = document.getElementById('parrainage-reveal');
+    if (!select || !reveal) return;
+
+    select.addEventListener('change', () => {
+        const show = select.value === 'recommandation';
+        reveal.hidden = !show;
+    });
+}
+
 /* ── Contact form ────────────────────────────────────────── */
 const RECAPTCHA_KEY = '6LfelRIrAAAAAICy_1LKDvZwW_c2_Z_QYFKJALR3';
 
@@ -265,6 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCounters();
     initFaq();
     initSlider();
+    initParrainage();
     initForm();
     initCookies();
     initBackTop();
