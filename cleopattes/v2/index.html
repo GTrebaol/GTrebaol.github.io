@@ -16,6 +16,7 @@
     <meta property="og:url" content="https://cleopattes.fr">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Cléopattes">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
@@ -37,24 +38,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
-
-    <!-- reCAPTCHA -->
-    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LfelRIrAAAAAICy_1LKDvZwW_c2_Z_QYFKJALR3" async defer></script>
 
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": ["LocalBusiness", "PetCare"],
+        "@type": "LocalBusiness",
+        "additionalType": "https://schema.org/ProfessionalService",
         "name": "Cléopattes",
         "description": "Pet sitter professionnelle à Brest proposant des promenades de chiens, visites à domicile pour chats et NAC, et cani-footing.",
         "url": "https://cleopattes.fr",
         "telephone": "+33629245141",
         "email": "cleopattes@proton.me",
+        "priceRange": "€€",
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Brest",
@@ -122,7 +122,7 @@
     <!-- Cookie Banner -->
     <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Préférences de cookies" hidden>
         <div class="cookie-banner__content">
-            <p><i class="fas fa-cookie-bite" aria-hidden="true"></i> Ce site utilise des cookies pour améliorer votre expérience. Consultez notre <a href="../cgu.html">politique de confidentialité</a>.</p>
+            <p><i class="fas fa-cookie-bite" aria-hidden="true"></i> Ce site utilise des cookies pour améliorer votre expérience. Consultez notre <a href="cgu.html">politique de confidentialité</a>.</p>
             <div class="cookie-banner__actions">
                 <button id="cookie-accept" class="btn btn--primary btn--sm">Accepter</button>
                 <button id="cookie-decline" class="btn btn--ghost btn--sm">Refuser</button>
@@ -174,7 +174,7 @@
                     <p class="hero__subtitle">Promenades sur-mesure, visites à domicile et cani-footing — un service bienveillant et éco-responsable pour votre compagnon.</p>
                     <div class="hero__actions">
                         <a href="#contact" class="btn btn--primary btn--lg">Prendre contact</a>
-                        <a href="#services" class="btn btn--primary btn--lg">Voir les services</a>
+                        <a href="#services" class="btn btn--outline-light btn--lg">Voir les services</a>
                     </div>
                     <ul class="hero__trust" role="list">
                         <li><i class="fas fa-star" aria-hidden="true"></i> 5/5 sur Google</li>
@@ -417,7 +417,7 @@
                                 <div class="review__avatar" aria-hidden="true">JS</div>
                                 <div>
                                     <strong>Justine Savoye</strong>
-                                    <time>Il y a 5 mois</time>
+                                    <time datetime="2025-11">Il y a 5 mois</time>
                                 </div>
                             </div>
                         </article>
@@ -431,7 +431,7 @@
                                 <div class="review__avatar" aria-hidden="true">CB</div>
                                 <div>
                                     <strong>Charlène Berault</strong>
-                                    <time>Il y a 7 mois</time>
+                                    <time datetime="2025-09">Il y a 7 mois</time>
                                 </div>
                             </div>
                         </article>
@@ -445,7 +445,7 @@
                                 <div class="review__avatar" aria-hidden="true">ET</div>
                                 <div>
                                     <strong>Elen Trebaol</strong>
-                                    <time>Il y a 2 ans</time>
+                                    <time datetime="2024-04">Il y a 2 ans</time>
                                 </div>
                             </div>
                         </article>
@@ -459,7 +459,7 @@
                                 <div class="review__avatar" aria-hidden="true">CR</div>
                                 <div>
                                     <strong>Chloé Rose</strong>
-                                    <time>Il y a 11 mois</time>
+                                    <time datetime="2025-05">Il y a 11 mois</time>
                                 </div>
                             </div>
                         </article>
@@ -473,7 +473,7 @@
                                 <div class="review__avatar" aria-hidden="true">CL</div>
                                 <div>
                                     <strong>Corentin Le Fur</strong>
-                                    <time>Il y a 1 an</time>
+                                    <time datetime="2025-04">Il y a 1 an</time>
                                 </div>
                             </div>
                         </article>
@@ -487,7 +487,7 @@
                                 <div class="review__avatar" aria-hidden="true">AM</div>
                                 <div>
                                     <strong>Anaïs Mével</strong>
-                                    <time>Il y a 1 an</time>
+                                    <time datetime="2025-04">Il y a 1 an</time>
                                 </div>
                             </div>
                         </article>
@@ -681,7 +681,7 @@
                                 <div>
                                     <strong>Programme de parrainage</strong>
                                     <p>Vous bénéficiez de 10% de réduction sur votre première réservation.</p>
-                                    <p>Votre parrain bénéficie d'une balade ou visite gratuite ! </br>Indiquez son nom et prénom ci-dessous.</p>
+                                    <p>Votre parrain bénéficie d'une balade ou visite gratuite !<br>Indiquez son nom et prénom ci-dessous.</p>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -721,9 +721,9 @@
                 <img src="../images/logopack-cleopattes.png" alt="Cléopattes" width="130" height="44" loading="lazy">
                 <p>Pet sitter bienveillante et éco-responsable à Brest.</p>
                 <div class="footer__socials">
-                    <a href="#" aria-label="Facebook" rel="noopener noreferrer" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-                    <a href="#" aria-label="Instagram" rel="noopener noreferrer" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                    <a href="#" aria-label="Google" rel="noopener noreferrer" target="_blank"><i class="fab fa-google" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61551865856165" aria-label="Page Facebook de Cléopattes" rel="noopener noreferrer" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/cleopattes.officiel" aria-label="Compte Instagram de Cléopattes" rel="noopener noreferrer" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://maps.app.goo.gl/PkhoVK3aD19yLPmB8" aria-label="Fiche Google de Cléopattes" rel="noopener noreferrer" target="_blank"><i class="fab fa-google" aria-hidden="true"></i></a>
                 </div>
             </div>
 
@@ -759,7 +759,7 @@
 
         <div class="footer__bottom">
             <div class="container">
-                <p>&copy; 2025 Cléopattes — Tous droits réservés</p>
+                <p>&copy; <span id="footer-year">2026</span> Cléopattes — Tous droits réservés</p>
             </div>
         </div>
     </footer>

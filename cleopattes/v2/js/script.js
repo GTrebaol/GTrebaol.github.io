@@ -1,5 +1,7 @@
 'use strict';
 
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 /* ── Helpers ──────────────────────────────────────────────── */
 const $  = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
@@ -49,6 +51,11 @@ function initScrollReveal() {
     const els = $$('[data-aos]');
     if (!els.length) return;
 
+    if (reducedMotion) {
+        els.forEach(el => el.classList.add('aos-visible'));
+        return;
+    }
+
     const io = new IntersectionObserver(
         entries => entries.forEach(entry => {
             if (!entry.isIntersecting) return;
@@ -67,6 +74,13 @@ function initScrollReveal() {
 function initCounters() {
     const nums = $$('.stat__num[data-count]');
     if (!nums.length) return;
+
+    if (reducedMotion) {
+        nums.forEach(el => {
+            el.textContent = el.dataset.count + (el.dataset.suffix || '');
+        });
+        return;
+    }
 
     const io = new IntersectionObserver(
         entries => entries.forEach(entry => {
@@ -103,7 +117,6 @@ function initFaq() {
         btn.addEventListener('click', () => {
             const isOpen = btn.getAttribute('aria-expanded') === 'true';
 
-            // Close all others
             $$('.faq__q[aria-expanded="true"]').forEach(other => {
                 if (other !== btn) {
                     other.setAttribute('aria-expanded', 'false');
@@ -130,7 +143,6 @@ function initSlider() {
     let current  = 0;
     let autoId   = null;
 
-    /* Build dots */
     slides.forEach((_, i) => {
         const dot = document.createElement('button');
         dot.className = 'slider__dot' + (i === 0 ? ' active' : '');
@@ -156,7 +168,6 @@ function initSlider() {
     btnNext?.addEventListener('click', () => { stopAuto(); goTo(current + 1); startAuto(); });
     btnPrev?.addEventListener('click', () => { stopAuto(); goTo(current - 1); startAuto(); });
 
-    /* Swipe support */
     let startX = 0;
     track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
     track.addEventListener('touchend',   e => {
@@ -164,11 +175,10 @@ function initSlider() {
         if (Math.abs(diff) > 40) { stopAuto(); goTo(current + (diff > 0 ? 1 : -1)); startAuto(); }
     });
 
-    /* Pause on hover */
     track.addEventListener('mouseenter', stopAuto);
     track.addEventListener('mouseleave', startAuto);
 
-    startAuto();
+    if (!reducedMotion) startAuto();
 }
 
 /* ── Parrainage reveal ───────────────────────────────────── */
@@ -184,17 +194,12 @@ function initParrainage() {
 }
 
 /* ── Contact form ────────────────────────────────────────── */
-const RECAPTCHA_KEY = '6LfelRIrAAAAAICy_1LKDvZwW_c2_Z_QYFKJALR3';
-
 function initForm() {
     const form    = $('#contact-form');
     const success = $('#form-success');
     const btn     = $('#submit-btn');
     const btnText = $('#btn-text');
     if (!form || !btn) return;
-
-    /* Empêche la soumission HTML native */
-    form.addEventListener('submit', e => e.preventDefault());
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -205,14 +210,9 @@ function initForm() {
         btnText.textContent = 'Envoi en cours…';
 
         try {
-            const token = await grecaptcha.enterprise.execute(RECAPTCHA_KEY, { action: 'contact' });
-
-            const formData = new FormData(form);
-            formData.append('g-recaptcha-response', token);
-
             const res = await fetch(form.action, {
                 method:  'POST',
-                body:    formData,
+                body:    new FormData(form),
                 headers: { Accept: 'application/json' }
             });
 
@@ -220,12 +220,7 @@ function initForm() {
                 form.hidden    = true;
                 success.hidden = false;
             } else {
-                const json = await res.json().catch(() => ({}));
-                if (json.error === 'reCAPTCHA failed') {
-                    alert('Erreur de vérification reCAPTCHA. Veuillez réessayer.');
-                } else {
-                    throw new Error('server error');
-                }
+                throw new Error('server error');
             }
         } catch (err) {
             console.error(err);
@@ -236,12 +231,12 @@ function initForm() {
         }
     }
 
-    btn.addEventListener('click', handleSubmit);
+    form.addEventListener('submit', handleSubmit);
 }
 
 /* ── Cookie banner ───────────────────────────────────────── */
 function initCookies() {
-    const banner  = $('#cookie-banner');
+    const banner = $('#cookie-banner');
     if (!banner) return;
 
     if (localStorage.getItem('cookie-consent')) return;
@@ -268,6 +263,12 @@ function initBackTop() {
     btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
+/* ── Footer year ─────────────────────────────────────────── */
+function initFooterYear() {
+    const el = document.getElementById('footer-year');
+    if (el) el.textContent = new Date().getFullYear();
+}
+
 /* ── Init ────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
     initHeader();
@@ -281,4 +282,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initForm();
     initCookies();
     initBackTop();
+    initFooterYear();
 });

@@ -188,6 +188,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     opacity: 1;
     transform: none;
 }
+@media (prefers-reduced-motion: reduce) {
+    [data-aos] { opacity: 1; transform: none; transition: none; }
+    .paw { animation: none; }
+}
 
 /* ============================================================
    COOKIE BANNER
