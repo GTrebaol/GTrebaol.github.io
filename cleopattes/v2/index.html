@@ -32,11 +32,6 @@
     <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
     <link rel="manifest" href="../site.webmanifest">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
@@ -112,6 +107,57 @@
             "https://www.facebook.com/profile.php?id=61551865856165",
             "https://www.instagram.com/cleopattes.officiel",
             "https://maps.app.goo.gl/PkhoVK3aD19yLPmB8"
+        ],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "bestRating": "5",
+            "worstRating": "1",
+            "ratingCount": "6"
+        },
+        "review": [
+            {
+                "@type": "Review",
+                "author": {"@type": "Person", "name": "Justine Savoye"},
+                "datePublished": "2025-11",
+                "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+                "reviewBody": "Cléo est extraordinaire. Elle a rendu plusieurs visites à mon chat. C'est un chat stressé et à mon retour, il était détendu. Je recommande Cléo les yeux fermés."
+            },
+            {
+                "@type": "Review",
+                "author": {"@type": "Person", "name": "Charlène Berault"},
+                "datePublished": "2025-09",
+                "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+                "reviewBody": "Nous avons confié notre chat Batman à Cléo et tout s'est extrêmement bien passé ! Nous recommandons vivement ses services !"
+            },
+            {
+                "@type": "Review",
+                "author": {"@type": "Person", "name": "Elen Trebaol"},
+                "datePublished": "2024-04",
+                "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+                "reviewBody": "Cléo est très douce avec les animaux. Elle a suivi des formations dédiées pour prendre soin de nos toutous. Je la recommande à 100% sans hésiter."
+            },
+            {
+                "@type": "Review",
+                "author": {"@type": "Person", "name": "Chloé Rose"},
+                "datePublished": "2025-05",
+                "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+                "reviewBody": "Cléo est une personne très gentille et douce. Elle a promené Shady plusieurs fois, tout s'est bien passé et elle donne des nouvelles régulièrement."
+            },
+            {
+                "@type": "Review",
+                "author": {"@type": "Person", "name": "Corentin Le Fur"},
+                "datePublished": "2025-04",
+                "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+                "reviewBody": "Je recommande Cléo à 100% ! Vous pouvez lui faire confiance les yeux fermés pour s'occuper de votre chien en votre absence."
+            },
+            {
+                "@type": "Review",
+                "author": {"@type": "Person", "name": "Anaïs Mével"},
+                "datePublished": "2025-04",
+                "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+                "reviewBody": "Cléo est très professionnelle. Elle est patiente et douce avec notre chien qui est peureux. Nous recommandons vivement ses services."
+            }
         ]
     }
     </script>
@@ -119,16 +165,6 @@
 <body>
     <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 
-    <!-- Cookie Banner -->
-    <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Préférences de cookies" hidden>
-        <div class="cookie-banner__content">
-            <p><i class="fas fa-cookie-bite" aria-hidden="true"></i> Ce site utilise des cookies pour améliorer votre expérience. Consultez notre <a href="cgu.html">politique de confidentialité</a>.</p>
-            <div class="cookie-banner__actions">
-                <button id="cookie-accept" class="btn btn--primary btn--sm">Accepter</button>
-                <button id="cookie-decline" class="btn btn--ghost btn--sm">Refuser</button>
-            </div>
-        </div>
-    </div>
 
     <!-- Header -->
     <header class="header" id="header">
@@ -550,7 +586,7 @@
                             <i class="fas fa-chevron-down" aria-hidden="true"></i>
                         </button>
                         <div class="faq__a" hidden>
-                            <p>J'interviens à Brest et dans les communes limitrophes (Guilers, Gouesnou, Le Relecq-Kerhuon, Plougastel-Daoulas…). N'hésitez pas à me contacter pour vérifier que je couvre votre secteur.</p>
+                            <p>J'interviens à Brest et ses alentours. N'hésitez pas à me contacter pour vérifier que je couvre votre secteur.</p>
                         </div>
                     </div>
 
@@ -751,6 +787,7 @@
             <div>
                 <h3 class="footer__heading">Légal</h3>
                 <ul role="list">
+                    <li><a href="ml.html">Mentions légales</a></li>
                     <li><a href="cgu.html">CGU</a></li>
                     <li><a href="cgv.html">CGV</a></li>
                 </ul>

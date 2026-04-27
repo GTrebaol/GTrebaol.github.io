@@ -1,4 +1,71 @@
 /* ============================================================
+   CLÉOPATTES v2 — Self-hosted fonts
+   ============================================================ */
+@font-face {
+    font-family: 'Satisfy';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/satisfy-400.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Cormorant Garamond';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/cormorant-garamond-italic-400.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Cormorant Garamond';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/cormorant-garamond-400.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Cormorant Garamond';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('../fonts/cormorant-garamond-500.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Cormorant Garamond';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('../fonts/cormorant-garamond-600.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('../fonts/poppins-300.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/poppins-400.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('../fonts/poppins-500.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('../fonts/poppins-600.ttf') format('truetype');
+}
+
+/* ============================================================
    CLÉOPATTES v2 — Design System
    ============================================================ */
 
@@ -193,35 +260,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     .paw { animation: none; }
 }
 
-/* ============================================================
-   COOKIE BANNER
-   ============================================================ */
-.cookie-banner {
-    position: fixed;
-    bottom: 1.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(600px, calc(100% - 3rem));
-    background: var(--c-text);
-    color: #fff;
-    border-radius: var(--r-lg);
-    padding: 1.25rem 1.5rem;
-    z-index: 9000;
-    box-shadow: var(--shadow-lg);
-}
-.cookie-banner__content {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-}
-.cookie-banner p {
-    flex: 1;
-    font-size: .9rem;
-    min-width: 200px;
-}
-.cookie-banner a { color: var(--c-accent); text-decoration: underline; }
-.cookie-banner__actions { display: flex; gap: .75rem; flex-shrink: 0; }
 
 /* ============================================================
    HEADER / NAV
@@ -1145,8 +1183,6 @@ a.contact__item:hover { color: var(--c-primary-deep); }
     .contact__form-box { padding: 1.5rem; }
 
     .footer__grid { grid-template-columns: 1fr; }
-
-    .cookie-banner__content { flex-direction: column; gap: .75rem; }
 }
 
 @media (max-width: 480px) {

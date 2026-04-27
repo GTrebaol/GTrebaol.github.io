@@ -234,25 +234,6 @@ function initForm() {
     form.addEventListener('submit', handleSubmit);
 }
 
-/* ── Cookie banner ───────────────────────────────────────── */
-function initCookies() {
-    const banner = $('#cookie-banner');
-    if (!banner) return;
-
-    if (localStorage.getItem('cookie-consent')) return;
-
-    banner.hidden = false;
-
-    $('#cookie-accept')?.addEventListener('click', () => {
-        localStorage.setItem('cookie-consent', 'accepted');
-        banner.hidden = true;
-    });
-    $('#cookie-decline')?.addEventListener('click', () => {
-        localStorage.setItem('cookie-consent', 'declined');
-        banner.hidden = true;
-    });
-}
-
 /* ── Back to top ─────────────────────────────────────────── */
 function initBackTop() {
     const btn = $('#back-top');
@@ -280,7 +261,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initSlider();
     initParrainage();
     initForm();
-    initCookies();
     initBackTop();
     initFooterYear();
 });
