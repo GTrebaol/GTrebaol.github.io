@@ -1,0 +1,77 @@
+---
+const BRANDS = [
+  {
+    name: "Bellamy",
+    logo: "/uploads/bellamy.png",
+    logoH: 54,
+    cat: "Premiers pas · Chaussons",
+    blurb: "Fabriqué en France. Le chausson qui accompagne les tout premiers pas, depuis trois générations.",
+    since: "Made in France",
+  },
+  {
+    name: "babybotte",
+    logo: "/uploads/babybotte.png",
+    logoH: 50,
+    cat: "Souliers premiers pas",
+    blurb: "L'expertise française des premiers pas — cuirs souples et conseils de podologue.",
+    since: "Depuis 1933",
+  },
+  {
+    name: "nörvik",
+    logo: "/uploads/norvik.png",
+    logoH: 92,
+    cat: "Ados · Style affirmé",
+    blurb: "Du caractère pour les pieds qui poussent — bottines, baskets montantes, modèles affirmés.",
+    since: "Children's shoes",
+  },
+  {
+    name: "Kickers",
+    logo: "/uploads/kickers.svg",
+    logoH: 32,
+    cat: "Icône de cour de récré",
+    blurb: "L'icône de la rentrée scolaire. La Kick Lo, encore et toujours — du CP au lycée.",
+    since: "Depuis 1970",
+  },
+];
+---
+
+<section id="marques">
+  <div class="container">
+    <div class="s-head reveal">
+      <div>
+        <span class="eyebrow">Nos marques</span>
+        <h2 style="margin-top:14px;">
+          Quatre maisons, <br/>
+          <em style="font-style:italic;color:var(--ink-soft);">choisies une à une.</em>
+        </h2>
+      </div>
+      <p class="s-intro">
+        On ne vend pas tout. On choisit les maisons en qui on a confiance — fabrication soignée,
+        tailles cohérentes, et des modèles qui tiennent la saison.
+      </p>
+    </div>
+
+    <div class="brands">
+      {BRANDS.map((b, i) => (
+        <div class="brand-card reveal" data-d={String(i + 1)}>
+          <div class="brand-mark">
+            <img
+              src={b.logo}
+              alt={b.name}
+              style={`height:${b.logoH}px;max-width:100%;object-fit:contain;object-position:left center;`}
+              loading="lazy"
+            />
+          </div>
+          <h4>{b.cat}</h4>
+          <p class="blurb">{b.blurb}</p>
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:auto;padding-top:10px;">
+            <span class="since">{b.since}</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"/><path d="m13 5 7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
