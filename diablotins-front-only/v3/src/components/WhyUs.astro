@@ -1,0 +1,38 @@
+---
+const REASONS = [
+  { icon: "/uploads/footprint-blue.png", title: "Mesure du pied",   body: "On mesure chaque pied avant d'essayer. C'est gratuit, ça prend deux minutes, et ça change tout." },
+  { icon: "/uploads/customer-support.png", title: "Conseil familial", body: "Quinze ans à voir grandir les enfants du quartier. On connaît les bonnes pointures et les bonnes idées." },
+  { icon: "/uploads/validation.png",     title: "Marques choisies", body: "Bellamy fabriqué en France, babybotte maison historique. On choisit la qualité, pas la quantité." },
+  { icon: "/uploads/alarm.png",          title: "Depuis 2009",      body: "Plus de quinze ans dans la même rue. Les enfants reviennent, et ramènent leurs enfants." },
+];
+---
+
+<section id="pourquoi">
+  <div class="container">
+    <div class="s-head reveal">
+      <div>
+        <span class="eyebrow">Pourquoi venir nous voir</span>
+        <h2 style="margin-top:14px;">
+          Le bon conseil, <br/>
+          <em style="font-style:italic;color:var(--ink-soft);">en vrai.</em>
+        </h2>
+      </div>
+      <p class="s-intro">
+        Acheter une paire pour son enfant, c'est plus qu'une transaction. C'est un moment.
+        On le prend au sérieux — sans se prendre au sérieux.
+      </p>
+    </div>
+
+    <div class="why">
+      {REASONS.map((r, i) => (
+        <div class="why-item reveal" data-d={String(i + 1)}>
+          <div class="ic">
+            <img src={r.icon} alt="" width="64" height="64" loading="lazy" />
+          </div>
+          <h3>{r.title}</h3>
+          <p>{r.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
