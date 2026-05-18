@@ -1,0 +1,82 @@
+---
+const CATS = [
+  { id: "premiers-pas", title: "Premiers Pas", range: "0 → 3 ans", sizes: "19 → 23", hint: "le tout premier pas", img: "/uploads/premiers-pas-1.webp", tag: "Bébés" },
+  { id: "juniors",      title: "Juniors",       range: "3 → 10 ans", sizes: "24 → 34", hint: "école & aventures",    img: "/uploads/junior-1.webp",        tag: "Enfants" },
+  { id: "ados",         title: "Ados",          range: "10 → 16 ans", sizes: "35 → 40", hint: "style à eux",         img: "/uploads/ado-1.webp",            tag: "Ados" },
+];
+---
+
+<section id="categories" style="background:var(--bg-alt);">
+  <div class="container">
+    <div class="s-head reveal">
+      <div>
+        <span class="eyebrow">Pour qui ?</span>
+        <h2 style="margin-top:14px;">
+          Du premier pas <br/>
+          <em style="font-style:italic;color:var(--ink-soft);">au lycée.</em>
+        </h2>
+      </div>
+      <p class="s-intro">
+        Trois âges, trois rayons, une seule manière de faire&nbsp;: prendre le temps, mesurer le pied,
+        essayer plusieurs paires, et trouver la bonne. Toujours du 19 au 40.
+      </p>
+    </div>
+
+    <div class="cats">
+      {CATS.map((c, i) => (
+        <a href={`#${c.id}`} class="cat-card reveal" data-d={String(i + 1)}>
+          <img src={c.img} alt={c.title} loading="lazy" />
+          <span class="age-tag">{c.tag} · {c.sizes}</span>
+          <div class="cat-mask"></div>
+          <div class="cat-meta">
+            <div>
+              <span class="range">— {c.hint}</span>
+              <h3>{c.title}</h3>
+              <div style="font-family:var(--font-body);font-size:14px;opacity:.8;margin-top:6px;">{c.range}</div>
+            </div>
+            <div class="cat-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/><path d="m13 5 7 7-7 7"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- Types strip -->
+    <div class="types-strip reveal" data-d="4">
+      <span class="types-lead"><span class="hand">Aussi chez nous —</span></span>
+
+      <a href="#chaussons" class="type-card type-card--chaussons">
+        <div class="type-ic">
+          <img src="/uploads/slippers.png" alt="" width="38" height="38" />
+        </div>
+        <div class="type-body">
+          <h4>Chaussons</h4>
+          <p>Bellamy, du 19 au 35 — pour la maison et la crèche.</p>
+        </div>
+        <span class="type-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"/><path d="m13 5 7 7-7 7"/>
+          </svg>
+        </span>
+      </a>
+
+      <a href="#bottes" class="type-card type-card--bottes">
+        <div class="type-ic">
+          <img src="/uploads/rain-boots.png" alt="" width="38" height="38" />
+        </div>
+        <div class="type-body">
+          <h4>Bottes caoutchouc</h4>
+          <p>Pour les flaques bretonnes — du 22 au 38.</p>
+        </div>
+        <span class="type-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"/><path d="m13 5 7 7-7 7"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
