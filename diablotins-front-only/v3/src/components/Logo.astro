@@ -1,0 +1,54 @@
+---
+import Diablotin from './Diablotin.astro';
+
+interface Props {
+  variant?: 'wordmark' | 'stacked' | 'multicolor';
+  size?: number;
+  dark?: boolean;
+}
+const { variant = 'multicolor', size = 1, dark = false } = Astro.props;
+const inkVar = dark ? 'var(--bg)' : 'var(--ink)';
+
+const colors = [
+  'var(--accent-4)', 'var(--accent-3)', 'var(--accent-2)', ' ',
+  'var(--accent)',   'var(--accent-4)', 'var(--accent-3)', 'var(--accent-2)',
+  'var(--accent)',   'var(--accent-4)', 'var(--accent-3)', 'var(--accent-2)',
+  'var(--accent)',   'var(--accent-4)',
+];
+const text = 'les diablotins';
+---
+
+{variant === 'multicolor' && (
+  <div style={`display:inline-flex;align-items:baseline;gap:4px;line-height:1;font-family:var(--font-display);font-size:${42 * size * 0.7}px;letter-spacing:-0.01em;`}>
+    {text.split('').map((ch, i) =>
+      ch === ' '
+        ? <span style={`width:${42 * size * 0.18}px;display:inline-block;`}>&nbsp;</span>
+        : <span style={`color:${colors[i]};display:inline-block;`}>{ch}</span>
+    )}
+  </div>
+)}
+
+{variant === 'wordmark' && (
+  <div style={`display:inline-flex;align-items:center;gap:${10 * size}px;line-height:1;position:relative;`}>
+    <div style={`width:${38 * size * 1.05}px;height:${38 * size * 1.05}px;flex:none;`}>
+      <Diablotin size={38 * size * 1.05} color="var(--accent)" />
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0;line-height:1;">
+      <span style={`font-family:var(--font-body);font-size:${10 * size}px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:${inkVar};opacity:.65;margin-bottom:2px;`}>les</span>
+      <span style={`font-family:var(--font-display);font-size:${38 * size * 0.7}px;color:${inkVar};letter-spacing:-0.02em;position:relative;`}>
+        diablot<span style="position:relative;display:inline-block;">i<svg width={`${38 * size * 0.32}`} height={`${38 * size * 0.28}`} viewBox="0 0 16 14" fill="none" style={`position:absolute;left:50%;top:-${38 * size * 0.18}px;transform:translateX(-50%);`}><path d="M4 12c-1-5 0-9 2-11 1 4 1 7 3 11" fill="var(--accent)" stroke={inkVar} stroke-width="1.5" stroke-linejoin="round"/><path d="M12 12c1-5 0-9-2-11-1 4-1 7-3 11" fill="var(--accent)" stroke={inkVar} stroke-width="1.5" stroke-linejoin="round"/></svg></span>ns
+      </span>
+    </div>
+  </div>
+)}
+
+{variant === 'stacked' && (
+  <div style={`display:inline-flex;align-items:center;gap:${14 * size}px;line-height:1;`}>
+    <div style="flex:none;">
+      <Diablotin size={44 * size} color="var(--accent)" />
+    </div>
+    <div style={`font-family:var(--font-display);font-size:${44 * size * 0.66}px;color:${inkVar};letter-spacing:-0.02em;line-height:1;`}>
+      les diablotins
+    </div>
+  </div>
+)}

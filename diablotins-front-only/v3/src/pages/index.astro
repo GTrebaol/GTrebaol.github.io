@@ -1,1 +1,15 @@
-<html><body>test</body></html>
+---
+import Layout from '../layouts/Layout.astro';
+import Logo from '../components/Logo.astro';
+import HeritageStamp from '../components/HeritageStamp.astro';
+import Diablotin from '../components/Diablotin.astro';
+---
+<Layout>
+  <div style="padding: 40px; display: flex; flex-direction: column; gap: 20px; background: var(--bg);">
+    <Logo variant="multicolor" size={1} />
+    <Logo variant="wordmark" size={1} />
+    <Logo variant="stacked" size={1} />
+    <HeritageStamp size={180} />
+    <Diablotin size={80} />
+  </div>
+</Layout>
