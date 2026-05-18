@@ -1,0 +1,22 @@
+---
+const ITEMS = [
+  "Mesure du pied offerte",
+  "Bellamy · babybotte · nörvik · Kickers",
+  "Du 19 au 40",
+  "Conseil personnalisé",
+  "Boutique familiale depuis 2009",
+  "50 rue d'Aiguillon · Brest",
+];
+const loop = [...ITEMS, ...ITEMS];
+---
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    {loop.map((item) => (
+      <>
+        <span>{item}</span>
+        <span class="star">✦</span>
+      </>
+    ))}
+  </div>
+</div>
