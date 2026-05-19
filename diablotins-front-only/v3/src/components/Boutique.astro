@@ -17,7 +17,7 @@ const formUrl = import.meta.env.PUBLIC_FORM_URL ?? '';
     <div class="reveal" style="margin-bottom:36px;">
       <span class="eyebrow">La boutique</span>
       <h2 style="margin-top:14px;">
-        50 rue d'Aiguillon, <br/>
+        50 rue d'Aiguillon,
         <em style="font-style:italic;color:var(--ink-soft);">Brest.</em>
       </h2>
     </div>
@@ -84,17 +84,6 @@ const formUrl = import.meta.env.PUBLIC_FORM_URL ?? '';
             </div>
           </div>
         </div>
-
-        <a href="https://www.google.com/maps/search/?api=1&query=50+rue+d%27Aiguillon+29200+Brest"
-           target="_blank" rel="noreferrer noopener"
-           class="btn btn--accent" style="align-self:flex-start;margin-top:4px;">
-          Itinéraire
-          <span class="arrow">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14"/><path d="m13 5 7 7-7 7"/>
-            </svg>
-          </span>
-        </a>
       </div>
 
       <!-- Contact form -->
@@ -114,11 +103,11 @@ const formUrl = import.meta.env.PUBLIC_FORM_URL ?? '';
           <div class="cf-row">
             <label class="cf-field">
               <span class="cf-lbl">Email</span>
-              <input type="email" name="email" required placeholder="vous@exemple.fr" autocomplete="email" />
+              <input type="email" name="email" required placeholder="adresse@mail.fr" autocomplete="email" />
             </label>
             <label class="cf-field">
               <span class="cf-lbl">Téléphone <em>(optionnel)</em></span>
-              <input type="tel" name="phone" placeholder="02 ·· ·· ·· ··" autocomplete="tel" />
+              <input type="tel" name="phone" placeholder="02 98 .. .. .." autocomplete="tel" />
             </label>
           </div>
 
@@ -136,9 +125,6 @@ const formUrl = import.meta.env.PUBLIC_FORM_URL ?? '';
                 </svg>
               </span>
             </button>
-            <span class="cf-note">
-              ou appelez-nous au <a href="tel:+33298462738"><strong>02 98 46 27 38</strong></a>
-            </span>
           </div>
           <p class="cf-error" id="cf-error" role="alert"></p>
         </form>
