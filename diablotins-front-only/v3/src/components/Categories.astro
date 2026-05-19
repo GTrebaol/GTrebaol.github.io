@@ -86,6 +86,7 @@ const allImages = CATS.map(c => c.images);
           <img src={c.cover} alt={c.title} loading={ci === 0 ? 'eager' : 'lazy'} />
           <span class="age-tag">{c.tag} · {c.sizes}</span>
           <div class="cat-mask"></div>
+          <div class="cat-open-hint">Voir les photos →</div>
           <div class="cat-meta">
             <div>
               <span class="range">— {c.hint}</span>
@@ -188,16 +189,47 @@ const allImages = CATS.map(c => c.images);
 </div>
 
 <style>
-/* ---- cat-card as button ---- */
+/* ---- cat-card as button — reset only what's needed ---- */
 .cat-card {
-  all: unset;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
   cursor: pointer;
-  display: block;
+  text-align: left;
+  -webkit-appearance: none;
+  appearance: none;
 }
 .cat-card:focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 4px;
   border-radius: var(--radius-lg);
+}
+
+/* Hover: label "Voir les photos" apparaît */
+.cat-open-hint {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 7px 16px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity var(--t-fast), transform var(--t-fast);
+  pointer-events: none;
+  border: 2px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.cat-card:hover .cat-open-hint {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 /* ---- Lightbox cats ---- */
