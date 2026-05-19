@@ -3,17 +3,17 @@
    ========================================================= */
 
 :root {
-  --bg:        #FFF5DC;
-  --bg-alt:    #FFE6B5;
-  --ink:       #1F1A17;
-  --ink-soft:  #4A4138;
-  --muted:     #9C8B73;
-  --line:      #F2DEB3;
-  --accent:    #FF4D3B;
-  --accent-2:  #FFC430;
-  --accent-3:  #7DC264;
-  --accent-4:  #5EB4E3;
-  --accent-5:  #C879D6;
+  --bg:        #FEF9F0;
+  --bg-alt:    #FDF0DC;
+  --ink:       #2E2620;
+  --ink-soft:  #5C4F43;
+  --muted:     #A99080;
+  --line:      #EFE0C4;
+  --accent:    #E8765E;
+  --accent-2:  #F5C96A;
+  --accent-3:  #97CC82;
+  --accent-4:  #7EC8E8;
+  --accent-5:  #D9A0E8;
   --paper:     #FFFFFF;
 
   --font-display: "Caprasimo", Georgia, serif;
