@@ -1,0 +1,227 @@
+---
+const HOURS = [
+  { day: "Lundi",    hours: "14h00 — 19h00",                          closed: false },
+  { day: "Mardi",    hours: "10h00 — 12h15 · 14h00 — 19h00",         closed: false },
+  { day: "Mercredi", hours: "10h00 — 12h15 · 14h00 — 19h00",         closed: false },
+  { day: "Jeudi",    hours: "10h00 — 12h15 · 14h00 — 19h00",         closed: false },
+  { day: "Vendredi", hours: "10h00 — 12h15 · 14h00 — 19h00",         closed: false },
+  { day: "Samedi",   hours: "10h00 — 12h15 · 14h00 — 19h00",         closed: false },
+  { day: "Dimanche", hours: "Fermé",                                    closed: true },
+];
+
+const formUrl = import.meta.env.PUBLIC_FORM_URL ?? '';
+---
+
+<section id="boutique">
+  <div class="container">
+    <div class="s-head reveal" style="margin-bottom:36px;">
+      <div>
+        <span class="eyebrow">La boutique</span>
+        <h2 style="margin-top:14px;">
+          50 rue d'Aiguillon, <br/>
+          <em style="font-style:italic;color:var(--ink-soft);">Brest.</em>
+        </h2>
+      </div>
+      <p class="s-intro">
+        On vous accueille du mardi au samedi en plein centre. Une visite vaut mille photos —
+        venez essayer, on a toujours un café pour les parents et un sourire pour les enfants.
+      </p>
+    </div>
+
+    <div class="boutique-grid">
+
+      <!-- Info card -->
+      <div class="boutique-card reveal" data-d="1">
+        <h2>Venir nous voir.</h2>
+        <div class="info-rows">
+
+          <div class="info-row">
+            <div class="ic-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--bg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/>
+              </svg>
+            </div>
+            <div>
+              <div class="lbl">Adresse</div>
+              <div class="val">50 rue d'Aiguillon<br/>29200 Brest</div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="ic-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--bg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5.5 4h3l1.5 4-2 1.4a12 12 0 0 0 6.6 6.6L16 14l4 1.5v3a2 2 0 0 1-2.2 2A16 16 0 0 1 3.5 6.2 2 2 0 0 1 5.5 4Z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="lbl">Téléphone</div>
+              <div class="val"><a href="tel:+33298462738" style="color:inherit;">02 98 46 27 38</a></div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="ic-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--bg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>
+              </svg>
+            </div>
+            <div>
+              <div class="lbl">Email</div>
+              <div class="val"><a href="mailto:lesdiablotins29@orange.fr" style="color:inherit;">lesdiablotins29@orange.fr</a></div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="ic-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--bg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+              </svg>
+            </div>
+            <div style="flex:1;">
+              <div class="lbl">Horaires</div>
+              <div class="hours-table" style="margin-top:8px;">
+                {HOURS.map(({ day, hours, closed }) => (
+                  <div class={`hrow${closed ? ' closed' : ''}`}>
+                    <span class="day">{day}</span>
+                    <span class="h">{hours}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://www.google.com/maps/search/?api=1&query=50+rue+d%27Aiguillon+29200+Brest"
+           target="_blank" rel="noreferrer noopener"
+           class="btn btn--accent" style="align-self:flex-start;margin-top:4px;">
+          Itinéraire
+          <span class="arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"/><path d="m13 5 7 7-7 7"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+
+      <!-- Contact form -->
+      <div class="boutique-contact reveal" data-d="2">
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="cf-head">
+            <span class="hand">Écrivez-nous —</span>
+            <h3>Une question ? Une pointure&nbsp;?</h3>
+            <p>On vous répond dans la journée, du mardi au samedi.</p>
+          </div>
+
+          <label class="cf-field">
+            <span class="cf-lbl">Prénom &amp; Nom</span>
+            <input type="text" name="name" required minlength="2" placeholder="Camille Le Goff" autocomplete="name" />
+          </label>
+
+          <div class="cf-row">
+            <label class="cf-field">
+              <span class="cf-lbl">Email</span>
+              <input type="email" name="email" required placeholder="vous@exemple.fr" autocomplete="email" />
+            </label>
+            <label class="cf-field">
+              <span class="cf-lbl">Téléphone <em>(optionnel)</em></span>
+              <input type="tel" name="phone" placeholder="02 ·· ·· ·· ··" autocomplete="tel" />
+            </label>
+          </div>
+
+          <label class="cf-field">
+            <span class="cf-lbl">Votre message</span>
+            <textarea name="message" rows="5" required minlength="10" placeholder="Bonjour, je cherche des premières chaussures pour mon enfant…"></textarea>
+          </label>
+
+          <div class="cf-actions">
+            <button type="submit" class="btn btn--accent" id="cf-submit">
+              <span id="cf-btn-text">Envoyer le message</span>
+              <span class="arrow">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14"/><path d="m13 5 7 7-7 7"/>
+                </svg>
+              </span>
+            </button>
+            <span class="cf-note">
+              ou appelez-nous au <a href="tel:+33298462738"><strong>02 98 46 27 38</strong></a>
+            </span>
+          </div>
+          <p class="cf-error" id="cf-error" role="alert"></p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ formUrl }}>
+  const form = document.getElementById('contact-form');
+  const submitBtn = document.getElementById('cf-submit');
+  const btnText = document.getElementById('cf-btn-text');
+  const errorEl = document.getElementById('cf-error');
+
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const PHONE_RE = /^[\d\s.\-+()]*$/;
+
+  function showError(msg) {
+    errorEl.textContent = msg;
+    errorEl.classList.add('visible');
+  }
+  function clearError() {
+    errorEl.textContent = '';
+    errorEl.classList.remove('visible');
+  }
+  function setSubmitting(on) {
+    submitBtn.disabled = on;
+    btnText.textContent = on ? 'Envoi…' : 'Envoyer le message';
+  }
+  function resetForm() {
+    form.reset();
+    btnText.textContent = 'Message envoyé ✦';
+    setTimeout(() => { btnText.textContent = 'Envoyer le message'; }, 4200);
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearError();
+
+    const data = Object.fromEntries(new FormData(form));
+
+    if (!data.name || data.name.trim().length < 2) {
+      return showError('Prénom & Nom requis (min. 2 caractères).');
+    }
+    if (!EMAIL_RE.test(data.email)) {
+      return showError('Adresse email invalide.');
+    }
+    if (data.phone && !PHONE_RE.test(data.phone)) {
+      return showError('Numéro de téléphone invalide.');
+    }
+    if (!data.message || data.message.trim().length < 10) {
+      return showError('Message requis (min. 10 caractères).');
+    }
+
+    setSubmitting(true);
+
+    try {
+      const res = await fetch(formUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          phone: data.phone || '',
+          message: data.message,
+          destination: 'lesdiablotins29@orange.fr',
+        }),
+      });
+
+      if (!res.ok) throw new Error(`Erreur serveur (${res.status})`);
+
+      resetForm();
+    } catch (err) {
+      showError('Envoi impossible. Réessayez ou appelez-nous directement.');
+    } finally {
+      setSubmitting(false);
+    }
+  });
+</script>
