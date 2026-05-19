@@ -145,16 +145,6 @@ const allImages = CATS.map(c => c.images);
   <div class="lb-backdrop" id="lb-backdrop"></div>
 
   <div class="lb-inner">
-    <!-- Onglets catégories -->
-    <div class="lb-cats" id="lb-cats">
-      {CATS.map((c, ci) => (
-        <button class="lb-cat" data-cat={ci}>
-          <span class="lb-cat-title">{c.title}</span>
-          <span class="lb-cat-range">{c.sizes}</span>
-        </button>
-      ))}
-    </div>
-
     <!-- Header -->
     <div class="lb-header">
       <div class="lb-count"><span id="lb-cur">1</span> / <span id="lb-tot">1</span></div>
@@ -206,47 +196,6 @@ const allImages = CATS.map(c => c.images);
 }
 
 
-/* ---- Lightbox cats ---- */
-.lb-cats {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.lb-cat {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  padding: 8px 18px;
-  border-radius: var(--radius-pill);
-  border: 1.5px solid color-mix(in oklab, var(--bg) 25%, transparent);
-  background: color-mix(in oklab, var(--bg) 8%, transparent);
-  color: color-mix(in oklab, var(--bg) 70%, transparent);
-  cursor: pointer;
-  transition: background var(--t-fast), border-color var(--t-fast), color var(--t-fast);
-  text-align: left;
-}
-.lb-cat:hover {
-  background: color-mix(in oklab, var(--bg) 16%, transparent);
-  border-color: color-mix(in oklab, var(--bg) 55%, transparent);
-  color: var(--bg);
-}
-.lb-cat.active {
-  background: var(--bg);
-  border-color: var(--bg);
-  color: var(--ink);
-}
-.lb-cat-title {
-  font-family: var(--font-display);
-  font-size: 16px;
-  line-height: 1;
-}
-.lb-cat-range {
-  font-size: 10px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  opacity: .65;
-}
-
 /* ---- Lightbox ---- */
 .lb {
   position: fixed;
@@ -273,6 +222,7 @@ const allImages = CATS.map(c => c.images);
   display: flex;
   flex-direction: column;
   gap: 14px;
+  margin-top: 80px;
   animation: lb-in .28s cubic-bezier(.2,.8,.2,1);
 }
 
@@ -404,28 +354,10 @@ const allImages = CATS.map(c => c.images);
   const lbNext   = document.getElementById('lb-next');
   const lbClose  = document.getElementById('lb-close');
   const lbBack   = document.getElementById('lb-backdrop');
-  const lbCatBtns = document.querySelectorAll('.lb-cat');
-
-  let images   = [];
-  let idx      = 0;
-  let activeCat = 0;
-
-  function switchCat(catIdx) {
-    activeCat = catIdx;
-    lbCatBtns.forEach((b, i) => b.classList.toggle('active', i === catIdx));
-    loadCat(catIdx, 0);
-  }
-
-  function loadCat(catIdx, startIdx) {
-    images = allImages[catIdx];
-    lbTot.textContent = images.length;
-    buildThumbs(startIdx);
-    goTo(startIdx, true);
-  }
+  let images = [];
+  let idx    = 0;
 
   function open(catIdx, startIdx = 0) {
-    activeCat = catIdx;
-    lbCatBtns.forEach((b, i) => b.classList.toggle('active', i === catIdx));
     images = allImages[catIdx];
     lbTot.textContent = images.length;
 
@@ -482,11 +414,6 @@ const allImages = CATS.map(c => c.images);
     const activeThumb = lbThumbs.children[i];
     if (activeThumb) activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }
-
-  // Onglets dans la lightbox
-  lbCatBtns.forEach((btn, ci) => {
-    btn.addEventListener('click', () => switchCat(ci));
-  });
 
   // Open via cat-cards
   document.querySelectorAll('.cat-card').forEach(card => {
