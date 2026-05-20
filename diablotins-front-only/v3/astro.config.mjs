@@ -3,4 +3,5 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   output: 'static',
   site: 'https://gtrebaol.github.io',
+  base: '/diablotins-front-only/v3/dist',
 });
