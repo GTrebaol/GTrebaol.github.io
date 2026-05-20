@@ -1,5 +1,6 @@
 ---
 import HeritageStamp from './HeritageStamp.astro';
+const base = import.meta.env.BASE_URL;
 ---
 <section class="hero hero--collage">
   <div class="container hero-grid">
@@ -40,13 +41,13 @@ import HeritageStamp from './HeritageStamp.astro';
     <div class="collage reveal" data-d="3">
       <div class="horn-blob"></div>
       <div class="card c1">
-        <img src="/chaussures/premiers-pas/premiers-pas-1.webp" alt="chaussons bébé" loading="eager" />
+        <img src={`${base}chaussures/premiers-pas/premiers-pas-1.webp`} alt="chaussons bébé" loading="eager" />
       </div>
       <div class="card c2">
-        <img src="/chaussures/junior/junior-7.webp" alt="sneakers enfant" loading="eager" />
+        <img src={`${base}chaussures/junior/junior-7.webp`} alt="sneakers enfant" loading="eager" />
       </div>
       <div class="card c3">
-        <img src="/chaussures/ado/ado-1.webp" alt="bottines ado" loading="eager" />
+        <img src={`${base}chaussures/ado/ado-1.webp`} alt="bottines ado" loading="eager" />
       </div>
       <div class="sticker">
         <HeritageStamp size={128} />

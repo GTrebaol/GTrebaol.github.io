@@ -1,4 +1,5 @@
 ---
+const base = import.meta.env.BASE_URL;
 const CATS = [
   {
     id: "premiers-pas",
@@ -7,14 +8,14 @@ const CATS = [
     sizes: "19 → 27",
     tag: "Bébés",
     hint: "le tout premier pas",
-    cover: "/chaussures/premiers-pas/premiers-pas-1.webp",
+    cover: `${base}chaussures/premiers-pas/premiers-pas-1.webp`,
     images: [
-      "/chaussures/premiers-pas/premiers-pas-1.webp",
-      "/chaussures/premiers-pas/premiers-pas-2.webp",
-      "/chaussures/premiers-pas/premiers-pas-3.webp",
-      "/chaussures/premiers-pas/premiers-pas-4.webp",
-      "/chaussures/premiers-pas/premiers-pas-5.webp",
-      "/chaussures/premiers-pas/premiers-pas-6.webp",
+      `${base}chaussures/premiers-pas/premiers-pas-1.webp`,
+      `${base}chaussures/premiers-pas/premiers-pas-2.webp`,
+      `${base}chaussures/premiers-pas/premiers-pas-3.webp`,
+      `${base}chaussures/premiers-pas/premiers-pas-4.webp`,
+      `${base}chaussures/premiers-pas/premiers-pas-5.webp`,
+      `${base}chaussures/premiers-pas/premiers-pas-6.webp`,
     ],
   },
   {
@@ -24,16 +25,16 @@ const CATS = [
     sizes: "28 → 34",
     tag: "Enfants",
     hint: "école & aventures",
-    cover: "/chaussures/junior/junior-1.webp",
+    cover: `${base}chaussures/junior/junior-1.webp`,
     images: [
-      "/chaussures/junior/junior-1.webp",
-      "/chaussures/junior/junior-2.webp",
-      "/chaussures/junior/junior-3.webp",
-      "/chaussures/junior/junior-4.webp",
-      "/chaussures/junior/junior-5.webp",
-      "/chaussures/junior/junior-6.webp",
-      "/chaussures/junior/junior-7.webp",
-      "/chaussures/junior/junior-8.webp",
+      `${base}chaussures/junior/junior-1.webp`,
+      `${base}chaussures/junior/junior-2.webp`,
+      `${base}chaussures/junior/junior-3.webp`,
+      `${base}chaussures/junior/junior-4.webp`,
+      `${base}chaussures/junior/junior-5.webp`,
+      `${base}chaussures/junior/junior-6.webp`,
+      `${base}chaussures/junior/junior-7.webp`,
+      `${base}chaussures/junior/junior-8.webp`,
     ],
   },
   {
@@ -43,13 +44,13 @@ const CATS = [
     sizes: "35 → 40",
     tag: "Ados",
     hint: "style à eux",
-    cover: "/chaussures/ado/ado-1.webp",
+    cover: `${base}chaussures/ado/ado-1.webp`,
     images: [
-      "/chaussures/ado/ado-1.webp",
-      "/chaussures/ado/ado-2.webp",
-      "/chaussures/ado/ado-3.webp",
-      "/chaussures/ado/ado-4.webp",
-      "/chaussures/ado/ado-5.webp",
+      `${base}chaussures/ado/ado-1.webp`,
+      `${base}chaussures/ado/ado-2.webp`,
+      `${base}chaussures/ado/ado-3.webp`,
+      `${base}chaussures/ado/ado-4.webp`,
+      `${base}chaussures/ado/ado-5.webp`,
     ],
   },
 ];
@@ -108,7 +109,7 @@ const allImages = CATS.map(c => c.images);
 
       <a href="#boutique" class="type-card type-card--chaussons">
         <div class="type-ic">
-          <img src="/icons/slippers.png" alt="" width="38" height="38" />
+          <img src={`${base}icons/slippers.png`} alt="" width="38" height="38" />
         </div>
         <div class="type-body">
           <h4>Chaussons</h4>
@@ -123,7 +124,7 @@ const allImages = CATS.map(c => c.images);
 
       <a href="#boutique" class="type-card type-card--bottes">
         <div class="type-ic">
-          <img src="/icons/rain-boots.png" alt="" width="38" height="38" />
+          <img src={`${base}icons/rain-boots.png`} alt="" width="38" height="38" />
         </div>
         <div class="type-body">
           <h4>Bottes caoutchouc</h4>
