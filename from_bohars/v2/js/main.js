@@ -6,10 +6,10 @@ const RECAPTCHA_KEY = '6LcqoiMrAAAAAE1dpWIEDheFNVGkugVc4cc6a0Up';
 const FORM_URL = 'https://p01--formtomail--9x6pdlz5xy7c.code.run/contact';
 
 const IMG_CONFIG = {
-  plateau: { count: 13, prefix: 'plateau-', label: 'Plateaux de Fromages' },
-  buffet:  { count: 3,  prefix: 'buffet-',  label: 'Buffets Fromagers' },
+  plateau: { count: 21, prefix: 'plateau-', label: 'Plateaux de Fromages' },
+  buffet:  { count: 6,  prefix: 'buffet-',  label: 'Buffets Fromagers' },
   epicerie:{ count: 3,  prefix: 'epicerie-',label: 'Épicerie Fine' },
-  cave:    { count: 5,  prefix: 'cave-',    label: 'Cave à Vins' }
+  cave:    { count: 8,  prefix: 'cave-',    label: 'Cave à Vins' }
 };
 
 // ---- Theme switcher ----

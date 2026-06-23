@@ -122,6 +122,11 @@ h3 { font-size: clamp(1.1rem, 2.5vw, 1.4rem); font-weight: 600; }
 .btn-ghost:hover, .btn-ghost:focus-visible {
   background: rgba(255,255,255,.1); border-color: var(--white);
 }
+.btn-green { background: var(--green-light); color: var(--white); }
+.btn-green:hover, .btn-green:focus-visible {
+  background: var(--green); transform: translateY(-2px);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--green) 40%, transparent);
+}
 .btn-full { width: 100%; justify-content: center; }
 
 /* --- Focus --- */
@@ -241,21 +246,6 @@ h3 { font-size: clamp(1.1rem, 2.5vw, 1.4rem); font-weight: 600; }
   50%      { transform: translateX(-50%) translateY(7px); }
 }
 
-/* ===========================================
-   TICKER
-   =========================================== */
-.ticker { background: var(--gold); overflow: hidden; padding: .7rem 0; }
-.ticker-inner {
-  display: flex; align-items: center; gap: 2rem;
-  white-space: nowrap; width: max-content;
-  animation: ticker 32s linear infinite;
-}
-.ticker-inner span {
-  font-size: .75rem; font-weight: 600;
-  letter-spacing: .1em; text-transform: uppercase; color: #1a1a1a;
-}
-.ticker-inner .sep { color: var(--green) !important; font-size: .55rem !important; }
-@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* ===========================================
    HISTOIRE
@@ -492,6 +482,7 @@ h3 { font-size: clamp(1.1rem, 2.5vw, 1.4rem); font-weight: 600; }
 .horaires-list li span:last-child { color: var(--muted); }
 .horaires-list li.closed span { color: var(--muted); }
 
+.socials-row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
 .socials { display: flex; gap: .7rem; }
 .socials a {
   width: 40px; height: 40px; border: 1.5px solid var(--cream-dark);
@@ -499,6 +490,7 @@ h3 { font-size: clamp(1.1rem, 2.5vw, 1.4rem); font-weight: 600; }
   color: var(--green); font-size: .95rem; transition: all var(--t);
 }
 .socials a:hover { background: var(--green); border-color: var(--green); color: var(--cream); transform: translateY(-2px); }
+.footer-socials .fa-facebook-f { margin-left: .3rem; }
 
 /* Contact form */
 .contact-form-wrap {
@@ -831,7 +823,7 @@ textarea { resize: vertical; min-height: 180px; }
    PRINT
    =========================================== */
 @media print {
-  #navbar, .ticker, .hero-scroll, .gmodal { display: none !important; }
+  #navbar, .hero-scroll, .gmodal { display: none !important; }
   .hero { height: auto; min-height: 0; padding: 2rem 0; }
   .hero-overlay { display: none; }
   .hero-content { color: #000; }
