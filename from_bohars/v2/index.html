@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>From Bohars – Fromagerie · Cave · Épicerie fine à Bohars</title>
-  <meta name="description" content="From Bohars – Fromagerie artisanale à Bohars (29820) : plus de 100 fromages, cave à vins, épicerie fine. Plateaux personnalisés, buffets, dégustations. Ouvert mardi au samedi.">
+  <meta name="description" content="From Bohars – Fromagerie artisanale à Bohars (29820) : plus de 200 fromages, cave à vins, épicerie fine. Plateaux personnalisés, buffets, dégustations. Ouvert mardi au samedi.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://frombohars.fr/">
 
@@ -41,7 +41,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="vendor/fontawesome/all.min.css">
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css">
@@ -51,7 +51,7 @@
   <script src="https://www.google.com/recaptcha/enterprise.js?render=6LcqoiMrAAAAAE1dpWIEDheFNVGkugVc4cc6a0Up" async defer></script>
 
   <!-- ical.js -->
-  <script src="https://cdn.jsdelivr.net/npm/ical.js@1.5.0/build/ical.min.js" defer></script>
+  <script src="vendor/ical.min.js" defer></script>
 
   <!-- LocalBusiness structured data -->
   <script type="application/ld+json">
@@ -59,7 +59,7 @@
     "@context": "https://schema.org",
     "@type": "Store",
     "name": "From Bohars",
-    "description": "Fromagerie artisanale à Bohars : plus de 100 fromages au lait cru, cave à vins, bières artisanales et épicerie fine. Plateaux et buffets sur mesure.",
+    "description": "Fromagerie artisanale à Bohars : plus de 200 fromages au lait cru, cave à vins, bières artisanales et épicerie fine. Plateaux et buffets sur mesure.",
     "url": "https://frombohars.fr",
     "telephone": "+33663398569",
     "email": "from.bohars@gmail.com",
@@ -117,6 +117,9 @@
     "founders": [
       { "@type": "Person", "name": "Elen Le Gall" },
       { "@type": "Person", "name": "Yann Le Gall" }
+    ],
+    "employee": [
+      { "@type": "Person", "name": "Marion" }
     ]
   }
   </script>
@@ -174,7 +177,8 @@
         </h1>
         <p class="hero-sub">Fromagerie · Cave · Épicerie fine</p>
         <div class="hero-btns">
-          <a href="#services" class="btn btn-gold">Nos services</a>
+          <a href="https://app.bopizy.com/stores/from-bohars-6whn" target="_blank" rel="noopener noreferrer" class="btn btn-gold">Commander en ligne</a>
+          <a href="#services" class="btn btn-green">Nos services</a>
           <a href="#evenements" class="btn btn-ghost">Voir les événements</a>
         </div>
       </div>
@@ -184,28 +188,6 @@
       </a>
     </section>
 
-    <!-- ======== TICKER ======== -->
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker-inner">
-        <span>Fromages artisanaux</span><span class="sep">◆</span>
-        <span>Cave à vins</span><span class="sep">◆</span>
-        <span>Épicerie fine</span><span class="sep">◆</span>
-        <span>Plateaux sur mesure</span><span class="sep">◆</span>
-        <span>Buffets fromagers</span><span class="sep">◆</span>
-        <span>Dégustations</span><span class="sep">◆</span>
-        <span>Coffrets cadeaux</span><span class="sep">◆</span>
-        <span>Bières artisanales</span><span class="sep">◆</span>
-        <span>Fromages artisanaux</span><span class="sep">◆</span>
-        <span>Cave à vins</span><span class="sep">◆</span>
-        <span>Épicerie fine</span><span class="sep">◆</span>
-        <span>Plateaux sur mesure</span><span class="sep">◆</span>
-        <span>Buffets fromagers</span><span class="sep">◆</span>
-        <span>Dégustations</span><span class="sep">◆</span>
-        <span>Coffrets cadeaux</span><span class="sep">◆</span>
-        <span>Bières artisanales</span><span class="sep">◆</span>
-      </div>
-    </div>
-
     <!-- ======== HISTOIRE ======== -->
     <section id="histoire" class="section bg-cream" itemscope itemtype="http://schema.org/AboutPage">
       <div class="container">
@@ -213,7 +195,7 @@
 
           <div class="histoire-visual reveal-left">
             <div class="histoire-img-frame">
-              <img src="images/webp/history.webp" alt="Elen et Yann Le Gall, fondateurs de From Bohars" width="600" height="750" loading="lazy">
+              <img src="images/webp/history-2.webp" alt="Elen et Yann Le Gall, fondateurs de From Bohars" width="600" height="750" loading="lazy">
             </div>
             <div class="histoire-badge">
               <strong>2024</strong>
@@ -222,38 +204,45 @@
           </div>
 
           <div class="histoire-text reveal-right">
-            <span class="tag">Notre histoire</span>
-            <h2>Nous, c'est <em>Elen et Yann Le Gall</em></h2>
-            <p class="lead" itemprop="description">Nous, c'est Elen et Yann Le Gall, deux Boharsiens avec le coeur bien ancré dans le Finistère ! En 2024, on a décidé de sauter le pas et de vivre notre rêve : se former à l'art de la crèmerie - fromagerie et de la dégustation des vins afin d'ouvrir notre propre fromagerie-crèmerie, cave et épicerie fine à Bohars.</p>
-            <p>Comment définir From Bohars ?</p>
-            <ul>
-              <li>Une magnifique sélection de fromages, majoritairement au lait cru bien sûr.</li>
-              <li>Des vins choisis avec soin, des bières locales (des pépites finistériennes) et des cidres qui font pétiller.</li>
-              <li>Les softs ne sont pas en reste, jus, kombuchas, limonades...</li>
-              <li>Des produits d'épicerie fine qui racontent une histoire.</li>
-            </ul>
-            <p>Alors, si vous aimez les bons produits et les rencontres avec des producteurs qui ont du goût pour vous faire découvrir leur métier, on vous attend chez From Bohars.</p>
+            <span class="tag">Fromagerie-Crémerie · Cave à vins · Épicerie fine</span>
+            <h2>From <em>Bohars</em></h2>
+            <p class="lead" itemprop="description">Créée en septembre 2024 par Elen et Yann, tous deux originaires de la commune, et rejoints depuis par Marion.
+              <br>Ici, on sélectionne, on crée. <br/>Chaque produit raconte un territoire, un savoir-faire, une rencontre.</p>
 
             <div class="valeurs">
               <div class="valeur-item">
+                <div class="valeur-icon"><i class="fas fa-cheese" aria-hidden="true"></i></div>
+                <div>
+                  <strong>Fromagerie-Crémerie</strong>
+                  <p>Des fromages sélectionnés chez des producteurs locaux et des affineurs passionnés, et des créations fromagères maison : chèvres frais aromatisés, brie abricot-miel — devenu une véritable institution.</p>
+                </div>
+              </div>
+              <div class="valeur-item">
+                <div class="valeur-icon"><i class="fas fa-wine-bottle" aria-hidden="true"></i></div>
+                <div>
+                  <strong>Cave à vins</strong>
+                  <p>Une sélection de vins de vignerons indépendants, naturels et de caractère, pour accompagner chaque fromage et chaque occasion.</p>
+                </div>
+              </div>
+              <div class="valeur-item">
+                <div class="valeur-icon"><i class="fas fa-basket-shopping" aria-hidden="true"></i></div>
+                <div>
+                  <strong>Épicerie fine</strong>
+                  <p>Pâtes, sauces, conserves, douceurs sucrées et salées, confitures, idées cadeaux, art de la table… Tout pour se faire plaisir ou composer un beau panier gourmand.</p>
+                </div>
+              </div>
+              <div class="valeur-item">
+                <div class="valeur-icon"><i class="fas fa-heart" aria-hidden="true"></i></div>
+                <div>
+                  <strong>Notre esprit</strong>
+                  <p>Une boutique à taille humaine, tenue avec soin. On travaille au plus près des producteurs bretons, on élabore nos créations fromagères directement à la boutique, et on accueille chaque client comme si on l'invitait à notre table.</p>
+                </div>
+              </div>
+              <div class="valeur-item">
                 <div class="valeur-icon"><i class="fas fa-star" aria-hidden="true"></i></div>
                 <div>
-                  <strong>Qualité</strong>
-                  <p>Sélection rigoureuse auprès des meilleurs producteurs artisanaux</p>
-                </div>
-              </div>
-              <div class="valeur-item">
-                <div class="valeur-icon"><i class="fas fa-leaf" aria-hidden="true"></i></div>
-                <div>
-                  <strong>Tradition</strong>
-                  <p>Respect des savoir-faire et des terroirs pour une dégustation authentique</p>
-                </div>
-              </div>
-              <div class="valeur-item">
-                <div class="valeur-icon"><i class="fas fa-lightbulb" aria-hidden="true"></i></div>
-                <div>
-                  <strong>Innovation</strong>
-                  <p>Nouvelles découvertes régulières pour surprendre vos papilles</p>
+                  <strong>Plateaux & événements</strong>
+                  <p>Plateaux fromages et épicerie fine sur mesure, à emporter ou livrés. Contactez-nous pour un devis.</p>
                 </div>
               </div>
             </div>
@@ -331,19 +320,19 @@
 
         <div class="stats-grid">
           <div class="stat-card reveal-up" data-delay="0">
-            <span class="stat-n" data-target="100">0</span><span class="stat-plus">+</span>
+            <span class="stat-n" data-target="200">0</span><span class="stat-plus">+</span>
             <span class="stat-label">Variétés de fromages</span>
           </div>
           <div class="stat-card reveal-up" data-delay="1">
-            <span class="stat-n" data-target="100">0</span><span class="stat-plus">+</span>
+            <span class="stat-n" data-target="200">0</span><span class="stat-plus">+</span>
             <span class="stat-label">Produits d'épicerie fine</span>
           </div>
           <div class="stat-card reveal-up" data-delay="2">
-            <span class="stat-n" data-target="50">0</span><span class="stat-plus">+</span>
+            <span class="stat-n" data-target="60">0</span><span class="stat-plus">+</span>
             <span class="stat-label">Références de vins</span>
           </div>
           <div class="stat-card reveal-up" data-delay="3">
-            <span class="stat-n" data-target="40">0</span><span class="stat-plus">+</span>
+            <span class="stat-n" data-target="60">0</span><span class="stat-plus">+</span>
             <span class="stat-label">Bières, cidres & spiritueux</span>
           </div>
         </div>
@@ -435,12 +424,17 @@
               </ul>
             </div>
 
-            <div class="socials">
-              <a href="https://www.instagram.com/from_bohars/" target="_blank" rel="noopener noreferrer" aria-label="Instagram From Bohars">
-                <i class="fab fa-instagram" aria-hidden="true"></i>
-              </a>
-              <a href="https://www.facebook.com/p/From-Bohars-61559845997301/" target="_blank" rel="noopener noreferrer" aria-label="Facebook From Bohars">
-                <i class="fab fa-facebook-f" aria-hidden="true"></i>
+            <div class="socials-row">
+              <div class="socials">
+                <a href="https://www.instagram.com/from_bohars/" target="_blank" rel="noopener noreferrer" aria-label="Instagram From Bohars">
+                  <i class="fab fa-instagram" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.facebook.com/p/From-Bohars-61559845997301/" target="_blank" rel="noopener noreferrer" aria-label="Facebook From Bohars">
+                  <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                </a>
+              </div>
+              <a href="https://app.bopizy.com/stores/from-bohars-6whn" target="_blank" rel="noopener noreferrer" class="btn btn-gold">
+                <i class="fas fa-basket-shopping" aria-hidden="true"></i> Commander en ligne
               </a>
             </div>
           </div>
@@ -530,7 +524,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025–2026 From Bohars. Tous droits réservés.</p>
+        <p>&copy; 2024–2026 From Bohars. Tous droits réservés.</p>
         <nav aria-label="Liens légaux">
           <ul class="legal-links">
             <li><a href="mentions-legales.html">Mentions légales</a></li>

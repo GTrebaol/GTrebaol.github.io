@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://frombohars.fr/sitemap.xml
